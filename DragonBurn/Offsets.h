@@ -10,7 +10,7 @@ namespace offsetsInput = cs2_dumper::offsets::inputsystem_dll;
 
 namespace Offset
 {
-	inline long long CS2ver = 9014754; //nano "E:\SteamLibrary\steamapps\common\Counter-Strike Global Offensive\game\bin\built_from_cl.txt"
+	inline long long CS2ver = 9035740; //nano "E:\SteamLibrary\steamapps\common\Counter-Strike Global Offensive\game\bin\built_from_cl.txt"
 
 	//https://github.com/a2x/cs2-dumper/blob/main/output/offsets.hpp
 	inline DWORD EntityList =				offsets::dwEntityList;
