@@ -36,7 +36,7 @@ namespace Render
 		default:
 			Gui.Circle(CenterPos, Radius, Color, 1.2);
 		}
-		
+
 	}
 
 	void DrawHealth(int Health, ImVec2 Pos)
@@ -64,8 +64,8 @@ namespace Render
 			return;
 
 		Vec2 CenterPoint = Gui.Window.Size / 2;
-		float Radius = tan(AimControl::AimFov / 180.f * M_PI / 2.f) / tan(LocalEntity.Pawn.Fov / 180.f * M_PI / 2.f) * Gui.Window.Size.x;
-		float MinRadius = tan(AimControl::AimFovMin / 180.f * M_PI / 2.f) / tan(LocalEntity.Pawn.Fov / 180.f * M_PI / 2.f) * Gui.Window.Size.x;
+		float Radius = tan(AimControl::AimFov / 180.f * M_PI / 2.f) / tan(LocalEntity.Pawn.Fov / 180.f * M_PI / 2.f) * Gui.Window.Size.x / 2.f;
+		float MinRadius = tan(AimControl::AimFovMin / 180.f * M_PI / 2.f) / tan(LocalEntity.Pawn.Fov / 180.f * M_PI / 2.f) * Gui.Window.Size.x / 2.f;
 		Gui.Circle(CenterPoint, Radius, MenuConfig::FovCircleColor, 1);
 		Gui.Circle(CenterPoint, MinRadius, MenuConfig::FovCircleColor, 1);
 	}
@@ -103,7 +103,7 @@ namespace Render
 				//bottom
 				drawList->AddRectFilled(ImVec2(pos.x - Thickness, pos.y + outlineGap + DotSize), ImVec2(pos.x + 1 + Thickness, pos.y + (outlineGap + DotSize + BorderWidth + CrosshairsCFG::VerticalLength)), color & IM_COL32_A_MASK);
 			}
-						
+
 			//circle
 			if (CrosshairsCFG::drawCircle)
 				drawList->AddCircle(ImVec2(pos.x, pos.y), CrosshairsCFG::CircleRadius, color & IM_COL32_A_MASK, 0, 3.0f);
@@ -128,7 +128,7 @@ namespace Render
 			// bottom
 			drawList->AddRectFilled(ImVec2(pos.x - Thickness + 1, pos.y + gap + DotSize), ImVec2(pos.x + Thickness, pos.y + (gap + DotSize + CrosshairsCFG::VerticalLength)), color);
 		}
-		
+
 		// circle
 		if (CrosshairsCFG::drawCircle)
 			drawList->AddCircle(ImVec2(pos.x, pos.y), CrosshairsCFG::CircleRadius, color, 0, 1.0f);
@@ -152,15 +152,15 @@ namespace Render
 			Gui.Line({ Rect.x + Rect.z / 2,Rect.y }, { Gui.Window.Size.x / 2,0 }, Color, Thickness);
 			break;
 		case 1:
-			Gui.Line({ Rect.x + Rect.z / 2,Rect.y }, { Gui.Window.Size.x / 2, Gui.Window.Size.y/2 }, Color, Thickness);
+			Gui.Line({ Rect.x + Rect.z / 2,Rect.y }, { Gui.Window.Size.x / 2, Gui.Window.Size.y / 2 }, Color, Thickness);
 			break;
 		case 2:
-			Gui.Line({ Rect.x + Rect.z / 2,Rect.y }, { Gui.Window.Size.x / 2, Gui.Window.Size.y }, Color, Thickness);
+			Gui.Line({ Rect.x + Rect.z / 2,Rect.y + Rect.w }, { Gui.Window.Size.x / 2, Gui.Window.Size.y }, Color, Thickness);
 			break;
 		default:
 			break;
 		}
-		
+
 	}
 
 	void DrawFov(const CEntity& LocalEntity, float Size, ImColor Color, float Thickness)
@@ -192,12 +192,14 @@ namespace Render
 		if (!MenuConfig::ShowHeadShootLine)
 			return;
 
+		float View = 0.f;
+
 		Vec2 Pos;
 		Pos.x = Gui.Window.Size.x / 2;
 		Pos.y = Gui.Window.Size.y / 2.0f - Gui.Window.Size.y / (2.0f * std::sin(LocalEntity.Pawn.Fov * M_PI / 180.0f) / std::sin(90.0f * M_PI / 180.0f)) * std::sin(LocalEntity.Pawn.ViewAngle.x * M_PI / 180.0f) / std::sin(90.0f * M_PI / 180.0f);
 
 		// left
-		Gui.RectangleFilled(Vec2{ Pos.x - 21, Pos.y - 1 }, Vec2{ 17, 3}, Color & IM_COL32_A_MASK);
+		Gui.RectangleFilled(Vec2{ Pos.x - 21, Pos.y - 1 }, Vec2{ 17, 3 }, Color & IM_COL32_A_MASK);
 		Gui.RectangleFilled(Vec2{ Pos.x - 20, Pos.y }, Vec2{ 17, 3 }, Color);
 
 		// right
@@ -213,7 +215,7 @@ namespace Render
 		Size.y = (Entity.Pawn.ScreenPos.y - Head.ScreenPos.y) * 1.09;
 		Size.x = Size.y * 0.6;
 
-		Pos = ImVec2(Entity.Pawn.ScreenPos.x - Size.x / 2, Head.ScreenPos.y- Size.y*0.08);
+		Pos = ImVec2(Entity.Pawn.ScreenPos.x - Size.x / 2, Head.ScreenPos.y - Size.y * 0.08);
 
 		return ImVec4{ Pos.x,Pos.y,Size.x,Size.y };
 	}
@@ -274,7 +276,7 @@ namespace Render
 		Vec2 Min, Max, Size;
 		Min = Max = Entity.GetBone().BonePosList[0].ScreenPos;
 
-		for (auto &BoneJoint : Entity.GetBone().BonePosList)
+		for (auto& BoneJoint : Entity.GetBone().BonePosList)
 		{
 			if (!BoneJoint.IsVisible)
 				continue;

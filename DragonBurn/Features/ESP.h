@@ -4,8 +4,6 @@
 #include "..\Cheats.h"
 #include "GetWeaponIcon.h"
 
-int winnie_h = 0, winnie_w = 0;
-
 namespace ESP
 {
 	struct WeaponIconSize
@@ -143,11 +141,11 @@ namespace ESP
 				{
 					Gui.RectangleFilled({ Rect.x, Rect.y }, { Rect.z, Rect.w }, FlatBoxCol, Rounding);
 				}
-				
+
 			}
 		}
 		if (ESPConfig::ShowBoxESP)
-		{	
+		{
 			if (MenuConfig::BoxType == 0 || MenuConfig::BoxType == 1)
 			{
 				if (ESPConfig::OutLine)
@@ -206,7 +204,7 @@ namespace ESP
 			if (MenuConfig::HealthBarType == 0 || MenuConfig::HealthBarType == 1)
 			{
 				WeaponIconSize iconSize = weaponIconSizes[Entity.Pawn.WeaponName];
-				ImVec2 textPosition = { Rect.x + (Rect.z - iconSize.width) / 2 + iconSize.offsetX, Rect.y + Rect.w + 1 + iconSize.offsetY};
+				ImVec2 textPosition = { Rect.x + (Rect.z - iconSize.width) / 2 + iconSize.offsetX, Rect.y + Rect.w + 1 + iconSize.offsetY };
 				if (ESPConfig::AmmoBar)
 					textPosition.y += 5;
 				// Gui.StrokeText(Entity.Pawn.WeaponName, { Rect.x + Rect.z / 2,Rect.y + Rect.w + 10}, ImColor(255, 255, 255, 255), 14, true);
@@ -399,8 +397,8 @@ namespace ESP
 				HBSize = { rectSize.x - 2, rectSize.y - 18 };
 			}
 			if (MenuConfig::HealthBarType == 0) {
-				ImVec2 HBS(HBPos.x - 6, HBPos.y);
-				ImVec2 HBE(HBPos.x - 3, HBPos.y + HBSize.y);
+				ImVec2 HBS(HBPos.x - 6, HBPos.y - 2);
+				ImVec2 HBE(HBPos.x - 3, HBPos.y + HBSize.y - 2);
 				ImGui::GetWindowDrawList()->AddRectFilled(HBS, HBE, greenColor, 0.0f, ImDrawCornerFlags_All);
 			}
 		}
@@ -408,21 +406,16 @@ namespace ESP
 			ImU32 blueColor = IM_COL32(0, 128, 255, 255);
 			ImVec2 ABPos = centerPos;
 			ImVec2 ABSize = rectSize;
-				
+
 			if (MenuConfig::BoxType == 1 || MenuConfig::BoxType == 3) {
 				ABPos = { centerPos.x + 20, centerPos.y + 15 };
 				ABSize = { rectSize.x - 2, rectSize.y - 18 };
 			}
 
-			if (ESPConfig::ShowHealthBar)
-			{
-				ABPos.x -= 4;
-				ABSize.x -= 4;
-			}
-			ImVec2 ABS(ABPos.x - 6, ABPos.y);
-			ImVec2 ABE(ABPos.x - 3, ABPos.y + ABSize.y);
+			ImVec2 ABS(ABPos.x + 6 + rectSize.x, ABPos.y - 2);
+			ImVec2 ABE(ABPos.x + 3 + rectSize.x, ABPos.y + ABSize.y - 2);
 			ImGui::GetWindowDrawList()->AddRectFilled(ABS, ABE, blueColor, 0.0f, ImDrawCornerFlags_All);
-			
+
 		}
 		if (ESPConfig::AmmoBar) {
 			ImU32 yellowColor = IM_COL32(255, 255, 0, 255);
@@ -450,7 +443,8 @@ namespace ESP
 				LineEnd = { Gui.Window.Size.x / 2, Gui.Window.Size.y / 2 };
 				break;
 			case 2:
-				LineEnd = { LineStart.x, LineStart.y + 200 };
+				LineStart = { centerPos.x + rectSize.x / 2 , centerPos.y + rectSize.y };
+				LineEnd = { LineStart.x, LineStart.y + 20.f };
 				break;
 			}
 			ImGui::GetWindowDrawList()->AddLine(LineStart, LineEnd, ESPConfig::LineToEnemyColor, 1.8f);
@@ -475,7 +469,7 @@ namespace ESP
 			{
 				textPos = { textPos.x - 27, textPos.y };
 			}
-			ImGui::GetWindowDrawList()->AddText(textPos, IM_COL32(255, 204, 0, 255), "20m");
+			ImGui::GetWindowDrawList()->AddText(textPos, IM_COL32(255, 204, 0, 255), "1337m");
 		}
 		if (ESPConfig::ShowWeaponESP) {
 			ImVec2 textPos(0, 0);
