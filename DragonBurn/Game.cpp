@@ -11,11 +11,6 @@ bool CGame::InitAddress()
 	this->Address.LocalController = GetClientDLLAddress() + Offset::LocalPlayerController;
 	this->Address.LocalPawn = GetClientDLLAddress() + Offset::LocalPlayerPawn;
 	this->Address.ServerPawn = GetServerDLLAddress() + Offset::LocalPlayerPawn;
-	//this->Address.ForceJump = GetClientDLLAddress() + Offset::ForceJump;
-	//this->Address.ForceCrouch = GetClientDLLAddress() + Offset::ForceCrouch;
-	//this->Address.ForceForward = GetClientDLLAddress() + Offset::ForceForward;
-	//this->Address.ForceLeft = GetClientDLLAddress() + Offset::ForceLeft;
-	//this->Address.ForceRight = GetClientDLLAddress() + Offset::ForceRight;
 	this->Address.GlobalVars = GetClientDLLAddress() + Offset::GlobalVars;
 
 	return this->Address.ClientDLL != 0;

@@ -9,12 +9,6 @@ class CGame
 private:
 	struct
 	{
-		//DWORD64 ForceJump;
-		//DWORD64 ForceCrouch;
-		//DWORD64 ForceForward;
-		//DWORD64 ForceLeft;
-		//DWORD64 ForceRight;
-
 		DWORD64 ServerDLL;
 		DWORD64 ClientDLL;
 		DWORD64 EntityList;
@@ -45,9 +39,6 @@ public:
 	DWORD64 GetGlobalVarsAddress();
 
 	bool UpdateEntityListEntry();
-	//bool GetForceJump(int& Value);
-	//bool GetForceCrouch(int& Value);
-	//bool GetForceMove(int MovingType, int& Value);
 };
 
 inline CGame gGame;
