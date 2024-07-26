@@ -154,6 +154,7 @@ namespace RadarCFG
 
 namespace MiscCFG
 {
+	inline bool BunnyHop = false;
 	inline bool WorkInSpec = true;
 	inline bool WaterMark = false;
 	inline int	HitSound = 0;

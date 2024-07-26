@@ -147,6 +147,7 @@ namespace Lang
 		inline static const char* HeadshotLine;
 		inline static const char* SpecCheck;
 		inline static const char* NoFlash;
+		inline static const char* BunnyHop;
 		//inline static const char* FastStop;
 		inline static const char* HitSound;
 		inline static const char* HitMerker;
@@ -294,6 +295,7 @@ namespace Lang
 		MiscText.HeadshotLine = u8"Headshot Line";
 		MiscText.SpecCheck = u8"Cheat in Spec";
 		MiscText.NoFlash = u8"No Flash";
+		MiscText.BunnyHop = u8"Bunny Hop";
 		//MiscText.FastStop = u8"Fast Stop";
 		MiscText.HitSound = u8"Hit Sound  ";
 		MiscText.HitMerker = u8"Hit Markers";

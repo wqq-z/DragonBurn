@@ -103,6 +103,12 @@ namespace Misc
 		PreviousTotalHits = totalHits;
 	}
 
+	void BunnyHop(const CEntity& Local) noexcept
+	{
+		if (!MiscCFG::BunnyHop)
+			return;
+	}
+
 	//void FastStop() noexcept// junk
 	//{
 	//	if (!MiscCFG::FastStop)
