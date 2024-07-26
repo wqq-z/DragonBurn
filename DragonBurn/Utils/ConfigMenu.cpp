@@ -225,6 +225,7 @@ namespace ConfigMenu {
 		CrosshairsCFG::TeamCheck = true;
 		MiscCFG::WorkInSpec = true;
 		MiscCFG::WaterMark = false;
+		MiscCFG::BunnyHop = false;
 		MiscCFG::HitSound = 0;
 		MiscCFG::HitMarker = false;
 		//MiscCFG::FastStop = false;

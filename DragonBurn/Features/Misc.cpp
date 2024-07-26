@@ -107,6 +107,9 @@ namespace Misc
 	{
 		if (!MiscCFG::BunnyHop)
 			return;
+
+		bool spacePressed = GetAsyncKeyState(VK_SPACE);
+		bool isInAir = AirCheck(Local);
 	}
 
 	//void FastStop() noexcept// junk
