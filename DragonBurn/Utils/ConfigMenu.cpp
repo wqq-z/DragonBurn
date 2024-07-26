@@ -146,7 +146,7 @@ namespace ConfigMenu {
 		ESPConfig::MultiColor = false;
 		ESPConfig::BoxFilledVisColor = ImColor(0, 0, 255, 255);
 		ESPConfig::FilledVisBox = false;
-		//MiscCFG::SpecList = false;
+		MiscCFG::SpecList = false;
 		MiscCFG::BombTimerCol = ImColor(255, 120, 0, 255);
 		MiscCFG::bmbTimer = false;
 		ESPConfig::VisibleColor = ImColor(255, 196, 0, 255);

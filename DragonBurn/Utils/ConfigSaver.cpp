@@ -448,7 +448,7 @@ namespace MyConfigSaver {
             MiscCFG::BombTimerCol.Value.w = ReadData(config["Misc"]["TimerColor"]["a"], 0.f);
             MiscCFG::BunnyHop = ReadData(config["Misc"]["Bhop"], false);
             //MiscCFG::FastStop = ReadData(config["Misc"]["FastStop"], false);
-            //MiscCFG::SpecList = ReadData(config["Misc"]["SpecList"], false);
+            MiscCFG::SpecList = ReadData(config["Misc"]["SpecList"], false);
             MenuConfig::TeamCheck = ReadData(config["Misc"]["TeamCheck"], true);
             MenuConfig::BypassOBS = ReadData(config["Misc"]["AntiRecord"], false);
         }

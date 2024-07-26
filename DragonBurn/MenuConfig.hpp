@@ -161,6 +161,6 @@ namespace MiscCFG
 	inline bool HitMarker = false;
 	inline bool bmbTimer = false;
 	//inline bool FastStop = false;
-	//inline bool SpecList = false;
+	inline bool SpecList = false;
 	inline ImColor BombTimerCol = ImColor(255, 120, 0, 255);
 }

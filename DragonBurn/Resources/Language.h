@@ -152,7 +152,7 @@ namespace Lang
 		inline static const char* HitSound;
 		inline static const char* HitMerker;
 		inline static const char* bmbTimer;
-		//inline static const char* SpecList;
+		inline static const char* SpecList;
 		inline static const char* Watermark;
 		inline static const char* TeamCheck;
 		inline static const char* AntiRecord;
@@ -300,7 +300,7 @@ namespace Lang
 		MiscText.HitSound = u8"Hit Sound  ";
 		MiscText.HitMerker = u8"Hit Markers";
 		MiscText.bmbTimer = u8"Bomb Timer";
-		//MiscText.SpecList = u8"Spec List";
+		MiscText.SpecList = u8"Spec List";
 		MiscText.Watermark = u8"Watermark";
 		MiscText.TeamCheck = u8"Team Check";
 		MiscText.AntiRecord = u8"Anti Record";
