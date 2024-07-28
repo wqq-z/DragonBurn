@@ -39,7 +39,7 @@ void TriggerBot::Run(const CEntity& LocalEntity)
         bool isScoped;
         ProcessMgr.ReadMemory<bool>(LocalEntity.Pawn.Address + Offset::Pawn.isScoped, isScoped);
         if (!isScoped)
-            {
+        {
             return;
         }
     }
