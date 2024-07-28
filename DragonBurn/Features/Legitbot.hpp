@@ -10,6 +10,7 @@
 #include <iostream>
 #include "..\View.hpp"
 #include "..\Features/RCS.h"
+#include "TriggerBot.h"
 
 extern "C" {
 #include "..\Features\Mouse.h"
@@ -58,7 +59,8 @@ namespace AimControl
         {
             bool isScoped;
             ProcessMgr.ReadMemory<bool>(Local.Pawn.Address + Offset::Pawn.isScoped, isScoped);
-            if (!isScoped) {
+            if (!isScoped and TriggerBot::CheckScopeWeapon(Local))
+            {
                 HasTarget = false;
                 return;
             }

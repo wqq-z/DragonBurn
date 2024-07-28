@@ -1,7 +1,6 @@
 ○ Refactor the code(I have no time for it)
 ○ Make cheat multi-tread(I have no time for it)
 ○ Add bhop
-○ Fix scope check
 ○ Add spec list
 ○ Use JSON instead YAML
 ○ Make menu looks nice(low priority)
