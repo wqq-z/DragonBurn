@@ -154,12 +154,13 @@ namespace RadarCFG
 
 namespace MiscCFG
 {
+	inline bool BunnyHop = false;
 	inline bool WorkInSpec = true;
 	inline bool WaterMark = false;
 	inline int	HitSound = 0;
 	inline bool HitMarker = false;
 	inline bool bmbTimer = false;
 	//inline bool FastStop = false;
-	//inline bool SpecList = false;
+	inline bool SpecList = false;
 	inline ImColor BombTimerCol = ImColor(255, 120, 0, 255);
 }

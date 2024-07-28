@@ -256,6 +256,7 @@ namespace MyConfigSaver {
         emitter << YAML::Key << "b" << YAML::Value << MiscCFG::BombTimerCol.Value.z;
         emitter << YAML::Key << "a" << YAML::Value << MiscCFG::BombTimerCol.Value.w;
         emitter << YAML::EndMap;
+        emitter << YAML::Key << "Bhop" << YAML::Value << MiscCFG::BunnyHop;
         //emitter << YAML::Key << "FastStop" << YAML::Value << MiscCFG::FastStop;
         emitter << YAML::Key << "TeamCheck" << YAML::Value << MenuConfig::TeamCheck;
         emitter << YAML::Key << "AntiRecord" << YAML::Value << MenuConfig::BypassOBS;
@@ -431,7 +432,7 @@ namespace MyConfigSaver {
 
         if (config["Misc"])
         {
-            MenuConfig::ShowHeadShootLine = ReadData(config["Misc"]["HeadShootLine"], false);
+            MenuConfig::ShowHeadShootLine = ReadData(config["Misc"]["HeadShootLine"], false);//
             MenuConfig::HeadShootLineColor.Value.x = ReadData(config["Misc"]["HeadShootLineColor"]["r"], 0.f);
             MenuConfig::HeadShootLineColor.Value.y = ReadData(config["Misc"]["HeadShootLineColor"]["g"], 0.f);
             MenuConfig::HeadShootLineColor.Value.z = ReadData(config["Misc"]["HeadShootLineColor"]["b"], 0.f);
@@ -445,8 +446,9 @@ namespace MyConfigSaver {
             MiscCFG::BombTimerCol.Value.y = ReadData(config["Misc"]["TimerColor"]["g"], 0.f);
             MiscCFG::BombTimerCol.Value.z = ReadData(config["Misc"]["TimerColor"]["b"], 0.f);
             MiscCFG::BombTimerCol.Value.w = ReadData(config["Misc"]["TimerColor"]["a"], 0.f);
+            MiscCFG::BunnyHop = ReadData(config["Misc"]["Bhop"], false);
             //MiscCFG::FastStop = ReadData(config["Misc"]["FastStop"], false);
-            //MiscCFG::SpecList = ReadData(config["Misc"]["SpecList"], false);
+            MiscCFG::SpecList = ReadData(config["Misc"]["SpecList"], false);
             MenuConfig::TeamCheck = ReadData(config["Misc"]["TeamCheck"], true);
             MenuConfig::BypassOBS = ReadData(config["Misc"]["AntiRecord"], false);
         }

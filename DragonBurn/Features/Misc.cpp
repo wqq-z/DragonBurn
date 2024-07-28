@@ -103,6 +103,15 @@ namespace Misc
 		PreviousTotalHits = totalHits;
 	}
 
+	void BunnyHop(const CEntity& Local) noexcept
+	{
+		if (!MiscCFG::BunnyHop)
+			return;
+
+		bool spacePressed = GetAsyncKeyState(VK_SPACE);
+		bool isInAir = AirCheck(Local);
+	}
+
 	//void FastStop() noexcept// junk
 	//{
 	//	if (!MiscCFG::FastStop)

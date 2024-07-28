@@ -25,4 +25,5 @@ namespace TriggerBot
 	// Triggerbot
 	void Run(const CEntity& LocalEntity);
 	void TargetCheck(const CEntity& LocalEntity) noexcept;
+	bool CheckScopeWeapon(const CEntity& LocalEntity);
 }

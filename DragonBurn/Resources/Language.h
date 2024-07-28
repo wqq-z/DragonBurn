@@ -147,11 +147,12 @@ namespace Lang
 		inline static const char* HeadshotLine;
 		inline static const char* SpecCheck;
 		inline static const char* NoFlash;
+		inline static const char* BunnyHop;
 		//inline static const char* FastStop;
 		inline static const char* HitSound;
 		inline static const char* HitMerker;
 		inline static const char* bmbTimer;
-		//inline static const char* SpecList;
+		inline static const char* SpecList;
 		inline static const char* Watermark;
 		inline static const char* TeamCheck;
 		inline static const char* AntiRecord;
@@ -294,11 +295,12 @@ namespace Lang
 		MiscText.HeadshotLine = u8"Headshot Line";
 		MiscText.SpecCheck = u8"Cheat in Spec";
 		MiscText.NoFlash = u8"No Flash";
+		MiscText.BunnyHop = u8"Bunny Hop";
 		//MiscText.FastStop = u8"Fast Stop";
 		MiscText.HitSound = u8"Hit Sound  ";
 		MiscText.HitMerker = u8"Hit Markers";
 		MiscText.bmbTimer = u8"Bomb Timer";
-		//MiscText.SpecList = u8"Spec List";
+		MiscText.SpecList = u8"Spec List";
 		MiscText.Watermark = u8"Watermark";
 		MiscText.TeamCheck = u8"Team Check";
 		MiscText.AntiRecord = u8"Anti Record";

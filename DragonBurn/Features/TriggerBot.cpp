@@ -38,8 +38,8 @@ void TriggerBot::Run(const CEntity& LocalEntity)
     {
         bool isScoped;
         ProcessMgr.ReadMemory<bool>(LocalEntity.Pawn.Address + Offset::Pawn.isScoped, isScoped);
-        if (!isScoped)
-            {
+        if (!isScoped and CheckScopeWeapon(LocalEntity))
+        {
             return;
         }
     }
@@ -73,6 +73,30 @@ void TriggerBot::Run(const CEntity& LocalEntity)
             recorded = false;
         }
     }
+}
+
+bool TriggerBot::CheckScopeWeapon(const CEntity& LocalEntity)
+{
+    DWORD64 WeaponNameAddress = 0;
+    char Buffer[256]{};
+
+    WeaponNameAddress = ProcessMgr.TraceAddress(LocalEntity.Pawn.Address + Offset::Pawn.pClippingWeapon, { 0x10,0x20 ,0x0 });
+    if (WeaponNameAddress == 0)
+        return false;
+
+    DWORD64 CurrentWeapon;
+    short weaponIndex;
+    ProcessMgr.ReadMemory(LocalEntity.Pawn.Address + Offset::Pawn.pClippingWeapon, CurrentWeapon);
+    ProcessMgr.ReadMemory(CurrentWeapon + Offset::EconEntity.AttributeManager + Offset::WeaponBaseData.Item + Offset::WeaponBaseData.ItemDefinitionIndex, weaponIndex);
+
+    if (weaponIndex == -1)
+        return false;
+
+    std::string WeaponName = CEntity::GetWeaponName(weaponIndex);
+    if (WeaponName == "aug" or WeaponName == "awp" or WeaponName == "g3Sg1" or WeaponName == "sg556" or WeaponName == "ssg08" or WeaponName == "scar20")
+        return true;
+    else
+        return false;
 }
 
 void TriggerBot::TargetCheck(const CEntity& LocalEntity) noexcept {
