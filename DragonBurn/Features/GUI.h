@@ -408,7 +408,7 @@ namespace GUI
 
 					float FovMin = 0.f, FovMax = 25.f, MinFovMax = 1.f;
 					int BulletMin = 0, BulletMax = 5;
-					float SmoothMin = 0.4f, SmoothMax = 5.f;
+					float SmoothMin = 0.4f, SmoothMax = 10.f;
 					PutSwitch(Lang::AimbotText.Enable, 10.f, ImGui::GetFrameHeight() * 1.7, &MenuConfig::AimBot);
 					if (MenuConfig::AimBot)
 					{
