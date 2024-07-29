@@ -10,8 +10,8 @@ namespace Misc
 	bool wKeyPressed = false;
 	bool sKeyPressed = false;
 	HitMarker hitMarker(0, std::chrono::steady_clock::now());
-	const float HitMarker::SIZE = 30.f;
-	const float HitMarker::GAP = 10.f;
+	const float HitMarker::SIZE = 10.f;
+	const float HitMarker::GAP = 3.f;
 
 	void Watermark(const CEntity& LocalPlayer) noexcept
 	{
@@ -70,7 +70,7 @@ namespace Misc
 
 	void HitManager(const CEntity& aLocalPlayer, int& PreviousTotalHits) noexcept
 	{
-		if (!MiscCFG::HitSound && !MiscCFG::HitMarker)
+		if ((!MiscCFG::HitSound && !MiscCFG::HitMarker) or aLocalPlayer.Controller.TeamID == 0)// or aLocalPlayer.Controller.Health)//add in game cheack
 		{
 			return;
 		}
