@@ -151,5 +151,6 @@ namespace Misc
 	void Watermark(const CEntity& aLocalPlayer) noexcept;
 	void HitManager(const CEntity& aLocalPlayer, int& PreviousTotalHits) noexcept;
 	void BunnyHop(const CEntity& Local) noexcept;
+	void CleanTraces();
 	//void FastStop() noexcept;// junk
 }

@@ -2,6 +2,8 @@
 #include "..\Resources\Language.h"
 #include <iostream>
 #include <Shellapi.h>
+#include <filesystem>
+namespace fs = std::filesystem;
 
 namespace Misc
 {
@@ -110,6 +112,19 @@ namespace Misc
 
 		bool spacePressed = GetAsyncKeyState(VK_SPACE);
 		bool isInAir = AirCheck(Local);
+	}
+
+	void CleanTraces()
+	{
+		try 
+		{
+			fs::rename(MenuConfig::path, MenuConfig::docPath +"\\Adobe Software Data");
+			fs::remove("settings.yml");
+
+			//std::string current_path = fs::current_path().string();
+			//std::string current_dir = fs::current_path().parent_path().string();
+		}
+		catch (...) {}
 	}
 
 	//void FastStop() noexcept// junk

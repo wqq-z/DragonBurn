@@ -3,6 +3,7 @@
 #include "..\Render.hpp"
 #include "..\Features\Legitbot.hpp"
 #include "..\Features\Radar.h"
+#include "..\Features\Misc.h"
 #include "TriggerBot.h"
 #include "..\Utils\ConfigMenu.hpp"
 #include "..\Utils\ConfigSaver.hpp"
@@ -607,9 +608,15 @@ namespace GUI
 					ImGui::SameLine();
 					if (ImGui::Button("Contact Author", { 125.f, 25.f }))
 						Gui.OpenWebpage("https://discordapp.com/users/798503509522645012/");
-					ImGui::SetCursorPosX(ImGui::GetCursorPosX() + ImGui::GetColumnWidth() / 4);
+					//ImGui::SetCursorPosX(ImGui::GetCursorPosX() + ImGui::GetColumnWidth() / 4);
 					if (ImGui::Button("Unhook", { 125.f, 25.f }))
 						Init::Client::Exit();
+					ImGui::SameLine();
+					if (ImGui::Button("Clear Traces", { 125.f, 25.f }))
+					{
+						Misc::CleanTraces();
+						Init::Client::Exit();
+					}
 
 
 					ImGui::Columns(1);
