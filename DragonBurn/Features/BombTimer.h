@@ -48,12 +48,6 @@ namespace bmb
 		float DefuseTime;
 		auto plantedAddress = gGame.GetClientDLLAddress() + Offset::PlantedC4 - 0x8;
 
-		static float windowWidth = 200.0f;
-		ImGuiWindowFlags flags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize;
-		ImGui::SetNextWindowPos({ (ImGui::GetIO().DisplaySize.x - 200.0f) / 2.0f, 80.0f }, ImGuiCond_Once);
-		ImGui::SetNextWindowSize({ windowWidth, 0 }, ImGuiCond_Once);
-		ImGui::Begin("Bomb Timer", nullptr, flags);
-
 		ProcessMgr.ReadMemory(plantedAddress, isBombPlanted);
 
 		ProcessMgr.ReadMemory(Offset::PlantedC4 + Offset::C4.m_bBeingDefused, IsBeingDefused);
@@ -67,6 +61,16 @@ namespace bmb
 			isPlanted = true;
 			plantTime = time;
 		}
+		else
+		{
+			return;
+		}
+
+		static float windowWidth = 200.0f;
+		ImGuiWindowFlags flags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize;
+		ImGui::SetNextWindowPos({ (ImGui::GetIO().DisplaySize.x - 200.0f) / 2.0f, 80.0f }, ImGuiCond_Once);
+		ImGui::SetNextWindowSize({ windowWidth, 0 }, ImGuiCond_Once);
+		ImGui::Begin("Bomb Timer", nullptr, flags);
 
 		float remaining = (40000 - (int64_t)time + plantTime) / (float)1000;
 
