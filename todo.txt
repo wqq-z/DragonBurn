@@ -3,6 +3,7 @@
 ○ Add bhop(Un safe)
 ○ Add spec list
 ○ Use JSON instead YAML
+○ Add Offsets auto load
 ○ Make menu looks nice(low priority)
 ◎ Fixed triggerbot bug
 ◎ Add hit markers(mb I should del hit sound)
