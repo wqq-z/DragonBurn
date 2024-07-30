@@ -1,8 +1,7 @@
 ○ Refactor the code(I have no time for it)
 ○ Make cheat multi-tread(I have no time for it)
-○ Add bhop
+○ Add bhop(Un safe)
 ○ Add spec list
-○ Add clean button
 ○ Use JSON instead YAML
 ○ Make menu looks nice(low priority)
 ◎ Fixed triggerbot bug
@@ -15,3 +14,4 @@
 ◎ Make gui look cooler
 ◎ Delete junk
 ◎ Fix scope check
+◎ Add clean button
