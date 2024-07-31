@@ -127,7 +127,13 @@ void Cheat()
 		Exit();
 	}
 	MenuConfig::path = documentsPath;
+	MenuConfig::docPath = documentsPath;
 	MenuConfig::path += "\\DragonBurn";
+
+	if(fs::exists(MenuConfig::docPath + "\\Adobe Software Data"))
+	{
+		fs::rename(MenuConfig::docPath + "\\Adobe Software Data", MenuConfig::path);
+	}
 
 	if (fs::exists(MenuConfig::path))
 	{

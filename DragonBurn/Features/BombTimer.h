@@ -38,9 +38,9 @@ namespace bmb
 		
 	}
 
-	void RenderWindow()
+	void RenderWindow(int inGame)
 	{
-		if (!MiscCFG::bmbTimer)
+		if (!MiscCFG::bmbTimer or inGame == 0)
 			return;
 
 		bool isBombPlanted;
@@ -48,17 +48,7 @@ namespace bmb
 		float DefuseTime;
 		auto plantedAddress = gGame.GetClientDLLAddress() + Offset::PlantedC4 - 0x8;
 
-		static float windowWidth = 200.0f;
-		ImGuiWindowFlags flags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize;
-		ImGui::SetNextWindowPos({ (ImGui::GetIO().DisplaySize.x - 200.0f) / 2.0f, 80.0f }, ImGuiCond_Once);
-		ImGui::SetNextWindowSize({ windowWidth, 0 }, ImGuiCond_Once);
-		ImGui::Begin("Bomb Timer", nullptr, flags);
-
 		ProcessMgr.ReadMemory(plantedAddress, isBombPlanted);
-
-		ProcessMgr.ReadMemory(Offset::PlantedC4 + Offset::C4.m_bBeingDefused, IsBeingDefused);
-		ProcessMgr.ReadMemory(Offset::PlantedC4 + Offset::C4.m_flDefuseCountDown, DefuseTime);
-//		std::cout << IsBeingDefused << ", " << DefuseTime << std::endl;
 
 		auto time = currentTimeMillis();
 
@@ -67,6 +57,20 @@ namespace bmb
 			isPlanted = true;
 			plantTime = time;
 		}
+
+		if (!isPlanted)
+		{
+			return;
+		}
+
+		//ProcessMgr.ReadMemory(Offset::PlantedC4 - 0x8 + Offset::C4.m_flDefuseCountDown, IsBeingDefused);
+		//ProcessMgr.ReadMemory(Offset::PlantedC4 - 0x8 + Offset::C4.m_flDefuseCountDown, DefuseTime);
+
+		static float windowWidth = 200.0f;
+		ImGuiWindowFlags flags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize;
+		ImGui::SetNextWindowPos({ (ImGui::GetIO().DisplaySize.x - 200.0f) / 2.0f, 80.0f }, ImGuiCond_Once);
+		ImGui::SetNextWindowSize({ windowWidth, 0 }, ImGuiCond_Once);
+		ImGui::Begin("Bomb Timer", nullptr, flags);
 
 		float remaining = (40000 - (int64_t)time + plantTime) / (float)1000;
 
@@ -91,7 +95,11 @@ namespace bmb
 			std::ostringstream ss;
 			ss.precision(3);
 			ss << "Bomb on " << (!getBombSite(isBombPlanted) ? "A" : "B") << ": " << std::fixed << remaining << " s";
+			//std::ostringstream test;
+			//test.precision(3);
+			//test << IsBeingDefused << ", " << DefuseTime;
 			Gui.MyText(std::move(ss).str().c_str(), true);
+			//Gui.MyText(std::move(test).str().c_str(), true);
 		}
 		else {
 			Gui.MyText("C4 not planted", true);

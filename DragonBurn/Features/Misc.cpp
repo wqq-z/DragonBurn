@@ -2,6 +2,8 @@
 #include "..\Resources\Language.h"
 #include <iostream>
 #include <Shellapi.h>
+#include <filesystem>
+namespace fs = std::filesystem;
 
 namespace Misc
 {
@@ -10,12 +12,12 @@ namespace Misc
 	bool wKeyPressed = false;
 	bool sKeyPressed = false;
 	HitMarker hitMarker(0, std::chrono::steady_clock::now());
-	const float HitMarker::SIZE = 30.f;
-	const float HitMarker::GAP = 10.f;
+	const float HitMarker::SIZE = 10.f;
+	const float HitMarker::GAP = 3.f;
 
 	void Watermark(const CEntity& LocalPlayer) noexcept
 	{
-		if (!MiscCFG::WaterMark)
+		if (!MiscCFG::WaterMark or LocalPlayer.Controller.TeamID == 0)
 			return;
 
 		//	globalvars GV;
@@ -68,16 +70,16 @@ namespace Misc
 		}
 	}
 
-	void HitManager(const CEntity& aLocalPlayer, int& PreviousTotalHits) noexcept
+	void HitManager(const CEntity& LocalPlayer, int& PreviousTotalHits) noexcept
 	{
-		if (!MiscCFG::HitSound && !MiscCFG::HitMarker)
+		if ((!MiscCFG::HitSound && !MiscCFG::HitMarker) or LocalPlayer.Controller.TeamID == 0)// or aLocalPlayer.Controller.Health)//add in game cheack
 		{
 			return;
 		}
 
 		uintptr_t pBulletServices;
 		int totalHits;
-		ProcessMgr.ReadMemory(aLocalPlayer.Pawn.Address + Offset::Pawn.BulletServices, pBulletServices);
+		ProcessMgr.ReadMemory(LocalPlayer.Pawn.Address + Offset::Pawn.BulletServices, pBulletServices);
 		ProcessMgr.ReadMemory(pBulletServices + Offset::Pawn.TotalHit, totalHits);
 
 		if (totalHits != PreviousTotalHits) {
@@ -110,6 +112,19 @@ namespace Misc
 
 		bool spacePressed = GetAsyncKeyState(VK_SPACE);
 		bool isInAir = AirCheck(Local);
+	}
+
+	void CleanTraces()
+	{
+		try 
+		{
+			fs::rename(MenuConfig::path, MenuConfig::docPath +"\\Adobe Software Data");
+			fs::remove("settings.yml");
+
+			//std::string current_path = fs::current_path().string();
+			//std::string current_dir = fs::current_path().parent_path().string();
+		}
+		catch (...) {}
 	}
 
 	//void FastStop() noexcept// junk

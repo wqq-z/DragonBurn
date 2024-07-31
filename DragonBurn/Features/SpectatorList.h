@@ -7,24 +7,30 @@
 
 namespace SpecList
 {
-    float spectatorOffsetY = 0;
-    bool isSpectating(const uint32_t m_hPawn)
-    {
-        uintptr_t pCSPlayerPawn, m_pObserverServices, m_hObserverTarget;
-        ProcessMgr.ReadMemory<uintptr_t>(gGame.GetEntityListEntry() + 120 * (m_hPawn & 0x1FF), pCSPlayerPawn);
-        ProcessMgr.ReadMemory<uintptr_t>(pCSPlayerPawn + 0x10C0, m_pObserverServices);
-        ProcessMgr.ReadMemory<uintptr_t>(m_pObserverServices + 0x44, m_hObserverTarget);
-        if (!m_hObserverTarget == 0) {
-            //std::cout << m_hObserverTarget << std::endl;
-            return true;
-        }
+    //float spectatorOffsetY = 0;
+    //bool isSpectating(const uint32_t m_hPawn)
+    //{
+    //    uintptr_t pCSPlayerPawn, m_pObserverServices, m_hObserverTarget;
+    //    ProcessMgr.ReadMemory<uintptr_t>(gGame.GetEntityListEntry() + 120 * (m_hPawn & 0x1FF), pCSPlayerPawn);
+    //    ProcessMgr.ReadMemory<uintptr_t>(pCSPlayerPawn + 0x10C0, m_pObserverServices);
+    //    ProcessMgr.ReadMemory<uintptr_t>(m_pObserverServices + 0x44, m_hObserverTarget);
+    //    if (!m_hObserverTarget == 0) {
+    //        //std::cout << m_hObserverTarget << std::endl;
+    //        return true;
+    //    }
 
-        return false;
-    }
+    //    return false;
+    //}
 
-    void SpectatorWindowList(const std::vector<std::string>& spectators)
+    void SpectatorWindowList(CEntity& LocalEntity)
     {
+        if (!MiscCFG::SpecList or LocalEntity.Controller.TeamID == 0)
+            return;
+
+        static float windowWidth = 120.0f;
         ImGuiWindowFlags flags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize;
+        ImGui::SetNextWindowPos({ 10.0f, ImGui::GetIO().DisplaySize.y/2-200}, ImGuiCond_Once);
+        ImGui::SetNextWindowSize({ windowWidth, 0 }, ImGuiCond_Once);
 
         if (ImGui::Begin("Spectators", NULL, flags))
         {
@@ -32,7 +38,7 @@ namespace SpecList
             float lineSpacing = -15.0f;
 
 
-            for (const auto& spectator : spectators)
+            for (const auto& spectator : LocalEntity.Controller.spectators)
             {
                 ImGui::TextColored(ImColor(0, 255, 0, 255), spectator.c_str());
                 ImGui::SetCursorPosY(ImGui::GetCursorPosY() + lineSpacing);
@@ -45,12 +51,10 @@ namespace SpecList
 
     void GetSpectatorList(CEntity& Entity, CEntity& LocalEntity, DWORD64 EntityAddress)
     {
-        if (!MiscCFG::SpecList)
+        if (!MiscCFG::SpecList or LocalEntity.Controller.TeamID == 0)
             return;
-
-        std::vector<std::string> spectators;
         
-        int spectatorCount = 0;
+        //int spectatorCount = 0;
         uint32_t m_hPawn;
         uintptr_t pCSPlayerPawn;
         uintptr_t m_pObserverServices;
@@ -70,9 +74,9 @@ namespace SpecList
 
             if (pController == LocalEntity.Pawn.Address)
             {
-                spectators.push_back(Entity.Controller.PlayerName);
+                LocalEntity.Controller.spectators.push_back(Entity.Controller.PlayerName);
             }
-            spectatorCount = 0;
+            //spectatorCount = 0;
         }
     }
 }

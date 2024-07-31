@@ -116,6 +116,10 @@ void Cheats::Run()
 		if (RadarCFG::ShowRadar)
 			GameRadar.AddPoint(LocalEntity.Pawn.Pos, LocalEntity.Pawn.ViewAngle.y, Entity.Pawn.Pos, ImColor(237, 85, 106, 200), RadarCFG::RadarType, Entity.Pawn.ViewAngle.y);
 		
+		//speclist
+		LocalEntity.Controller.spectators.empty();
+		SpecList::GetSpectatorList(Entity, LocalEntity, EntityAddress);
+
 		if (!Entity.IsInScreen())
 			continue;
 
@@ -230,9 +234,6 @@ void Menu()
 
 void Visual(CEntity LocalEntity)
 {
-	Misc::Watermark(LocalEntity);
-
-
 	// Fov line
 	Render::DrawFov(LocalEntity, MenuConfig::FovLineSize, MenuConfig::FovLineColor, 1);
 
@@ -243,8 +244,6 @@ void Visual(CEntity LocalEntity)
 	TriggerBot::TargetCheck(LocalEntity);
 	Misc::AirCheck(LocalEntity);
 	RenderCrossHair(ImGui::GetBackgroundDrawList());
-
-	bmb::RenderWindow();
 }
 
 void Radar(Base_Radar Radar)
@@ -292,6 +291,9 @@ void MiscFuncs(CEntity LocalEntity)
 {
 	Misc::HitManager(LocalEntity, PreviousTotalHits);
 	Misc::BunnyHop(LocalEntity);
+	SpecList::SpectatorWindowList(LocalEntity);
+	bmb::RenderWindow(LocalEntity.Controller.TeamID);
+	Misc::Watermark(LocalEntity);
 	//Misc::FastStop();
 }
 

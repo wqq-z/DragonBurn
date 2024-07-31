@@ -6,6 +6,7 @@
 namespace MenuConfig
 {
 	inline std::string path = "";
+	inline std::string docPath = "";
 
 	struct {
 		// 0: Visual 1: Aimbot 2: Misc 3: Config

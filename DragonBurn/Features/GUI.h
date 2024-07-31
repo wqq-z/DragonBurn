@@ -3,6 +3,7 @@
 #include "..\Render.hpp"
 #include "..\Features\Legitbot.hpp"
 #include "..\Features\Radar.h"
+#include "..\Features\Misc.h"
 #include "TriggerBot.h"
 #include "..\Utils\ConfigMenu.hpp"
 #include "..\Utils\ConfigSaver.hpp"
@@ -408,7 +409,7 @@ namespace GUI
 
 					float FovMin = 0.f, FovMax = 25.f, MinFovMax = 1.f;
 					int BulletMin = 0, BulletMax = 5;
-					float SmoothMin = 0.4f, SmoothMax = 5.f;
+					float SmoothMin = 0.4f, SmoothMax = 10.f;
 					PutSwitch(Lang::AimbotText.Enable, 10.f, ImGui::GetFrameHeight() * 1.7, &MenuConfig::AimBot);
 					if (MenuConfig::AimBot)
 					{
@@ -591,7 +592,7 @@ namespace GUI
 					ImGui::Combo("###HitSounds", &MiscCFG::HitSound, "None\0Neverlose\0Skeet\0");
 					PutSwitch(Lang::MiscText.HitMerker, 10.f, ImGui::GetFrameHeight() * 1.7, &MiscCFG::HitMarker);
 					PutSwitch(Lang::MiscText.SpecCheck, 10.f, ImGui::GetFrameHeight() * 1.7, &MiscCFG::WorkInSpec);
-					// PutSwitch(Lang::MiscText.SpecList, 10.f, ImGui::GetFrameHeight() * 1.7, &MiscCFG::SpecList); TODO
+					PutSwitch(Lang::MiscText.SpecList, 10.f, ImGui::GetFrameHeight() * 1.7, &MiscCFG::SpecList);
 					PutSwitch(Lang::MiscText.TeamCheck, 10.f, ImGui::GetFrameHeight() * 1.7, &MenuConfig::TeamCheck);
 					PutSwitch(Lang::MiscText.Watermark, 10.f, ImGui::GetFrameHeight() * 1.7, &MiscCFG::WaterMark);
 
@@ -607,9 +608,15 @@ namespace GUI
 					ImGui::SameLine();
 					if (ImGui::Button("Contact Author", { 125.f, 25.f }))
 						Gui.OpenWebpage("https://discordapp.com/users/798503509522645012/");
-					ImGui::SetCursorPosX(ImGui::GetCursorPosX() + ImGui::GetColumnWidth() / 4);
+					//ImGui::SetCursorPosX(ImGui::GetCursorPosX() + ImGui::GetColumnWidth() / 4);
 					if (ImGui::Button("Unhook", { 125.f, 25.f }))
 						Init::Client::Exit();
+					ImGui::SameLine();
+					if (ImGui::Button("Clear Traces", { 125.f, 25.f }))
+					{
+						Misc::CleanTraces();
+						Init::Client::Exit();
+					}
 
 
 					ImGui::Columns(1);

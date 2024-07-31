@@ -1,8 +1,9 @@
 ○ Refactor the code(I have no time for it)
 ○ Make cheat multi-tread(I have no time for it)
-○ Add bhop
+○ Add bhop(Un safe)
 ○ Add spec list
 ○ Use JSON instead YAML
+○ Add Offsets auto load
 ○ Make menu looks nice(low priority)
 ◎ Fixed triggerbot bug
 ◎ Add hit markers(mb I should del hit sound)
@@ -13,3 +14,5 @@
 ◎ Fix bug with trigger delay
 ◎ Make gui look cooler
 ◎ Delete junk
+◎ Fix scope check
+◎ Add clean button
