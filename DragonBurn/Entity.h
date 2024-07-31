@@ -23,6 +23,7 @@ public:
 	int AliveStatus = 0;
 	DWORD Pawn = 0;
 	std::string PlayerName;
+	std::vector<std::string> spectators = {};
 public:
 	bool GetTeamID();
 	bool GetHealth();
@@ -113,6 +114,5 @@ public:
 
 public:
 	static std::map<int, std::string> weaponNames;
-
 	static std::string GetWeaponName(int weaponID);
 };

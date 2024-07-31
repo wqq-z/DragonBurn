@@ -258,6 +258,7 @@ namespace MyConfigSaver {
         emitter << YAML::EndMap;
         emitter << YAML::Key << "Bhop" << YAML::Value << MiscCFG::BunnyHop;
         //emitter << YAML::Key << "FastStop" << YAML::Value << MiscCFG::FastStop;
+        emitter << YAML::Key << "SpecList" << YAML::Value << MiscCFG::SpecList;
         emitter << YAML::Key << "TeamCheck" << YAML::Value << MenuConfig::TeamCheck;
         emitter << YAML::Key << "AntiRecord" << YAML::Value << MenuConfig::BypassOBS;
         emitter << YAML::EndMap;
