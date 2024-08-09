@@ -1,5 +1,5 @@
 #include "OS-ImGui_External.h"
-#include "../MenuConfig.hpp"
+#include "../Config/MenuConfig.hpp"
 
 // D3D11 Device
 namespace OSImGui
@@ -229,7 +229,7 @@ namespace OSImGui
 
         SetWindowPos(Window.hWnd, HWND_TOPMOST, (int)Window.Pos.x, (int)Window.Pos.y, (int)Window.Size.x, (int)Window.Size.y, SWP_SHOWWINDOW);
 
-        // ¿ØÖÆ´°¿Ú×´Ì¬ÇÐ»»
+        // ï¿½ï¿½ï¿½Æ´ï¿½ï¿½ï¿½×´Ì¬ï¿½Ð»ï¿½
         POINT MousePos;
         GetCursorPos(&MousePos);
         ScreenToClient(Window.hWnd, &MousePos);

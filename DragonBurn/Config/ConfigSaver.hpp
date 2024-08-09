@@ -9,9 +9,16 @@ namespace MyConfigSaver {
     extern void LoadConfig(const std::string& filename);
 
     template <typename T>
-    static T ReadData(const YAML::Node& node, T defaultValue)
+    static T ReadData(const nlohmann::json& node, T defaultValue)
     {
-        return node.IsDefined() ? node.as<T>() : defaultValue;
+        if (node.contains("Enable") && !node["Enable"].is_null())
+        {
+            return node["Enable"].get<T>();
+        }
+        else
+        {
+            return defaultValue;
+        }
     }
     
     static uint32_t ImColorToUInt32(const ImColor& color)
@@ -34,20 +41,18 @@ namespace MyConfigSaver {
         return TempColor;
     }
 
-    static std::vector<int> LoadVector(const YAML::Node& node, std::vector<int> defaultValue)
-    {
-
-        if (node.IsDefined() && node.IsSequence())
-        {
+    static std::vector<int> LoadVector(const nlohmann::json& node, std::vector<int> defaultValue) {
+        if (node.is_array()) {
             std::vector<int> result;
-            for (const YAML::Node& element : node) 
+            for (const auto& element : node)
             {
-                result.push_back(element.as<int>());
+                result.push_back(element.get<int>());
             }
             return result;
         }
         else
+        {
             return defaultValue;
-
+        }
     }
 }

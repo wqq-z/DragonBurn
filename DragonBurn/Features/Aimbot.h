@@ -33,7 +33,7 @@ namespace AimControl
     inline bool HasTarget = false;
 
 
-    void AimControl::AimBot(const CEntity& Local, Vec3 LocalPos, std::vector<Vec3>& AimPosList);
-    void AimControl::switchToggle();
-    void AimControl::SetHotKey(int Index);
+    void AimBot(const CEntity& Local, Vec3 LocalPos, std::vector<Vec3>& AimPosList);
+    void switchToggle();
+    void SetHotKey(int Index);
 }
