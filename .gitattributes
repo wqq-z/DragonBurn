@@ -65,6 +65,7 @@ CMakeLists.txt linguist-documentation=false
 
 DragonBurn/Resources/*		linguist-vendored
 DragonBurn/Offsets/*        linguist-vendored
-DragonBurn/OS-ImGui/*        linguist-vendored
-DragonBurn/OS-ImGui/imgui/*        linguist-vendored
-DragonBurn/OS-ImGui/stb/*        linguist-vendored
+DragonBurn/OS-ImGui/*       linguist-vendored
+DragonBurn/OS-ImGui/imgui/* linguist-vendored
+DragonBurn/OS-ImGui/stb/*   linguist-vendored
+DragonBurn/Libs/*           linguist-vendored
