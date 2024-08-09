@@ -49,7 +49,6 @@ namespace ConfigMenu {
 		if (ImGui::Button(Lang::ConfigText.Load, { 120.f, 30.f }) && selectedConfig >= 0 && selectedConfig < configFiles.size())
 		{
 			std::string selectedConfigFile = configFiles[selectedConfig];
-			std::cout << selectedConfigFile << std::endl;
 			MyConfigSaver::LoadConfig(selectedConfigFile);
 		}
 		ImGui::SameLine();

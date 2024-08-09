@@ -47,7 +47,6 @@ namespace GUI
 			return;
 
 		MyConfigSaver::LoadConfig("default.cfg");
-		std::cout << "[Info] Default configuration loaded!" << std::endl;
 
 		MenuConfig::defaultConfig = false;
 	}

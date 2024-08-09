@@ -9,16 +9,24 @@ namespace MyConfigSaver {
     extern void LoadConfig(const std::string& filename);
 
     template <typename T>
-    static T ReadData(const nlohmann::json& node, T defaultValue)
+    static T ReadData(nlohmann::json node, std::vector <std::string> keys,T defaultValue)
     {
-        if (node.contains("Enable") && !node["Enable"].is_null())
+        T value;
+        for (std::string key : keys)
         {
-            return node["Enable"].get<T>();
+            if (node.contains(key) && !node[key].is_null())
+            {
+                node = node[key];
+            }
+            else
+            {
+                value = defaultValue;
+                return value;
+                break;
+            }
         }
-        else
-        {
-            return defaultValue;
-        }
+        value = node.get<T>();
+        return value;
     }
     
     static uint32_t ImColorToUInt32(const ImColor& color)
@@ -41,10 +49,11 @@ namespace MyConfigSaver {
         return TempColor;
     }
 
-    static std::vector<int> LoadVector(const nlohmann::json& node, std::vector<int> defaultValue) {
-        if (node.is_array()) {
+    static std::vector<int> LoadVector(const nlohmann::json& node, std::string key, std::vector<int> defaultValue) {
+        if (node.contains(key) && !node[key].is_null() && node[key].is_array())
+        {
             std::vector<int> result;
-            for (const auto& element : node)
+            for (const auto& element : node[key])
             {
                 result.push_back(element.get<int>());
             }

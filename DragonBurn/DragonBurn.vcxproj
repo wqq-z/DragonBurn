@@ -73,28 +73,28 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>built</OutDir>
     <IntDir>built</IntDir>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
     <IncludePath>D:\Development\C++\DragonBurn\DragonBurn\Libs;$(IncludePath)</IncludePath>
     <ExternalIncludePath>D:\Development\C++\DragonBurn\DragonBurn\Libs;$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>built</OutDir>
     <IntDir>built</IntDir>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
     <IncludePath>D:\Development\C++\DragonBurn\DragonBurn\Libs;$(IncludePath)</IncludePath>
     <ExternalIncludePath>D:\Development\C++\DragonBurn\DragonBurn\Libs;$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>built</OutDir>
     <IntDir>built</IntDir>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
     <IncludePath>D:\Development\C++\DragonBurn\DragonBurn\Libs;$(IncludePath)</IncludePath>
     <ExternalIncludePath>D:\Development\C++\DragonBurn\DragonBurn\Libs;$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>built</OutDir>
     <IntDir>built</IntDir>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
     <IncludePath>D:\Development\C++\DragonBurn\DragonBurn\Libs;$(IncludePath)</IncludePath>
     <ExternalIncludePath>D:\Development\C++\DragonBurn\DragonBurn\Libs;$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
