@@ -129,9 +129,6 @@
     <ClInclude Include="Features\Radar.h">
       <Filter>Features\Visual</Filter>
     </ClInclude>
-    <ClInclude Include="Features\Legitbot.hpp">
-      <Filter>Features\Aim</Filter>
-    </ClInclude>
     <ClInclude Include="Features\RCS.h">
       <Filter>Features\Aim</Filter>
     </ClInclude>
@@ -188,6 +185,9 @@
     </ClInclude>
     <ClInclude Include="Offsets\Client.hpp">
       <Filter>Offsets</Filter>
+    </ClInclude>
+    <ClInclude Include="Features\Aimbot.h">
+      <Filter>Features\Aim</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -264,6 +264,9 @@
     </ClCompile>
     <ClCompile Include="Config\ConfigMenu.cpp">
       <Filter>Config</Filter>
+    </ClCompile>
+    <ClCompile Include="Features\Aimbot.cpp">
+      <Filter>Features\Aim</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

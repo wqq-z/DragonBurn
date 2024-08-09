@@ -74,21 +74,29 @@
     <OutDir>built</OutDir>
     <IntDir>built</IntDir>
     <RunCodeAnalysis>true</RunCodeAnalysis>
+    <IncludePath>D:\Development\C++\DragonBurn\DragonBurn\Libs;$(IncludePath)</IncludePath>
+    <ExternalIncludePath>D:\Development\C++\DragonBurn\DragonBurn\Libs;$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>built</OutDir>
     <IntDir>built</IntDir>
     <RunCodeAnalysis>true</RunCodeAnalysis>
+    <IncludePath>D:\Development\C++\DragonBurn\DragonBurn\Libs;$(IncludePath)</IncludePath>
+    <ExternalIncludePath>D:\Development\C++\DragonBurn\DragonBurn\Libs;$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>built</OutDir>
     <IntDir>built</IntDir>
     <RunCodeAnalysis>true</RunCodeAnalysis>
+    <IncludePath>D:\Development\C++\DragonBurn\DragonBurn\Libs;$(IncludePath)</IncludePath>
+    <ExternalIncludePath>D:\Development\C++\DragonBurn\DragonBurn\Libs;$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>built</OutDir>
     <IntDir>built</IntDir>
     <RunCodeAnalysis>true</RunCodeAnalysis>
+    <IncludePath>D:\Development\C++\DragonBurn\DragonBurn\Libs;$(IncludePath)</IncludePath>
+    <ExternalIncludePath>D:\Development\C++\DragonBurn\DragonBurn\Libs;$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -161,9 +169,9 @@
     <ClInclude Include="Core\Init.h" />
     <ClInclude Include="Core\ProcessManager.hpp" />
     <ClInclude Include="Core\Render.hpp" />
+    <ClInclude Include="Features\Aimbot.h" />
     <ClInclude Include="Features\BombTimer.h" />
     <ClInclude Include="Features\ESP.h" />
-    <ClInclude Include="Features\Legitbot.hpp" />
     <ClInclude Include="Features\Misc.h" />
     <ClInclude Include="Features\Radar.h" />
     <ClInclude Include="Features\RCS.h" />
@@ -212,6 +220,7 @@
     <ClCompile Include="Config\ConfigSaver.cpp" />
     <ClCompile Include="Core\Cheats.cpp" />
     <ClCompile Include="Core\GlobalVars.cpp" />
+    <ClCompile Include="Features\Aimbot.cpp" />
     <ClCompile Include="Features\Misc.cpp" />
     <ClCompile Include="Features\Radar.cpp" />
     <ClCompile Include="Features\TriggerBot.cpp" />
