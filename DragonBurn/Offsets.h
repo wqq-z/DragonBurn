@@ -10,7 +10,7 @@ namespace offsetsInput = cs2_dumper::offsets::inputsystem_dll;
 
 namespace Offset
 {
-	inline long long CS2ver = 9065818; //nano "E:\SteamLibrary\steamapps\common\Counter-Strike Global Offensive\game\bin\built_from_cl.txt"
+	inline long long CS2ver = 9101715; //nano "E:\SteamLibrary\steamapps\common\Counter-Strike Global Offensive\game\bin\built_from_cl.txt"
 
 	//https://github.com/a2x/cs2-dumper/blob/main/output/offsets.hpp
 	inline DWORD EntityList =				offsets::dwEntityList;
@@ -23,7 +23,7 @@ namespace Offset
 	inline DWORD InputSystem =				offsetsInput::dwInputSystem;
 	inline DWORD Sensitivity =				offsets::dwSensitivity;
 
-	//https://github.com/a2x/cs2-dumper/blob/main/output/client.dll.hpp
+	//https://github.com/a2x/cs2-dumper/blob/main/output/client_dll.hpp
 	struct
 	{
 		DWORD IsAlive =				dll::CCSPlayerController::m_bPawnIsAlive;
