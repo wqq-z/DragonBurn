@@ -2,7 +2,7 @@
 #include "../Config/MenuConfig.hpp"
 #include "ConfigSaver.hpp"
 #include "../Features/TriggerBot.h"
-#include "../Features/Legitbot.hpp"
+#include "../Features/Aimbot.h"
 #include <filesystem>
 #include <string>
 #include "../Resources/Language.h"

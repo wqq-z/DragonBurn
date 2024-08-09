@@ -13,7 +13,7 @@
 #include <vector>
 #include <Windows.h>
 
-#include "Legitbot.hpp"
+#include "Aimbot.h"
 #include "..\Resources\Sounds.h"
 #include "..\Game\Entity.h"
 #include "..\Config\MenuConfig.hpp"

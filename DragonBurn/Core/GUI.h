@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "..\Config\MenuConfig.hpp"
 #include "..\Core\Render.hpp"
-#include "..\Features\Legitbot.hpp"
+#include "..\Features\Aimbot.h"
 #include "..\Features\Radar.h"
 #include "..\Features\Misc.h"
 #include "..\Features\TriggerBot.h"

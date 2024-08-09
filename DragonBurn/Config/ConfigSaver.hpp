@@ -2,6 +2,7 @@
 
 #include "..\OS-ImGui\imgui\imgui.h"
 #include <string>
+#include "json.hpp"
 
 namespace MyConfigSaver {
     extern void SaveConfig(const std::string& filename, const std::string& author = "");

@@ -1,7 +1,7 @@
 #pragma once
 #include "../Game/Game.h"
 #include "../Game/Entity.h"
-#include "Features\Legitbot.hpp"
+#include "Features\Aimbot.h"
 #include "Features/Radar.h"
 #include "Features/TriggerBot.h"
 #include "Features/Misc.h"

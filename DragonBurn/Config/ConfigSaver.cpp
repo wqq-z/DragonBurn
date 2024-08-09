@@ -6,8 +6,9 @@
 #include "../Resources/Language.h"
 #include "../Config/MenuConfig.hpp"
 #include "../Features/TriggerBot.h"
-#include "../Features/Legitbot.hpp"
+#include "../Features/Aimbot.h"
 #include "../Features/RCS.h"
+#include "json.hpp"
 
 namespace MyConfigSaver {
 
