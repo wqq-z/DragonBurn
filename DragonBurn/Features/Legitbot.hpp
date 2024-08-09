@@ -4,17 +4,17 @@
 #include <math.h>
 #include <thread>
 #include <chrono>
-#include "..\Game.h"
-#include "..\Entity.h"
-#include "..\MenuConfig.hpp"
+#include "..\Game\Game.h"
+#include "..\Game\Entity.h"
+#include "..\Config\MenuConfig.hpp"
 #include <iostream>
-#include "..\View.hpp"
+#include "..\Game\View.hpp"
 #include "..\Features/RCS.h"
 #include "TriggerBot.h"
 
 extern "C" {
-#include "..\Features\Mouse.h"
-#include "..\Entity.h"
+#include "..\Helpers\Mouse.h"
+#include "..\Game\Entity.h"
 }
 
 

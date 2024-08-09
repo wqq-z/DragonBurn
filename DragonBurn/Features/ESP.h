@@ -1,8 +1,8 @@
 ﻿#pragma once
-#include "..\Render.hpp"
-#include "..\MenuConfig.hpp"
-#include "..\Cheats.h"
-#include "GetWeaponIcon.h"
+#include "..\Core\Render.hpp"
+#include "..\Config\MenuConfig.hpp"
+#include "..\Core\Cheats.h"
+#include "..\Helpers\GetWeaponIcon.h"
 
 namespace ESP
 {

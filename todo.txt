@@ -1,10 +1,9 @@
 ○ Refactor the code(I have no time for it)
 ○ Make cheat multi-tread(I have no time for it)
-○ Add bhop(Un safe)
 ○ Add spec list
-○ Use JSON instead YAML
 ○ Add Offsets auto load
 ○ Make menu looks nice(low priority)
+◎ Use JSON instead YAML
 ◎ Fixed triggerbot bug
 ◎ Add hit markers(mb I should del hit sound)
 ◎ Visible check load color bug 

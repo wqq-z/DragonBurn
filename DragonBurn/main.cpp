@@ -1,9 +1,9 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
-#include "Cheats.h"
-#include "Offsets.h"
+#include "Core/Cheats.h"
+#include "Offsets/Offsets.h"
 #include "Resources/Language.h"
-#include "Utils/Initial/Init.h"
-#include "Utils/ConfigSaver.hpp"
+#include "Core/Init.h"
+#include "Config/ConfigSaver.hpp"
 #include <chrono>
 #include <filesystem>
 #include <iomanip>

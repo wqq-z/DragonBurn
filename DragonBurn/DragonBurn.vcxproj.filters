@@ -1,243 +1,269 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Entry">
-      <UniqueIdentifier>{b2e13447-07ee-4738-973e-dff75512b687}</UniqueIdentifier>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{c7eb2bee-9d48-4b5f-98df-abb37974d0af}</UniqueIdentifier>
     </Filter>
-    <Filter Include="OS-ImGui">
-      <UniqueIdentifier>{5e80ef5d-5f4b-49ee-b443-120bb14cf27a}</UniqueIdentifier>
+    <Filter Include="ImGui">
+      <UniqueIdentifier>{086a1eb5-40f6-4843-ad51-55c21c74334e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="OS-ImGui\imgui">
-      <UniqueIdentifier>{ab218404-3f90-49c1-936f-945331e62f77}</UniqueIdentifier>
+    <Filter Include="ImGui\imgui">
+      <UniqueIdentifier>{f8b5bed1-1b6f-40cc-9db4-17e73ada8245}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Utils">
-      <UniqueIdentifier>{dc44f983-6ac1-4cd3-892d-2e8877ec0950}</UniqueIdentifier>
+    <Filter Include="ImGui\stb">
+      <UniqueIdentifier>{e872f4ab-6347-4e22-bd08-3624ccf0469d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Cheats">
-      <UniqueIdentifier>{6d31e8d7-d8c1-4306-ab66-a79fab5a28b7}</UniqueIdentifier>
+    <Filter Include="Game">
+      <UniqueIdentifier>{a1c9b5e3-6914-4106-8d30-758cf8623753}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Cheats\View">
-      <UniqueIdentifier>{3d76d523-ebe1-46aa-982f-99e167ac6724}</UniqueIdentifier>
+    <Filter Include="Features">
+      <UniqueIdentifier>{59bbe7bd-04b4-4864-b11e-26d70ea98b8e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Cheats\Data">
-      <UniqueIdentifier>{ecf8f725-5819-4b5b-9e16-3ada7ee8c84f}</UniqueIdentifier>
+    <Filter Include="Features\Visual">
+      <UniqueIdentifier>{a506b36b-4aa1-423b-9b8d-6da3929610eb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Cheats\Offsets">
-      <UniqueIdentifier>{0af61bf5-c236-403c-a0f8-48488f87bfcf}</UniqueIdentifier>
+    <Filter Include="Features\Misc">
+      <UniqueIdentifier>{b0c7adeb-2fdd-4355-93c2-b03f5946ffec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Cheats\MenuConfig">
-      <UniqueIdentifier>{4ee44a79-e9da-483b-8c8c-46209c06c557}</UniqueIdentifier>
+    <Filter Include="Features\Aim">
+      <UniqueIdentifier>{bec5d160-9097-41fe-b2e1-d771a6544092}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Cheats\Radar">
-      <UniqueIdentifier>{e372b7a9-eba4-42de-9802-b1368314d465}</UniqueIdentifier>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{d6ce1762-ee50-44d7-938a-7de7d8911330}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{ae0f6fd8-fd82-4090-a2f8-c6d80c60c33e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Config">
+      <UniqueIdentifier>{1f597d36-beeb-429b-a159-e90c3f7b34d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Offsets">
+      <UniqueIdentifier>{d41606d6-9efb-4793-9976-ae2deca558e7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="OS-ImGui\imgui\imconfig.h">
-      <Filter>OS-ImGui\imgui</Filter>
+    <ClInclude Include="resource.h">
+      <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="OS-ImGui\imgui\imgui.h">
-      <Filter>OS-ImGui\imgui</Filter>
+    <ClInclude Include="Resources\WeaponIcon.h">
+      <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="OS-ImGui\imgui\imgui_impl_dx11.h">
-      <Filter>OS-ImGui\imgui</Filter>
+    <ClInclude Include="Resources\Sounds.h">
+      <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="OS-ImGui\imgui\imgui_impl_win32.h">
-      <Filter>OS-ImGui\imgui</Filter>
+    <ClInclude Include="Resources\Language.h">
+      <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="OS-ImGui\imgui\imgui_internal.h">
-      <Filter>OS-ImGui\imgui</Filter>
+    <ClInclude Include="Resources\Images.h">
+      <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="OS-ImGui\imgui\imstb_rectpack.h">
-      <Filter>OS-ImGui\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="OS-ImGui\imgui\imstb_textedit.h">
-      <Filter>OS-ImGui\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="OS-ImGui\imgui\imstb_truetype.h">
-      <Filter>OS-ImGui\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="OS-ImGui\OS-ImGui.h">
-      <Filter>OS-ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="OS-ImGui\OS-ImGui_Base.h">
-      <Filter>OS-ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="OS-ImGui\OS-ImGui_Exception.hpp">
-      <Filter>OS-ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="OS-ImGui\OS-ImGui_External.h">
-      <Filter>OS-ImGui</Filter>
+    <ClInclude Include="Resources\font.h">
+      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="OS-ImGui\OS-ImGui_Struct.h">
-      <Filter>OS-ImGui</Filter>
+      <Filter>ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="Utils\ProcessManager.hpp">
-      <Filter>Utils</Filter>
+    <ClInclude Include="OS-ImGui\OS-ImGui_External.h">
+      <Filter>ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="View.hpp">
-      <Filter>Cheats\View</Filter>
+    <ClInclude Include="OS-ImGui\OS-ImGui_Exception.hpp">
+      <Filter>ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Cheats\Data</Filter>
+    <ClInclude Include="OS-ImGui\OS-ImGui_Base.h">
+      <Filter>ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Cheats\Data</Filter>
+    <ClInclude Include="OS-ImGui\OS-ImGui.h">
+      <Filter>ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="Cheats.h">
-      <Filter>Cheats</Filter>
+    <ClInclude Include="OS-ImGui\imgui\imconfig.h">
+      <Filter>ImGui\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="Bone.h">
-      <Filter>Cheats\Data</Filter>
+    <ClInclude Include="OS-ImGui\imgui\imgui.h">
+      <Filter>ImGui\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="Render.hpp">
-      <Filter>Cheats</Filter>
+    <ClInclude Include="OS-ImGui\imgui\imgui_impl_dx11.h">
+      <Filter>ImGui\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="Offsets.h">
-      <Filter>Cheats\Offsets</Filter>
+    <ClInclude Include="OS-ImGui\imgui\imgui_impl_win32.h">
+      <Filter>ImGui\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="MenuConfig.hpp">
-      <Filter>Cheats\MenuConfig</Filter>
+    <ClInclude Include="OS-ImGui\imgui\imgui_internal.h">
+      <Filter>ImGui\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="OS-ImGui\imgui\imstb_rectpack.h">
+      <Filter>ImGui\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="OS-ImGui\imgui\imstb_textedit.h">
+      <Filter>ImGui\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="OS-ImGui\imgui\imstb_truetype.h">
+      <Filter>ImGui\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="OS-ImGui\stb\stb_image.h">
+      <Filter>ImGui\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\View.hpp">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Bone.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Features\BombTimer.h">
+      <Filter>Features\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Features\Misc.h">
+      <Filter>Features\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Features\SpectatorList.h">
+      <Filter>Features\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Features\ESP.h">
+      <Filter>Features\Visual</Filter>
     </ClInclude>
     <ClInclude Include="Features\Radar.h">
-      <Filter>Cheats\Radar</Filter>
+      <Filter>Features\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="Features\Legitbot.hpp">
+      <Filter>Features\Aim</Filter>
+    </ClInclude>
+    <ClInclude Include="Features\RCS.h">
+      <Filter>Features\Aim</Filter>
     </ClInclude>
     <ClInclude Include="Features\TriggerBot.h">
-      <Filter>Cheats</Filter>
+      <Filter>Features\Aim</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="Utils\ConfigMenu.hpp">
-      <Filter>Utils</Filter>
+    <ClInclude Include="Helpers\Mouse.h">
+      <Filter>Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="Utils\ConfigSaver.hpp">
-      <Filter>Utils</Filter>
+    <ClInclude Include="Helpers\GetWeaponIcon.h">
+      <Filter>Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="Utils\GlobalVars.h" />
-    <ClInclude Include="Utils\Format.h" />
-    <ClInclude Include="Utils\Globals.hpp" />
-    <ClInclude Include="Font\IconsFontAwesome6.h" />
-    <ClInclude Include="Features\Mouse.h" />
-    <ClInclude Include="Features\ESP.h" />
-    <ClInclude Include="Features\SpectatorList.h" />
-    <ClInclude Include="Features\GUI.h" />
-    <ClInclude Include="Features\GetWeaponIcon.h" />
-    <ClInclude Include="Resources\WeaponIcon.h" />
-    <ClInclude Include="Features\BombTimer.h" />
-    <ClInclude Include="Features\Misc.h" />
-    <ClInclude Include="Resources\Language.h" />
-    <ClInclude Include="Resources\Images.h" />
-    <ClInclude Include="OS-ImGui\stb\stb_image.h" />
-    <ClInclude Include="Utils\Random.h" />
-    <ClInclude Include="Features\RCS.h" />
-    <ClInclude Include="Utils\yaml-cpp\contrib\anchordict.h" />
-    <ClInclude Include="Utils\yaml-cpp\contrib\graphbuilder.h" />
-    <ClInclude Include="Utils\yaml-cpp\node\detail\impl.h" />
-    <ClInclude Include="Utils\yaml-cpp\node\detail\iterator.h" />
-    <ClInclude Include="Utils\yaml-cpp\node\detail\iterator_fwd.h" />
-    <ClInclude Include="Utils\yaml-cpp\node\detail\memory.h" />
-    <ClInclude Include="Utils\yaml-cpp\node\detail\node.h" />
-    <ClInclude Include="Utils\yaml-cpp\node\detail\node_data.h" />
-    <ClInclude Include="Utils\yaml-cpp\node\detail\node_iterator.h" />
-    <ClInclude Include="Utils\yaml-cpp\node\detail\node_ref.h" />
-    <ClInclude Include="Utils\yaml-cpp\node\convert.h" />
-    <ClInclude Include="Utils\yaml-cpp\node\emit.h" />
-    <ClInclude Include="Utils\yaml-cpp\node\impl.h" />
-    <ClInclude Include="Utils\yaml-cpp\node\iterator.h" />
-    <ClInclude Include="Utils\yaml-cpp\node\node.h" />
-    <ClInclude Include="Utils\yaml-cpp\node\parse.h" />
-    <ClInclude Include="Utils\yaml-cpp\node\ptr.h" />
-    <ClInclude Include="Utils\yaml-cpp\node\type.h" />
-    <ClInclude Include="Utils\yaml-cpp\anchor.h" />
-    <ClInclude Include="Utils\yaml-cpp\binary.h" />
-    <ClInclude Include="Utils\yaml-cpp\depthguard.h" />
-    <ClInclude Include="Utils\yaml-cpp\dll.h" />
-    <ClInclude Include="Utils\yaml-cpp\emitfromevents.h" />
-    <ClInclude Include="Utils\yaml-cpp\emitter.h" />
-    <ClInclude Include="Utils\yaml-cpp\emitterdef.h" />
-    <ClInclude Include="Utils\yaml-cpp\emittermanip.h" />
-    <ClInclude Include="Utils\yaml-cpp\emitterstyle.h" />
-    <ClInclude Include="Utils\yaml-cpp\eventhandler.h" />
-    <ClInclude Include="Utils\yaml-cpp\exceptions.h" />
-    <ClInclude Include="Utils\yaml-cpp\mark.h" />
-    <ClInclude Include="Utils\yaml-cpp\noexcept.h" />
-    <ClInclude Include="Utils\yaml-cpp\null.h" />
-    <ClInclude Include="Utils\yaml-cpp\ostream_wrapper.h" />
-    <ClInclude Include="Utils\yaml-cpp\parser.h" />
-    <ClInclude Include="Utils\yaml-cpp\stlemitter.h" />
-    <ClInclude Include="Utils\yaml-cpp\traits.h" />
-    <ClInclude Include="Utils\yaml-cpp\yaml.h" />
-    <ClInclude Include="Utils\Initial\Init.h" />
-    <ClInclude Include="Resources\Sounds.h" />
-    <ClInclude Include="Features\Legitbot.hpp" />
-    <ClInclude Include="Resources\font.h" />
-    <ClInclude Include="OffsetsList\Client.hpp" />
-    <ClInclude Include="OffsetsList\Offsets.hpp" />
+    <ClInclude Include="Helpers\Random.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\Format.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Render.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ProcessManager.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Init.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\GUI.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\GlobalVars.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Globals.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Cheats.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Config\MenuConfig.hpp">
+      <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Config\ConfigSaver.hpp">
+      <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Config\ConfigMenu.hpp">
+      <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Offsets\Offsets.hpp">
+      <Filter>Offsets</Filter>
+    </ClInclude>
+    <ClInclude Include="Offsets\Offsets.h">
+      <Filter>Offsets</Filter>
+    </ClInclude>
+    <ClInclude Include="Offsets\Client.hpp">
+      <Filter>Offsets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="OS-ImGui\imgui\imgui.cpp">
-      <Filter>OS-ImGui\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="OS-ImGui\imgui\imgui_demo.cpp">
-      <Filter>OS-ImGui\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="OS-ImGui\imgui\imgui_draw.cpp">
-      <Filter>OS-ImGui\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="OS-ImGui\imgui\imgui_impl_dx11.cpp">
-      <Filter>OS-ImGui\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="OS-ImGui\imgui\imgui_impl_win32.cpp">
-      <Filter>OS-ImGui\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="OS-ImGui\imgui\imgui_tables.cpp">
-      <Filter>OS-ImGui\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="OS-ImGui\imgui\imgui_widgets.cpp">
-      <Filter>OS-ImGui\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="OS-ImGui\OS-ImGui.cpp">
-      <Filter>OS-ImGui</Filter>
+    <Image Include="icon.ico">
+      <Filter>Resources</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AssemblyInfo.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="OS-ImGui\OS-ImGui_External.cpp">
+      <Filter>ImGui</Filter>
     </ClCompile>
     <ClCompile Include="OS-ImGui\OS-ImGui_Base.cpp">
-      <Filter>OS-ImGui</Filter>
+      <Filter>ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="OS-ImGui\OS-ImGui_External.cpp">
-      <Filter>OS-ImGui</Filter>
+    <ClCompile Include="OS-ImGui\OS-ImGui.cpp">
+      <Filter>ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Entry</Filter>
+    <ClCompile Include="OS-ImGui\imgui\imgui.cpp">
+      <Filter>ImGui\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Cheats\Data</Filter>
+    <ClCompile Include="OS-ImGui\imgui\imgui_demo.cpp">
+      <Filter>ImGui\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Cheats\Data</Filter>
+    <ClCompile Include="OS-ImGui\imgui\imgui_draw.cpp">
+      <Filter>ImGui\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="Cheats.cpp">
-      <Filter>Cheats</Filter>
+    <ClCompile Include="OS-ImGui\imgui\imgui_impl_dx11.cpp">
+      <Filter>ImGui\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="Bone.cpp">
-      <Filter>Cheats\Data</Filter>
+    <ClCompile Include="OS-ImGui\imgui\imgui_impl_win32.cpp">
+      <Filter>ImGui\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="OS-ImGui\imgui\imgui_tables.cpp">
+      <Filter>ImGui\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="OS-ImGui\imgui\imgui_widgets.cpp">
+      <Filter>ImGui\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Bone.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Features\Misc.cpp">
+      <Filter>Features\Misc</Filter>
     </ClCompile>
     <ClCompile Include="Features\Radar.cpp">
-      <Filter>Cheats\Radar</Filter>
+      <Filter>Features\Visual</Filter>
     </ClCompile>
     <ClCompile Include="Features\TriggerBot.cpp">
-      <Filter>Cheats</Filter>
+      <Filter>Features\Aim</Filter>
     </ClCompile>
-    <ClCompile Include="Utils\ConfigMenu.cpp" />
-    <ClCompile Include="Utils\ConfigSaver.cpp" />
-    <ClCompile Include="Utils\GlobalVars.cpp" />
-    <ClCompile Include="Features\Mouse.cpp" />
-    <ClCompile Include="Features\Misc.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="DragonBurn.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="Utils\yaml-cpp\lib\yaml-cpp.lib" />
+    <ClCompile Include="Helpers\Mouse.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\GlobalVars.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Cheats.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Config\ConfigSaver.cpp">
+      <Filter>Config</Filter>
+    </ClCompile>
+    <ClCompile Include="Config\ConfigMenu.cpp">
+      <Filter>Config</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

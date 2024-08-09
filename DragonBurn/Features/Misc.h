@@ -15,10 +15,10 @@
 
 #include "Legitbot.hpp"
 #include "..\Resources\Sounds.h"
-#include "..\Entity.h"
-#include "..\MenuConfig.hpp"
+#include "..\Game\Entity.h"
+#include "..\Config\MenuConfig.hpp"
 #include "..\OS-ImGui\imgui\imgui.h"
-#include "..\Utils\GlobalVars.h"
+#include "..\Core\GlobalVars.h"
 
 #pragma comment(lib, "winmm.lib")
 
