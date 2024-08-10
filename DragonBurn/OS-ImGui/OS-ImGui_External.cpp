@@ -229,7 +229,6 @@ namespace OSImGui
 
         SetWindowPos(Window.hWnd, HWND_TOPMOST, (int)Window.Pos.x, (int)Window.Pos.y, (int)Window.Size.x, (int)Window.Size.y, SWP_SHOWWINDOW);
 
-        // ���ƴ���״̬�л�
         POINT MousePos;
         GetCursorPos(&MousePos);
         ScreenToClient(Window.hWnd, &MousePos);
