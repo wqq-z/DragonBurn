@@ -71,32 +71,36 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>built</OutDir>
-    <IntDir>built</IntDir>
+    <OutDir>$(SolutionDir)\built\</OutDir>
+    <IntDir>built\</IntDir>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <IncludePath>Libs;$(IncludePath)</IncludePath>
     <ExternalIncludePath>Libs;$(ExternalIncludePath)</ExternalIncludePath>
+    <TargetName>DragonBurn</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>built</OutDir>
-    <IntDir>built</IntDir>
+    <OutDir>$(SolutionDir)\built\</OutDir>
+    <IntDir>built\</IntDir>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <IncludePath>Libs;$(IncludePath)</IncludePath>
     <ExternalIncludePath>Libs;$(ExternalIncludePath)</ExternalIncludePath>
+    <TargetName>DragonBurn</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>built</OutDir>
-    <IntDir>built</IntDir>
+    <OutDir>$(SolutionDir)\built\</OutDir>
+    <IntDir>built\</IntDir>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <IncludePath>Libs;$(IncludePath)</IncludePath>
     <ExternalIncludePath>Libs;$(ExternalIncludePath)</ExternalIncludePath>
+    <TargetName>DragonBurn</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>built</OutDir>
-    <IntDir>built</IntDir>
+    <OutDir>$(SolutionDir)\built\</OutDir>
+    <IntDir>built\</IntDir>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <IncludePath>Libs;$(IncludePath)</IncludePath>
     <ExternalIncludePath>Libs;$(ExternalIncludePath)</ExternalIncludePath>
+    <TargetName>DragonBurn</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
