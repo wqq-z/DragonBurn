@@ -63,6 +63,9 @@ CMakeLists.txt linguist-documentation=false
 
 #Ignore dirs/files
 
-DragonBurn/Resources/*		    linguist-vendored
-DragonBurn/Utils/yaml-cpp/*		linguist-vendored
-DragonBurn/OffsetsList/*        linguist-vendored
+DragonBurn/Resources/*		linguist-vendored
+DragonBurn/Offsets/*        linguist-vendored
+DragonBurn/OS-ImGui/*       linguist-vendored
+DragonBurn/OS-ImGui/imgui/* linguist-vendored
+DragonBurn/OS-ImGui/stb/*   linguist-vendored
+DragonBurn/Libs/*           linguist-vendored

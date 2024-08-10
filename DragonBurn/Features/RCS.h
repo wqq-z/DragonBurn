@@ -1,8 +1,8 @@
 #pragma once
 #include <math.h>
-#include "..\Entity.h"
-#include "..\View.hpp"
-#include "..\MenuConfig.hpp"
+#include "..\Game\Entity.h"
+#include "..\Game\View.hpp"
+#include "..\Config\MenuConfig.hpp"
 
 namespace RCS
 {

@@ -1,6 +1,6 @@
 #pragma once
-#include "..\MenuConfig.hpp"
-#include "..\Entity.h"
+#include "..\Config\MenuConfig.hpp"
+#include "..\Game\Entity.h"
 #include <vector>
 #include <string>
 #include <iostream>

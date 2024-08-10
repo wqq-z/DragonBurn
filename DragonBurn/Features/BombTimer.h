@@ -5,8 +5,8 @@
 #include <sstream>
 #include <ctime>
 #include <string>
-#include "..\Entity.h"
-#include "..\MenuConfig.hpp"
+#include "..\Game\Entity.h"
+#include "..\Config\MenuConfig.hpp"
 
 namespace bmb
 {
