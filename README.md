@@ -90,6 +90,8 @@
 - Fast Stop
 - Head Line
 - Hit Sound
+- Hit Markers
+- Spectator list
 - Watermark
 - Anti Record
 </details>
