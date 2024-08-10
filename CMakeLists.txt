@@ -19,6 +19,11 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /O2 /MT /D NDEBUG")
 # Project name
 project(DragonBurn)
 
+#Target dir
+set_target_properties(DragonBurn PROPERTIES
+    OUTPUT_NAME "DragonBurn"
+    RUNTIME_OUTPUT_DIRECTORY "built")
+
 # Add an executable from source files
 add_executable(DragonBurn
     DragonBurn/main.cpp
@@ -105,5 +110,11 @@ target_sources(DragonBurn
     PRIVATE
         DragonBurn/AssemblyInfo.rc)
 
+add_custom_command(
+    OUTPUT AssemblyInfo.res
+    COMMAND windres DragonBurn/AssemblyInfo.rc
+    OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+link_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-target_link_libraries(DragonBurn)
+
+target_link_libraries(DragonBurn AssemblyInfo.res)
