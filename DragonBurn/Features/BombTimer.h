@@ -40,7 +40,7 @@ namespace bmb
 
 	void RenderWindow(int inGame)
 	{
-		if (!MiscCFG::bmbTimer or inGame == 0)
+		if (!MiscCFG::bmbTimer || inGame == 0)
 			return;
 
 		bool isBombPlanted;
