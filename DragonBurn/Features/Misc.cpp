@@ -17,7 +17,7 @@ namespace Misc
 
 	void Watermark(const CEntity& LocalPlayer) noexcept
 	{
-		if (!MiscCFG::WaterMark or LocalPlayer.Controller.TeamID == 0)
+		if (!MiscCFG::WaterMark || LocalPlayer.Controller.TeamID == 0)
 			return;
 
 		//	globalvars GV;
@@ -72,7 +72,7 @@ namespace Misc
 
 	void HitManager(const CEntity& LocalPlayer, int& PreviousTotalHits) noexcept
 	{
-		if ((!MiscCFG::HitSound && !MiscCFG::HitMarker) or LocalPlayer.Controller.TeamID == 0)// or aLocalPlayer.Controller.Health)//add in game cheack
+		if ((!MiscCFG::HitSound && !MiscCFG::HitMarker) || LocalPlayer.Controller.TeamID == 0)// or aLocalPlayer.Controller.Health)//add in game cheack
 		{
 			return;
 		}

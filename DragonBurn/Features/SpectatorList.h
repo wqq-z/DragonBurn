@@ -24,7 +24,7 @@ namespace SpecList
 
     void SpectatorWindowList(CEntity& LocalEntity)
     {
-        if (!MiscCFG::SpecList or LocalEntity.Controller.TeamID == 0)
+        if (!MiscCFG::SpecList || LocalEntity.Controller.TeamID == 0)
             return;
 
         static float windowWidth = 120.0f;
@@ -51,7 +51,7 @@ namespace SpecList
 
     void GetSpectatorList(CEntity& Entity, CEntity& LocalEntity, DWORD64 EntityAddress)
     {
-        if (!MiscCFG::SpecList or LocalEntity.Controller.TeamID == 0)
+        if (!MiscCFG::SpecList || LocalEntity.Controller.TeamID == 0)
             return;
         
         //int spectatorCount = 0;

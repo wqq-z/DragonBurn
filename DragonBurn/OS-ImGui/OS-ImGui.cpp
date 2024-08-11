@@ -271,7 +271,6 @@ namespace OSImGui
         ImGui::InvisibleButton(str_id, ImVec2(Width, Height));
         if (ImGui::IsItemClicked())
             *v = !(*v);
-        // 组件移动动画
         float t = *v ? 1.0f : 0.f;
         ImGuiContext& g = *GImGui;
         float AnimationSpeed = 0.15f;
@@ -280,13 +279,11 @@ namespace OSImGui
             float T_Animation = ImSaturate(g.LastActiveIdTimer / AnimationSpeed);
             t = *v ? (T_Animation) : (1.0f - T_Animation);
         }
-        // 鼠标悬停颜色
         ImU32 Color;
         if (ImGui::IsItemHovered())
             Color = ImGui::GetColorU32(ImLerp(ImVec4(0.08f, 0.18f, 0.21f, 1.0f), ImVec4(0.10f, 0.48f, 0.68f, 1.000f), t));
         else
             Color = ImGui::GetColorU32(ImLerp(ImVec4(0.12f, 0.22f, 0.25f, 1.0f), ImVec4(0.14f, 0.52f, 0.72f, 1.000f), t));
-        // 组件绘制
         DrawList->AddRectFilled(ImVec2(p.x, p.y), ImVec2(p.x + Width, p.y + Height), Color, 360);
         DrawList->AddCircleFilled(ImVec2(p.x + Radius + 2 + t * (Width - (Radius + 2) * 2), p.y + Radius + 2), Radius + 2, IM_COL32(255, 255, 255, 255), 360);
         DrawList->AddCircleFilled(ImVec2(p.x + Radius + t * (Width - Radius * 2) + (t == 0 ? 2 : -2), p.y + Radius + 2), Radius, IM_COL32(230, 230, 230, 255), 360);
@@ -309,7 +306,6 @@ namespace OSImGui
 
         if (ImGui::IsItemClicked())
             *v = !(*v);
-        // 组件移动动画
         float t = *v ? 1.0f : 0.f;
         ImGuiContext& g = *GImGui;
         float AnimationSpeed = 0.12f;
@@ -318,7 +314,6 @@ namespace OSImGui
             float T_Animation = ImSaturate(g.LastActiveIdTimer / AnimationSpeed);
             t = *v ? (T_Animation) : (1.0f - T_Animation);
         }
-        // 鼠标悬停颜色
         ImU32 Color;
         ImU32 TickColor1, TickColor2;
         if (ImGui::IsItemHovered())
@@ -331,12 +326,9 @@ namespace OSImGui
 
         float Size = Width;
         float Scale = (float)(Size) / 20.0f;
-        // 底色
         DrawList->AddRectFilled(ImVec2(p.x, p.y), ImVec2(p.x + Width, p.y + Height), Color, 5, 15);
-        // 选中勾
         DrawList->AddLine(ImVec2(p.x + 3 * Scale, p.y + Size / 2 - 2 * Scale), ImVec2(p.x + Size / 2 - 1 * Scale, p.y + Size - 5 * Scale), TickColor1, 3 * Scale);
         DrawList->AddLine(ImVec2(p.x + Size - 3 * Scale - 1, p.y + 3 * Scale + 1), ImVec2(p.x + Size / 2 - 1 * Scale, p.y + Size - 5 * Scale), TickColor1, 3 * Scale);
-        // 未选中勾
         DrawList->AddLine(ImVec2(p.x + 3 * Scale, p.y + Size / 2 - 2 * Scale), ImVec2(p.x + Size / 2 - 1 * Scale, p.y + Size - 5 * Scale), TickColor2, 3 * Scale);
         DrawList->AddLine(ImVec2(p.x + Size - 3 * Scale - 1, p.y + 3 * Scale + 1), ImVec2(p.x + Size / 2 - 1 * Scale, p.y + Size - 5 * Scale), TickColor2, 3 * Scale);
         ImGui::SameLine();

@@ -39,7 +39,7 @@ void RadarSetting(Base_Radar&);
 
 void Menu();
 void Visual(CEntity);
-void Radar(Base_Radar);
+void Radar(Base_Radar, CEntity);
 void Trigger(CEntity);
 void AIM(CEntity, std::vector<Vec3>);
 void MiscFuncs(CEntity);
@@ -87,7 +87,7 @@ void Cheats::Run()
 
 	// Radar Data
 	Base_Radar GameRadar;
-	if (RadarCFG::ShowRadar)
+	if (RadarCFG::ShowRadar && LocalEntity.Controller.TeamID != 0)
 		RadarSetting(GameRadar);
 
 	for (int i = 0; i < 64; i++)
@@ -113,7 +113,7 @@ void Cheats::Run()
 			continue;
 
 		// Add entity to radar
-		if (RadarCFG::ShowRadar)
+		if (RadarCFG::ShowRadar && LocalEntity.Controller.TeamID != 0)
 			GameRadar.AddPoint(LocalEntity.Pawn.Pos, LocalEntity.Pawn.ViewAngle.y, Entity.Pawn.Pos, ImColor(237, 85, 106, 200), RadarCFG::RadarType, Entity.Pawn.ViewAngle.y);
 		
 		//speclist
@@ -195,7 +195,7 @@ void Cheats::Run()
 	}
 
 	Visual(LocalEntity);
-	Radar(GameRadar);
+	Radar(GameRadar, LocalEntity);
 	Trigger(LocalEntity);
 	AIM(LocalEntity, AimPosList);
 	MiscFuncs(LocalEntity);
@@ -246,10 +246,10 @@ void Visual(CEntity LocalEntity)
 	RenderCrossHair(ImGui::GetBackgroundDrawList());
 }
 
-void Radar(Base_Radar Radar)
+void Radar(Base_Radar Radar, CEntity LocalEntity)
 {
 	// Radar render
-	if (RadarCFG::ShowRadar)
+	if (RadarCFG::ShowRadar && LocalEntity.Controller.TeamID != 0)
 	{
 		Radar.Render();
 		ImGui::End();
@@ -290,7 +290,7 @@ void AIM(CEntity LocalEntity, std::vector<Vec3> AimPosList)
 void MiscFuncs(CEntity LocalEntity)
 {
 	Misc::HitManager(LocalEntity, PreviousTotalHits);
-	Misc::BunnyHop(LocalEntity);
+	//Misc::BunnyHop(LocalEntity);
 	SpecList::SpectatorWindowList(LocalEntity);
 	bmb::RenderWindow(LocalEntity.Controller.TeamID);
 	Misc::Watermark(LocalEntity);

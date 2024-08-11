@@ -51,19 +51,13 @@ namespace OSImGui
 	class OSImGui_Base
 	{
 	public:
-		// 回调函数
 		std::function<void()> CallBackFn = nullptr;
-		// 退出标识
 		bool EndFlag = false;
 	public:
-		// 窗口数据
 		WindowData Window;
-		// 目标窗口数据
 		WindowData DestWindow;
 	public:
-		// 创建一个新窗口
 		virtual void NewWindow(std::string WindowName, Vec2 WindowSize, std::function<void()> CallBack) = 0;
-		// 退出
 		virtual void Quit() { EndFlag = true; };
 	public:
 		virtual bool CreateMyWindow() = 0;
