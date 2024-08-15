@@ -93,7 +93,7 @@ bool TriggerBot::CheckScopeWeapon(const CEntity& LocalEntity)
         return false;
 
     std::string WeaponName = CEntity::GetWeaponName(weaponIndex);
-    if (WeaponName == "aug" or WeaponName == "awp" or WeaponName == "g3Sg1" or WeaponName == "sg556" or WeaponName == "ssg08" or WeaponName == "scar20")
+    if (WeaponName == "aug" || WeaponName == "awp" || WeaponName == "g3Sg1" || WeaponName == "sg556" || WeaponName == "ssg08" || WeaponName == "scar20")
         return true;
     else
         return false;

@@ -69,3 +69,4 @@ DragonBurn/OS-ImGui/*       linguist-vendored
 DragonBurn/OS-ImGui/imgui/* linguist-vendored
 DragonBurn/OS-ImGui/stb/*   linguist-vendored
 DragonBurn/Libs/*           linguist-vendored
+DragonBurn/Libs/json/*           linguist-vendored
