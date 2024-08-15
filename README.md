@@ -22,7 +22,7 @@
 
 
 ### 📋 Features
-
+Press END key to open/close menu.
 <details>
 <summary>Visual</summary>
   
