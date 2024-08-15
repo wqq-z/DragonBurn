@@ -90,16 +90,16 @@
     <OutDir>$(SolutionDir)\built\</OutDir>
     <IntDir>built\</IntDir>
     <RunCodeAnalysis>false</RunCodeAnalysis>
-    <IncludePath>Libs;$(IncludePath)</IncludePath>
-    <ExternalIncludePath>Libs;$(ExternalIncludePath)</ExternalIncludePath>
+    <IncludePath>Libs\json;$(IncludePath)</IncludePath>
+    <ExternalIncludePath>Libs\json;$(ExternalIncludePath)</ExternalIncludePath>
     <TargetName>DragonBurn</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)\built\</OutDir>
     <IntDir>built\</IntDir>
     <RunCodeAnalysis>false</RunCodeAnalysis>
-    <IncludePath>Libs;$(IncludePath)</IncludePath>
-    <ExternalIncludePath>Libs;$(ExternalIncludePath)</ExternalIncludePath>
+    <IncludePath>Libs\json;$(IncludePath)</IncludePath>
+    <ExternalIncludePath>Libs\json;$(ExternalIncludePath)</ExternalIncludePath>
     <TargetName>DragonBurn</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
