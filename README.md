@@ -6,8 +6,8 @@
   <img src="https://img.shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual%20studio&logoColor=white">
   <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white">
   <img src="https://img.shields.io/badge/build-passing-76B900?style=for-the-badge&logo=&logoColor=whit">
-  <img src="https://img.shields.io/badge/tests-98/100-76B900?style=for-the-badge&logo=&logoColor=whit">
-  <img src="https://img.shields.io/badge/code quality-B-76B900?style=for-the-badge&logo=&logoColor=whit">
+  <img src="https://img.shields.io/badge/tests-99/100-76B900?style=for-the-badge&logo=&logoColor=whit">
+  <img src="https://img.shields.io/badge/code quality-B+-76B900?style=for-the-badge&logo=&logoColor=whit">
   <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge&logo=&logoColor=whit">
   <img src="https://img.shields.io/badge/DragonBurn-v1.0.2.2-blue?style=for-the-badge&logo=&logoColor=whit">
   <img src="https://img.shields.io/badge/CS2-000000?style=for-the-badge&logo=counter-strike&logoColor=white">
