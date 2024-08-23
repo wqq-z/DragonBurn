@@ -44,7 +44,7 @@ Offsets::~Offsets(){}
 void Offsets::SetOffsets(const std::string& offsetsData, const std::string& client_dllData) 
 {
     json offsetsJson = json::parse(offsetsData);
-    json client_dllJson = json::parse(client_dllData);
+    json client_dllJson = json::parse(client_dllData)["client.dll"]["classes"];
 
     this->EntityList = offsetsJson["client.dll"]["dwEntityList"];
     this->Matrix = offsetsJson["client.dll"]["dwViewMatrix"];
@@ -56,35 +56,35 @@ void Offsets::SetOffsets(const std::string& offsetsData, const std::string& clie
     this->InputSystem = offsetsJson["inputsystem.dll"]["dwInputSystem"];
     this->Sensitivity = offsetsJson["client.dll"]["dwSensitivity"];
 
-    this->Entity.IsAlive = client_dllJson["client.dll"]["CCSPlayerController"]["m_bPawnIsAlive"];
-    this->Entity.PlayerPawn = client_dllJson["client.dll"]["CCSPlayerController"]["m_hPlayerPawn"];
-    this->Entity.iszPlayerName = client_dllJson["client.dll"]["CBasePlayerController"]["m_iszPlayerName"];
+    this->Entity.IsAlive = client_dllJson["CCSPlayerController"] ["fields"] ["m_bPawnIsAlive"];
+    this->Entity.PlayerPawn = client_dllJson["CCSPlayerController"] ["fields"] ["m_hPlayerPawn"];
+    this->Entity.iszPlayerName = client_dllJson["CBasePlayerController"] ["fields"] ["m_iszPlayerName"];
 
-    this->Pawn.BulletServices = client_dllJson["client.dll"]["C_CSPlayerPawn"]["m_pBulletServices"];
-    this->Pawn.CameraServices = client_dllJson["client.dll"]["C_BasePlayerPawn"]["m_pCameraServices"];
-    this->Pawn.pClippingWeapon = client_dllJson["client.dll"]["C_CSPlayerPawnBase"]["m_pClippingWeapon"];
-    this->Pawn.isScoped = client_dllJson["client.dll"]["C_CSPlayerPawn"]["m_bIsScoped"];
-    this->Pawn.isDefusing = client_dllJson["client.dll"]["C_CSPlayerPawn"]["m_bIsDefusing"];
-    this->Pawn.TotalHit = client_dllJson["client.dll"]["CCSPlayer_BulletServices"]["m_totalHitsOnServer"];
-    this->Pawn.Pos = client_dllJson["client.dll"]["C_BasePlayerPawn"]["m_vOldOrigin"];
-    this->Pawn.CurrentArmor = client_dllJson["client.dll"]["C_CSPlayerPawn"]["m_ArmorValue"];
-    this->Pawn.MaxHealth = client_dllJson["client.dll"]["C_BaseEntity"]["m_iMaxHealth"];
-    this->Pawn.CurrentHealth = client_dllJson["client.dll"]["C_BaseEntity"]["m_iHealth"];
-    this->Pawn.GameSceneNode = client_dllJson["client.dll"]["C_BaseEntity"]["m_pGameSceneNode"];
+    this->Pawn.BulletServices = client_dllJson["C_CSPlayerPawn"] ["fields"] ["m_pBulletServices"];
+    this->Pawn.CameraServices = client_dllJson["C_BasePlayerPawn"] ["fields"] ["m_pCameraServices"];
+    this->Pawn.pClippingWeapon = client_dllJson["C_CSPlayerPawnBase"] ["fields"] ["m_pClippingWeapon"];
+    this->Pawn.isScoped = client_dllJson["C_CSPlayerPawn"] ["fields"] ["m_bIsScoped"];
+    this->Pawn.isDefusing = client_dllJson["C_CSPlayerPawn"] ["fields"] ["m_bIsDefusing"];
+    this->Pawn.TotalHit = client_dllJson["CCSPlayer_BulletServices"] ["fields"] ["m_totalHitsOnServer"];
+    this->Pawn.Pos = client_dllJson["C_BasePlayerPawn"] ["fields"] ["m_vOldOrigin"];
+    this->Pawn.CurrentArmor = client_dllJson["C_CSPlayerPawn"] ["fields"] ["m_ArmorValue"];
+    this->Pawn.MaxHealth = client_dllJson["C_BaseEntity"] ["fields"] ["m_iMaxHealth"];
+    this->Pawn.CurrentHealth = client_dllJson["C_BaseEntity"] ["fields"] ["m_iHealth"];
+    this->Pawn.GameSceneNode = client_dllJson["C_BaseEntity"] ["fields"] ["m_pGameSceneNode"];
     this->Pawn.BoneArray = 0x1F0;
-    this->Pawn.angEyeAngles = client_dllJson["client.dll"]["C_CSPlayerPawnBase"]["m_angEyeAngles"];
-    this->Pawn.vecLastClipCameraPos = client_dllJson["client.dll"]["C_CSPlayerPawnBase"]["m_vecLastClipCameraPos"];
-    this->Pawn.iShotsFired = client_dllJson["client.dll"]["C_CSPlayerPawn"]["m_iShotsFired"];
-    this->Pawn.flFlashDuration = client_dllJson["client.dll"]["C_CSPlayerPawnBase"]["m_flFlashDuration"];
-    this->Pawn.aimPunchAngle = client_dllJson["client.dll"]["C_CSPlayerPawn"]["m_aimPunchAngle"];
-    this->Pawn.aimPunchCache = client_dllJson["client.dll"]["C_CSPlayerPawn"]["m_aimPunchCache"];
-    this->Pawn.iIDEntIndex = client_dllJson["client.dll"]["C_CSPlayerPawnBase"]["m_iIDEntIndex"];
-    this->Pawn.iTeamNum = client_dllJson["client.dll"]["C_BaseEntity"]["m_iTeamNum"];
-    this->Pawn.iFovStart = client_dllJson["client.dll"]["CCSPlayerBase_CameraServices"]["m_iFOVStart"];
-    this->Pawn.fFlags = client_dllJson["client.dll"]["C_BaseEntity"]["m_fFlags"];
-    this->Pawn.bSpottedByMask = DWORD(client_dllJson["client.dll"]["C_CSPlayerPawn"]["m_entitySpottedState"]) + DWORD(client_dllJson["client.dll"]["EntitySpottedState_t"]["m_bSpottedByMask"]);
-    this->Pawn.AbsVelocity = client_dllJson["client.dll"]["C_BaseEntity"]["m_vecAbsVelocity"];
-    this->Pawn.m_bWaitForNoAttack = client_dllJson["client.dll"]["C_CSPlayerPawn"]["m_bWaitForNoAttack"];
+    this->Pawn.angEyeAngles = client_dllJson["C_CSPlayerPawnBase"] ["fields"] ["m_angEyeAngles"];
+    this->Pawn.vecLastClipCameraPos = client_dllJson["C_CSPlayerPawnBase"] ["fields"] ["m_vecLastClipCameraPos"];
+    this->Pawn.iShotsFired = client_dllJson["C_CSPlayerPawn"] ["fields"] ["m_iShotsFired"];
+    this->Pawn.flFlashDuration = client_dllJson["C_CSPlayerPawnBase"] ["fields"] ["m_flFlashDuration"];
+    this->Pawn.aimPunchAngle = client_dllJson["C_CSPlayerPawn"] ["fields"] ["m_aimPunchAngle"];
+    this->Pawn.aimPunchCache = client_dllJson["C_CSPlayerPawn"] ["fields"] ["m_aimPunchCache"];
+    this->Pawn.iIDEntIndex = client_dllJson["C_CSPlayerPawnBase"] ["fields"] ["m_iIDEntIndex"];
+    this->Pawn.iTeamNum = client_dllJson["C_BaseEntity"] ["fields"] ["m_iTeamNum"];
+    this->Pawn.iFovStart = client_dllJson["CCSPlayerBase_CameraServices"] ["fields"] ["m_iFOVStart"];
+    this->Pawn.fFlags = client_dllJson["C_BaseEntity"] ["fields"] ["m_fFlags"];
+    this->Pawn.bSpottedByMask = DWORD(client_dllJson["C_CSPlayerPawn"] ["fields"] ["m_entitySpottedState"]) + DWORD(client_dllJson["EntitySpottedState_t"] ["fields"] ["m_bSpottedByMask"]);
+    this->Pawn.AbsVelocity = client_dllJson["C_BaseEntity"] ["fields"] ["m_vecAbsVelocity"];
+    this->Pawn.m_bWaitForNoAttack = client_dllJson["C_CSPlayerPawn"] ["fields"] ["m_bWaitForNoAttack"];
 
     this->GlobalVar.RealTime = 0x00;
     this->GlobalVar.FrameCount = 0x04;
@@ -98,26 +98,26 @@ void Offsets::SetOffsets(const std::string& offsetsData, const std::string& clie
     this->GlobalVar.CurrentMap = 0x0180;
     this->GlobalVar.CurrentMapName = 0x0188;
 
-    this->PlayerController.m_hPawn = client_dllJson["client.dll"]["CBasePlayerController"]["m_hPawn"];
-    this->PlayerController.m_pObserverServices = client_dllJson["client.dll"]["C_BasePlayerPawn"]["m_pObserverServices"];
-    this->PlayerController.m_hObserverTarget = client_dllJson["client.dll"]["CPlayer_ObserverServices"]["m_hObserverTarget"];
-    this->PlayerController.m_hController = client_dllJson["client.dll"]["C_BasePlayerPawn"]["m_hController"];
-    this->PlayerController.PawnArmor = client_dllJson["client.dll"]["CCSPlayerController"]["m_iPawnArmor"];
-    this->PlayerController.HasDefuser = client_dllJson["client.dll"]["CCSPlayerController"]["m_bPawnHasDefuser"];
-    this->PlayerController.HasHelmet = client_dllJson["client.dll"]["CCSPlayerController"]["m_bPawnHasHelmet"];
+    this->PlayerController.m_hPawn = client_dllJson["CBasePlayerController"] ["fields"] ["m_hPawn"];
+    this->PlayerController.m_pObserverServices = client_dllJson["C_BasePlayerPawn"] ["fields"] ["m_pObserverServices"];
+    this->PlayerController.m_hObserverTarget = client_dllJson["CPlayer_ObserverServices"] ["fields"] ["m_hObserverTarget"];
+    this->PlayerController.m_hController = client_dllJson["C_BasePlayerPawn"] ["fields"] ["m_hController"];
+    this->PlayerController.PawnArmor = client_dllJson["CCSPlayerController"] ["fields"] ["m_iPawnArmor"];
+    this->PlayerController.HasDefuser = client_dllJson["CCSPlayerController"] ["fields"] ["m_bPawnHasDefuser"];
+    this->PlayerController.HasHelmet = client_dllJson["CCSPlayerController"] ["fields"] ["m_bPawnHasHelmet"];
 
-    this->EconEntity.AttributeManager = client_dllJson["client.dll"]["C_EconEntity"]["m_AttributeManager"];
+    this->EconEntity.AttributeManager = client_dllJson["C_EconEntity"] ["fields"] ["m_AttributeManager"];
 
-    this->WeaponBaseData.WeaponDataPTR = DWORD(client_dllJson["client.dll"]["C_BaseEntity"]["m_nSubclassID"]) + 0x08;
-    this->WeaponBaseData.szName = client_dllJson["client.dll"]["CCSWeaponBaseVData"]["m_szName"];
-    this->WeaponBaseData.Clip1 = client_dllJson["client.dll"]["C_BasePlayerWeapon"]["m_iClip1"];
-    this->WeaponBaseData.MaxClip = client_dllJson["client.dll"]["CBasePlayerWeaponVData"]["m_iMaxClip1"];
-    this->WeaponBaseData.Item = client_dllJson["client.dll"]["C_AttributeContainer"]["m_Item"];
-    this->WeaponBaseData.ItemDefinitionIndex = client_dllJson["client.dll"]["C_EconItemView"]["m_iItemDefinitionIndex"];
+    this->WeaponBaseData.WeaponDataPTR = DWORD(client_dllJson["C_BaseEntity"] ["fields"] ["m_nSubclassID"]) + 0x08;
+    this->WeaponBaseData.szName = client_dllJson["CCSWeaponBaseVData"] ["fields"] ["m_szName"];
+    this->WeaponBaseData.Clip1 = client_dllJson["C_BasePlayerWeapon"] ["fields"] ["m_iClip1"];
+    this->WeaponBaseData.MaxClip = client_dllJson["CBasePlayerWeaponVData"] ["fields"] ["m_iMaxClip1"];
+    this->WeaponBaseData.Item = client_dllJson["C_AttributeContainer"] ["fields"] ["m_Item"];
+    this->WeaponBaseData.ItemDefinitionIndex = client_dllJson["C_EconItemView"] ["fields"] ["m_iItemDefinitionIndex"];
 
-    this->C4.m_bBeingDefused = client_dllJson["client.dll"]["C_PlantedC4"]["m_bBeingDefused"];
-    this->C4.m_flDefuseCountDown = client_dllJson["client.dll"]["C_PlantedC4"]["m_flDefuseCountDown"];
-    this->C4.m_nBombSite = client_dllJson["client.dll"]["C_PlantedC4"]["m_nBombSite"];
+    this->C4.m_bBeingDefused = client_dllJson["C_PlantedC4"] ["fields"] ["m_bBeingDefused"];
+    this->C4.m_flDefuseCountDown = client_dllJson["C_PlantedC4"] ["fields"] ["m_flDefuseCountDown"];
+    this->C4.m_nBombSite = client_dllJson["C_PlantedC4"] ["fields"] ["m_nBombSite"];
 }
 
 bool Offsets::UpdateOffsets()
