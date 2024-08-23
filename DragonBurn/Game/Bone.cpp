@@ -8,10 +8,10 @@ bool CBone::UpdateAllBoneData(const DWORD64& EntityPawnAddress) {
 
     DWORD64 GameSceneNode = 0;
     DWORD64 BoneArrayAddress = 0;
-    if (!ProcessMgr.ReadMemory<DWORD64>(EntityPawnAddress + Offset::Pawn.GameSceneNode, GameSceneNode)) {
+    if (!ProcessMgr.ReadMemory<DWORD64>(EntityPawnAddress + Offset.Pawn.GameSceneNode, GameSceneNode)) {
         return false;
     }
-    if (!ProcessMgr.ReadMemory<DWORD64>(GameSceneNode + Offset::Pawn.BoneArray, BoneArrayAddress)) {
+    if (!ProcessMgr.ReadMemory<DWORD64>(GameSceneNode + Offset.Pawn.BoneArray, BoneArrayAddress)) {
         return false;
     }
 

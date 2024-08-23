@@ -182,7 +182,7 @@ void Cheats::Run()
 				{
 					bool HasHelmet;
 					ImVec2 ArmorBarPos;
-					ProcessMgr.ReadMemory(Entity.Controller.Address + Offset::PlayerController.HasHelmet, HasHelmet);
+					ProcessMgr.ReadMemory(Entity.Controller.Address + Offset.PlayerController.HasHelmet, HasHelmet);
 					if (ESPConfig::ShowHealthBar)
 						ArmorBarPos = { Rect.x - 10.f,Rect.y };
 					else

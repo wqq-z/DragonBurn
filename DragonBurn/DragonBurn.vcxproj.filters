@@ -268,5 +268,8 @@
     <ClCompile Include="Features\Aimbot.cpp">
       <Filter>Features\Aim</Filter>
     </ClCompile>
+    <ClCompile Include="Offsets\Offsets.cpp">
+      <Filter>Offsets</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
