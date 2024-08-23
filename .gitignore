@@ -404,3 +404,4 @@ FodyWeavers.xsd
 *.sln.iml
 DragonBurn/imgui.ini
 DragonBurn/settings.yml
+DragonBurn/prefs.ini

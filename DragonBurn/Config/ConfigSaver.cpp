@@ -23,7 +23,7 @@ namespace MyConfigSaver
         json ConfigData;
 
         ConfigData["0"]["Name"] = "DragonBurn";
-        ConfigData["0"]["Version"] = "1.0.2.1";
+        ConfigData["0"]["Version"] = "1.0.3.0";
         ConfigData["0"]["Author"] = author;
 
 

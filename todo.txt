@@ -1,8 +1,9 @@
-○ Refactor the code(I have no time for it)
-○ Make cheat multi-tread(I have no time for it)
-○ Add Offsets auto load(bug with curl)
-○ Improve Aimbot(nearest)
-○ Make menu looks nice(low priority)
+○ Make cheat portable
+○ Improve Aimbot
+○ Make menu looks nice
+○ Make cheat multi-tread
+○ Refactor the code
+◎ Add Offsets auto load
 ◎ Add spec list
 ◎ Use JSON instead YAML
 ◎ Fixed triggerbot bug

@@ -12,10 +12,10 @@ void TriggerBot::Run(const CEntity& LocalEntity)
     if (LocalEntity.Controller.AliveStatus == 0)
         return;
 
-    if (!ProcessMgr.ReadMemory<bool>(LocalEntity.Pawn.Address + Offset::Pawn.m_bWaitForNoAttack, WaitForNoAttack))
+    if (!ProcessMgr.ReadMemory<bool>(LocalEntity.Pawn.Address + Offset.Pawn.m_bWaitForNoAttack, WaitForNoAttack))
         return;
 
-    if (!ProcessMgr.ReadMemory<DWORD>(LocalEntity.Pawn.Address + Offset::Pawn.iIDEntIndex, uHandle))
+    if (!ProcessMgr.ReadMemory<DWORD>(LocalEntity.Pawn.Address + Offset.Pawn.iIDEntIndex, uHandle))
         return;
 
     if (uHandle == -1)
@@ -37,7 +37,7 @@ void TriggerBot::Run(const CEntity& LocalEntity)
     if (ScopeOnly)
     {
         bool isScoped;
-        ProcessMgr.ReadMemory<bool>(LocalEntity.Pawn.Address + Offset::Pawn.isScoped, isScoped);
+        ProcessMgr.ReadMemory<bool>(LocalEntity.Pawn.Address + Offset.Pawn.isScoped, isScoped);
         if (!isScoped and CheckScopeWeapon(LocalEntity))
         {
             return;
@@ -80,14 +80,14 @@ bool TriggerBot::CheckScopeWeapon(const CEntity& LocalEntity)
     DWORD64 WeaponNameAddress = 0;
     char Buffer[256]{};
 
-    WeaponNameAddress = ProcessMgr.TraceAddress(LocalEntity.Pawn.Address + Offset::Pawn.pClippingWeapon, { 0x10,0x20 ,0x0 });
+    WeaponNameAddress = ProcessMgr.TraceAddress(LocalEntity.Pawn.Address + Offset.Pawn.pClippingWeapon, { 0x10,0x20 ,0x0 });
     if (WeaponNameAddress == 0)
         return false;
 
     DWORD64 CurrentWeapon;
     short weaponIndex;
-    ProcessMgr.ReadMemory(LocalEntity.Pawn.Address + Offset::Pawn.pClippingWeapon, CurrentWeapon);
-    ProcessMgr.ReadMemory(CurrentWeapon + Offset::EconEntity.AttributeManager + Offset::WeaponBaseData.Item + Offset::WeaponBaseData.ItemDefinitionIndex, weaponIndex);
+    ProcessMgr.ReadMemory(LocalEntity.Pawn.Address + Offset.Pawn.pClippingWeapon, CurrentWeapon);
+    ProcessMgr.ReadMemory(CurrentWeapon + Offset.EconEntity.AttributeManager + Offset.WeaponBaseData.Item + Offset.WeaponBaseData.ItemDefinitionIndex, weaponIndex);
 
     if (weaponIndex == -1)
         return false;
@@ -100,7 +100,7 @@ bool TriggerBot::CheckScopeWeapon(const CEntity& LocalEntity)
 }
 
 void TriggerBot::TargetCheck(const CEntity& LocalEntity) noexcept {
-    if (!ProcessMgr.ReadMemory<DWORD>(LocalEntity.Pawn.Address + Offset::Pawn.iIDEntIndex, uHandle) || uHandle == -1) {
+    if (!ProcessMgr.ReadMemory<DWORD>(LocalEntity.Pawn.Address + Offset.Pawn.iIDEntIndex, uHandle) || uHandle == -1) {
         CrosshairsCFG::isAim = false;
         return;
     }
