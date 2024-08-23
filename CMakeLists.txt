@@ -8,6 +8,7 @@
 #                 |___/             
 #                        
 #https://github.com/ByteCorum/DragonBurn
+#outdated
 
 # Minimum required CMake version
 cmake_minimum_required(VERSION 3.0)

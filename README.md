@@ -6,12 +6,13 @@
   <img src="https://img.shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual%20studio&logoColor=white">
   <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white">
   <img src="https://img.shields.io/badge/build-passing-76B900?style=for-the-badge&logo=&logoColor=whit">
-  <img src="https://img.shields.io/badge/tests-99/100-76B900?style=for-the-badge&logo=&logoColor=whit">
+  <img src="https://img.shields.io/badge/tests-100/100-76B900?style=for-the-badge&logo=&logoColor=whit">
   <img src="https://img.shields.io/badge/code quality-B+-76B900?style=for-the-badge&logo=&logoColor=whit">
   <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge&logo=&logoColor=whit">
-  <img src="https://img.shields.io/badge/DragonBurn-v1.0.2.3-blue?style=for-the-badge&logo=&logoColor=whit">
+  <img src="https://img.shields.io/badge/DragonBurn-v1.0.3.0-blue?style=for-the-badge&logo=&logoColor=whit">
   <img src="https://img.shields.io/badge/CS2-000000?style=for-the-badge&logo=counter-strike&logoColor=white">
   <img src="https://img.shields.io/badge/undetected-03C75A?style=for-the-badge&logo=ticktick&logoColor=FFFFFF">
+  <img src="https://img.shields.io/badge/offsets auto update-D06B57?style=for-the-badge&logo=databricks&logoColor=FFFFFF">
 </p>
 
 ---
