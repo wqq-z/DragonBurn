@@ -193,9 +193,7 @@
     <ClInclude Include="Helpers\GetWeaponIcon.h" />
     <ClInclude Include="Helpers\Mouse.h" />
     <ClInclude Include="Helpers\Random.h" />
-    <ClInclude Include="Offsets\Client.hpp" />
     <ClInclude Include="Offsets\Offsets.h" />
-    <ClInclude Include="Offsets\Offsets.hpp" />
     <ClInclude Include="OS-ImGui\imgui\imconfig.h" />
     <ClInclude Include="OS-ImGui\imgui\imgui.h" />
     <ClInclude Include="OS-ImGui\imgui\imgui_impl_dx11.h" />

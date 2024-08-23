@@ -8,7 +8,6 @@
 #                 |___/             
 #                        
 #https://github.com/ByteCorum/DragonBurn
-#outdated
 
 # Minimum required CMake version
 cmake_minimum_required(VERSION 3.0)
@@ -24,6 +23,20 @@ project(DragonBurn)
 set_target_properties(DragonBurn PROPERTIES
     OUTPUT_NAME "DragonBurn"
     RUNTIME_OUTPUT_DIRECTORY "built")
+
+# Include Directories
+set(INCLUDE_DIRS
+  Config
+  Core
+  Features
+  Game
+  Helpers
+  Offsets
+  OS-ImGui/imgui
+  OS-ImGui
+  Resources
+  Libs/json
+)
 
 # Add an executable from source files
 add_executable(DragonBurn
@@ -67,9 +80,8 @@ add_executable(DragonBurn
     DragonBurn/Helpers/Mouse.h
     DragonBurn/Helpers/Random.h
     DragonBurn/Libs/json.hpp
-    DragonBurn/Offsets/Client.hpp
     DragonBurn/Offsets/Offsets.h
-    DragonBurn/Offsets/Offsets.hpp
+    DragonBurn/Offsets/Offsets.cpp
     DragonBurn/OS-ImGui/OS-ImGui.cpp
     DragonBurn/OS-ImGui/OS-ImGui.h
     DragonBurn/OS-ImGui/OS-ImGui_Base.cpp
@@ -101,11 +113,19 @@ add_executable(DragonBurn
     DragonBurn/Resources/WeaponIcon.h
 )
 
-# Additional configuration
-target_include_directories(DragonBurn
-    PRIVATE
-        DragonBurn/Libs
-        DragonBurn/OS-ImGui)
+# Linking with Curl
+find_package(CURL REQUIRED)
+target_link_libraries(DragonBurn ${CURL_LIBRARIES})
+include_directories(${CURL_INCLUDE_DIRS})
+
+# Include OS-ImGui headers
+include_directories(${OS-ImGui_INCLUDE_DIRS})
+
+# Linking with JSON
+include_directories(${json_INCLUDE_DIRS})
+
+# Target Executable
+add_executable(DragonBurn ${SOURCE_FILES})
 
 target_sources(DragonBurn
     PRIVATE
@@ -116,6 +136,3 @@ add_custom_command(
     COMMAND windres DragonBurn/AssemblyInfo.rc
     OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 link_directories(${CMAKE_CURRENT_BINARY_DIR})
-
-
-target_link_libraries(DragonBurn AssemblyInfo.res)

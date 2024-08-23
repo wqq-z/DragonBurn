@@ -177,13 +177,7 @@
     <ClInclude Include="Config\ConfigMenu.hpp">
       <Filter>Config</Filter>
     </ClInclude>
-    <ClInclude Include="Offsets\Offsets.hpp">
-      <Filter>Offsets</Filter>
-    </ClInclude>
     <ClInclude Include="Offsets\Offsets.h">
-      <Filter>Offsets</Filter>
-    </ClInclude>
-    <ClInclude Include="Offsets\Client.hpp">
       <Filter>Offsets</Filter>
     </ClInclude>
     <ClInclude Include="Features\Aimbot.h">
