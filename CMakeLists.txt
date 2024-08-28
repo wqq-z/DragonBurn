@@ -8,7 +8,6 @@
 #                 |___/             
 #                        
 #https://github.com/ByteCorum/DragonBurn
-#outdated
 
 # Minimum required CMake version
 cmake_minimum_required(VERSION 3.0)
@@ -113,11 +112,6 @@ add_executable(DragonBurn
     DragonBurn/Resources/Sounds.h
     DragonBurn/Resources/WeaponIcon.h
 )
-
-# Linking with Curl
-find_package(CURL REQUIRED)
-target_link_libraries(DragonBurn ${CURL_LIBRARIES})
-include_directories(${CURL_INCLUDE_DIRS})
 
 # Include OS-ImGui headers
 include_directories(${OS-ImGui_INCLUDE_DIRS})
