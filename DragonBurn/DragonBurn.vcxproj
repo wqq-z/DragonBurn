@@ -229,6 +229,7 @@
     <ClCompile Include="Features\Aimbot.cpp" />
     <ClCompile Include="Features\Misc.cpp" />
     <ClCompile Include="Features\Radar.cpp" />
+    <ClCompile Include="Features\RCS.cpp" />
     <ClCompile Include="Features\TriggerBot.cpp" />
     <ClCompile Include="Game\Bone.cpp" />
     <ClCompile Include="Game\Entity.cpp" />
