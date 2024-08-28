@@ -33,7 +33,7 @@ int PreviousTotalHits = 0;
 //	}
 //}
 
-void RenderCrossHair(ImDrawList*);
+void RenderCrossHair(ImDrawList*, CEntity&);
 
 void RadarSetting(Base_Radar&);
 
@@ -243,7 +243,7 @@ void Visual(CEntity LocalEntity)
 	// CrossHair
 	TriggerBot::TargetCheck(LocalEntity);
 	Misc::AirCheck(LocalEntity);
-	RenderCrossHair(ImGui::GetBackgroundDrawList());
+	RenderCrossHair(ImGui::GetBackgroundDrawList(), LocalEntity);
 }
 
 void Radar(Base_Radar Radar, CEntity LocalEntity)
@@ -331,9 +331,9 @@ void RadarSetting(Base_Radar& Radar)
 	Radar.Opened = true;
 }
 
-void RenderCrossHair(ImDrawList* drawList)
+void RenderCrossHair(ImDrawList* drawList, const CEntity& LocalEntity)
 {
-	if (!CrosshairsCFG::ShowCrossHair)
+	if (!CrosshairsCFG::ShowCrossHair || LocalEntity.Controller.TeamID == 0)
 		return;
 
 	if (CrosshairsCFG::isAim && MenuConfig::TargetingCrosshairs)

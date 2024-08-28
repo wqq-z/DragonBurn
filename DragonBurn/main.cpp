@@ -58,7 +58,7 @@ void Cheat()
 	{
 		SetConsoleTextAttribute(hConsole, 14);
 		cout << "[INFO] Connecting to CS2." << endl;
-		Sleep(20000);
+		Sleep(25000);
 	}
 
 
@@ -110,7 +110,7 @@ void Cheat()
 	//}
 
 	SetConsoleTextAttribute(hConsole, 14);
-	cout << "[INFO] Updating offsets(it may take some time) ..." << endl;
+	cout << "[INFO] Updating offsets(it may take some time)..." << endl;
 	if (!Offset.UpdateOffsets()) 
 	{
 		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
