@@ -188,7 +188,7 @@ namespace Lang
 
 	inline void English()
 	{
-		Global.Date = u8"v1.0.0.0";
+		Global.Date = u8"v1.0.4.3";
 		Global.Author = u8"ByteCorum";
 
 		Global.SwitchButton = u8"Enable";

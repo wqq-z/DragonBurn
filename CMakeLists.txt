@@ -64,6 +64,7 @@ add_executable(DragonBurn
     DragonBurn/Features/Radar.cpp
     DragonBurn/Features/Radar.h
     DragonBurn/DragonBurn/Features/RCS.h
+    DragonBurn/DragonBurn/Features/RCS.cpp
     DragonBurn/Features/SpectatorList.h
     DragonBurn/Features/TriggerBot.cpp
     DragonBurn/Features/TriggerBot.h
