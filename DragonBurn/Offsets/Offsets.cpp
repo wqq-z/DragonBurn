@@ -37,6 +37,15 @@
 //    }
 //}
 
+bool CheckConnection()
+{
+    int exitCode = system("ping google.com > nul");
+    if (exitCode == 0)
+        return true;
+    else
+        return false;
+}
+
 bool LoadData(std::string url, std::string& response) 
 {
     response = "";
@@ -145,6 +154,8 @@ bool Offsets::UpdateOffsets()
     const std::string client_dllUrl = "https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/client_dll.json";
     std::string offsetsData, client_dllData;
 
+    if (!CheckConnection())
+        return false;
     if (!LoadData(offsetsUrl, offsetsData) || !LoadData(client_dllUrl, client_dllData))
         return false;
 
