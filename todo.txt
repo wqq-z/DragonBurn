@@ -1,8 +1,8 @@
-○ Make cheat portable
-○ Improve Aimbot
 ○ Make menu looks nice
 ○ Make cheat multi-tread
 ○ Refactor the code
+◎ Improve Aimbot
+◎ Make cheat portable
 ◎ Add Offsets auto load
 ◎ Add spec list
 ◎ Use JSON instead YAML

@@ -64,6 +64,7 @@ add_executable(DragonBurn
     DragonBurn/Features/Radar.cpp
     DragonBurn/Features/Radar.h
     DragonBurn/DragonBurn/Features/RCS.h
+    DragonBurn/DragonBurn/Features/RCS.cpp
     DragonBurn/Features/SpectatorList.h
     DragonBurn/Features/TriggerBot.cpp
     DragonBurn/Features/TriggerBot.h
@@ -112,11 +113,6 @@ add_executable(DragonBurn
     DragonBurn/Resources/Sounds.h
     DragonBurn/Resources/WeaponIcon.h
 )
-
-# Linking with Curl
-find_package(CURL REQUIRED)
-target_link_libraries(DragonBurn ${CURL_LIBRARIES})
-include_directories(${CURL_INCLUDE_DIRS})
 
 # Include OS-ImGui headers
 include_directories(${OS-ImGui_INCLUDE_DIRS})
