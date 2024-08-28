@@ -35,6 +35,8 @@ namespace bmb
 
 			return site;
 		}
+		else
+			return 0;
 		
 	}
 
