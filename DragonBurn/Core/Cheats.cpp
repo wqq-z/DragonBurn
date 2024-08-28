@@ -33,7 +33,7 @@ int PreviousTotalHits = 0;
 //	}
 //}
 
-void RenderCrossHair(ImDrawList*, CEntity&);
+void RenderCrossHair(ImDrawList*, const CEntity&);
 
 void RadarSetting(Base_Radar&);
 
