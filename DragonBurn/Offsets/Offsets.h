@@ -10,7 +10,7 @@ class Offsets
 public:
 	Offsets();
 	~Offsets();
-	bool UpdateOffsets();
+	int UpdateOffsets();
 
 	DWORD EntityList;
 	DWORD Matrix;

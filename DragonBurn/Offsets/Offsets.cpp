@@ -39,8 +39,8 @@
 
 bool CheckConnection()
 {
-    int exitCode = system("ping google.com > nul");
-    if (exitCode == 0)
+    int result = system("ping google.com > nul");
+    if (result == 0)
         return true;
     else
         return false;
@@ -50,6 +50,7 @@ bool LoadData(std::string url, std::string& response)
 {
     response = "";
     std::string cmd = "curl -s -X GET " + url;
+
     std::array<char, 128> buffer;
     std::unique_ptr<FILE, decltype(&_pclose)> pipe(_popen(cmd.c_str(), "r"), _pclose);
 
@@ -60,6 +61,11 @@ bool LoadData(std::string url, std::string& response)
     while (fgets(buffer.data(), static_cast<int>(buffer.size()), pipe.get()) != nullptr)
     {
         response += buffer.data();
+    }
+
+    if (response.find("{") == -1)
+    {
+        return false;
     }
 
     return true;
@@ -148,18 +154,18 @@ void Offsets::SetOffsets(const std::string& offsetsData, const std::string& clie
     this->C4.m_nBombSite = client_dllJson["C_PlantedC4"] ["fields"] ["m_nBombSite"];
 }
 
-bool Offsets::UpdateOffsets()
+int Offsets::UpdateOffsets()
 {
     const std::string offsetsUrl = "https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/offsets.json";
     const std::string client_dllUrl = "https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/client_dll.json";
     std::string offsetsData, client_dllData;
 
     if (!CheckConnection())
-        return false;
+        return 0;
     if (!LoadData(offsetsUrl, offsetsData) || !LoadData(client_dllUrl, client_dllData))
-        return false;
+        return 1;
 
     SetOffsets(offsetsData, client_dllData);
 
-	return true;
+    return 2;
 }
