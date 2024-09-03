@@ -1,6 +1,7 @@
 ○ Make menu looks nice
 ○ Make cheat multi-tread
 ○ Refactor the code
+○ Kernel mode
 ◎ Improve Aimbot
 ◎ Make cheat portable
 ◎ Add Offsets auto load
