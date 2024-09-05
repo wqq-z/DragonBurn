@@ -24,6 +24,14 @@ public:
 
 	struct
 	{
+		DWORD Jump;
+		DWORD Left;
+		DWORD Right;
+		DWORD Attack;
+	}Buttons;
+
+	struct
+	{
 		DWORD IsAlive;
 		DWORD PlayerPawn;
 		DWORD iszPlayerName;
@@ -109,7 +117,7 @@ public:
 	} C4;
 
 private:
-	void SetOffsets(const std::string&, const std::string&);
+	void SetOffsets(const std::string&, const std::string&, const std::string&);
 };
 
 inline Offsets Offset;

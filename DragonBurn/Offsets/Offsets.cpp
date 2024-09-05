@@ -75,9 +75,10 @@ Offsets::Offsets(){}
 
 Offsets::~Offsets(){}
 
-void Offsets::SetOffsets(const std::string& offsetsData, const std::string& client_dllData) 
+void Offsets::SetOffsets(const std::string& offsetsData, const std::string& buttonsData, const std::string& client_dllData)
 {
     json offsetsJson = json::parse(offsetsData);
+    json buttonsJson = json::parse(buttonsData);
     json client_dllJson = json::parse(client_dllData)["client.dll"]["classes"];
 
     this->EntityList = offsetsJson["client.dll"]["dwEntityList"];
@@ -89,6 +90,11 @@ void Offsets::SetOffsets(const std::string& offsetsData, const std::string& clie
     this->PlantedC4 = offsetsJson["client.dll"]["dwPlantedC4"];
     this->InputSystem = offsetsJson["inputsystem.dll"]["dwInputSystem"];
     this->Sensitivity = offsetsJson["client.dll"]["dwSensitivity"];
+
+    this->Buttons.Attack = buttonsJson["client.dll"]["attack"];
+    this->Buttons.Jump = buttonsJson["client.dll"]["jump"];
+    this->Buttons.Right = buttonsJson["client.dll"]["right"];
+    this->Buttons.Left = buttonsJson["client.dll"]["left"];
 
     this->Entity.IsAlive = client_dllJson["CCSPlayerController"] ["fields"] ["m_bPawnIsAlive"];
     this->Entity.PlayerPawn = client_dllJson["CCSPlayerController"] ["fields"] ["m_hPlayerPawn"];
@@ -157,15 +163,16 @@ void Offsets::SetOffsets(const std::string& offsetsData, const std::string& clie
 int Offsets::UpdateOffsets()
 {
     const std::string offsetsUrl = "https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/offsets.json";
+    const std::string buttonsUrl = "https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/buttons.json";
     const std::string client_dllUrl = "https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/client_dll.json";
-    std::string offsetsData, client_dllData;
+    std::string offsetsData, buttonsData, client_dllData;
 
     if (!CheckConnection())
         return 0;
-    if (!LoadData(offsetsUrl, offsetsData) || !LoadData(client_dllUrl, client_dllData))
+    if (!LoadData(offsetsUrl, offsetsData) || !LoadData(buttonsUrl, buttonsData) || !LoadData(client_dllUrl, client_dllData))
         return 1;
 
-    SetOffsets(offsetsData, client_dllData);
+    SetOffsets(offsetsData, buttonsData, client_dllData);
 
     return 2;
 }
