@@ -163,17 +163,20 @@ void Cheat()
 
 	if (fs::exists(MenuConfig::path))
 	{
+		SetConsoleTextAttribute(hConsole, 14);
 		cout << "[Info] Config folder connected: " << MenuConfig::path << endl;
 	}
 	else
 	{
 		if (fs::create_directory(MenuConfig::path))
 		{
+			SetConsoleTextAttribute(hConsole, 14);
 			cout << "[Info] Config folder created: " << MenuConfig::path << endl;
 		}
 		else
 		{
-			cerr << "[Info] Error: Failed to create the config directory." << endl;
+			SetConsoleTextAttribute(hConsole, 12);
+			cerr << "[ERROR] Failed to create the config directory." << endl;
 			Exit();
 		}
 	}
@@ -188,7 +191,7 @@ void Cheat()
 	SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
 	cout << "DragonBurn loaded!!!\nGLHF" << endl;
 	Sleep(3000);
-	ShowWindow(GetConsoleWindow(), SW_HIDE);
+	//ShowWindow(GetConsoleWindow(), SW_HIDE);
 
 	try
 	{

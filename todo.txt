@@ -1,3 +1,4 @@
+○ Add Bhop
 ○ Add FastStop
 ○ Add DefuseTimer
 ○ Fix SpecList
@@ -6,7 +7,6 @@
 ○ Make cheat multi-tread
 ○ Refactor the code
 ○ Kernel mode
-◎ Add Bhop
 ◎ Improve Aimbot
 ◎ Make cheat portable
 ◎ Add Offsets auto load
