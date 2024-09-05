@@ -122,7 +122,6 @@ namespace ESP
 			ImColor FlatBoxCol2 = ESPConfig::FilledColor2;
 			ImColor FlatBoxVisCol = ESPConfig::BoxFilledVisColor;
 			if (ESPConfig::FilledVisBox) {
-				// visCheck from @KeysIsCool
 				if ((Entity.Pawn.bSpottedByMask & (DWORD64(1) << LocalPlayerControllerIndex)) ||
 					(LocalEntity.Pawn.bSpottedByMask & (DWORD64(1) << LocalPlayerControllerIndex))) {
 
