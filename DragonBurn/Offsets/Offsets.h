@@ -85,6 +85,7 @@ public:
 
 	struct
 	{
+		DWORD m_steamID;
 		DWORD m_hPawn;
 		DWORD m_pObserverServices;
 		DWORD m_hObserverTarget;

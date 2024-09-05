@@ -138,6 +138,7 @@ void Offsets::SetOffsets(const std::string& offsetsData, const std::string& butt
     this->GlobalVar.CurrentMap = 0x0180;
     this->GlobalVar.CurrentMapName = 0x0188;
 
+    this->PlayerController.m_steamID = client_dllJson["CBasePlayerController"]["fields"]["m_steamID"];
     this->PlayerController.m_hPawn = client_dllJson["CBasePlayerController"] ["fields"] ["m_hPawn"];
     this->PlayerController.m_pObserverServices = client_dllJson["C_BasePlayerPawn"] ["fields"] ["m_pObserverServices"];
     this->PlayerController.m_hObserverTarget = client_dllJson["CPlayer_ObserverServices"] ["fields"] ["m_hObserverTarget"];
