@@ -1,3 +1,7 @@
+○ Add Bhop
+○ Add FastStop
+○ Add DefuseTimer
+○ Fix SpecList
 ○ Make menu looks nice
 ○ Make cheat multi-tread
 ○ Refactor the code
