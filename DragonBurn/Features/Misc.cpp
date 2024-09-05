@@ -109,14 +109,17 @@ namespace Misc
 	{
 		if (!MiscCFG::BunnyHop)
 			return;
-		HWND hwnd_cs2 = FindWindowA(NULL, "Counter-Strike 2");
 
+		HWND hwnd_cs2 = FindWindowA(NULL, "Counter-Strike 2");
 		if (hwnd_cs2 == NULL) {
 			hwnd_cs2 = FindWindowA(NULL, "Counter-Strike 2");
 		}
-		int JumpBtn;
-		if (!ProcessMgr.ReadMemory<int>(gGame.GetJumpBtnAddress(), JumpBtn))
-			return;
+
+		//int JumpBtn;
+		//if (!ProcessMgr.ReadMemory(gGame.GetJumpBtnAddress(), JumpBtn))
+		//	std::cout << "bexit" << '\n';
+		//	return;
+		//std::cout << JumpBtn << '\n';
 
 		bool spacePressed = GetAsyncKeyState(VK_SPACE);
 		bool isInAir = AirCheck(Local);
