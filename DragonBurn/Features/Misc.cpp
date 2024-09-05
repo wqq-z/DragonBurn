@@ -151,7 +151,7 @@ namespace Misc
 		catch (...) {}
 	}
 
-	//void FastStop() noexcept// junk
+	//void FastStop() noexcept
 	//{
 	//	if (!MiscCFG::FastStop)
 	//		return;
