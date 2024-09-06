@@ -65,8 +65,8 @@ namespace bmb
 			return;
 		}
 
-		//ProcessMgr.ReadMemory(Offset.PlantedC4 - 0x8 + Offset.C4.m_flDefuseCountDown, IsBeingDefused);
-		//ProcessMgr.ReadMemory(Offset.PlantedC4 - 0x8 + Offset.C4.m_flDefuseCountDown, DefuseTime);
+		//ProcessMgr.ReadMemory(Offset.PlantedC4 + Offset.C4.m_flDefuseCountDown, IsBeingDefused);
+		//ProcessMgr.ReadMemory(Offset.PlantedC4 + Offset.C4.m_flDefuseCountDown, DefuseTime);
 
 		static float windowWidth = 200.0f;
 		ImGuiWindowFlags flags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize;

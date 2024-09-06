@@ -156,10 +156,10 @@ bool PlayerController::GetPlayerName()
 	if (!ProcessMgr.ReadMemory(Address + Offset.Entity.iszPlayerName, Buffer, MAX_PATH))
 		return false;
 
-	if (!this->SteamID)
-		this->PlayerName = "BOT " + std::string(Buffer);
-	else
-		this->PlayerName = Buffer;
+	//if (!this->SteamID)
+	//	this->PlayerName = "BOT " + std::string(Buffer);
+	//else
+	this->PlayerName = Buffer;
 
 	if (this->PlayerName.empty())
 		this->PlayerName = "Name_None";

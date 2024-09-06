@@ -103,8 +103,12 @@ void Cheats::Run()
 		}
 		if (!Entity.UpdateController(EntityAddress))
 			continue;
+
 		if (!Entity.UpdatePawn(Entity.Pawn.Address))
 			continue;
+
+		//speclist
+		SpecList::GetSpectatorList(Entity, LocalEntity, EntityAddress);
 
 		if (MenuConfig::TeamCheck && Entity.Controller.TeamID == LocalEntity.Controller.TeamID)
 			continue;
@@ -115,10 +119,6 @@ void Cheats::Run()
 		// Add entity to radar
 		if (RadarCFG::ShowRadar && LocalEntity.Controller.TeamID != 0)
 			GameRadar.AddPoint(LocalEntity.Pawn.Pos, LocalEntity.Pawn.ViewAngle.y, Entity.Pawn.Pos, ImColor(237, 85, 106, 200), RadarCFG::RadarType, Entity.Pawn.ViewAngle.y);
-		
-		//speclist
-		LocalEntity.Controller.spectators.empty();
-		SpecList::GetSpectatorList(Entity, LocalEntity, EntityAddress);
 
 		if (!Entity.IsInScreen())
 			continue;

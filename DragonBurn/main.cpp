@@ -191,7 +191,7 @@ void Cheat()
 	SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
 	cout << "DragonBurn loaded!!!\nGLHF" << endl;
 	Sleep(3000);
-	//ShowWindow(GetConsoleWindow(), SW_HIDE);
+	ShowWindow(GetConsoleWindow(), SW_HIDE);
 
 	try
 	{
