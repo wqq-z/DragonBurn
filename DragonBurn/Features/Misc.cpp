@@ -110,8 +110,35 @@ namespace Misc
 		if (!MiscCFG::BunnyHop)
 			return;
 
+		HWND hwnd_cs2 = FindWindowA(NULL, "Counter-Strike 2");
+		if (hwnd_cs2 == NULL) {
+			hwnd_cs2 = FindWindowA(NULL, "Counter-Strike 2");
+		}
+
+		//int JumpBtn;
+		//if (!ProcessMgr.ReadMemory(gGame.GetJumpBtnAddress(), JumpBtn))
+		//	std::cout << "bexit" << '\n';
+		//	return;
+		//std::cout << JumpBtn << '\n';
+
 		bool spacePressed = GetAsyncKeyState(VK_SPACE);
 		bool isInAir = AirCheck(Local);
+
+		if (spacePressed && isInAir)
+		{
+			//std::this_thread::sleep_for(std::chrono::microseconds(15625));
+			SendMessage(hwnd_cs2, WM_KEYUP, VK_SPACE, 0);
+			SendMessage(hwnd_cs2, WM_KEYDOWN, VK_SPACE, 0);
+		}
+
+		else if (spacePressed && !isInAir)
+		{
+			SendMessage(hwnd_cs2, WM_KEYUP, VK_SPACE, 0);
+		}
+		else if (!spacePressed)
+		{
+			SendMessage(hwnd_cs2, WM_KEYUP, VK_SPACE, 0);
+		}
 	}
 
 	void CleanTraces()
@@ -127,7 +154,7 @@ namespace Misc
 		catch (...) {}
 	}
 
-	//void FastStop() noexcept// junk
+	//void FastStop() noexcept
 	//{
 	//	if (!MiscCFG::FastStop)
 	//		return;

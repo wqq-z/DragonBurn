@@ -10,7 +10,7 @@ class Offsets
 public:
 	Offsets();
 	~Offsets();
-	bool UpdateOffsets();
+	int UpdateOffsets();
 
 	DWORD EntityList;
 	DWORD Matrix;
@@ -21,6 +21,14 @@ public:
 	DWORD PlantedC4;
 	DWORD InputSystem;
 	DWORD Sensitivity;
+
+	struct
+	{
+		DWORD Jump;
+		DWORD Left;
+		DWORD Right;
+		DWORD Attack;
+	}Buttons;
 
 	struct
 	{
@@ -77,6 +85,7 @@ public:
 
 	struct
 	{
+		DWORD m_steamID;
 		DWORD m_hPawn;
 		DWORD m_pObserverServices;
 		DWORD m_hObserverTarget;
@@ -109,7 +118,7 @@ public:
 	} C4;
 
 private:
-	void SetOffsets(const std::string&, const std::string&);
+	void SetOffsets(const std::string&, const std::string&, const std::string&);
 };
 
 inline Offsets Offset;

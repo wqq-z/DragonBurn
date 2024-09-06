@@ -12,6 +12,10 @@ bool CGame::InitAddress()
 	this->Address.LocalPawn = GetClientDLLAddress() + Offset.LocalPlayerPawn;
 	this->Address.ServerPawn = GetServerDLLAddress() + Offset.LocalPlayerPawn;
 	this->Address.GlobalVars = GetClientDLLAddress() + Offset.GlobalVars;
+	this->Address.JumpBtn = GetClientDLLAddress() + Offset.Buttons.Jump;
+	this->Address.AttackBtn = GetClientDLLAddress() + Offset.Buttons.Attack;
+	this->Address.RightBtn = GetClientDLLAddress() + Offset.Buttons.Right;
+	this->Address.LeftBtn = GetClientDLLAddress() + Offset.Buttons.Left;
 
 	return this->Address.ClientDLL != 0;
 }
@@ -64,6 +68,26 @@ DWORD64 CGame::GetServerPawnAddress()
 DWORD64 CGame::GetGlobalVarsAddress()
 {
 	return this->Address.GlobalVars;
+}
+
+DWORD64 CGame::GetJumpBtnAddress()
+{
+	return this->Address.JumpBtn;
+}
+
+DWORD64 CGame::GetAttackBtnAddress()
+{
+	return this->Address.AttackBtn;
+}
+
+DWORD64 CGame::GetRightBtnAddress()
+{
+	return this->Address.RightBtn;
+}
+
+DWORD64 CGame::GetLeftBtnAddress()
+{
+	return this->Address.LeftBtn;
 }
 
 

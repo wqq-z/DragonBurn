@@ -16,6 +16,9 @@ void AimControl::AimBot(const CEntity& Local, Vec3 LocalPos, std::vector<Vec3>& 
     if (MenuConfig::ShowMenu)
         return;
 
+    if (!TriggerBot::CheckWeapon(Local))
+        return;
+
     if (Local.Pawn.ShotsFired <= AimBullet - 1 && AimBullet != 0)
     {
         HasTarget = false;

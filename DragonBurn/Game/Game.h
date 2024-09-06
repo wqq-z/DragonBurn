@@ -19,6 +19,10 @@ private:
 		DWORD64 LocalPawn;
 		DWORD64 ServerPawn;
 		DWORD64 GlobalVars;
+		DWORD64 JumpBtn;
+		DWORD64 AttackBtn;
+		DWORD64 RightBtn;
+		DWORD64 LeftBtn;
 	}Address;
 
 public:
@@ -37,6 +41,10 @@ public:
 	DWORD64 GetLocalPawnAddress();
 	DWORD64 GetServerPawnAddress();
 	DWORD64 GetGlobalVarsAddress();
+	DWORD64 GetJumpBtnAddress();
+	DWORD64 GetAttackBtnAddress();
+	DWORD64 GetRightBtnAddress();
+	DWORD64 GetLeftBtnAddress();
 
 	bool UpdateEntityListEntry();
 };

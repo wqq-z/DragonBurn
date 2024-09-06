@@ -111,11 +111,28 @@ void Cheat()
 
 	SetConsoleTextAttribute(hConsole, 14);
 	cout << "[INFO] Updating offsets(it may take some time)..." << endl;
-	if (!Offset.UpdateOffsets()) 
+	switch (Offset.UpdateOffsets())
 	{
+	case 0:
+		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
+		cout << "[ERROR] Bad internet connection." << endl;
+		Exit();
+
+	case 1:
 		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
 		cout << "[ERROR] Failed to UpdateOffsets." << endl;
 		Exit();
+
+	case 2:
+		SetConsoleTextAttribute(hConsole, 14);
+		cout << "[INFO] Offsets updated" << endl;
+		break;
+
+	default:
+		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
+		cout << "[ERROR] Unknown connection error" << endl;
+		Exit();
+
 	}
 
 	if (!gGame.InitAddress())
@@ -146,17 +163,20 @@ void Cheat()
 
 	if (fs::exists(MenuConfig::path))
 	{
+		SetConsoleTextAttribute(hConsole, 14);
 		cout << "[Info] Config folder connected: " << MenuConfig::path << endl;
 	}
 	else
 	{
 		if (fs::create_directory(MenuConfig::path))
 		{
+			SetConsoleTextAttribute(hConsole, 14);
 			cout << "[Info] Config folder created: " << MenuConfig::path << endl;
 		}
 		else
 		{
-			cerr << "[Info] Error: Failed to create the config directory." << endl;
+			SetConsoleTextAttribute(hConsole, 12);
+			cerr << "[ERROR] Failed to create the config directory." << endl;
 			Exit();
 		}
 	}
