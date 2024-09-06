@@ -21,6 +21,7 @@ public:
 	int TeamID = 0;
 	int Health = 0;
 	int AliveStatus = 0;
+	INT64 SteamID = 0;
 	DWORD Pawn = 0;
 	std::string PlayerName;
 	std::vector<std::string> spectators = {};
@@ -29,6 +30,7 @@ public:
 	bool GetHealth();
 	bool GetIsAlive();
 	bool GetPlayerName();
+	bool GetPlayerSteamID();
 	DWORD64 GetPlayerPawnAddress();
 };
 

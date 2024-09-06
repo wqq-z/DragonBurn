@@ -31,6 +31,9 @@ void TriggerBot::Run(const CEntity& LocalEntity)
     if (!Entity.UpdatePawn(PawnAddress))
         return;
 
+    if (!CheckWeapon(LocalEntity))
+        return;
+
     if (!IgnoreFlash && LocalEntity.Pawn.FlashDuration > 0.f)
         return;
 
@@ -97,6 +100,30 @@ bool TriggerBot::CheckScopeWeapon(const CEntity& LocalEntity)
         return true;
     else
         return false;
+}
+
+bool TriggerBot::CheckWeapon(const CEntity& LocalEntity)
+{
+    DWORD64 WeaponNameAddress = 0;
+    char Buffer[256]{};
+
+    WeaponNameAddress = ProcessMgr.TraceAddress(LocalEntity.Pawn.Address + Offset.Pawn.pClippingWeapon, { 0x10,0x20 ,0x0 });
+    if (WeaponNameAddress == 0)
+        return false;
+
+    DWORD64 CurrentWeapon;
+    short weaponIndex;
+    ProcessMgr.ReadMemory(LocalEntity.Pawn.Address + Offset.Pawn.pClippingWeapon, CurrentWeapon);
+    ProcessMgr.ReadMemory(CurrentWeapon + Offset.EconEntity.AttributeManager + Offset.WeaponBaseData.Item + Offset.WeaponBaseData.ItemDefinitionIndex, weaponIndex);
+
+    if (weaponIndex == -1)
+        return false;
+
+    std::string WeaponName = CEntity::GetWeaponName(weaponIndex);
+    if (WeaponName == "smokegrenade" || WeaponName == "flashbang" || WeaponName == "hegrenade" || WeaponName == "molotov" || WeaponName == "decoy" || WeaponName == "incgrenade" || WeaponName == "t_knife" || WeaponName == "ct_knife" || WeaponName == "c4")
+        return false;
+    else
+        return true;
 }
 
 void TriggerBot::TargetCheck(const CEntity& LocalEntity) noexcept {

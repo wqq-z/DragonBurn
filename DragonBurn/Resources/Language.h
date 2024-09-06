@@ -188,138 +188,138 @@ namespace Lang
 
 	inline void English()
 	{
-		Global.Date = u8"v1.0.4.3";
-		Global.Author = u8"ByteCorum";
+		Global.Date = "v1.0.4.3";
+		Global.Author = "ByteCorum";
 
-		Global.SwitchButton = u8"Enable";
-		Global.FeatureSettings = u8"Settings";
+		Global.SwitchButton = "Enable";
+		Global.FeatureSettings = "Settings";
 
 		// ESP
-		ESPtext.Toggle = u8"Toggle";
-		ESPtext.FeatureName = u8" ESP";
-		ESPtext.Box = u8"Frame";
-		ESPtext.BoxRounding = u8"Box Rounding: ";
-		ESPtext.FilledBox = u8"Filled Box";
-		ESPtext.FilledAlpha = u8"Filled Box Alpha";
-		ESPtext.Skeleton = u8"Skeleton";
-		ESPtext.HeadBox = u8"Head Box";
-		ESPtext.EyeRay = u8"Eye Ray";
-		ESPtext.HealthBar = u8"Health Bar";
-		ESPtext.Weapon = u8"Weapon";
-		ESPtext.Distance = u8"Distance";
-		ESPtext.PlayerName = u8"Name";
-		ESPtext.SnapLine = u8"Snap Line";
-		ESPtext.LinePosList = u8"Line Position: ";
-		ESPtext.VisCheck = u8"Visible Check";
-		ESPtext.Preview = u8"Preview Window";
-		ESPtext.MultiColor = u8"Multi-Color";
-		ESPtext.MultiColTip = u8"Only work when the box has non-rounded corners.";
-		ESPtext.Outline = u8"Outline";
-		ESPtext.BoxType = u8"  Box Type";
-		ESPtext.HealthNum = u8"Health Number";
-		ESPtext.Ammo = u8"Ammo";
-		ESPtext.ScopedESP = u8"Show Scoped";
-		ESPtext.ShowArmorBar = u8"Armor Bar";
-		ESPtext.ArmorNum = u8"Armor Number";
-		ESPtext.RenderDistance = u8"Max Render Distance: ";
+		ESPtext.Toggle = "Toggle";
+		ESPtext.FeatureName = " ESP";
+		ESPtext.Box = "Frame";
+		ESPtext.BoxRounding = "Box Rounding: ";
+		ESPtext.FilledBox = "Filled Box";
+		ESPtext.FilledAlpha = "Filled Box Alpha";
+		ESPtext.Skeleton = "Skeleton";
+		ESPtext.HeadBox = "Head Box";
+		ESPtext.EyeRay = "Eye Ray";
+		ESPtext.HealthBar = "Health Bar";
+		ESPtext.Weapon = "Weapon";
+		ESPtext.Distance = "Distance";
+		ESPtext.PlayerName = "Name";
+		ESPtext.SnapLine = "Snap Line";
+		ESPtext.LinePosList = "Line Position: ";
+		ESPtext.VisCheck = "Visible Check";
+		ESPtext.Preview = "Preview Window";
+		ESPtext.MultiColor = "Multi-Color";
+		ESPtext.MultiColTip = "Only work when the box has non-rounded corners.";
+		ESPtext.Outline = "Outline";
+		ESPtext.BoxType = "  Box Type";
+		ESPtext.HealthNum = "Health Number";
+		ESPtext.Ammo = "Ammo";
+		ESPtext.ScopedESP = "Show Scoped";
+		ESPtext.ShowArmorBar = "Armor Bar";
+		ESPtext.ArmorNum = "Armor Number";
+		ESPtext.RenderDistance = "Max Render Distance: ";
 
-		ESPtext.LinePos_1 = u8"Top";
-		ESPtext.LinePos_2 = u8"Center";
-		ESPtext.LinePos_3 = u8"Bottom";
+		ESPtext.LinePos_1 = "Top";
+		ESPtext.LinePos_2 = "Center";
+		ESPtext.LinePos_3 = "Bottom";
 
 		// Aimbot
-		AimbotText.Enable = u8"Enable Aimbot";
-		AimbotText.FeatureName = u8" Aimbot";
-		AimbotText.HotKeyList = u8"Hotkey   ";
-		AimbotText.Toggle = u8"Toggle Mode";
-		AimbotText.DrawFov = u8"Draw Fov";
-		AimbotText.VisCheck = u8"Visible Only";
-		AimbotText.JumpCheck = u8"On Ground Only";
-		AimbotText.FovSlider = u8"FOV: ";
-		AimbotText.FovMinSlider = u8"MinFOV: ";
-		AimbotText.SmoothSlider = u8"Smooth: ";
-		AimbotText.BoneList = u8"Hitboxes";
-		AimbotText.Tip = u8"Aimbot will not work while the menu is opened";
-		AimbotText.ScopeOnly = u8"Scope Only";
-		AimbotText.AutoShot = u8"Auto Shot";
-		AimbotText.BulletSlider = u8"Start Bullet: ";
-		AimbotText.IgnoreFlash = u8"Ignore Flash";
+		AimbotText.Enable = "Enable Aimbot";
+		AimbotText.FeatureName = " Aimbot";
+		AimbotText.HotKeyList = "Hotkey   ";
+		AimbotText.Toggle = "Toggle Mode";
+		AimbotText.DrawFov = "Draw Fov";
+		AimbotText.VisCheck = "Visible Only";
+		AimbotText.JumpCheck = "On Ground Only";
+		AimbotText.FovSlider = "FOV: ";
+		AimbotText.FovMinSlider = "MinFOV: ";
+		AimbotText.SmoothSlider = "Smooth: ";
+		AimbotText.BoneList = "Hitboxes";
+		AimbotText.Tip = "Aimbot will not work while the menu is opened";
+		AimbotText.ScopeOnly = "Scope Only";
+		AimbotText.AutoShot = "Auto Shot";
+		AimbotText.BulletSlider = "Start Bullet: ";
+		AimbotText.IgnoreFlash = "Ignore Flash";
 
 		// RCS
-		RCStext.Toggle = u8"Recoil Control";
-		RCStext.Yaw = u8"Yaw: ";
-		RCStext.Pitch = u8"Pitch: ";
+		RCStext.Toggle = "Recoil Control";
+		RCStext.Yaw = "Yaw: ";
+		RCStext.Pitch = "Pitch: ";
 
 		// Radar
-		RadarText.Toggle = u8"Show Radar";
-		RadarText.FeatureName = u8" Radar";
-		RadarText.StyleList = u8"Style";
-		RadarText.CustomCheck = u8"Custom";
-		RadarText.CrossLine = u8"Cross Line";
-		RadarText.SizeSlider = u8"Point Size:";
-		RadarText.ProportionSlider = u8"Proportion:";
-		RadarText.RangeSlider = u8"Range:";
-		RadarText.AlphaSlider = u8"Window Background Alpha:";
+		RadarText.Toggle = "Show Radar";
+		RadarText.FeatureName = " Radar";
+		RadarText.StyleList = "Style";
+		RadarText.CustomCheck = "Custom";
+		RadarText.CrossLine = "Cross Line";
+		RadarText.SizeSlider = "Point Size:";
+		RadarText.ProportionSlider = "Proportion:";
+		RadarText.RangeSlider = "Range:";
+		RadarText.AlphaSlider = "Window Background Alpha:";
 
 		// Triggerbot
-		TriggerText.Enable = u8"Enable Triggerbot";
-		TriggerText.FeatureName = u8" Triggerbot";
-		TriggerText.HotKeyList = u8"Hotkey   ";
-		TriggerText.Toggle = u8"Always Active";
-		TriggerText.ScopeOnly = u8"Scope Only";
-		TriggerText.DelaySlider = u8"Shot Delay:";
-		TriggerText.FakeShotSlider = u8"Shot Duration:";
+		TriggerText.Enable = "Enable Triggerbot";
+		TriggerText.FeatureName = " Triggerbot";
+		TriggerText.HotKeyList = "Hotkey   ";
+		TriggerText.Toggle = "Always Active";
+		TriggerText.ScopeOnly = "Scope Only";
+		TriggerText.DelaySlider = "Shot Delay:";
+		TriggerText.FakeShotSlider = "Shot Duration:";
 
 		// Crosshairs
-		CrosshairsText.Toggle = u8"Show Crosshairs";
-		CrosshairsText.FeatureName = u8" Crosshairs";
-		CrosshairsText.PresetList = u8"Presets";
-		CrosshairsText.ColorEditor = u8"Crosshairs Color";
-		CrosshairsText.Dot = u8"Center Dot";
-		CrosshairsText.DotSizeSlider = u8"Dot Size:";
-		CrosshairsText.Outline = u8"Crosshairs Outline";
-		CrosshairsText.Crossline = u8"Crossline";
-		CrosshairsText.hLengthSlider = u8"Horizontal Length:";
-		CrosshairsText.vLengthSilder = u8"Vertical Length:";
-		CrosshairsText.GapSlider = u8"Gap:";
-		CrosshairsText.ThicknessSlider = u8"Thickness:";
-		CrosshairsText.tStyle = u8"T Style";
-		CrosshairsText.Circle = u8"Circle";
-		CrosshairsText.RadiusSlider = u8"Circle Radius:";
-		CrosshairsText.TargetCheck = u8"Targeting Crosshairs";
-		CrosshairsText.TeamCheck = u8"TeamCheck";
+		CrosshairsText.Toggle = "Show Crosshairs";
+		CrosshairsText.FeatureName = " Crosshairs";
+		CrosshairsText.PresetList = "Presets";
+		CrosshairsText.ColorEditor = "Crosshairs Color";
+		CrosshairsText.Dot = "Center Dot";
+		CrosshairsText.DotSizeSlider = "Dot Size:";
+		CrosshairsText.Outline = "Crosshairs Outline";
+		CrosshairsText.Crossline = "Crossline";
+		CrosshairsText.hLengthSlider = "Horizontal Length:";
+		CrosshairsText.vLengthSilder = "Vertical Length:";
+		CrosshairsText.GapSlider = "Gap:";
+		CrosshairsText.ThicknessSlider = "Thickness:";
+		CrosshairsText.tStyle = "T Style";
+		CrosshairsText.Circle = "Circle";
+		CrosshairsText.RadiusSlider = "Circle Radius:";
+		CrosshairsText.TargetCheck = "Targeting Crosshairs";
+		CrosshairsText.TeamCheck = "TeamCheck";
 
 		// Misc
-		MiscText.FeatureName = u8" Misc";
-		MiscText.StyleList = u8"Style";
-		MiscText.HeadshotLine = u8"Headshot Line";
-		MiscText.SpecCheck = u8"Cheat in Spec";
-		MiscText.NoFlash = u8"No Flash";
-		MiscText.BunnyHop = u8"Bunny Hop";
-		//MiscText.FastStop = u8"Fast Stop";
-		MiscText.HitSound = u8"Hit Sound  ";
-		MiscText.HitMerker = u8"Hit Markers";
-		MiscText.bmbTimer = u8"Bomb Timer";
-		MiscText.SpecList = u8"Spec List";
-		MiscText.Watermark = u8"Watermark";
-		MiscText.TeamCheck = u8"Team Check";
-		MiscText.AntiRecord = u8"Anti Record";
-		MiscText.VisCheckDisable = u8"Visible Check DISABLED";
+		MiscText.FeatureName = " Misc";
+		MiscText.StyleList = "Style";
+		MiscText.HeadshotLine = "Headshot Line";
+		MiscText.SpecCheck = "Cheat in Spec";
+		MiscText.NoFlash = "No Flash";
+		MiscText.BunnyHop = "Bunny Hop";
+		//MiscText.FastStop = "Fast Stop";
+		MiscText.HitSound = "Hit Sound  ";
+		MiscText.HitMerker = "Hit Markers";
+		MiscText.bmbTimer = "Bomb Timer";
+		MiscText.SpecList = "Spec List";
+		MiscText.Watermark = "Watermark";
+		MiscText.TeamCheck = "Team Check";
+		MiscText.AntiRecord = "Anti Record";
+		MiscText.VisCheckDisable = "Visible Check DISABLED";
 
 
 		// Config Menu
-		ConfigText.FeatureName = u8"Config Loader";
-		ConfigText.MyConfigs = u8"Config List";
-		ConfigText.Load = u8"Load";
-		ConfigText.Save = u8"Save";
-		ConfigText.Delete = u8"Delete";
-		ConfigText.Reset = u8"Reset";
-		ConfigText.Create = u8"Create";
-		ConfigText.OpenFolder = u8"Open Folder";
-		ConfigText.SeparateLine = u8"Create Config";
-		ConfigText.AuthorName = u8"Author Name";
-		ConfigText.ConfigName = u8"Config Name";
+		ConfigText.FeatureName = "Config Loader";
+		ConfigText.MyConfigs = "Config List";
+		ConfigText.Load = "Load";
+		ConfigText.Save = "Save";
+		ConfigText.Delete = "Delete";
+		ConfigText.Reset = "Reset";
+		ConfigText.Create = "Create";
+		ConfigText.OpenFolder = "Open Folder";
+		ConfigText.SeparateLine = "Create Config";
+		ConfigText.AuthorName = "Author Name";
+		ConfigText.ConfigName = "Config Name";
 
-		ConfigText.fpsCap = u8"Frame Limit: ";
+		ConfigText.fpsCap = "Frame Limit: ";
 	}
 }

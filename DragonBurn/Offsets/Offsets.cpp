@@ -39,8 +39,8 @@
 
 bool CheckConnection()
 {
-    int exitCode = system("ping google.com > nul");
-    if (exitCode == 0)
+    int result = system("ping google.com > nul");
+    if (result == 0)
         return true;
     else
         return false;
@@ -50,6 +50,7 @@ bool LoadData(std::string url, std::string& response)
 {
     response = "";
     std::string cmd = "curl -s -X GET " + url;
+
     std::array<char, 128> buffer;
     std::unique_ptr<FILE, decltype(&_pclose)> pipe(_popen(cmd.c_str(), "r"), _pclose);
 
@@ -62,6 +63,11 @@ bool LoadData(std::string url, std::string& response)
         response += buffer.data();
     }
 
+    if (response.find("{") == -1)
+    {
+        return false;
+    }
+
     return true;
 }
 
@@ -69,9 +75,10 @@ Offsets::Offsets(){}
 
 Offsets::~Offsets(){}
 
-void Offsets::SetOffsets(const std::string& offsetsData, const std::string& client_dllData) 
+void Offsets::SetOffsets(const std::string& offsetsData, const std::string& buttonsData, const std::string& client_dllData)
 {
     json offsetsJson = json::parse(offsetsData);
+    json buttonsJson = json::parse(buttonsData);
     json client_dllJson = json::parse(client_dllData)["client.dll"]["classes"];
 
     this->EntityList = offsetsJson["client.dll"]["dwEntityList"];
@@ -83,6 +90,11 @@ void Offsets::SetOffsets(const std::string& offsetsData, const std::string& clie
     this->PlantedC4 = offsetsJson["client.dll"]["dwPlantedC4"];
     this->InputSystem = offsetsJson["inputsystem.dll"]["dwInputSystem"];
     this->Sensitivity = offsetsJson["client.dll"]["dwSensitivity"];
+
+    this->Buttons.Attack = buttonsJson["client.dll"]["attack"];
+    this->Buttons.Jump = buttonsJson["client.dll"]["jump"];
+    this->Buttons.Right = buttonsJson["client.dll"]["right"];
+    this->Buttons.Left = buttonsJson["client.dll"]["left"];
 
     this->Entity.IsAlive = client_dllJson["CCSPlayerController"] ["fields"] ["m_bPawnIsAlive"];
     this->Entity.PlayerPawn = client_dllJson["CCSPlayerController"] ["fields"] ["m_hPlayerPawn"];
@@ -126,6 +138,7 @@ void Offsets::SetOffsets(const std::string& offsetsData, const std::string& clie
     this->GlobalVar.CurrentMap = 0x0180;
     this->GlobalVar.CurrentMapName = 0x0188;
 
+    this->PlayerController.m_steamID = client_dllJson["CBasePlayerController"]["fields"]["m_steamID"];
     this->PlayerController.m_hPawn = client_dllJson["CBasePlayerController"] ["fields"] ["m_hPawn"];
     this->PlayerController.m_pObserverServices = client_dllJson["C_BasePlayerPawn"] ["fields"] ["m_pObserverServices"];
     this->PlayerController.m_hObserverTarget = client_dllJson["CPlayer_ObserverServices"] ["fields"] ["m_hObserverTarget"];
@@ -148,18 +161,19 @@ void Offsets::SetOffsets(const std::string& offsetsData, const std::string& clie
     this->C4.m_nBombSite = client_dllJson["C_PlantedC4"] ["fields"] ["m_nBombSite"];
 }
 
-bool Offsets::UpdateOffsets()
+int Offsets::UpdateOffsets()
 {
     const std::string offsetsUrl = "https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/offsets.json";
+    const std::string buttonsUrl = "https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/buttons.json";
     const std::string client_dllUrl = "https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/client_dll.json";
-    std::string offsetsData, client_dllData;
+    std::string offsetsData, buttonsData, client_dllData;
 
     if (!CheckConnection())
-        return false;
-    if (!LoadData(offsetsUrl, offsetsData) || !LoadData(client_dllUrl, client_dllData))
-        return false;
+        return 0;
+    if (!LoadData(offsetsUrl, offsetsData) || !LoadData(buttonsUrl, buttonsData) || !LoadData(client_dllUrl, client_dllData))
+        return 1;
 
-    SetOffsets(offsetsData, client_dllData);
+    SetOffsets(offsetsData, buttonsData, client_dllData);
 
-	return true;
+    return 2;
 }

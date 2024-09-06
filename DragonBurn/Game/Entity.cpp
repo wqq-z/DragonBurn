@@ -70,6 +70,8 @@ bool CEntity::UpdateController(const DWORD64& PlayerControllerAddress)
 		return false;
 	if (!this->Controller.GetPlayerName())
 		return false;
+	if (!this->Controller.GetPlayerSteamID())
+		return false;
 
 	this->Pawn.Address = this->Controller.GetPlayerPawnAddress();
 
@@ -154,11 +156,20 @@ bool PlayerController::GetPlayerName()
 	if (!ProcessMgr.ReadMemory(Address + Offset.Entity.iszPlayerName, Buffer, MAX_PATH))
 		return false;
 
+	//if (!this->SteamID)
+	//	this->PlayerName = "BOT " + std::string(Buffer);
+	//else
 	this->PlayerName = Buffer;
+
 	if (this->PlayerName.empty())
 		this->PlayerName = "Name_None";
 
 	return true;
+}
+
+bool PlayerController::GetPlayerSteamID()
+{
+	return GetDataAddressWithOffset<INT64>(Address, Offset.PlayerController.m_steamID, this->SteamID);
 }
 
 bool PlayerPawn::GetViewAngle()
