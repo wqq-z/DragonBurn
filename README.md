@@ -88,6 +88,7 @@ Press END key to open/close menu.
 <summary>Misc</summary>
   
 - Bomb Timer
+- Bunny Hop
 - Fast Stop
 - Head Line
 - Hit Sound
