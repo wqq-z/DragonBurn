@@ -58,7 +58,7 @@ void Cheat()
 	{
 		SetConsoleTextAttribute(hConsole, 14);
 		cout << "[INFO] Connecting to CS2." << endl;
-		Sleep(25000);
+		Sleep(20000);
 	}
 
 
