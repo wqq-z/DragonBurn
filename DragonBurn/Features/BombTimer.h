@@ -24,7 +24,7 @@ namespace bmb
 		{
 			int site;
 			uintptr_t cPlantedC4;
-			ProcessMgr.ReadMemory(gGame.GetClientDLLAddress() + Offset.PlantedC4, cPlantedC4);
+			//ProcessMgr.ReadMemory(gGame.GetClientDLLAddress() + Offset.PlantedC4, cPlantedC4);
 			if (!ProcessMgr.ReadMemory<uintptr_t>(gGame.GetClientDLLAddress() + Offset.PlantedC4, cPlantedC4))
 				return 0;
 			if (!ProcessMgr.ReadMemory<uintptr_t>(cPlantedC4, cPlantedC4))

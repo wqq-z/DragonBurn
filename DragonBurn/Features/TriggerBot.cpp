@@ -128,7 +128,7 @@ bool TriggerBot::CheckWeapon(const CEntity& LocalEntity)
 
 void TriggerBot::TargetCheck(const CEntity& LocalEntity) noexcept {
     if (!ProcessMgr.ReadMemory<DWORD>(LocalEntity.Pawn.Address + Offset.Pawn.iIDEntIndex, uHandle) || uHandle == -1) {
-        CrosshairsCFG::isAim = false;
+        //CrosshairsCFG::isAim = false;
         return;
     }
 
@@ -137,21 +137,21 @@ void TriggerBot::TargetCheck(const CEntity& LocalEntity) noexcept {
 
     DWORD64 ListEntry = ProcessMgr.TraceAddress(gGame.GetEntityListAddress(), { 0x8 * (uHandle >> 9) + 0x10, 0x0 });
     if (ListEntry == 0) {
-        CrosshairsCFG::isAim = false;
+        //CrosshairsCFG::isAim = false;
         return;
     }
 
     DWORD64 PawnAddress;
     const DWORD64 ENTITY_ADDRESS_OFFSET = ENTITY_OFFSET * (uHandle & ENTITY_INDEX_MASK);
     if (!ProcessMgr.ReadMemory<DWORD64>(ListEntry + ENTITY_ADDRESS_OFFSET, PawnAddress)) {
-        CrosshairsCFG::isAim = false;
+        //CrosshairsCFG::isAim = false;
         return;
     }
 
     if (!Entity.UpdatePawn(PawnAddress)) {
-        CrosshairsCFG::isAim = false;
+        //CrosshairsCFG::isAim = false;
         return;
     }
 
-    CrosshairsCFG::isAim = CrosshairsCFG::TeamCheck ? (LocalEntity.Pawn.TeamID != Entity.Pawn.TeamID) : true;
+   // CrosshairsCFG::isAim = CrosshairsCFG::TeamCheck ? (LocalEntity.Pawn.TeamID != Entity.Pawn.TeamID) : true;
 }

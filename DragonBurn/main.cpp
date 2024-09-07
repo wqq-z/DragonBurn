@@ -58,7 +58,7 @@ void Cheat()
 	{
 		SetConsoleTextAttribute(hConsole, 14);
 		cout << "[INFO] Connecting to CS2." << endl;
-		Sleep(25000);
+		Sleep(20000);
 	}
 
 
@@ -138,7 +138,7 @@ void Cheat()
 	if (!gGame.InitAddress())
 	{
 		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
-		cout << "[ERROR] Failed to call InitAddress()." << endl;
+		cout << "[ERROR] Failed to Init Address." << endl;
 		Exit();
 	}
 
@@ -149,7 +149,7 @@ void Cheat()
 	char documentsPath[MAX_PATH];
 	if (SHGetFolderPathA(NULL, CSIDL_PERSONAL, NULL, 0, documentsPath) != S_OK) {
 		SetConsoleTextAttribute(hConsole, 12);
-		cerr << "[ERROR]Failed to get the Documents folder path." << endl;
+		cerr << "[ERROR] Failed to get the Documents folder path." << endl;
 		Exit();
 	}
 	MenuConfig::path = documentsPath;
