@@ -1,12 +1,9 @@
-○ Add Bhop
 ○ Add FastStop
 ○ Add DefuseTimer
 ○ Fix SpecList
 ○ Cheat should use cs2 keys
-○ Make menu looks nice
-○ Make cheat multi-tread
-○ Refactor the code
 ○ Kernel mode
+◎ Add Bhop
 ◎ Improve Aimbot
 ◎ Make cheat portable
 ◎ Add Offsets auto load
@@ -23,3 +20,6 @@
 ◎ Delete junk
 ◎ Fix scope check
 ◎ Add clean button
+⨂ Make menu looks nice
+⨂ Make cheat multi-tread
+⨂ Refactor the code
