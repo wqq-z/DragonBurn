@@ -119,26 +119,26 @@ namespace Lang
 		inline static const char* FakeShotSlider;
 	} TriggerText;
 
-	inline struct CrosshairsText
-	{
-		inline static const char* Toggle;
-		inline static const char* FeatureName;
-		inline static const char* PresetList;
-		inline static const char* ColorEditor;
-		inline static const char* Dot;
-		inline static const char* DotSizeSlider;
-		inline static const char* Outline;
-		inline static const char* Crossline;
-		inline static const char* hLengthSlider;
-		inline static const char* vLengthSilder;
-		inline static const char* GapSlider;
-		inline static const char* ThicknessSlider;
-		inline static const char* tStyle;
-		inline static const char* Circle;
-		inline static const char* RadiusSlider;
-		inline static const char* TargetCheck;
-		inline static const char* TeamCheck;
-	} CrosshairsText;
+	//inline struct CrosshairsText
+	//{
+	//	inline static const char* Toggle;
+	//	inline static const char* FeatureName;
+	//	inline static const char* PresetList;
+	//	inline static const char* ColorEditor;
+	//	inline static const char* Dot;
+	//	inline static const char* DotSizeSlider;
+	//	inline static const char* Outline;
+	//	inline static const char* Crossline;
+	//	inline static const char* hLengthSlider;
+	//	inline static const char* vLengthSilder;
+	//	inline static const char* GapSlider;
+	//	inline static const char* ThicknessSlider;
+	//	inline static const char* tStyle;
+	//	inline static const char* Circle;
+	//	inline static const char* RadiusSlider;
+	//	inline static const char* TargetCheck;
+	//	inline static const char* TeamCheck;
+	//} CrosshairsText;
 
 	inline struct MiscText
 	{
@@ -149,6 +149,7 @@ namespace Lang
 		inline static const char* NoFlash;
 		inline static const char* BunnyHop;
 		//inline static const char* FastStop;
+		inline static const char* SniperCrosshair;
 		inline static const char* HitSound;
 		inline static const char* HitMerker;
 		inline static const char* bmbTimer;
@@ -176,15 +177,6 @@ namespace Lang
 
 		inline static const char* fpsCap;
 	} ConfigText;
-
-	inline struct ReadMeText
-	{
-		inline static const char* FeatureName;
-		inline static const char* LastUpdate;
-		inline static const char* SourceButton;
-		inline static const char* DiscordButton;
-		inline static const char* OffsetsTitle;
-	} ReadMeText;
 
 	inline void English()
 	{
@@ -271,23 +263,23 @@ namespace Lang
 		TriggerText.FakeShotSlider = "Shot Duration:";
 
 		// Crosshairs
-		CrosshairsText.Toggle = "Show Crosshairs";
-		CrosshairsText.FeatureName = " Crosshairs";
-		CrosshairsText.PresetList = "Presets";
-		CrosshairsText.ColorEditor = "Crosshairs Color";
-		CrosshairsText.Dot = "Center Dot";
-		CrosshairsText.DotSizeSlider = "Dot Size:";
-		CrosshairsText.Outline = "Crosshairs Outline";
-		CrosshairsText.Crossline = "Crossline";
-		CrosshairsText.hLengthSlider = "Horizontal Length:";
-		CrosshairsText.vLengthSilder = "Vertical Length:";
-		CrosshairsText.GapSlider = "Gap:";
-		CrosshairsText.ThicknessSlider = "Thickness:";
-		CrosshairsText.tStyle = "T Style";
-		CrosshairsText.Circle = "Circle";
-		CrosshairsText.RadiusSlider = "Circle Radius:";
-		CrosshairsText.TargetCheck = "Targeting Crosshairs";
-		CrosshairsText.TeamCheck = "TeamCheck";
+		//CrosshairsText.Toggle = "Show Crosshairs";
+		//CrosshairsText.FeatureName = " Crosshairs";
+		//CrosshairsText.PresetList = "Presets";
+		//CrosshairsText.ColorEditor = "Crosshairs Color";
+		//CrosshairsText.Dot = "Center Dot";
+		//CrosshairsText.DotSizeSlider = "Dot Size:";
+		//CrosshairsText.Outline = "Crosshairs Outline";
+		//CrosshairsText.Crossline = "Crossline";
+		//CrosshairsText.hLengthSlider = "Horizontal Length:";
+		//CrosshairsText.vLengthSilder = "Vertical Length:";
+		//CrosshairsText.GapSlider = "Gap:";
+		//CrosshairsText.ThicknessSlider = "Thickness:";
+		//CrosshairsText.tStyle = "T Style";
+		//CrosshairsText.Circle = "Circle";
+		//CrosshairsText.RadiusSlider = "Circle Radius:";
+		//CrosshairsText.TargetCheck = "Targeting Crosshairs";
+		//CrosshairsText.TeamCheck = "TeamCheck";
 
 		// Misc
 		MiscText.FeatureName = " Misc";
@@ -304,6 +296,7 @@ namespace Lang
 		MiscText.Watermark = "Watermark";
 		MiscText.TeamCheck = "Team Check";
 		MiscText.AntiRecord = "Anti Record";
+		MiscText.SniperCrosshair = "Sniper Crosshair";
 		MiscText.VisCheckDisable = "Visible Check DISABLED";
 
 

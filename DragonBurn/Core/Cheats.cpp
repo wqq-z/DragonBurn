@@ -17,23 +17,7 @@
 
 int PreviousTotalHits = 0;
 
-// Does not work and not use it for now
-//void Cheats::KeyCheckThread()
-//{
-//	try
-//	{
-//		if ((GetAsyncKeyState(VK_END) & 0x8000))
-//		{
-//			MenuConfig::ShowMenu = !MenuConfig::ShowMenu;
-//		}
-//		std::this_thread::sleep_for(std::chrono::milliseconds(150));
-//	}
-//	catch (const std::exception& e) {
-//		std::cout << e.what() << std::endl;
-//	}
-//}
-
-void RenderCrossHair(ImDrawList*, const CEntity&);
+void RenderCrosshair(ImDrawList*, const CEntity&);
 
 void RadarSetting(Base_Radar&);
 
@@ -243,7 +227,7 @@ void Visual(CEntity LocalEntity)
 	// CrossHair
 	TriggerBot::TargetCheck(LocalEntity);
 	Misc::AirCheck(LocalEntity);
-	RenderCrossHair(ImGui::GetBackgroundDrawList(), LocalEntity);
+	RenderCrosshair(ImGui::GetBackgroundDrawList(), LocalEntity);
 }
 
 void Radar(Base_Radar Radar, CEntity LocalEntity)
@@ -331,13 +315,21 @@ void RadarSetting(Base_Radar& Radar)
 	Radar.Opened = true;
 }
 
-void RenderCrossHair(ImDrawList* drawList, const CEntity& LocalEntity)
+void RenderCrosshair(ImDrawList* drawList, const CEntity& LocalEntity)
 {
-	if (!CrosshairsCFG::ShowCrossHair || LocalEntity.Controller.TeamID == 0)
+	//if (!CrosshairsCFG::ShowCrossHair || LocalEntity.Controller.TeamID == 0)
+	//	return;
+
+	bool isScoped;
+	ProcessMgr.ReadMemory<bool>(LocalEntity.Pawn.Address + Offset.Pawn.isScoped, isScoped);
+
+	if (!MiscCFG::SniperCrosshair || LocalEntity.Controller.TeamID == 0 || !TriggerBot::CheckScopeWeapon(LocalEntity) || isScoped)
 		return;
 
-	if (CrosshairsCFG::isAim && MenuConfig::TargetingCrosshairs)
-		Render::DrawCrossHair(drawList, ImVec2(ImGui::GetIO().DisplaySize.x / 2, ImGui::GetIO().DisplaySize.y / 2), ImGui::ColorConvertFloat4ToU32(CrosshairsCFG::TargetedColor));
-	else
-		Render::DrawCrossHair(drawList, ImVec2(ImGui::GetIO().DisplaySize.x / 2, ImGui::GetIO().DisplaySize.y / 2), ImGui::ColorConvertFloat4ToU32(CrosshairsCFG::CrossHairColor));
+	Render::DrawCrossHair(drawList, ImVec2(ImGui::GetIO().DisplaySize.x / 2, ImGui::GetIO().DisplaySize.y / 2), MiscCFG::SniperCrosshairColor);
+
+	//if (CrosshairsCFG::isAim && MenuConfig::TargetingCrosshairs)
+		//Render::DrawCrossHair(drawList, ImVec2(ImGui::GetIO().DisplaySize.x / 2, ImGui::GetIO().DisplaySize.y / 2), ImGui::ColorConvertFloat4ToU32(CrosshairsCFG::TargetedColor));
+	//else
+		//Render::DrawCrossHair(drawList, ImVec2(ImGui::GetIO().DisplaySize.x / 2, ImGui::GetIO().DisplaySize.y / 2), ImGui::ColorConvertFloat4ToU32(CrosshairsCFG::CrossHairColor));
 }

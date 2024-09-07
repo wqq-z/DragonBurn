@@ -111,33 +111,33 @@ namespace ESPConfig
 	inline ImColor FilledColor2 = ImColor(0, 255, 102, 255);
 }
 
-namespace CrosshairsCFG
-{
-	inline float CrossHairSize = 75;
-
-	inline bool ShowCrossHair = false;
-	inline bool drawDot = true;
-	inline bool drawCrossline = true;
-	inline bool tStyle = false;
-	inline bool drawCircle = false;
-	inline bool drawOutLine = true;
-	inline bool DynamicGap = false;
-	inline bool TeamCheck = true;
-
-	inline int crosshairPreset = 0;
-	inline int Gap = 8;
-	inline int HorizontalLength = 6;
-	inline int VerticalLength = 6;
-	inline int Thickness = 1.0f;
-	inline float DotSize = 1.0f;
-	inline float CircleRadius = 3.f;
-
-	inline bool isAim = false;
-	inline bool isJump = false;
-
-	inline ImColor CrossHairColor = ImColor(0, 255, 0, 255);
-	inline ImColor TargetedColor = ImColor(255, 0, 0, 255);
-}
+//namespace CrosshairsCFG
+//{
+//	inline bool ShowCrossHair = false;
+//
+//	inline float CrossHairSize = 75;
+//	inline bool drawDot = true;
+//	inline bool drawCrossline = true;
+//	inline bool tStyle = false;
+//	inline bool drawCircle = false;
+//	inline bool drawOutLine = true;
+//	inline bool DynamicGap = false;
+//	inline bool TeamCheck = true;
+//
+//	inline int crosshairPreset = 0;
+//	inline int Gap = 8;
+//	inline int HorizontalLength = 6;
+//	inline int VerticalLength = 6;
+//	inline int Thickness = 1.0f;
+//	inline float DotSize = 1.0f;
+//	inline float CircleRadius = 3.f;
+//
+//	inline bool isAim = false;
+//	inline bool isJump = false;
+//
+//	inline ImColor CrossHairColor = ImColor(0, 255, 0, 255);
+//	inline ImColor TargetedColor = ImColor(255, 0, 0, 255);
+//}
 
 namespace RadarCFG
 {
@@ -158,6 +158,8 @@ namespace MiscCFG
 	inline bool BunnyHop = false;
 	inline bool WorkInSpec = true;
 	inline bool WaterMark = false;
+	inline bool SniperCrosshair = false;
+	inline ImColor SniperCrosshairColor = ImColor(32, 178, 170,255);
 	inline int	HitSound = 0;
 	inline bool HitMarker = false;
 	inline bool bmbTimer = false;

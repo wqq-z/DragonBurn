@@ -102,33 +102,33 @@ namespace MyConfigSaver
 
 
 
-        ConfigData["Crosshairs"]["Enable"]=        CrosshairsCFG::ShowCrossHair;
-        ConfigData["Crosshairs"]["Size"]=          CrosshairsCFG::CrossHairSize;
-        ConfigData["Crosshairs"]["Dot"]=           CrosshairsCFG::drawDot;
-        ConfigData["Crosshairs"]["Crossline"]=     CrosshairsCFG::drawCrossline;
-        ConfigData["Crosshairs"]["tStyle"]=        CrosshairsCFG::tStyle;
-        ConfigData["Crosshairs"]["Circle"]=        CrosshairsCFG::drawCircle;
-        ConfigData["Crosshairs"]["Outline"]=       CrosshairsCFG::drawOutLine;
-        ConfigData["Crosshairs"]["DynamicGap"]=    CrosshairsCFG::DynamicGap;
-        ConfigData["Crosshairs"]["TeamCheck"]=     CrosshairsCFG::TeamCheck;
-        ConfigData["Crosshairs"]["Preset"]=        CrosshairsCFG::crosshairPreset;
-        ConfigData["Crosshairs"]["Gap"]=           CrosshairsCFG::Gap;
-        ConfigData["Crosshairs"]["H_Length"]=      CrosshairsCFG::HorizontalLength;
-        ConfigData["Crosshairs"]["V_Length"]=      CrosshairsCFG::VerticalLength;
-        ConfigData["Crosshairs"]["Thickness"]=     CrosshairsCFG::Thickness;
-        ConfigData["Crosshairs"]["DotSize"]=       CrosshairsCFG::DotSize;
-        ConfigData["Crosshairs"]["CircleRadius"]=  CrosshairsCFG::CircleRadius;
-        ConfigData["Crosshairs"]["TargetCheck"]=   MenuConfig::TargetingCrosshairs;
+        //ConfigData["Crosshairs"]["Enable"]=        CrosshairsCFG::ShowCrossHair;
+        //ConfigData["Crosshairs"]["Size"]=          CrosshairsCFG::CrossHairSize;
+        //ConfigData["Crosshairs"]["Dot"]=           CrosshairsCFG::drawDot;
+        //ConfigData["Crosshairs"]["Crossline"]=     CrosshairsCFG::drawCrossline;
+        //ConfigData["Crosshairs"]["tStyle"]=        CrosshairsCFG::tStyle;
+        //ConfigData["Crosshairs"]["Circle"]=        CrosshairsCFG::drawCircle;
+        //ConfigData["Crosshairs"]["Outline"]=       CrosshairsCFG::drawOutLine;
+        //ConfigData["Crosshairs"]["DynamicGap"]=    CrosshairsCFG::DynamicGap;
+        //ConfigData["Crosshairs"]["TeamCheck"]=     CrosshairsCFG::TeamCheck;
+        //ConfigData["Crosshairs"]["Preset"]=        CrosshairsCFG::crosshairPreset;
+        //ConfigData["Crosshairs"]["Gap"]=           CrosshairsCFG::Gap;
+        //ConfigData["Crosshairs"]["H_Length"]=      CrosshairsCFG::HorizontalLength;
+        //ConfigData["Crosshairs"]["V_Length"]=      CrosshairsCFG::VerticalLength;
+        //ConfigData["Crosshairs"]["Thickness"]=     CrosshairsCFG::Thickness;
+        //ConfigData["Crosshairs"]["DotSize"]=       CrosshairsCFG::DotSize;
+        //ConfigData["Crosshairs"]["CircleRadius"]=  CrosshairsCFG::CircleRadius;
+        //ConfigData["Crosshairs"]["TargetCheck"]=   MenuConfig::TargetingCrosshairs;
 
-        ConfigData["Crosshairs"]["CrosshairsColor"]["r"]=   CrosshairsCFG::CrossHairColor.Value.x;
-        ConfigData["Crosshairs"]["CrosshairsColor"]["g"]=   CrosshairsCFG::CrossHairColor.Value.y;
-        ConfigData["Crosshairs"]["CrosshairsColor"]["b"]=   CrosshairsCFG::CrossHairColor.Value.z;
-        ConfigData["Crosshairs"]["CrosshairsColor"]["a"]=   CrosshairsCFG::CrossHairColor.Value.w;
+        //ConfigData["Crosshairs"]["CrosshairsColor"]["r"]=   CrosshairsCFG::CrossHairColor.Value.x;
+        //ConfigData["Crosshairs"]["CrosshairsColor"]["g"]=   CrosshairsCFG::CrossHairColor.Value.y;
+        //ConfigData["Crosshairs"]["CrosshairsColor"]["b"]=   CrosshairsCFG::CrossHairColor.Value.z;
+        //ConfigData["Crosshairs"]["CrosshairsColor"]["a"]=   CrosshairsCFG::CrossHairColor.Value.w;
 
-        ConfigData["Crosshairs"]["TargetedColor"]["r"]=     CrosshairsCFG::TargetedColor.Value.x;
-        ConfigData["Crosshairs"]["TargetedColor"]["g"]=     CrosshairsCFG::TargetedColor.Value.y;
-        ConfigData["Crosshairs"]["TargetedColor"]["b"]=     CrosshairsCFG::TargetedColor.Value.z;
-        ConfigData["Crosshairs"]["TargetedColor"]["a"]=     CrosshairsCFG::TargetedColor.Value.w;
+        //ConfigData["Crosshairs"]["TargetedColor"]["r"]=     CrosshairsCFG::TargetedColor.Value.x;
+        //ConfigData["Crosshairs"]["TargetedColor"]["g"]=     CrosshairsCFG::TargetedColor.Value.y;
+        //ConfigData["Crosshairs"]["TargetedColor"]["b"]=     CrosshairsCFG::TargetedColor.Value.z;
+        //ConfigData["Crosshairs"]["TargetedColor"]["a"]=     CrosshairsCFG::TargetedColor.Value.w;
 
 
 
@@ -206,6 +206,13 @@ namespace MyConfigSaver
         ConfigData["Misc"]["Bhop"]=             MiscCFG::BunnyHop;
         //ConfigData["Misc"]["FastStop"] =        MiscCFG::FastStop;
         ConfigData["Misc"]["SpecList"]=         MiscCFG::SpecList;
+
+        ConfigData["Misc"]["SniperCrosshair"] = MiscCFG::SniperCrosshair;
+        ConfigData["Misc"]["SniperCrosshairColor"]["r"] = MiscCFG::SniperCrosshairColor.Value.x;
+        ConfigData["Misc"]["SniperCrosshairColor"]["g"] = MiscCFG::SniperCrosshairColor.Value.y;
+        ConfigData["Misc"]["SniperCrosshairColor"]["b"] = MiscCFG::SniperCrosshairColor.Value.z;
+        ConfigData["Misc"]["SniperCrosshairColor"]["a"] = MiscCFG::SniperCrosshairColor.Value.w;
+
         ConfigData["Misc"]["TeamCheck"]=        MenuConfig::TeamCheck;
         ConfigData["Misc"]["AntiRecord"]=       MenuConfig::BypassOBS;
 
@@ -261,80 +268,81 @@ namespace MyConfigSaver
             ESPConfig::BoneColor.Value.x = ReadData(ConfigData["ESP"], { "BoneColor","r" }, 0.f);
             ESPConfig::BoneColor.Value.y = ReadData(ConfigData["ESP"], { "BoneColor","g" }, 0.f);
             ESPConfig::BoneColor.Value.z = ReadData(ConfigData["ESP"], { "BoneColor","b" }, 0.f);
-            ESPConfig::BoneColor.Value.w = ReadData(ConfigData["ESP"], { "BoneColor","a" }, 0.f);
+            ESPConfig::BoneColor.Value.w = ReadData(ConfigData["ESP"], { "BoneColor","a" }, 255.f);
 
             ESPConfig::BoxColor.Value.x = ReadData(ConfigData["ESP"], { "BoxColor","r" }, 0.f);
             ESPConfig::BoxColor.Value.y = ReadData(ConfigData["ESP"], { "BoxColor","g" }, 0.f);
             ESPConfig::BoxColor.Value.z = ReadData(ConfigData["ESP"], { "BoxColor","b" }, 0.f);
-            ESPConfig::BoxColor.Value.w = ReadData(ConfigData["ESP"], { "BoxColor","a" }, 0.f);
+            ESPConfig::BoxColor.Value.w = ReadData(ConfigData["ESP"], { "BoxColor","a" }, 255.f);
 
             ESPConfig::LineToEnemyColor.Value.x = ReadData(ConfigData["ESP"], { "SnapLineColor","r" }, 0.f);
             ESPConfig::LineToEnemyColor.Value.y = ReadData(ConfigData["ESP"], { "SnapLineColor","g" }, 0.f);
             ESPConfig::LineToEnemyColor.Value.z = ReadData(ConfigData["ESP"], { "SnapLineColor","b" }, 0.f);
-            ESPConfig::LineToEnemyColor.Value.w = ReadData(ConfigData["ESP"], { "SnapLineColor","a" }, 0.f);
+            ESPConfig::LineToEnemyColor.Value.w = ReadData(ConfigData["ESP"], { "SnapLineColor","a" }, 255.f);
 
             ESPConfig::HeadBoxColor.Value.x = ReadData(ConfigData["ESP"], { "HeadBoxColor","r" }, 0.f);
             ESPConfig::HeadBoxColor.Value.y = ReadData(ConfigData["ESP"], { "HeadBoxColor","g" }, 0.f);
             ESPConfig::HeadBoxColor.Value.z = ReadData(ConfigData["ESP"], { "HeadBoxColor","b" }, 0.f);
-            ESPConfig::HeadBoxColor.Value.w = ReadData(ConfigData["ESP"], { "HeadBoxColor","a" }, 0.f);
+            ESPConfig::HeadBoxColor.Value.w = ReadData(ConfigData["ESP"], { "HeadBoxColor","a" }, 255.f);
+
             ESPConfig::VisibleColor.Value.x = ReadData(ConfigData["ESP"], { "VisibleColor","r" }, 0.f);
             ESPConfig::VisibleColor.Value.y = ReadData(ConfigData["ESP"], { "VisibleColor","g" }, 0.f);
             ESPConfig::VisibleColor.Value.z = ReadData(ConfigData["ESP"], { "VisibleColor","b" }, 0.f);
-            ESPConfig::VisibleColor.Value.w = ReadData(ConfigData["ESP"], { "VisibleColor","a" }, 0.f);
+            ESPConfig::VisibleColor.Value.w = ReadData(ConfigData["ESP"], { "VisibleColor","a" }, 255.f);
 
             ESPConfig::FilledColor.Value.x = ReadData(ConfigData["ESP"], { "FilledColor","r" }, 0.f);
             ESPConfig::FilledColor.Value.y = ReadData(ConfigData["ESP"], { "FilledColor","g" }, 0.f);
             ESPConfig::FilledColor.Value.z = ReadData(ConfigData["ESP"], { "FilledColor","b" }, 0.f);
-            ESPConfig::FilledColor.Value.w = ReadData(ConfigData["ESP"], { "FilledColor","a" }, 0.f);
+            ESPConfig::FilledColor.Value.w = ReadData(ConfigData["ESP"], { "FilledColor","a" }, 255.f);
 
             ESPConfig::FilledColor2.Value.x = ReadData(ConfigData["ESP"], { "FilledColor2","r" }, 0.f);
             ESPConfig::FilledColor2.Value.y = ReadData(ConfigData["ESP"], { "FilledColor2","g" }, 0.f);
             ESPConfig::FilledColor2.Value.z = ReadData(ConfigData["ESP"], { "FilledColor2","b" }, 0.f);
-            ESPConfig::FilledColor2.Value.w = ReadData(ConfigData["ESP"], { "FilledColor2","a" }, 0.f);
+            ESPConfig::FilledColor2.Value.w = ReadData(ConfigData["ESP"], { "FilledColor2","a" }, 255.f);
 
             ESPConfig::BoxFilledVisColor.Value.x = ReadData(ConfigData["ESP"], { "FilledVisColor","r" }, 0.f);
             ESPConfig::BoxFilledVisColor.Value.y = ReadData(ConfigData["ESP"], { "FilledVisColor","g" }, 0.f);
             ESPConfig::BoxFilledVisColor.Value.z = ReadData(ConfigData["ESP"], { "FilledVisColor","b" }, 0.f);
-            ESPConfig::BoxFilledVisColor.Value.w = ReadData(ConfigData["ESP"], { "FilledVisColor","a" }, 0.f);
+            ESPConfig::BoxFilledVisColor.Value.w = ReadData(ConfigData["ESP"], { "FilledVisColor","a" }, 255.f);
 
             ESPConfig::EyeRayColor.Value.x = ReadData(ConfigData["ESP"], { "EyeRayColor","r" }, 0.f);
             ESPConfig::EyeRayColor.Value.y = ReadData(ConfigData["ESP"], { "EyeRayColor","g" }, 0.f);
             ESPConfig::EyeRayColor.Value.z = ReadData(ConfigData["ESP"], { "EyeRayColor","b" }, 0.f);
-            ESPConfig::EyeRayColor.Value.w = ReadData(ConfigData["ESP"], { "EyeRayColor","a" }, 0.f);
+            ESPConfig::EyeRayColor.Value.w = ReadData(ConfigData["ESP"], { "EyeRayColor","a" }, 255.f);
 
         }
 
-        if (ConfigData.contains("Crosshairs")) 
-        {
-            CrosshairsCFG::ShowCrossHair = ReadData(ConfigData["Crosshairs"], { "Enable" }, false);
-            CrosshairsCFG::CrossHairSize = ReadData(ConfigData["Crosshairs"], { "Size" }, 0.f);
-            CrosshairsCFG::drawDot = ReadData(ConfigData["Crosshairs"], { "Dot" }, false);
-            CrosshairsCFG::drawCrossline = ReadData(ConfigData["Crosshairs"], { "Crossline" }, false);
-            CrosshairsCFG::tStyle = ReadData(ConfigData["Crosshairs"], { "tStyle" }, false);
-            CrosshairsCFG::drawCircle = ReadData(ConfigData["Crosshairs"], { "Circle" }, false);
-            CrosshairsCFG::drawOutLine = ReadData(ConfigData["Crosshairs"], { "Outline" }, false);
-            CrosshairsCFG::DynamicGap = ReadData(ConfigData["Crosshairs"], { "DynamicGap" }, false);
-            CrosshairsCFG::TeamCheck = ReadData(ConfigData["Crosshairs"], { "TeamCheck" }, false);
-            CrosshairsCFG::crosshairPreset = ReadData(ConfigData["Crosshairs"], { "Preset" }, 0);
-            CrosshairsCFG::Gap = ReadData(ConfigData["Crosshairs"], { "Gap" }, 0);
-            CrosshairsCFG::HorizontalLength = ReadData(ConfigData["Crosshairs"], { "H_Length" }, 0);
-            CrosshairsCFG::VerticalLength = ReadData(ConfigData["Crosshairs"], { "V_Length" }, 0);
-            CrosshairsCFG::Thickness = ReadData(ConfigData["Crosshairs"], { "Thickness" }, 0);
-            CrosshairsCFG::DotSize = ReadData(ConfigData["Crosshairs"], { "DotSize" }, 0.f);
-            CrosshairsCFG::CircleRadius = ReadData(ConfigData["Crosshairs"], { "CircleRadius" }, 0.f);
-            MenuConfig::TargetingCrosshairs = ReadData(ConfigData["Crosshairs"], { "TargetCheck" }, false);
+        //if (ConfigData.contains("Crosshairs")) 
+        //{
+        //    CrosshairsCFG::ShowCrossHair = ReadData(ConfigData["Crosshairs"], { "Enable" }, false);
+        //    CrosshairsCFG::CrossHairSize = ReadData(ConfigData["Crosshairs"], { "Size" }, 0.f);
+        //    CrosshairsCFG::drawDot = ReadData(ConfigData["Crosshairs"], { "Dot" }, false);
+        //    CrosshairsCFG::drawCrossline = ReadData(ConfigData["Crosshairs"], { "Crossline" }, false);
+        //    CrosshairsCFG::tStyle = ReadData(ConfigData["Crosshairs"], { "tStyle" }, false);
+        //    CrosshairsCFG::drawCircle = ReadData(ConfigData["Crosshairs"], { "Circle" }, false);
+        //    CrosshairsCFG::drawOutLine = ReadData(ConfigData["Crosshairs"], { "Outline" }, false);
+        //    CrosshairsCFG::DynamicGap = ReadData(ConfigData["Crosshairs"], { "DynamicGap" }, false);
+        //    CrosshairsCFG::TeamCheck = ReadData(ConfigData["Crosshairs"], { "TeamCheck" }, false);
+        //    CrosshairsCFG::crosshairPreset = ReadData(ConfigData["Crosshairs"], { "Preset" }, 0);
+        //    CrosshairsCFG::Gap = ReadData(ConfigData["Crosshairs"], { "Gap" }, 0);
+        //    CrosshairsCFG::HorizontalLength = ReadData(ConfigData["Crosshairs"], { "H_Length" }, 0);
+        //    CrosshairsCFG::VerticalLength = ReadData(ConfigData["Crosshairs"], { "V_Length" }, 0);
+        //    CrosshairsCFG::Thickness = ReadData(ConfigData["Crosshairs"], { "Thickness" }, 0);
+        //    CrosshairsCFG::DotSize = ReadData(ConfigData["Crosshairs"], { "DotSize" }, 0.f);
+        //    CrosshairsCFG::CircleRadius = ReadData(ConfigData["Crosshairs"], { "CircleRadius" }, 0.f);
+        //    MenuConfig::TargetingCrosshairs = ReadData(ConfigData["Crosshairs"], { "TargetCheck" }, false);
 
-            CrosshairsCFG::CrossHairColor.Value.x = ReadData(ConfigData["Crosshairs"], { "CrosshairsColor","r" }, 0.f);
-            CrosshairsCFG::CrossHairColor.Value.y = ReadData(ConfigData["Crosshairs"], { "CrosshairsColor","g" }, 0.f);
-            CrosshairsCFG::CrossHairColor.Value.z = ReadData(ConfigData["Crosshairs"], { "CrosshairsColor","b" }, 0.f);
-            CrosshairsCFG::CrossHairColor.Value.w = ReadData(ConfigData["Crosshairs"], { "CrosshairsColor","a" }, 0.f);
+        //    CrosshairsCFG::CrossHairColor.Value.x = ReadData(ConfigData["Crosshairs"], { "CrosshairsColor","r" }, 0.f);
+        //    CrosshairsCFG::CrossHairColor.Value.y = ReadData(ConfigData["Crosshairs"], { "CrosshairsColor","g" }, 0.f);
+        //    CrosshairsCFG::CrossHairColor.Value.z = ReadData(ConfigData["Crosshairs"], { "CrosshairsColor","b" }, 0.f);
+        //    CrosshairsCFG::CrossHairColor.Value.w = ReadData(ConfigData["Crosshairs"], { "CrosshairsColor","a" }, 0.f);
 
-            CrosshairsCFG::TargetedColor.Value.x = ReadData(ConfigData["Crosshairs"], { "TargetedColor","r" }, 0.f);
-            CrosshairsCFG::TargetedColor.Value.y = ReadData(ConfigData["Crosshairs"], { "TargetedColor","g" }, 0.f);
-            CrosshairsCFG::TargetedColor.Value.z = ReadData(ConfigData["Crosshairs"], { "TargetedColor","b" }, 0.f);
-            CrosshairsCFG::TargetedColor.Value.w = ReadData(ConfigData["Crosshairs"], { "TargetedColor","a" }, 0.f);
+        //    CrosshairsCFG::TargetedColor.Value.x = ReadData(ConfigData["Crosshairs"], { "TargetedColor","r" }, 0.f);
+        //    CrosshairsCFG::TargetedColor.Value.y = ReadData(ConfigData["Crosshairs"], { "TargetedColor","g" }, 0.f);
+        //    CrosshairsCFG::TargetedColor.Value.z = ReadData(ConfigData["Crosshairs"], { "TargetedColor","b" }, 0.f);
+        //    CrosshairsCFG::TargetedColor.Value.w = ReadData(ConfigData["Crosshairs"], { "TargetedColor","a" }, 0.f);
 
-        }
+        //}
 
         if (ConfigData.contains("Radar"))
         {
@@ -349,7 +357,7 @@ namespace MyConfigSaver
             RadarCFG::RadarCrossLineColor.Value.x = ReadData(ConfigData["Radar"],{"CrosslineColor","r"}, 0.f);
             RadarCFG::RadarCrossLineColor.Value.y = ReadData(ConfigData["Radar"],{"CrosslineColor","g"}, 0.f);
             RadarCFG::RadarCrossLineColor.Value.z = ReadData(ConfigData["Radar"],{"CrosslineColor","b"}, 0.f);
-            RadarCFG::RadarCrossLineColor.Value.w = ReadData(ConfigData["Radar"],{"CrosslineColor","a"}, 0.f);
+            RadarCFG::RadarCrossLineColor.Value.w = ReadData(ConfigData["Radar"],{"CrosslineColor","a"}, 255.f);
 
         }
 
@@ -365,7 +373,7 @@ namespace MyConfigSaver
             MenuConfig::FovCircleColor.Value.x = ReadData(ConfigData["Aimbot"],{"CircleColor","r"}, 0.f);
             MenuConfig::FovCircleColor.Value.y = ReadData(ConfigData["Aimbot"],{"CircleColor","g"}, 0.f);
             MenuConfig::FovCircleColor.Value.z = ReadData(ConfigData["Aimbot"],{"CircleColor","b"}, 0.f);
-            MenuConfig::FovCircleColor.Value.w = ReadData(ConfigData["Aimbot"],{"CircleColor","a"}, 0.f);
+            MenuConfig::FovCircleColor.Value.w = ReadData(ConfigData["Aimbot"],{"CircleColor","a"}, 255.f);
             AimControl::Smooth = ReadData(ConfigData["Aimbot"],{"Smooth"}, 2.f);
             AimControl::HitboxList = LoadVector(ConfigData["Aimbot"], "Hitboxes", { BONEINDEX::head });
             MenuConfig::VisibleCheck = ReadData(ConfigData["Aimbot"],{"VisibleCheck"}, true);
@@ -398,7 +406,7 @@ namespace MyConfigSaver
             MenuConfig::HeadShootLineColor.Value.x = ReadData(ConfigData["Misc"],{"HeadShootLineColor","r"}, 0.f);
             MenuConfig::HeadShootLineColor.Value.y = ReadData(ConfigData["Misc"],{"HeadShootLineColor","g"}, 0.f);
             MenuConfig::HeadShootLineColor.Value.z = ReadData(ConfigData["Misc"],{"HeadShootLineColor","b"}, 0.f);
-            MenuConfig::HeadShootLineColor.Value.w = ReadData(ConfigData["Misc"],{"HeadShootLineColor","a"}, 0.f);
+            MenuConfig::HeadShootLineColor.Value.w = ReadData(ConfigData["Misc"],{"HeadShootLineColor","a"}, 255.f);
             MiscCFG::WorkInSpec = ReadData(ConfigData["Misc"],{"WorkInSpec"}, false);
             MiscCFG::WaterMark = ReadData(ConfigData["Misc"],{"Watermark"}, false);
             MiscCFG::HitSound = ReadData(ConfigData["Misc"],{"HitSounds"}, 0);
@@ -407,10 +415,15 @@ namespace MyConfigSaver
             MiscCFG::BombTimerCol.Value.x = ReadData(ConfigData["Misc"],{"TimerColor","r"}, 0.f);
             MiscCFG::BombTimerCol.Value.y = ReadData(ConfigData["Misc"],{"TimerColor","g"}, 0.f);
             MiscCFG::BombTimerCol.Value.z = ReadData(ConfigData["Misc"],{"TimerColor","b"}, 0.f);
-            MiscCFG::BombTimerCol.Value.w = ReadData(ConfigData["Misc"],{"TimerColor","a"}, 0.f);
+            MiscCFG::BombTimerCol.Value.w = ReadData(ConfigData["Misc"],{"TimerColor","a"}, 255.f);
             MiscCFG::BunnyHop = ReadData(ConfigData["Misc"],{"Bhop"}, false);
             //MiscCFG::FastStop = ReadData(ConfigData["Misc"],{"FastStop"}, false);
             MiscCFG::SpecList = ReadData(ConfigData["Misc"],{"SpecList"}, false);
+            MiscCFG::SniperCrosshair = ReadData(ConfigData["Misc"], { "SniperCrosshair" }, false);
+            MiscCFG::SniperCrosshairColor.Value.x = ReadData(ConfigData["Misc"], { "SniperCrosshairColor","r" }, 0.f);
+            MiscCFG::SniperCrosshairColor.Value.y = ReadData(ConfigData["Misc"], { "SniperCrosshairColor","g" }, 0.f);
+            MiscCFG::SniperCrosshairColor.Value.z = ReadData(ConfigData["Misc"], { "SniperCrosshairColor","b" }, 0.f);
+            MiscCFG::SniperCrosshairColor.Value.w = ReadData(ConfigData["Misc"], { "SniperCrosshairColor","a" }, 255.f);
             MenuConfig::TeamCheck = ReadData(ConfigData["Misc"],{"TeamCheck"}, true);
             MenuConfig::BypassOBS = ReadData(ConfigData["Misc"],{"AntiRecord"}, false);
         }

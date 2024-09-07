@@ -1,8 +1,10 @@
 ○ Add FastStop
 ○ Add DefuseTimer
 ○ Fix SpecList
+○ Floating ESP
 ○ Cheat should use cs2 keys
 ○ Kernel mode
+◎ Add Sniper Crosshire
 ◎ Add Bhop
 ◎ Improve Aimbot
 ◎ Make cheat portable
