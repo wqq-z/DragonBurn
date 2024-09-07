@@ -16,7 +16,7 @@
 </p>
 
 ---
-### It's one of the best CS2 external cheats with many cool features. Nowadays undetected by anti-cheat. Software written on C++.
+### DragonBurn is one of the best CS2 read only external cheats. It has ton of features, full customization and offsets auto update. Undetected by all anti-cheats except faceit.
 ⭐Please, star this repo if it was helpful⭐
 
 ---
