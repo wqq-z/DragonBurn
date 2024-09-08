@@ -66,8 +66,8 @@ namespace Render
 		Vec2 CenterPoint = Gui.Window.Size / 2;
 		float Radius = tan(AimControl::AimFov / 180.f * M_PI / 2.f) / tan(LocalEntity.Pawn.Fov / 180.f * M_PI / 2.f) * Gui.Window.Size.x / 2.f;
 		float MinRadius = tan(AimControl::AimFovMin / 180.f * M_PI / 2.f) / tan(LocalEntity.Pawn.Fov / 180.f * M_PI / 2.f) * Gui.Window.Size.x / 2.f;
-		Gui.Circle(CenterPoint, Radius, MenuConfig::FovCircleColor, 1);
-		Gui.Circle(CenterPoint, MinRadius, MenuConfig::FovCircleColor, 1);
+		Gui.Circle(CenterPoint, Radius, LegitBotConfig::FovCircleColor, 1);
+		Gui.Circle(CenterPoint, MinRadius, LegitBotConfig::FovCircleColor, 1);
 	}
 
 	void DrawCrossHair(ImDrawList* drawList, const ImVec2& pos, ImColor color) noexcept
@@ -160,7 +160,7 @@ namespace Render
 
 	void DrawFov(const CEntity& LocalEntity, float Size, ImColor Color, float Thickness)
 	{
-		if (!MenuConfig::ShowFovLine)
+		if (!LegitBotConfig::ShowFovLine)
 			return;
 
 		float Length;
@@ -184,7 +184,7 @@ namespace Render
 
 	void HeadShootLine(const CEntity& LocalEntity, ImColor Color)
 	{
-		if (!MenuConfig::ShowHeadShootLine)
+		if (!MiscCFG::ShowHeadShootLine)
 			return;
 
 		float View = 0.f;

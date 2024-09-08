@@ -8,7 +8,7 @@ void AimControl::SetHotKey(int Index)
 
 void AimControl::switchToggle()
 {
-    MenuConfig::AimAlways = !MenuConfig::AimAlways;
+    LegitBotConfig::AimAlways = !LegitBotConfig::AimAlways;
 }
 
 void AimControl::AimBot(const CEntity& Local, Vec3 LocalPos, std::vector<Vec3>& AimPosList)
@@ -63,7 +63,7 @@ void AimControl::AimBot(const CEntity& Local, Vec3 LocalPos, std::vector<Vec3>& 
 
         Length = sqrt(Distance * Distance + OppPos.z * OppPos.z);
 
-        if (MenuConfig::RCS)
+        if (LegitBotConfig::RCS)
         {
             RCS::UpdateAngles(Local, Angles);
             float rad = Angles.x * RCS::RCSScale.x / 360.f * M_PI;
@@ -156,7 +156,7 @@ void AimControl::AimBot(const CEntity& Local, Vec3 LocalPos, std::vector<Vec3>& 
             mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
         }
 
-        int AimInterval = round(1000.0 / MenuConfig::MaxFrameRate);
+        int AimInterval = round(1000.0 / MenuConfig::RenderFPS);
         std::this_thread::sleep_for(std::chrono::milliseconds(AimInterval));
     }
     else

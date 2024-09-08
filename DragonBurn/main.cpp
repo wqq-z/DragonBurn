@@ -28,12 +28,15 @@ void Cheat()
 	ShowWindow(GetConsoleWindow(), SW_SHOWNORMAL);
 	srand(time(0));
 	Init::Verify::RandTitle();
-	if (Init::Verify::CheckWindowVersion())
-	{
-		MenuConfig::MaxFrameRate = Init::Client::getMaxFrameRate();
-	}
-		
+
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	if (!Init::Verify::CheckWindowVersion())
+	{
+		SetConsoleTextAttribute(hConsole, 14);
+		cout << "[INFO] Your os is unsupported, bugs may occurred." << endl;
+		system("pause");
+	}
+	
 	SetConsoleTextAttribute(hConsole, 13);	
 	cout << R"LOGO(______                            ______                  
 |  _  \                           | ___ \                 

@@ -57,7 +57,7 @@ void RCS::UpdateAngles(const CEntity& Local, Vec2& Angles)
 
 void RCS::RecoilControl(CEntity LocalPlayer)
 {
-	if (!MenuConfig::RCS)
+	if (!LegitBotConfig::RCS)
 		return;
 	static Vec2 OldPunch;
 	if (LocalPlayer.Pawn.ShotsFired > RCSBullet && AimControl::HasTarget)

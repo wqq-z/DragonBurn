@@ -7,6 +7,9 @@ namespace MenuConfig
 {
 	inline std::string path = "";
 	inline std::string docPath = "";
+	inline int RenderFPS = 1000;
+	inline int RenderDistance = 1000;
+
 
 	struct {
 		// 0: Visual 1: Aimbot 2: Misc 3: Config
@@ -21,14 +24,18 @@ namespace MenuConfig
 		ImVec2 ChildSize			= ImVec2(540.f, 500.f);
 	} WCS;	// Window Component Settings
 
-	inline int MaxFrameRate = 60;
 	inline bool defaultConfig = false;
-	inline int MaxRenderFPS = 144;
 
-	inline bool AirJump = false;
 	// 0: Window 1: Collapse
 	inline int WindowStyle = 0;
+	inline bool ShowMenu = true;
+	inline bool TeamCheck = true;
+	inline bool BypassOBS = false;
+	inline bool WorkInSpec = true;
+}
 
+namespace LegitBotConfig 
+{
 	inline bool AimBot = false;
 	inline bool AimAlways = false;
 	inline bool AimToggleMode = false;
@@ -37,34 +44,19 @@ namespace MenuConfig
 	inline int  AimPosition = 0;
 	inline DWORD  AimPositionIndex = BONEINDEX::head;
 	inline bool VisibleCheck = true;
-
-	inline bool RCS = false;
-
-	// 0: normal 1: dynamic 2: Flat
-	inline int BoxType = 0;
-	// 0: Vertical 1: Horizontal
-	inline int  HealthBarType = 0;
-
+	inline bool HitboxUpdated = false;
+	inline bool ShowFovLine = false;
 	inline ImColor FovCircleColor = ImColor(180, 255, 0, 255);
-
-	inline bool ShowMenu = true;
+	inline ImColor FovLineColor = ImColor(55, 55, 55, 220);
+	inline float FovLineSize = 60.f;
 
 	inline bool TriggerBot = false;
 	inline bool TriggerAlways = false;
 	inline int TriggerHotKey = 0;
 
-	inline bool TeamCheck = true;
+	inline bool RCS = false;
 
-	inline bool ShowHeadShootLine = false;
-	inline ImColor HeadShootLineColor = ImColor(255, 255, 255, 200);
 
-	inline bool ShowFovLine = false;
-	inline ImColor FovLineColor = ImColor(55, 55, 55, 220);
-	inline float FovLineSize = 60.f;
-
-	inline bool BypassOBS = false;
-	inline bool TargetingCrosshairs = false;
-	inline bool HitboxUpdated = false;
 }
 
 namespace ESPConfig
@@ -91,12 +83,14 @@ namespace ESPConfig
 	inline bool MultiColor = false;
 	inline bool OutLine = true;
 	inline bool ShowIsScoped = false;
-	// 0: normal 1: Flat
+	// 0: normal 1: dynamic 2: Flat
+	inline int BoxType = 0;
+	// 0: Vertical 1: Horizontal
+	inline int  HealthBarType = 0;
 	inline int HeadBoxStyle = 0;
 	inline float BoxRounding = RandomPara<float>(0.0f, 3.0f);;
 	inline float BoxAlpha = 0.35f;
 	inline bool ShowLineToEnemy = false;
-	inline int RenderDistance = 0;
 	inline ImColor LineToEnemyColor = ImColor(255, 255, 255, 220);
 	// 0: Top 1: Center 2: Bottom
 	inline int LinePos = 0;
@@ -137,6 +131,8 @@ namespace ESPConfig
 //
 //	inline ImColor CrossHairColor = ImColor(0, 255, 0, 255);
 //	inline ImColor TargetedColor = ImColor(255, 0, 0, 255);
+// 
+// inline bool TargetingCrosshairs = false;
 //}
 
 namespace RadarCFG
@@ -156,7 +152,6 @@ namespace RadarCFG
 namespace MiscCFG
 {
 	inline bool BunnyHop = false;
-	inline bool WorkInSpec = true;
 	inline bool WaterMark = false;
 	inline bool SniperCrosshair = false;
 	inline ImColor SniperCrosshairColor = ImColor(32, 178, 170,255);
@@ -166,4 +161,6 @@ namespace MiscCFG
 	//inline bool FastStop = false;
 	inline bool SpecList = false;
 	inline ImColor BombTimerCol = ImColor(255, 120, 0, 255);
+	inline bool ShowHeadShootLine = false;
+	inline ImColor HeadShootLineColor = ImColor(255, 255, 255, 200);
 }

@@ -45,7 +45,6 @@ namespace Lang
 		inline static const char* ScopedESP;
 		inline static const char* ShowArmorBar;
 		inline static const char* ArmorNum;
-		inline static const char* RenderDistance;
 
 		inline static const char* BoxType_Normal;
 		inline static const char* BoxType_Edge;
@@ -174,8 +173,6 @@ namespace Lang
 		inline static const char* MyConfigs;
 		inline static const char* AuthorName;
 		inline static const char* ConfigName;
-
-		inline static const char* fpsCap;
 	} ConfigText;
 
 	inline void English()
@@ -213,7 +210,6 @@ namespace Lang
 		ESPtext.ScopedESP = "Show Scoped";
 		ESPtext.ShowArmorBar = "Armor Bar";
 		ESPtext.ArmorNum = "Armor Number";
-		ESPtext.RenderDistance = "Max Render Distance: ";
 
 		ESPtext.LinePos_1 = "Top";
 		ESPtext.LinePos_2 = "Center";
@@ -312,7 +308,5 @@ namespace Lang
 		ConfigText.SeparateLine = "Create Config";
 		ConfigText.AuthorName = "Author Name";
 		ConfigText.ConfigName = "Config Name";
-
-		ConfigText.fpsCap = "Frame Limit: ";
 	}
 }
