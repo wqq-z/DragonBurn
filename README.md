@@ -30,9 +30,13 @@ Press END key to open/close menu.
 <summary>Visual</summary>
   
 - Box ESP
+- Box Type
+- Box Rounding
 - Filled Box ESP
+- Gradient Filled Box ESP
 - Skeleton
 - Snap Line
+- Visual Color
 - Eye Ray
 - Health Bar
 - Armor Bar
@@ -43,6 +47,7 @@ Press END key to open/close menu.
 - Scoped
 - AWP Crosshair
 - Visual Preview
+- etc
 </details>
 
 <details>
@@ -60,10 +65,9 @@ Press END key to open/close menu.
 - Start Bullet
 - Aim Lock
 - Draw Fov
-- Visible Only
-- Ignore Flash
-- Scope Only
-- Auto Shoot
+- Visible Check
+- Flash Check
+- Scope Check
 - FOV
 - Smooth
 - Multi Hitboxes Selection
@@ -80,8 +84,8 @@ Press END key to open/close menu.
 <details>
 <summary>Trigger Bot</summary>
   
-- Scope Only
-- Ignore Flash
+- Scope Check
+- Flash Check
 - Shot Delay
 - Shot Duration
 </details>
@@ -90,7 +94,6 @@ Press END key to open/close menu.
 <summary>Misc</summary>
   
 - Bomb Timer
-- Fast Stop
 - Head Line
 - Hit Sound
 - Hit Markers
@@ -108,6 +111,10 @@ Press END key to open/close menu.
 
 <p align="center">
 <img src="imgs/img1.png">
+</p>
+
+<p align="center">
+<img src="imgs/img2.png">
 </p>
 
 ---
