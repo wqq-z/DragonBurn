@@ -21,7 +21,7 @@
 
 ---
 ### 🌐Join our community
-<img src="https://invidget.switchblade.xyz/5WcvdzFybD" url="https://discord.gg/5WcvdzFybD">
+<a href="https://discord.gg/5WcvdzFybD"><img src="https://invidget.switchblade.xyz/5WcvdzFybD"></a>
 
 ---
 ### 📋 Features
