@@ -36,23 +36,23 @@ namespace MenuConfig
 
 namespace LegitBotConfig 
 {
-	inline bool AimBot = false;
+	inline bool AimBot = true;
 	inline bool AimAlways = false;
 	inline bool AimToggleMode = false;
-	inline int AimBotHotKey = 0;
+	inline int AimBotHotKey = 3;
 	// 0: head 1: neck 3: spine
 	inline int  AimPosition = 0;
 	inline DWORD  AimPositionIndex = BONEINDEX::head;
 	inline bool VisibleCheck = true;
 	inline bool HitboxUpdated = false;
 	inline bool ShowFovLine = false;
-	inline ImColor FovCircleColor = ImColor(180, 255, 0, 255);
-	inline ImColor FovLineColor = ImColor(55, 55, 55, 220);
+	inline ImColor FovCircleColor = ImColor(131, 137, 150, 180);
+	inline ImColor FovLineColor = ImColor(0, 98, 98, 220);
 	inline float FovLineSize = 60.f;
 
-	inline bool TriggerBot = false;
+	inline bool TriggerBot = true;
 	inline bool TriggerAlways = false;
-	inline int TriggerHotKey = 0;
+	inline int TriggerHotKey = 4;
 
 	inline bool RCS = false;
 
@@ -63,11 +63,11 @@ namespace ESPConfig
 {
 	inline bool ESPenabled = true;
 	inline bool AmmoBar = false;
-	inline bool ShowScoping = false;
+	inline bool ShowScoping = true;
 	inline bool ShowBoneESP = true;
 	inline bool ShowBoxESP = true;
 	inline bool ShowHealthBar = true;
-	inline bool ShowWeaponESP = false;
+	inline bool ShowWeaponESP = true;
 	inline bool ShowEyeRay = false;
 	inline bool ShowPlayerName = true;
 	inline bool DrawFov = false;
@@ -75,34 +75,33 @@ namespace ESPConfig
 	inline bool ShowHealthNum = false;
 	inline bool ArmorBar = false;
 	inline bool ShowArmorNum = false;
-	inline bool ShowHeadBox = false;
+	inline bool ShowHeadBox = true;
 	inline bool ShowPreview = true;
 	inline bool VisibleCheck = false;
 	inline bool FilledBox = false;
 	inline bool FilledVisBox = false;
 	inline bool MultiColor = false;
 	inline bool OutLine = true;
-	inline bool ShowIsScoped = false;
+	inline bool ShowIsScoped = true;
 	// 0: normal 1: dynamic 2: Flat
 	inline int BoxType = 0;
 	// 0: Vertical 1: Horizontal
 	inline int  HealthBarType = 0;
 	inline int HeadBoxStyle = 0;
-	inline float BoxRounding = RandomPara<float>(0.0f, 3.0f);;
-	inline float BoxAlpha = 0.35f;
+	inline float BoxRounding = 5;
 	inline bool ShowLineToEnemy = false;
-	inline ImColor LineToEnemyColor = ImColor(255, 255, 255, 220);
+	inline ImColor LineToEnemyColor = ImColor(59, 71, 148,180);
 	// 0: Top 1: Center 2: Bottom
 	inline int LinePos = 0;
 
-	inline ImColor BoneColor = ImColor(0, 255, 255, 255);
-	inline ImColor BoxColor = ImColor(255, 80, 0, 255);
-	inline ImColor EyeRayColor = ImColor(255, 0, 0, 255);
-	inline ImColor HeadBoxColor = ImColor(255, 255, 255, 255);
-	inline ImColor VisibleColor = ImColor(255, 196, 0, 255);
-	inline ImColor FilledColor = ImColor(255, 255, 255, 128);
-	inline ImColor BoxFilledVisColor = ImColor(0, 0, 255, 255);
-	inline ImColor FilledColor2 = ImColor(0, 255, 102, 255);
+	inline ImColor BoneColor = ImColor(131, 137, 150, 180);
+	inline ImColor BoxColor = ImColor(59, 71, 148, 180);
+	inline ImColor EyeRayColor = ImColor(0, 98, 98, 255);
+	inline ImColor HeadBoxColor = ImColor(131, 137, 150, 180);
+	inline ImColor VisibleColor = ImColor(59, 71, 148, 180);
+	inline ImColor FilledColor = ImColor(59, 71, 148, 128);
+	inline ImColor BoxFilledVisColor = ImColor(0, 98, 98, 128);
+	inline ImColor FilledColor2 = ImColor(59, 71, 148, 128);
 }
 
 //namespace CrosshairsCFG
@@ -141,7 +140,7 @@ namespace RadarCFG
 	inline float RadarRange = 150;
 	inline float RadarPointSizeProportion = 1.f;
 	inline bool ShowRadarCrossLine = false;
-	inline ImColor RadarCrossLineColor = ImColor(220, 220, 220, 255);
+	inline ImColor RadarCrossLineColor = ImColor(131, 137, 150, 180);
 	// 0: circle 1: arrow 2: circle with arrow
 	inline int RadarType = 2;
 	inline float Proportion = 3300.f;
@@ -152,15 +151,15 @@ namespace RadarCFG
 namespace MiscCFG
 {
 	inline bool BunnyHop = false;
-	inline bool WaterMark = false;
-	inline bool SniperCrosshair = false;
-	inline ImColor SniperCrosshairColor = ImColor(32, 178, 170,255);
+	inline bool WaterMark = true;
+	inline bool SniperCrosshair = true;
+	inline ImColor SniperCrosshairColor = ImColor(32, 178, 170, 255);
 	inline int	HitSound = 0;
 	inline bool HitMarker = false;
-	inline bool bmbTimer = false;
+	inline bool bmbTimer = true;
 	//inline bool FastStop = false;
 	inline bool SpecList = false;
-	inline ImColor BombTimerCol = ImColor(255, 120, 0, 255);
+	inline ImColor BombTimerCol = ImColor(131, 137, 150, 255);
 	inline bool ShowHeadShootLine = false;
-	inline ImColor HeadShootLineColor = ImColor(255, 255, 255, 200);
+	inline ImColor HeadShootLineColor = ImColor(131, 137, 150, 200);
 }

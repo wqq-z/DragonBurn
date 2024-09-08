@@ -160,7 +160,6 @@ namespace MyConfigSaver
         ConfigData["Aimbot"]["VisibleCheck"]=     LegitBotConfig::VisibleCheck;
         ConfigData["Aimbot"]["IgnoreFlash"]=      AimControl::IgnoreFlash;
         ConfigData["Aimbot"]["ScopeOnly"]=        AimControl::ScopeOnly;
-        ConfigData["Aimbot"]["AutoShot"]=         AimControl::AutoShot;
 
         ConfigData["Aimbot"]["CircleColor"]["r"]= LegitBotConfig::FovCircleColor.Value.x;
         ConfigData["Aimbot"]["CircleColor"]["g"]= LegitBotConfig::FovCircleColor.Value.y;
@@ -374,7 +373,6 @@ namespace MyConfigSaver
             LegitBotConfig::VisibleCheck = ReadData(ConfigData["Aimbot"],{"VisibleCheck"}, true);
             AimControl::IgnoreFlash = ReadData(ConfigData["Aimbot"],{"IgnoreFlash"}, false);
             AimControl::ScopeOnly = ReadData(ConfigData["Aimbot"],{"ScopeOnly"}, false);
-            AimControl::AutoShot = ReadData(ConfigData["Aimbot"],{"AutoShot"}, false);
         }
 
         if (ConfigData.contains("RCS"))
