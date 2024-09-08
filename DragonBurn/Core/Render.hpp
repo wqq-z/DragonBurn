@@ -55,7 +55,7 @@ namespace Render
 
 		int distance = static_cast<int>(Entity.Pawn.Pos.DistanceTo(LocalEntity.Pawn.Pos) / 100);
 		std::string dis_str = Format("%im", distance);
-		Gui.StrokeText(dis_str, { Rect.x + Rect.z + 4, Rect.y }, ImColor(255, 204, 0, 255), 14, false);
+		Gui.StrokeText(dis_str, { Rect.x + Rect.z + 4, Rect.y }, ImColor(0, 98, 98, 255) , 14, false);
 	}
 
 	void DrawFovCircle(const CEntity& LocalEntity)

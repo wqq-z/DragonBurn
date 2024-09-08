@@ -226,7 +226,7 @@ namespace ESP
 				ImGui::GetBackgroundDrawList()->AddText(ImGui::GetIO().Fonts->Fonts[1], 13.0f, ImVec2{ IconPos.x - 1, IconPos.y + 1 }, ImColor(0, 0, 0, 255), "s");
 				ImGui::GetBackgroundDrawList()->AddText(ImGui::GetIO().Fonts->Fonts[1], 13.0f, ImVec2{ IconPos.x + 1, IconPos.y + 1 }, ImColor(0, 0, 0, 255), "s");
 				ImGui::GetBackgroundDrawList()->AddText(ImGui::GetIO().Fonts->Fonts[1], 13.0f, ImVec2{ IconPos.x + 1, IconPos.y - 1 }, ImColor(0, 0, 0, 255), "s");
-				ImGui::GetBackgroundDrawList()->AddText(ImGui::GetIO().Fonts->Fonts[1], 13.0f, IconPos, ImColor(0, 200, 255, 255), "s");
+				ImGui::GetBackgroundDrawList()->AddText(ImGui::GetIO().Fonts->Fonts[1], 13.0f, IconPos, ImColor(131, 137, 150, 255), "s");
 			}
 		}
 
@@ -468,7 +468,7 @@ namespace ESP
 			{
 				textPos = { textPos.x - 27, textPos.y };
 			}
-			ImGui::GetWindowDrawList()->AddText(textPos, IM_COL32(255, 204, 0, 255), "1337m");
+			ImGui::GetWindowDrawList()->AddText(textPos, IM_COL32(0, 98, 98, 255), "108m");
 		}
 		if (ESPConfig::ShowWeaponESP) {
 			ImVec2 textPos(0, 0);
@@ -492,7 +492,7 @@ namespace ESP
 				centerPos.y += 2;
 				centerPos.x += 25;
 			}
-			ImGui::GetWindowDrawList()->AddText(ImGui::GetIO().Fonts->Fonts[1], 15.0f, centerPos, IM_COL32(200, 255, 255, 255), "s");
+			ImGui::GetWindowDrawList()->AddText(ImGui::GetIO().Fonts->Fonts[1], 15.0f, centerPos, IM_COL32(131, 137, 150, 255), "s");
 		}
 	}
 }
