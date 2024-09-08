@@ -180,7 +180,7 @@ namespace Lang
 
 	inline void English()
 	{
-		Global.Version = "v1.0.5.0";
+		Global.Version = "v1.0.5.1";
 		Global.Author = "ByteCorum";
 
 		Global.SwitchButton = "Enable";

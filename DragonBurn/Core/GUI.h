@@ -607,7 +607,7 @@ namespace GUI
 						Gui.OpenWebpage("https://github.com/ByteCorum/DragonBurn");
 					ImGui::SameLine();
 					if (ImGui::Button("Contact Author", { 125.f, 25.f }))
-						Gui.OpenWebpage("https://discordapp.com/users/798503509522645012/");
+						Gui.OpenWebpage("https://discord.gg/5WcvdzFybD");
 					//ImGui::SetCursorPosX(ImGui::GetCursorPosX() + ImGui::GetColumnWidth() / 4);
 					if (ImGui::Button("Unhook", { 125.f, 25.f }))
 						Init::Client::Exit();
