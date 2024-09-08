@@ -20,8 +20,10 @@
 ⭐Please, star this repo if it was helpful⭐
 
 ---
+### 🌐Join our community
+<img src="https://invidget.switchblade.xyz/5WcvdzFybD" url="https://discord.gg/5WcvdzFybD">
 
-
+---
 ### 📋 Features
 Press END key to open/close menu.
 <details>
