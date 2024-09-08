@@ -45,7 +45,6 @@ namespace Lang
 		inline static const char* ScopedESP;
 		inline static const char* ShowArmorBar;
 		inline static const char* ArmorNum;
-		inline static const char* RenderDistance;
 
 		inline static const char* BoxType_Normal;
 		inline static const char* BoxType_Edge;
@@ -74,7 +73,6 @@ namespace Lang
 		inline static const char* BoneList;
 		inline static const char* Tip;
 		inline static const char* ScopeOnly;
-		inline static const char* AutoShot;
 		inline static const char* BulletSlider;
 		inline static const char* IgnoreFlash;
 
@@ -174,13 +172,11 @@ namespace Lang
 		inline static const char* MyConfigs;
 		inline static const char* AuthorName;
 		inline static const char* ConfigName;
-
-		inline static const char* fpsCap;
 	} ConfigText;
 
 	inline void English()
 	{
-		Global.Version = "v1.0.5.0";
+		Global.Version = "v1.0.5.2";
 		Global.Author = "ByteCorum";
 
 		Global.SwitchButton = "Enable";
@@ -189,31 +185,30 @@ namespace Lang
 		// ESP
 		ESPtext.Toggle = "Toggle";
 		ESPtext.FeatureName = " ESP";
-		ESPtext.Box = "Frame";
+		ESPtext.Box = "Box";
 		ESPtext.BoxRounding = "Box Rounding: ";
 		ESPtext.FilledBox = "Filled Box";
 		ESPtext.FilledAlpha = "Filled Box Alpha";
 		ESPtext.Skeleton = "Skeleton";
-		ESPtext.HeadBox = "Head Box";
+		ESPtext.HeadBox = "Head ESP";
 		ESPtext.EyeRay = "Eye Ray";
 		ESPtext.HealthBar = "Health Bar";
-		ESPtext.Weapon = "Weapon";
+		ESPtext.Weapon = "Weapon Icon";
 		ESPtext.Distance = "Distance";
-		ESPtext.PlayerName = "Name";
+		ESPtext.PlayerName = "Player Name";
 		ESPtext.SnapLine = "Snap Line";
 		ESPtext.LinePosList = "Line Position: ";
-		ESPtext.VisCheck = "Visible Check";
-		ESPtext.Preview = "Preview Window";
-		ESPtext.MultiColor = "Multi-Color";
+		ESPtext.VisCheck = "Visible Color";
+		ESPtext.Preview = "ESP Preview";
+		ESPtext.MultiColor = "Multicoloured";
 		ESPtext.MultiColTip = "Only work when the box has non-rounded corners.";
 		ESPtext.Outline = "Outline";
 		ESPtext.BoxType = "  Box Type";
 		ESPtext.HealthNum = "Health Number";
-		ESPtext.Ammo = "Ammo";
+		ESPtext.Ammo = "Ammo Bar";
 		ESPtext.ScopedESP = "Show Scoped";
 		ESPtext.ShowArmorBar = "Armor Bar";
 		ESPtext.ArmorNum = "Armor Number";
-		ESPtext.RenderDistance = "Max Render Distance: ";
 
 		ESPtext.LinePos_1 = "Top";
 		ESPtext.LinePos_2 = "Center";
@@ -224,16 +219,15 @@ namespace Lang
 		AimbotText.FeatureName = " Aimbot";
 		AimbotText.HotKeyList = "Hotkey   ";
 		AimbotText.Toggle = "Toggle Mode";
-		AimbotText.DrawFov = "Draw Fov";
-		AimbotText.VisCheck = "Visible Only";
-		AimbotText.JumpCheck = "On Ground Only";
+		AimbotText.DrawFov = "Show Fov";
+		AimbotText.VisCheck = "Visible Check";
+		AimbotText.JumpCheck = "On Ground Check";
 		AimbotText.FovSlider = "FOV: ";
-		AimbotText.FovMinSlider = "MinFOV: ";
+		AimbotText.FovMinSlider = "MiniFOV: ";
 		AimbotText.SmoothSlider = "Smooth: ";
 		AimbotText.BoneList = "Hitboxes";
 		AimbotText.Tip = "Aimbot will not work while the menu is opened";
-		AimbotText.ScopeOnly = "Scope Only";
-		AimbotText.AutoShot = "Auto Shot";
+		AimbotText.ScopeOnly = "Scope Check";
 		AimbotText.BulletSlider = "Start Bullet: ";
 		AimbotText.IgnoreFlash = "Ignore Flash";
 
@@ -251,14 +245,14 @@ namespace Lang
 		RadarText.SizeSlider = "Point Size:";
 		RadarText.ProportionSlider = "Proportion:";
 		RadarText.RangeSlider = "Range:";
-		RadarText.AlphaSlider = "Window Background Alpha:";
+		RadarText.AlphaSlider = "Background Alpha:";
 
 		// Triggerbot
 		TriggerText.Enable = "Enable Triggerbot";
 		TriggerText.FeatureName = " Triggerbot";
 		TriggerText.HotKeyList = "Hotkey   ";
 		TriggerText.Toggle = "Always Active";
-		TriggerText.ScopeOnly = "Scope Only";
+		TriggerText.ScopeOnly = "Scope Check";
 		TriggerText.DelaySlider = "Shot Delay:";
 		TriggerText.FakeShotSlider = "Shot Duration:";
 
@@ -285,8 +279,7 @@ namespace Lang
 		MiscText.FeatureName = " Misc";
 		MiscText.StyleList = "Style";
 		MiscText.HeadshotLine = "Headshot Line";
-		MiscText.SpecCheck = "Cheat in Spec";
-		MiscText.NoFlash = "No Flash";
+		MiscText.SpecCheck = "Work in Spec";
 		MiscText.BunnyHop = "Bunny Hop";
 		//MiscText.FastStop = "Fast Stop";
 		MiscText.HitSound = "Hit Sound  ";
@@ -312,7 +305,5 @@ namespace Lang
 		ConfigText.SeparateLine = "Create Config";
 		ConfigText.AuthorName = "Author Name";
 		ConfigText.ConfigName = "Config Name";
-
-		ConfigText.fpsCap = "Frame Limit: ";
 	}
 }

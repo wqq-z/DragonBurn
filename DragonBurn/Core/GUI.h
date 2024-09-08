@@ -53,7 +53,7 @@ namespace GUI
 
 	inline void InitHitboxList()
 	{
-		if (MenuConfig::HitboxUpdated)
+		if (LegitBotConfig::HitboxUpdated)
 			return;
 		auto HitboxList = AimControl::HitboxList;
 
@@ -77,7 +77,7 @@ namespace GUI
 		if (it != HitboxList.end())
 			checkbox5 = true;
 
-		MenuConfig::HitboxUpdated = true;
+		LegitBotConfig::HitboxUpdated = true;
 	}
 	void addHitbox(int BoneIndex)
 	{
@@ -301,7 +301,6 @@ namespace GUI
 					ImGui::SeparatorText("ESP");
 					float MinRounding = 0.f, MaxRouding = 5.f;
 					int MinCombo = 0, MaxCombo = 2;
-					int MinDis = 0, MaxDis = 128;
 					PutSwitch(Lang::ESPtext.Toggle, 10.f, ImGui::GetFrameHeight() * 1.7, &ESPConfig::ESPenabled);
 					if (ESPConfig::ESPenabled)
 					{
@@ -313,7 +312,7 @@ namespace GUI
 							ImGui::TextDisabled(Lang::ESPtext.BoxType);
 							ImGui::SameLine();
 							ImGui::SetNextItemWidth(165.f);
-							ImGui::Combo("###BoxType", &MenuConfig::BoxType, "Normal\0Dynamic\0Corner\0");
+							ImGui::Combo("###BoxType", &ESPConfig::BoxType, "Normal\0Dynamic\0Corner\0");
 							PutSliderFloat(Lang::ESPtext.BoxRounding, 10.f, &ESPConfig::BoxRounding, &MinRounding, &MaxRouding, "%.1f");
 						}
 						PutSwitch(Lang::ESPtext.FilledBox, 10.f, ImGui::GetFrameHeight() * 1.7, &ESPConfig::FilledBox, true, "###FilledBoxCol", reinterpret_cast<float*>(&ESPConfig::FilledColor));
@@ -337,8 +336,8 @@ namespace GUI
 						PutSwitch(Lang::ESPtext.PlayerName, 10.f, ImGui::GetFrameHeight() * 1.7, &ESPConfig::ShowPlayerName);
 						PutSwitch(Lang::ESPtext.ScopedESP, 10.f, ImGui::GetFrameHeight() * 1.7, &ESPConfig::ShowIsScoped);
 						PutSwitch(Lang::ESPtext.VisCheck, 10.f, ImGui::GetFrameHeight() * 1.7, &ESPConfig::VisibleCheck, true, "###VisibleCol", reinterpret_cast<float*>(&ESPConfig::VisibleColor));
-						PutSliderInt(Lang::ESPtext.RenderDistance, 10.f, &ESPConfig::RenderDistance, &MinDis, &MaxDis, "%dm");
 					}
+					ImGui::NewLine();
 					
 					ImGui::NextColumn();
 					ImGui::SetCursorPosY(24.f);
@@ -409,25 +408,24 @@ namespace GUI
 					float FovMin = 0.f, FovMax = 25.f, MinFovMax = 1.f;
 					int BulletMin = 0, BulletMax = 5;
 					float SmoothMin = 0.4f, SmoothMax = 10.f;
-					PutSwitch(Lang::AimbotText.Enable, 10.f, ImGui::GetFrameHeight() * 1.7, &MenuConfig::AimBot);
-					if (MenuConfig::AimBot)
+					PutSwitch(Lang::AimbotText.Enable, 10.f, ImGui::GetFrameHeight() * 1.7, &LegitBotConfig::AimBot);
+					if (LegitBotConfig::AimBot)
 					{
 
 						ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 10.f);
 						ImGui::TextDisabled(Lang::AimbotText.HotKeyList);
 						ImGui::SameLine();
 						ImGui::SetNextItemWidth(165.f);
-						if (ImGui::Combo("###AimKey", &MenuConfig::AimBotHotKey, "LALT\0LBUTTON\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL\0"))
+						if (ImGui::Combo("###AimKey", &LegitBotConfig::AimBotHotKey, "LALT\0LBUTTON\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL\0"))
 						{
-							AimControl::SetHotKey(MenuConfig::AimBotHotKey);
+							AimControl::SetHotKey(LegitBotConfig::AimBotHotKey);
 						}
 						PutSliderInt(Lang::AimbotText.BulletSlider, 10.f, &AimControl::AimBullet, &BulletMin, &BulletMax, "%d");
-						PutSwitch(Lang::AimbotText.Toggle, 10.f, ImGui::GetFrameHeight() * 1.7, &MenuConfig::AimToggleMode);
-						PutSwitch(Lang::AimbotText.DrawFov, 10.f, ImGui::GetFrameHeight() * 1.7, &ESPConfig::DrawFov, true, "###FOVcol", reinterpret_cast<float*>(&MenuConfig::FovCircleColor));
-						PutSwitch(Lang::AimbotText.VisCheck, 10.f, ImGui::GetFrameHeight() * 1.7, &MenuConfig::VisibleCheck);
+						PutSwitch(Lang::AimbotText.Toggle, 10.f, ImGui::GetFrameHeight() * 1.7, &LegitBotConfig::AimToggleMode);
+						PutSwitch(Lang::AimbotText.DrawFov, 10.f, ImGui::GetFrameHeight() * 1.7, &ESPConfig::DrawFov, true, "###FOVcol", reinterpret_cast<float*>(&LegitBotConfig::FovCircleColor));
+						PutSwitch(Lang::AimbotText.VisCheck, 10.f, ImGui::GetFrameHeight() * 1.7, &LegitBotConfig::VisibleCheck);
 						PutSwitch(Lang::AimbotText.IgnoreFlash, 10.f, ImGui::GetFrameHeight() * 1.7, &AimControl::IgnoreFlash);
 						PutSwitch(Lang::AimbotText.ScopeOnly, 10.f, ImGui::GetFrameHeight() * 1.7, &AimControl::ScopeOnly);
-						PutSwitch(Lang::AimbotText.AutoShot, 10.f, ImGui::GetFrameHeight() * 1.7, &AimControl::AutoShot);
 						PutSliderFloat(Lang::AimbotText.FovSlider, 10.f, &AimControl::AimFov, &AimControl::AimFovMin, &FovMax, "%.1f");
 						PutSliderFloat(Lang::AimbotText.FovMinSlider, 10.f, &AimControl::AimFovMin, &FovMin, &MinFovMax, "%.2f");
 						PutSliderFloat(Lang::AimbotText.SmoothSlider, 10.f, &AimControl::Smooth, &SmoothMin, &SmoothMax, "%.1f");
@@ -498,8 +496,8 @@ namespace GUI
 					ImGui::SetCursorPosY(24.f);
 					ImGui::SeparatorText("RCS");
 					float recoilMin = 0.f, recoilMax = 2.f;
-					PutSwitch(Lang::RCStext.Toggle, 5.f, ImGui::GetFrameHeight() * 1.7, &MenuConfig::RCS);
-					if (MenuConfig::RCS) {
+					PutSwitch(Lang::RCStext.Toggle, 5.f, ImGui::GetFrameHeight() * 1.7, &LegitBotConfig::RCS);
+					if (LegitBotConfig::RCS) {
 						PutSliderFloat(Lang::RCStext.Yaw, 5.f, &RCS::RCSScale.x, &recoilMin, &recoilMax, "%.2f");
 						PutSliderFloat(Lang::RCStext.Pitch, 5.f, &RCS::RCSScale.y, &recoilMin, &recoilMax, "%.2f");
 						float scalex = (2.22 - RCS::RCSScale.x) *.5f;
@@ -548,21 +546,21 @@ namespace GUI
 					ImGui::SeparatorText("Triggerbot");
 					int DelayMin = 0, DelayMax = 300;
 					int DurationMin = 0, DurationMax = 1000;
-					PutSwitch(Lang::TriggerText.Enable, 5.f, ImGui::GetFrameHeight() * 1.7, &MenuConfig::TriggerBot);
-					if (MenuConfig::TriggerBot)
+					PutSwitch(Lang::TriggerText.Enable, 5.f, ImGui::GetFrameHeight() * 1.7, &LegitBotConfig::TriggerBot);
+					if (LegitBotConfig::TriggerBot)
 					{
-						if (!MenuConfig::TriggerAlways)
+						if (!LegitBotConfig::TriggerAlways)
 						{
 							ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 5.f);
 							ImGui::TextDisabled(Lang::TriggerText.HotKeyList);
 							ImGui::SameLine();
 							ImGui::SetNextItemWidth(170.f);
-							if (ImGui::Combo("###TriggerbotKey", &MenuConfig::TriggerHotKey, "LALT\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL\0"))
+							if (ImGui::Combo("###TriggerbotKey", &LegitBotConfig::TriggerHotKey, "LALT\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL\0"))
 							{
-								TriggerBot::SetHotKey(MenuConfig::TriggerHotKey);
+								TriggerBot::SetHotKey(LegitBotConfig::TriggerHotKey);
 							}
 						}
-						PutSwitch(Lang::TriggerText.Toggle, 5.f, ImGui::GetFrameHeight() * 1.7, &MenuConfig::TriggerAlways);
+						PutSwitch(Lang::TriggerText.Toggle, 5.f, ImGui::GetFrameHeight() * 1.7, &LegitBotConfig::TriggerAlways);
 						PutSwitch(Lang::TriggerText.ScopeOnly, 5.f, ImGui::GetFrameHeight() * 1.7, &TriggerBot::ScopeOnly);
 						PutSwitch(Lang::AimbotText.IgnoreFlash, 5.f, ImGui::GetFrameHeight() * 1.7, &TriggerBot::IgnoreFlash);
 						PutSliderInt(Lang::TriggerText.DelaySlider, 5.f, &TriggerBot::TriggerDelay, &DelayMin, &DelayMax, "%d ms");
@@ -583,7 +581,7 @@ namespace GUI
 					PutSwitch(Lang::MiscText.bmbTimer, 10.f, ImGui::GetFrameHeight() * 1.7, &MiscCFG::bmbTimer, true, "###bmbTimerCol", reinterpret_cast<float*>(&MiscCFG::BombTimerCol));
 					PutSwitch(Lang::MiscText.SpecList, 10.f, ImGui::GetFrameHeight() * 1.7, &MiscCFG::SpecList);
 					PutSwitch(Lang::MiscText.Watermark, 10.f, ImGui::GetFrameHeight() * 1.7, &MiscCFG::WaterMark);
-					PutSwitch(Lang::MiscText.HeadshotLine, 10.f, ImGui::GetFrameHeight() * 1.7, &MenuConfig::ShowHeadShootLine);
+					PutSwitch(Lang::MiscText.HeadshotLine, 10.f, ImGui::GetFrameHeight() * 1.7, &MiscCFG::ShowHeadShootLine);
 					ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 10.f);
 					ImGui::TextDisabled(Lang::MiscText.HitSound);
 					ImGui::SameLine();
@@ -597,7 +595,7 @@ namespace GUI
 					ImGui::NextColumn();
 					ImGui::SetCursorPosY(24.f);
 					ImGui::SeparatorText("Global Settings");
-					PutSwitch(Lang::MiscText.SpecCheck, 5.f, ImGui::GetFrameHeight() * 1.7, &MiscCFG::WorkInSpec);
+					PutSwitch(Lang::MiscText.SpecCheck, 5.f, ImGui::GetFrameHeight() * 1.7, &MenuConfig::WorkInSpec);
 					PutSwitch(Lang::MiscText.TeamCheck, 5.f, ImGui::GetFrameHeight() * 1.7, &MenuConfig::TeamCheck);
 					PutSwitch(Lang::MiscText.AntiRecord, 5.f, ImGui::GetFrameHeight() * 1.7, &MenuConfig::BypassOBS);
 					ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 5.f);
@@ -607,8 +605,8 @@ namespace GUI
 						Gui.OpenWebpage("https://github.com/ByteCorum/DragonBurn");
 					ImGui::SameLine();
 					if (ImGui::Button("Contact Author", { 125.f, 25.f }))
-						Gui.OpenWebpage("https://discordapp.com/users/798503509522645012/");
-					//ImGui::SetCursorPosX(ImGui::GetCursorPosX() + ImGui::GetColumnWidth() / 4);
+						Gui.OpenWebpage("https://discord.gg/5WcvdzFybD");
+
 					if (ImGui::Button("Unhook", { 125.f, 25.f }))
 						Init::Client::Exit();
 					ImGui::SameLine();
@@ -624,16 +622,7 @@ namespace GUI
 
 				if (MenuConfig::WCS.MenuPage == 3)
 				{
-					ImGui::Columns(2, nullptr, false);
 					ConfigMenu::RenderCFGmenu();
-
-					int FPS = 1200;
-					ImGui::NextColumn();
-					ImGui::SetCursorPosY(24.f);
-					ImGui::SeparatorText("Cheat Settings");
-					PutSliderInt(Lang::ConfigText.fpsCap, 5.f, &MenuConfig::MaxRenderFPS, &MenuConfig::MaxFrameRate, &FPS, "%d");
-
-					ImGui::Columns(1);
 				}
 				ImGui::NewLine();
 			} ImGui::EndChild();

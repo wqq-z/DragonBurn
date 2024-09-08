@@ -23,7 +23,7 @@ namespace MyConfigSaver
         json ConfigData;
 
         ConfigData["0"]["Name"] = "DragonBurn";
-        ConfigData["0"]["Version"] = "1.0.5.0";
+        ConfigData["0"]["Version"] = "1.0.5.2";
         ConfigData["0"]["Author"] = author;
 
 
@@ -31,7 +31,7 @@ namespace MyConfigSaver
         ConfigData["ESP"]["Enable"]=                ESPConfig::ESPenabled;
         ConfigData["ESP"]["BoneESP"]=               ESPConfig::ShowBoneESP;
         ConfigData["ESP"]["BoxESP"]=                ESPConfig::ShowBoxESP;
-        ConfigData["ESP"]["BoxType"]=               MenuConfig::BoxType;
+        ConfigData["ESP"]["BoxType"]=               ESPConfig::BoxType;
         ConfigData["ESP"]["SnapLine"]=              ESPConfig::ShowLineToEnemy;
         ConfigData["ESP"]["LinePos"]=               ESPConfig::LinePos;
         ConfigData["ESP"]["HealthBar"]=             ESPConfig::ShowHealthBar;
@@ -53,7 +53,6 @@ namespace MyConfigSaver
         ConfigData["ESP"]["ShowScoped"]=            ESPConfig::ShowIsScoped;
         ConfigData["ESP"]["ArmorBar"]=              ESPConfig::ArmorBar;
         ConfigData["ESP"]["ArmorNum"]=              ESPConfig::ShowArmorNum;
-        ConfigData["ESP"]["MaxRenderDistance"]=     ESPConfig::RenderDistance;
 
         ConfigData["ESP"]["BoneColor"]["r"]=        ESPConfig::BoneColor.Value.x;
         ConfigData["ESP"]["BoneColor"]["g"]=        ESPConfig::BoneColor.Value.y;
@@ -148,9 +147,9 @@ namespace MyConfigSaver
 
 
 
-        ConfigData["Aimbot"]["Enable"]=           MenuConfig::AimBot;
-        ConfigData["Aimbot"]["ToggleMode"]=       MenuConfig::AimToggleMode;
-        ConfigData["Aimbot"]["Hotkey"]=           MenuConfig::AimBotHotKey;
+        ConfigData["Aimbot"]["Enable"]=           LegitBotConfig::AimBot;
+        ConfigData["Aimbot"]["ToggleMode"]=       LegitBotConfig::AimToggleMode;
+        ConfigData["Aimbot"]["Hotkey"]=           LegitBotConfig::AimBotHotKey;
         ConfigData["Aimbot"]["AimBullet"]=        AimControl::AimBullet;
         ConfigData["Aimbot"]["Fov"]=              AimControl::AimFov;
         ConfigData["Aimbot"]["FovMin"]=           AimControl::AimFovMin;
@@ -158,41 +157,40 @@ namespace MyConfigSaver
 
         ConfigData["Aimbot"]["Smooth"]=           AimControl::Smooth;
         ConfigData["Aimbot"]["Hitboxes"]=         AimControl::HitboxList;
-        ConfigData["Aimbot"]["VisibleCheck"]=     MenuConfig::VisibleCheck;
+        ConfigData["Aimbot"]["VisibleCheck"]=     LegitBotConfig::VisibleCheck;
         ConfigData["Aimbot"]["IgnoreFlash"]=      AimControl::IgnoreFlash;
         ConfigData["Aimbot"]["ScopeOnly"]=        AimControl::ScopeOnly;
-        ConfigData["Aimbot"]["AutoShot"]=         AimControl::AutoShot;
 
-        ConfigData["Aimbot"]["CircleColor"]["r"]= MenuConfig::FovCircleColor.Value.x;
-        ConfigData["Aimbot"]["CircleColor"]["g"]= MenuConfig::FovCircleColor.Value.y;
-        ConfigData["Aimbot"]["CircleColor"]["b"]= MenuConfig::FovCircleColor.Value.z;
-        ConfigData["Aimbot"]["CircleColor"]["a"]= MenuConfig::FovCircleColor.Value.w;
-
+        ConfigData["Aimbot"]["CircleColor"]["r"]= LegitBotConfig::FovCircleColor.Value.x;
+        ConfigData["Aimbot"]["CircleColor"]["g"]= LegitBotConfig::FovCircleColor.Value.y;
+        ConfigData["Aimbot"]["CircleColor"]["b"]= LegitBotConfig::FovCircleColor.Value.z;
+        ConfigData["Aimbot"]["CircleColor"]["a"]= LegitBotConfig::FovCircleColor.Value.w;
 
 
-        ConfigData["RCS"]["Enable"]=              MenuConfig::RCS;
+
+        ConfigData["RCS"]["Enable"]=           LegitBotConfig::RCS;
         ConfigData["RCS"]["Yaw"]=              RCS::RCSScale.x;
         ConfigData["RCS"]["Pitch"]=            RCS::RCSScale.y;
 
 
 
-        ConfigData["Triggerbot"]["Enable"]=       MenuConfig::TriggerBot;
-        ConfigData["Triggerbot"]["Hotkey"]=       MenuConfig::TriggerHotKey;
+        ConfigData["Triggerbot"]["Enable"]=       LegitBotConfig::TriggerBot;
+        ConfigData["Triggerbot"]["Hotkey"]=       LegitBotConfig::TriggerHotKey;
         ConfigData["Triggerbot"]["Delay"]=        TriggerBot::TriggerDelay;
         ConfigData["Triggerbot"]["FakeShot"]=     TriggerBot::ShotDuration;
         ConfigData["Triggerbot"]["ScopeOnly"]=    TriggerBot::ScopeOnly;
         ConfigData["Triggerbot"]["IgnoreFlash"]=  TriggerBot::IgnoreFlash;
-        ConfigData["Triggerbot"]["AutoMode"]=     MenuConfig::TriggerAlways;
+        ConfigData["Triggerbot"]["AutoMode"]=     LegitBotConfig::TriggerAlways;
 
 
 
-        ConfigData["Misc"]["HeadShootLine"] = MenuConfig::ShowHeadShootLine;
-        ConfigData["Misc"]["HeadShootLineColor"]["r"] = MenuConfig::HeadShootLineColor.Value.x;
-        ConfigData["Misc"]["HeadShootLineColor"]["g"] = MenuConfig::HeadShootLineColor.Value.y;
-        ConfigData["Misc"]["HeadShootLineColor"]["b"] = MenuConfig::HeadShootLineColor.Value.z;
-        ConfigData["Misc"]["HeadShootLineColor"]["a"] = MenuConfig::HeadShootLineColor.Value.w;
+        ConfigData["Misc"]["HeadShootLine"] = MiscCFG::ShowHeadShootLine;
+        ConfigData["Misc"]["HeadShootLineColor"]["r"] = MiscCFG::HeadShootLineColor.Value.x;
+        ConfigData["Misc"]["HeadShootLineColor"]["g"] = MiscCFG::HeadShootLineColor.Value.y;
+        ConfigData["Misc"]["HeadShootLineColor"]["b"] = MiscCFG::HeadShootLineColor.Value.z;
+        ConfigData["Misc"]["HeadShootLineColor"]["a"] = MiscCFG::HeadShootLineColor.Value.w;
 
-        ConfigData["Misc"]["WorkInSpec"]=       MiscCFG::WorkInSpec;
+        ConfigData["Misc"]["WorkInSpec"]=       MenuConfig::WorkInSpec;
         ConfigData["Misc"]["Watermark"]=        MiscCFG::WaterMark;
         ConfigData["Misc"]["HitSounds"]=        MiscCFG::HitSound;
         ConfigData["Misc"]["HitMarker"]=        MiscCFG::HitMarker;
@@ -215,9 +213,6 @@ namespace MyConfigSaver
 
         ConfigData["Misc"]["TeamCheck"]=        MenuConfig::TeamCheck;
         ConfigData["Misc"]["AntiRecord"]=       MenuConfig::BypassOBS;
-
-
-        ConfigData["Menu"]["RenderFrameLimit"]= MenuConfig::MaxRenderFPS;
 
         configFile << ConfigData.dump(4);
         configFile.close();
@@ -242,7 +237,7 @@ namespace MyConfigSaver
             ESPConfig::ESPenabled = ReadData(ConfigData["ESP"], { "Enable" }, false);
             ESPConfig::ShowBoneESP = ReadData(ConfigData["ESP"], { "BoneESP" }, false);
             ESPConfig::ShowBoxESP = ReadData(ConfigData["ESP"],{"BoxESP"}, false);
-            MenuConfig::BoxType = ReadData(ConfigData["ESP"], { "BoxType" }, 0);
+            ESPConfig::BoxType = ReadData(ConfigData["ESP"], { "BoxType" }, 0);
             ESPConfig::ShowLineToEnemy = ReadData(ConfigData["ESP"], { "SnapLine" }, false);
             ESPConfig::LinePos = ReadData(ConfigData["ESP"], { "LinePos" }, 0);
             ESPConfig::ShowHealthBar = ReadData(ConfigData["ESP"], { "HealthBar" }, false);
@@ -263,7 +258,6 @@ namespace MyConfigSaver
             ESPConfig::ShowIsScoped = ReadData(ConfigData["ESP"], { "ShowScoped" }, false);
             ESPConfig::ArmorBar = ReadData(ConfigData["ESP"], { "ArmorBar" }, false);
             ESPConfig::ShowArmorNum = ReadData(ConfigData["ESP"], { "ArmorNum" }, false);
-            ESPConfig::RenderDistance = ReadData(ConfigData["ESP"], { "MaxRenderDistance" }, 80);
 
             ESPConfig::BoneColor.Value.x = ReadData(ConfigData["ESP"], { "BoneColor","r" }, 0.f);
             ESPConfig::BoneColor.Value.y = ReadData(ConfigData["ESP"], { "BoneColor","g" }, 0.f);
@@ -363,51 +357,50 @@ namespace MyConfigSaver
 
         if (ConfigData.contains("Aimbot"))
         {
-            MenuConfig::AimBot = ReadData(ConfigData["Aimbot"],{"Enable"}, false);
-            MenuConfig::AimToggleMode = ReadData(ConfigData["Aimbot"],{"ToggleMode"}, false);
-            MenuConfig::AimBotHotKey = ReadData(ConfigData["Aimbot"],{"Hotkey"}, 0);
+            LegitBotConfig::AimBot = ReadData(ConfigData["Aimbot"],{"Enable"}, false);
+            LegitBotConfig::AimToggleMode = ReadData(ConfigData["Aimbot"],{"ToggleMode"}, false);
+            LegitBotConfig::AimBotHotKey = ReadData(ConfigData["Aimbot"],{"Hotkey"}, 0);
             AimControl::AimBullet = ReadData(ConfigData["Aimbot"],{"AimBullet"}, 0);
             AimControl::AimFov = ReadData(ConfigData["Aimbot"],{"Fov"}, 5.f);
             AimControl::AimFovMin = ReadData(ConfigData["Aimbot"],{"FovMin"}, .5f);
             ESPConfig::DrawFov = ReadData(ConfigData["Aimbot"],{"FovCircle"}, false);
-            MenuConfig::FovCircleColor.Value.x = ReadData(ConfigData["Aimbot"],{"CircleColor","r"}, 0.f);
-            MenuConfig::FovCircleColor.Value.y = ReadData(ConfigData["Aimbot"],{"CircleColor","g"}, 0.f);
-            MenuConfig::FovCircleColor.Value.z = ReadData(ConfigData["Aimbot"],{"CircleColor","b"}, 0.f);
-            MenuConfig::FovCircleColor.Value.w = ReadData(ConfigData["Aimbot"],{"CircleColor","a"}, 255.f);
+            LegitBotConfig::FovCircleColor.Value.x = ReadData(ConfigData["Aimbot"],{"CircleColor","r"}, 0.f);
+            LegitBotConfig::FovCircleColor.Value.y = ReadData(ConfigData["Aimbot"],{"CircleColor","g"}, 0.f);
+            LegitBotConfig::FovCircleColor.Value.z = ReadData(ConfigData["Aimbot"],{"CircleColor","b"}, 0.f);
+            LegitBotConfig::FovCircleColor.Value.w = ReadData(ConfigData["Aimbot"],{"CircleColor","a"}, 255.f);
             AimControl::Smooth = ReadData(ConfigData["Aimbot"],{"Smooth"}, 2.f);
             AimControl::HitboxList = LoadVector(ConfigData["Aimbot"], "Hitboxes", { BONEINDEX::head });
-            MenuConfig::VisibleCheck = ReadData(ConfigData["Aimbot"],{"VisibleCheck"}, true);
+            LegitBotConfig::VisibleCheck = ReadData(ConfigData["Aimbot"],{"VisibleCheck"}, true);
             AimControl::IgnoreFlash = ReadData(ConfigData["Aimbot"],{"IgnoreFlash"}, false);
             AimControl::ScopeOnly = ReadData(ConfigData["Aimbot"],{"ScopeOnly"}, false);
-            AimControl::AutoShot = ReadData(ConfigData["Aimbot"],{"AutoShot"}, false);
         }
 
         if (ConfigData.contains("RCS"))
         {
-            MenuConfig::RCS = ReadData(ConfigData["RCS"],{"Enable"}, false);
+            LegitBotConfig::RCS = ReadData(ConfigData["RCS"],{"Enable"}, false);
             RCS::RCSScale.x = ReadData(ConfigData["RCS"],{"Yaw"}, 1.f);
             RCS::RCSScale.y = ReadData(ConfigData["RCS"],{"Pitch"}, 1.f);
         }
 
         if (ConfigData.contains("Triggerbot"))
         {
-            MenuConfig::TriggerBot = ReadData(ConfigData["Triggerbot"],{"Enable"}, false);
-            MenuConfig::TriggerHotKey = ReadData(ConfigData["Triggerbot"],{"Hotkey"}, 0);
+            LegitBotConfig::TriggerBot = ReadData(ConfigData["Triggerbot"],{"Enable"}, false);
+            LegitBotConfig::TriggerHotKey = ReadData(ConfigData["Triggerbot"],{"Hotkey"}, 0);
             TriggerBot::TriggerDelay = ReadData(ConfigData["Triggerbot"],{"Delay"}, 20);
             TriggerBot::ShotDuration = ReadData(ConfigData["Triggerbot"],{"FakeShot"}, 200);
             TriggerBot::ScopeOnly = ReadData(ConfigData["Triggerbot"],{"ScopeOnly"}, false);
             TriggerBot::IgnoreFlash = ReadData(ConfigData["Triggerbot"],{"IgnoreFlash"}, false);
-            MenuConfig::TriggerAlways = ReadData(ConfigData["Triggerbot"],{"AutoMode"}, false);
+            LegitBotConfig::TriggerAlways = ReadData(ConfigData["Triggerbot"],{"AutoMode"}, false);
         }
 
         if (ConfigData.contains("Misc"))
         {
-            MenuConfig::ShowHeadShootLine = ReadData(ConfigData["Misc"],{"HeadShootLine"}, false);
-            MenuConfig::HeadShootLineColor.Value.x = ReadData(ConfigData["Misc"],{"HeadShootLineColor","r"}, 0.f);
-            MenuConfig::HeadShootLineColor.Value.y = ReadData(ConfigData["Misc"],{"HeadShootLineColor","g"}, 0.f);
-            MenuConfig::HeadShootLineColor.Value.z = ReadData(ConfigData["Misc"],{"HeadShootLineColor","b"}, 0.f);
-            MenuConfig::HeadShootLineColor.Value.w = ReadData(ConfigData["Misc"],{"HeadShootLineColor","a"}, 255.f);
-            MiscCFG::WorkInSpec = ReadData(ConfigData["Misc"],{"WorkInSpec"}, false);
+            MiscCFG::ShowHeadShootLine = ReadData(ConfigData["Misc"],{"HeadShootLine"}, false);
+            MiscCFG::HeadShootLineColor.Value.x = ReadData(ConfigData["Misc"],{"HeadShootLineColor","r"}, 0.f);
+            MiscCFG::HeadShootLineColor.Value.y = ReadData(ConfigData["Misc"],{"HeadShootLineColor","g"}, 0.f);
+            MiscCFG::HeadShootLineColor.Value.z = ReadData(ConfigData["Misc"],{"HeadShootLineColor","b"}, 0.f);
+            MiscCFG::HeadShootLineColor.Value.w = ReadData(ConfigData["Misc"],{"HeadShootLineColor","a"}, 255.f);
+            MenuConfig::WorkInSpec = ReadData(ConfigData["Misc"],{"WorkInSpec"}, false);
             MiscCFG::WaterMark = ReadData(ConfigData["Misc"],{"Watermark"}, false);
             MiscCFG::HitSound = ReadData(ConfigData["Misc"],{"HitSounds"}, 0);
             MiscCFG::HitMarker = ReadData(ConfigData["Misc"],{"HitMarker"}, false);
@@ -428,13 +421,8 @@ namespace MyConfigSaver
             MenuConfig::BypassOBS = ReadData(ConfigData["Misc"],{"AntiRecord"}, false);
         }
 
-        if (ConfigData.contains("Menu"))
-        {
-            MenuConfig::MaxRenderFPS = ReadData(ConfigData["Menu"],{"RenderFrameLimit"}, MenuConfig::MaxFrameRate);
-        }
-
-        AimControl::SetHotKey(MenuConfig::AimBotHotKey);
-        TriggerBot::SetHotKey(MenuConfig::TriggerHotKey);
-        MenuConfig::HitboxUpdated = false;
+        AimControl::SetHotKey(LegitBotConfig::AimBotHotKey);
+        TriggerBot::SetHotKey(LegitBotConfig::TriggerHotKey);
+        LegitBotConfig::HitboxUpdated = false;
     }
 }

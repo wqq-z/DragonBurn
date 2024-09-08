@@ -20,14 +20,13 @@ extern "C" {
 
 namespace AimControl
 {
-    inline int HotKey = VK_LMENU;
+    inline int HotKey = VK_XBUTTON1;
     inline int AimBullet = 1;
-    inline bool ScopeOnly = false;
-    inline bool AutoShot = false;
+    inline bool ScopeOnly = true;
     inline bool IgnoreFlash = false;
-    inline float AimFov = 5;
-    inline float AimFovMin = 0.f;
-    inline float Smooth = 2.0f;
+    inline float AimFov = 10;
+    inline float AimFovMin = 0.4f;
+    inline float Smooth = 5.0f;
     inline std::vector<int> HitboxList{ BONEINDEX::head };
     inline std::vector<int> HotKeyList{ VK_LMENU, VK_LBUTTON, VK_RBUTTON, VK_XBUTTON1, VK_XBUTTON2, VK_CAPITAL, VK_LSHIFT, VK_LCONTROL };
     inline bool HasTarget = false;
