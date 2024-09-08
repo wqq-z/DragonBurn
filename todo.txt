@@ -3,6 +3,7 @@
 ○ Cheat should use cs2 keys
 ○ Kernel mode
 ◎ Add FastStop(kicks from server)
+◎ Fix Watermark
 ◎ Floating ESP
 ◎ Add Sniper Crosshire
 ◎ Add Bhop
