@@ -22,35 +22,18 @@ namespace Misc
 
 		//	globalvars GV;
 		ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize;
-		ImGui::SetNextWindowBgAlpha(0.6f);
+		ImGui::SetNextWindowBgAlpha(0.8f);
+		ImGui::GetStyle().WindowRounding = 8.0f;
 		ImGui::Begin("Watermark", nullptr, windowFlags);
-
-		// Cheat FPS
-		static auto FrameRate = 1.0f;
-		FrameRate = ImGui::GetIO().Framerate;
-
-		// Current Time
-		struct tm ptm;
-		getCurrentTime(&ptm);
-
-		// Player Ping
-		int playerPing;
-		ProcessMgr.ReadMemory(LocalPlayer.Controller.Address + 0x718, playerPing);
 
 		// Player Pos
 		Vec3 Pos = LocalPlayer.Pawn.Pos;
 
-		// Player Angle
-		Vec2 Angle = LocalPlayer.Pawn.ViewAngle;
-
-		ImGui::Text("DragonBurn");
-		ImGui::Text("%d FPS | %d ms | %02d:%02d:%02d",
-			FrameRate != 0.0f ? static_cast<int>(FrameRate) : 0,
-			playerPing,
-			ptm.tm_hour, ptm.tm_min, ptm.tm_sec);
-		ImGui::Text("Pos: %.2f, %.2f, %.2f", Pos.x, Pos.y, Pos.z);
-		ImGui::Text("Angle: %.2f, %.2f", Angle.x, Angle.y);
-		ImGui::Text("Vel: %.2f", LocalPlayer.Pawn.Speed);
+		ImGui::Text("  DragonBurn");
+		ImGui::Text("  External CS2 cheat");
+		ImGui::Text("  Vel: %.2f", LocalPlayer.Pawn.Speed);
+		ImGui::Text("  Pos: %.1f, %.1f, %.1f ", Pos.x, Pos.y, Pos.z);
+		ImGui::Text("                                                      ");
 
 		ImGui::End();
 	}

@@ -31,6 +31,7 @@ namespace SpecList
         ImGuiWindowFlags flags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize;
         ImGui::SetNextWindowPos({ 10.0f, ImGui::GetIO().DisplaySize.y/2-200}, ImGuiCond_Once);
         ImGui::SetNextWindowSize({ windowWidth, 0 }, ImGuiCond_Once);
+        ImGui::GetStyle().WindowRounding = 8.0f;
 
         if (ImGui::Begin("Spectators", NULL, flags))
         {
