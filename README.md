@@ -103,7 +103,7 @@ Press END key to open/close menu.
 - Anti Record
 </details>
 
-
+---
 ### 🖼️Prewiev
 
 <p align="center">
