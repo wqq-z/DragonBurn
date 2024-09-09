@@ -141,9 +141,6 @@
     <ClInclude Include="Helpers\GetWeaponIcon.h">
       <Filter>Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="Helpers\Random.h">
-      <Filter>Helpers</Filter>
-    </ClInclude>
     <ClInclude Include="Helpers\Format.h">
       <Filter>Helpers</Filter>
     </ClInclude>
@@ -182,6 +179,9 @@
     </ClInclude>
     <ClInclude Include="Features\Aimbot.h">
       <Filter>Features\Aim</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\WebApi.h">
+      <Filter>Helpers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
