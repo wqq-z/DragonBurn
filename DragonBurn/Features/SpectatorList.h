@@ -22,14 +22,14 @@ namespace SpecList
     //    return false;
     //}
 
-    void SpectatorWindowList(CEntity& LocalEntity)
+    void SpectatorWindowList(const CEntity& LocalEntity)
     {
         if (!MiscCFG::SpecList || LocalEntity.Controller.TeamID == 0)
             return;
 
         static float windowWidth = 120.0f;
         ImGuiWindowFlags flags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize;
-        ImGui::SetNextWindowPos({ 10.0f, ImGui::GetIO().DisplaySize.y/2-200}, ImGuiCond_Once);
+        ImGui::SetNextWindowPos({ 10.0f, ImGui::GetIO().DisplaySize.y / 2 - 200 }, ImGuiCond_Once);
         ImGui::SetNextWindowSize({ windowWidth, 0 }, ImGuiCond_Once);
         ImGui::GetStyle().WindowRounding = 8.0f;
 
@@ -50,7 +50,7 @@ namespace SpecList
         }
     }
 
-    void GetSpectatorList(CEntity& Entity, CEntity& LocalEntity, DWORD64 EntityAddress)
+    void GetSpectatorList(CEntity& Entity, CEntity& LocalEntity)
     {
         if (!MiscCFG::SpecList || LocalEntity.Controller.TeamID == 0)
             return;
@@ -68,35 +68,35 @@ namespace SpecList
         //return this->getSpectating() != 0;
 
         // LocalEntity.Controller.spectators.push_back(Entity.Controller.PlayerName);
-        
-        LocalEntity.Controller.spectators.empty();
-        uint32_t m_hPawn;
-        uintptr_t pCSPlayerPawn;
-        uintptr_t m_pObserverServices;
-        
-        ProcessMgr.ReadMemory<uint32_t>(Entity.Controller.Address + 0x5DC, m_hPawn);
-        ProcessMgr.ReadMemory<uintptr_t>(gGame.GetEntityListEntry() + 120 * (m_hPawn & 0x1FF), pCSPlayerPawn);
-        ProcessMgr.ReadMemory<uintptr_t>(pCSPlayerPawn + 0x10C0, m_pObserverServices);
-        std::cout << "SL" << '\n';
 
-        if (m_pObserverServices)
-        {
-            std::cout << "Observed" << '\n';
-            std::cout << LocalEntity.Pawn.Address << '\n';
-            uint32_t m_hObserverTarget;
-            uintptr_t list_entry;
-            uintptr_t pController;
-            ProcessMgr.ReadMemory<uint32_t>(m_pObserverServices + 0x44, m_hObserverTarget);
-            ProcessMgr.ReadMemory<uintptr_t>(EntityAddress + 0x8 * ((m_hObserverTarget & 0x7FFF) >> 9) + 0x10, list_entry);
-            ProcessMgr.ReadMemory<uintptr_t>(gGame.GetEntityListEntry() + 120 * (m_hObserverTarget & 0x1FF), pController);
+        //LocalEntity.Controller.spectators.empty();
+        //uint32_t m_hPawn;
+        //uintptr_t pCSPlayerPawn;
+        //uintptr_t m_pObserverServices;
 
-            std::cout << "Player: " << Entity.Controller.PlayerName << " m_hObserverTarget: " << m_hObserverTarget << "list_entry: " << list_entry << "pController: " << pController << '\n';
+        //ProcessMgr.ReadMemory<uint32_t>(Entity.Controller.Address + 0x5DC, m_hPawn);
+        //ProcessMgr.ReadMemory<uintptr_t>(gGame.GetEntityListEntry() + 120 * (m_hPawn & 0x1FF), pCSPlayerPawn);
+        //ProcessMgr.ReadMemory<uintptr_t>(pCSPlayerPawn + 0x10C0, m_pObserverServices);
+        //std::cout << "SL" << '\n';
 
-            if (pController == LocalEntity.Pawn.Address)
-            {
-                LocalEntity.Controller.spectators.push_back(Entity.Controller.PlayerName);
-                std::cout << Entity.Controller.PlayerName << '\n';
-            }
-        }
+        //if (m_pObserverServices)
+        //{
+        //    std::cout << "Observed" << '\n';
+        //    std::cout << LocalEntity.Pawn.Address << '\n';
+        //    uint32_t m_hObserverTarget;
+        //    uintptr_t list_entry;
+        //    uintptr_t pController;
+        //    ProcessMgr.ReadMemory<uint32_t>(m_pObserverServices + 0x44, m_hObserverTarget);
+        //    ProcessMgr.ReadMemory<uintptr_t>(EntityAddress + 0x8 * ((m_hObserverTarget & 0x7FFF) >> 9) + 0x10, list_entry);
+        //    ProcessMgr.ReadMemory<uintptr_t>(gGame.GetEntityListEntry() + 120 * (m_hObserverTarget & 0x1FF), pController);
+
+        //    std::cout << "Player: " << Entity.Controller.PlayerName << " m_hObserverTarget: " << m_hObserverTarget << "list_entry: " << list_entry << "pController: " << pController << '\n';
+
+        //    if (pController == LocalEntity.Pawn.Address)
+        //    {
+        //        LocalEntity.Controller.spectators.push_back(Entity.Controller.PlayerName);
+        //        std::cout << Entity.Controller.PlayerName << '\n';
+        //    }
+        //}
     }
 }

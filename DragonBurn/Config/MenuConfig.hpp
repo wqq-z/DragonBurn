@@ -1,10 +1,12 @@
 #pragma once
 #include "../Game/Bone.h"
 #include "../Game/Game.h"
-#include "../Helpers/Random.h"
 
 namespace MenuConfig
 {
+	inline std::string version = "1.0.5.2";
+	inline std::string author = "ByteCorum";
+
 	inline std::string path = "";
 	inline std::string docPath = "";
 	inline int RenderFPS = 1000;

@@ -22,11 +22,11 @@ void RenderCrosshair(ImDrawList*, const CEntity&);
 void RadarSetting(Base_Radar&);
 
 void Menu();
-void Visual(CEntity);
-void Radar(Base_Radar, CEntity);
-void Trigger(CEntity);
-void AIM(CEntity, std::vector<Vec3>);
-void MiscFuncs(CEntity);
+void Visual(const CEntity&);
+void Radar(Base_Radar, const CEntity&);
+void Trigger(const CEntity&);
+void AIM(const CEntity&, std::vector<Vec3>);
+void MiscFuncs(const CEntity&);
 
 void Cheats::Run()
 {	
@@ -92,7 +92,7 @@ void Cheats::Run()
 			continue;
 
 		//speclist
-		SpecList::GetSpectatorList(Entity, LocalEntity, EntityAddress);
+		SpecList::GetSpectatorList(Entity, LocalEntity);
 
 		if (MenuConfig::TeamCheck && Entity.Controller.TeamID == LocalEntity.Controller.TeamID)
 			continue;
@@ -216,7 +216,7 @@ void Menu()
 	GUI::InitHitboxList();
 }
 
-void Visual(CEntity LocalEntity)
+void Visual(const CEntity& LocalEntity)
 {
 	// Fov line
 	Render::DrawFov(LocalEntity, LegitBotConfig::FovLineSize, LegitBotConfig::FovLineColor, 1);
@@ -230,7 +230,7 @@ void Visual(CEntity LocalEntity)
 	RenderCrosshair(ImGui::GetBackgroundDrawList(), LocalEntity);
 }
 
-void Radar(Base_Radar Radar, CEntity LocalEntity)
+void Radar(Base_Radar Radar, const CEntity& LocalEntity)
 {
 	// Radar render
 	if (RadarCFG::ShowRadar && LocalEntity.Controller.TeamID != 0)
@@ -240,14 +240,14 @@ void Radar(Base_Radar Radar, CEntity LocalEntity)
 	}
 }
 
-void Trigger(CEntity LocalEntity)
+void Trigger(const CEntity& LocalEntity)
 {
 	// TriggerBot
 	if (LegitBotConfig::TriggerBot && (GetAsyncKeyState(TriggerBot::HotKey) || LegitBotConfig::TriggerAlways))
 		TriggerBot::Run(LocalEntity);
 }
 
-void AIM(CEntity LocalEntity, std::vector<Vec3> AimPosList)
+void AIM(const CEntity& LocalEntity, std::vector<Vec3> AimPosList)
 {
 	// Aimbot
 	DWORD lastTick = 0;
@@ -271,7 +271,7 @@ void AIM(CEntity LocalEntity, std::vector<Vec3> AimPosList)
 		RCS::RecoilControl(LocalEntity);
 }
 
-void MiscFuncs(CEntity LocalEntity)
+void MiscFuncs(const CEntity& LocalEntity)
 {
 	Misc::HitManager(LocalEntity, PreviousTotalHits);
 	Misc::BunnyHop(LocalEntity);

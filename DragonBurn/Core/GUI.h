@@ -202,6 +202,7 @@ namespace GUI
 		ImGuiWindowFlags Flags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar;
 		ImGui::SetNextWindowPos({ (ImGui::GetIO().DisplaySize.x - MenuConfig::WCS.MainWinSize.x) / 2.0f, (ImGui::GetIO().DisplaySize.y - MenuConfig::WCS.MainWinSize.y) / 2.0f }, ImGuiCond_Once);
 		ImGui::SetNextWindowSize(MenuConfig::WCS.MainWinSize);
+		ImGui::GetStyle().WindowRounding = 2.0f;
 		ImGui::Begin("DragonBurn", nullptr, Flags);
 		{
 			ImGui::SetCursorPos(LogoPos);

@@ -105,7 +105,6 @@ namespace ConfigMenu {
 
 		ImGui::NextColumn();
 		CurrentCursorX = ImGui::GetCursorPosX();
-		std::cout << CurrentCursorX + CursorX << "\n";
 		ImGui::SetCursorPos(ImVec2(CurrentCursorX + CursorX, 24.f));
 		ImGui::SeparatorText(Lang::ConfigText.SeparateLine);
 		ImGui::TextDisabled(Lang::ConfigText.ConfigName);

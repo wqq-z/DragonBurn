@@ -192,7 +192,7 @@
     <ClInclude Include="Helpers\Format.h" />
     <ClInclude Include="Helpers\GetWeaponIcon.h" />
     <ClInclude Include="Helpers\Mouse.h" />
-    <ClInclude Include="Helpers\Random.h" />
+    <ClInclude Include="Helpers\WebApi.h" />
     <ClInclude Include="Offsets\Offsets.h" />
     <ClInclude Include="OS-ImGui\imgui\imconfig.h" />
     <ClInclude Include="OS-ImGui\imgui\imgui.h" />

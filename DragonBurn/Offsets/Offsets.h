@@ -2,6 +2,7 @@
 #include <Windows.h>
 #include "../Core/ProcessManager.hpp"
 #include <json.hpp>
+#include "../Helpers/WebApi.h"
 
 using json = nlohmann::json;
 

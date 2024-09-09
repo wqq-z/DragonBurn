@@ -9,9 +9,6 @@ namespace Lang
 	
 	inline struct Global
 	{
-		inline static const char* Version;
-		inline static const char* Author;
-
 		inline static const char* SwitchButton;
 		inline static const char* FeatureSettings;
 	} Global;
@@ -176,9 +173,6 @@ namespace Lang
 
 	inline void English()
 	{
-		Global.Version = "v1.0.5.2";
-		Global.Author = "ByteCorum";
-
 		Global.SwitchButton = "Enable";
 		Global.FeatureSettings = "Settings";
 
