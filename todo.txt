@@ -3,6 +3,7 @@
 ○ Cheat should use cs2 keys
 ○ Kernel mode
 ○ Outdate old vers
+○ Different config for each of weapon types
 ◎ Add FastStop(kicks from server)
 ◎ Fix Watermark
 ◎ Floating ESP
