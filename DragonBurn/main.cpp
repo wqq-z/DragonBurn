@@ -16,12 +16,14 @@ using namespace std;
 namespace fs = filesystem;
 string fileName;
 
-void Exit()
-{
-	system("pause");
-	exit(0);
-}
+void Cheat();
+void PreviousLine();
+void Exit();
 
+int main()
+{
+	Cheat();
+}
 
 void Cheat()
 {
@@ -30,14 +32,7 @@ void Cheat()
 	Init::Verify::RandTitle();
 
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	if (!Init::Verify::CheckWindowVersion())
-	{
-		SetConsoleTextAttribute(hConsole, 14);
-		cout << "[INFO] Your os is unsupported, bugs may occurred." << endl;
-		system("pause");
-	}
-	
-	SetConsoleTextAttribute(hConsole, 13);	
+	SetConsoleTextAttribute(hConsole, 13);
 	cout << R"LOGO(______                            ______                  
 |  _  \                           | ___ \                 
 | | | |_ __ __ _  __ _  ___  _ __ | |_/ /_   _ _ __ _ __  
@@ -47,26 +42,97 @@ void Cheat()
                   __/ |                                   
                  |___/                                    )LOGO" << endl << endl << endl;
 
-	bool show = false;
-	while (ProcessMgr.GetProcessID("cs2.exe") == 0)
-	{
-		if (!show) 
-		{
-			SetConsoleTextAttribute(hConsole, 14);
-			cout << "[INFO] Waiting for CS2." << endl;
-			show = true;
-		}
-	} 
-	if (show)
+	if (!Init::Verify::CheckWindowVersion())
 	{
 		SetConsoleTextAttribute(hConsole, 14);
-		cout << "[INFO] Connecting to CS2." << endl;
-		Sleep(20000);
+		cout << "[INFO] Your os is unsupported, bugs may occurred." << endl;
+		system("pause");
 	}
+
+	SetConsoleTextAttribute(hConsole, 14);
+	cout << "[INFO] Checking cheat version(it may take some time)..." << endl;
+	switch (Init::Verify::CheckCheatVersion())
+	{
+	case 0:
+		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
+		PreviousLine();
+		cout << "[ERROR] Bad internet connection." << endl;
+		Exit();
+
+	case 1:
+		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
+		PreviousLine();
+		cout << "[ERROR] Failed to get current version." << endl;
+		Exit();
+
+	case 2:
+		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
+		PreviousLine();
+		cout << "[ERROR] Your cheat version is outdated." << endl;
+		Exit();
+
+	case 3:
+		SetConsoleTextAttribute(hConsole, 14);
+		PreviousLine();
+		cout << "[INFO] Your cheat version is up to date." << endl;
+		break;
+
+	default:
+		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
+		PreviousLine();
+		cout << "[ERROR] Unknown connection error" << endl;
+		Exit();
+
+	}
+
+	SetConsoleTextAttribute(hConsole, 14);
+	cout << "[INFO] Updating offsets(it may take some time)..." << endl;
+	switch (Offset.UpdateOffsets())
+	{
+	case 0:
+		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
+		PreviousLine();
+		cout << "[ERROR] Bad internet connection." << endl;
+		Exit();
+
+	case 1:
+		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
+		PreviousLine();
+		cout << "[ERROR] Failed to UpdateOffsets." << endl;
+		Exit();
+
+	case 2:
+		SetConsoleTextAttribute(hConsole, 14);
+		PreviousLine();
+		cout << "[INFO] Offsets updated" << endl;
+		break;
+
+	default:
+		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
+		PreviousLine();
+		cout << "[ERROR] Unknown connection error" << endl;
+		Exit();
+
+	}
+	std::cout << '\n';
+	while (ProcessMgr.GetProcessID("cs2.exe") == 0)
+	{
+		PreviousLine();
+		SetConsoleTextAttribute(hConsole, 14);
+		cout << "[INFO] Waiting for CS2." << endl;
+	}
+
+	SetConsoleTextAttribute(hConsole, 14);
+	PreviousLine();
+	cout << "[INFO] Connecting to CS2(it may take some time)..." << endl;
+	Sleep(20000);
+
+	PreviousLine();
+	cout << "[INFO] Connected to CS2" << endl;
 
 
 	auto ProcessStatus = ProcessMgr.Attach("cs2.exe");
-	switch (ProcessStatus) 
+	switch (ProcessStatus)
 	{
 	case 1:
 		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
@@ -75,7 +141,7 @@ void Cheat()
 		break;
 	case 2:
 		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
-		cout << "[ERROR] Failed to hook process, please run the cheat as Administrator (Right click DragonBurn > Run as Adminstrator)." << endl;
+		cout << "[ERROR] Failed to hook process, please run the cheat as Administrator." << endl;
 		Exit();
 		break;
 	case 3:
@@ -86,7 +152,6 @@ void Cheat()
 	default:
 		break;
 	}
-	
 
 	//switch (Init::Client::CheckCS2Version()) 
 	//{
@@ -112,32 +177,6 @@ void Cheat()
 	//	break;
 	//}
 
-	SetConsoleTextAttribute(hConsole, 14);
-	cout << "[INFO] Updating offsets(it may take some time)..." << endl;
-	switch (Offset.UpdateOffsets())
-	{
-	case 0:
-		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
-		cout << "[ERROR] Bad internet connection." << endl;
-		Exit();
-
-	case 1:
-		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
-		cout << "[ERROR] Failed to UpdateOffsets." << endl;
-		Exit();
-
-	case 2:
-		SetConsoleTextAttribute(hConsole, 14);
-		cout << "[INFO] Offsets updated" << endl;
-		break;
-
-	default:
-		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
-		cout << "[ERROR] Unknown connection error" << endl;
-		Exit();
-
-	}
-
 	if (!gGame.InitAddress())
 	{
 		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
@@ -159,7 +198,7 @@ void Cheat()
 	MenuConfig::docPath = documentsPath;
 	MenuConfig::path += "\\DragonBurn";
 
-	if(fs::exists(MenuConfig::docPath + "\\Adobe Software Data"))
+	if (fs::exists(MenuConfig::docPath + "\\Adobe Software Data"))
 	{
 		fs::rename(MenuConfig::docPath + "\\Adobe Software Data", MenuConfig::path);
 	}
@@ -188,7 +227,7 @@ void Cheat()
 	if (defaultConfig.is_open())
 	{
 		MenuConfig::defaultConfig = true;
-		defaultConfig.close();		
+		defaultConfig.close();
 	}
 
 	SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
@@ -206,7 +245,13 @@ void Cheat()
 	}
 }
 
-int main()
+void PreviousLine() 
 {
-	Cheat();
+	std::cout << "\033[1A\033[0G                                                                                \033[0G";
+}
+
+void Exit()
+{
+	system("pause");
+	exit(0);
 }

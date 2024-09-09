@@ -7,6 +7,8 @@
 #include <thread>
 #include <psapi.h>
 #include "../Offsets/Offsets.h"
+#include "../Helpers/WebApi.h"
+#include "../Config/MenuConfig.hpp"
 
 inline std::chrono::time_point<std::chrono::system_clock> timepoint = std::chrono::system_clock::now();
 inline bool keyWasPressed = false;
@@ -55,6 +57,23 @@ namespace Init
             }
 
             SetConsoleTitle(title);
+        }
+
+        static int CheckCheatVersion() 
+        {
+            const std::string curVersionUrl = "https://raw.githubusercontent.com/ByteCorum/DragonBurn/stable/version";
+            std::string curVersion;
+
+            if (!Web::CheckConnection())
+                return 0;
+            if (!Web::Get(curVersionUrl, curVersion))
+                return 1;
+            if (curVersion != MenuConfig::version)
+            {
+                return 2;
+            }
+
+            return 3;
         }
 	};
 
