@@ -92,7 +92,7 @@ void Cheats::Run()
 			continue;
 
 		//speclist
-		SpecList::GetSpectatorList(Entity, LocalEntity, EntityAddress);
+		SpecList::GetSpectatorList(Entity, LocalEntity);
 
 		if (MenuConfig::TeamCheck && Entity.Controller.TeamID == LocalEntity.Controller.TeamID)
 			continue;
