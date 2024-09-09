@@ -59,7 +59,7 @@ namespace Init
             SetConsoleTitle(title);
         }
 
-        static int CheckCheatVersion() 
+        static int CheckCheatVersion()
         {
             const std::string curVersionUrl = "https://raw.githubusercontent.com/ByteCorum/DragonBurn/stable/version";
             std::string curVersion;
