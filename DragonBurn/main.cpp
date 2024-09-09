@@ -1,5 +1,5 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
-#define DEBUG true
+#define DEBUG false
 #include "Core/Cheats.h"
 #include "Offsets/Offsets.h"
 #include "Resources/Language.h"
