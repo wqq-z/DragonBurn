@@ -1,4 +1,5 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
+#define DEBUG true
 #include "Core/Cheats.h"
 #include "Offsets/Offsets.h"
 #include "Resources/Language.h"
@@ -49,6 +50,7 @@ void Cheat()
 		system("pause");
 	}
 
+#if DEBUG == false
 	SetConsoleTextAttribute(hConsole, 14);
 	cout << "[INFO] Checking cheat version(it may take some time)..." << endl;
 	switch (Init::Verify::CheckCheatVersion())
@@ -84,6 +86,7 @@ void Cheat()
 		Exit();
 
 	}
+#endif
 
 	SetConsoleTextAttribute(hConsole, 14);
 	cout << "[INFO] Updating offsets(it may take some time)..." << endl;
@@ -115,17 +118,22 @@ void Cheat()
 
 	}
 	std::cout << '\n';
+	bool preStart = false;
 	while (ProcessMgr.GetProcessID("cs2.exe") == 0)
 	{
 		PreviousLine();
 		SetConsoleTextAttribute(hConsole, 14);
 		cout << "[INFO] Waiting for CS2." << endl;
+		preStart = true;
 	}
 
 	SetConsoleTextAttribute(hConsole, 14);
-	PreviousLine();
-	cout << "[INFO] Connecting to CS2(it may take some time)..." << endl;
-	Sleep(20000);
+	if (preStart)
+	{
+		PreviousLine();
+		cout << "[INFO] Connecting to CS2(it may take some time)..." << endl;
+		Sleep(20000);
+	}
 
 	PreviousLine();
 	cout << "[INFO] Connected to CS2" << endl;
@@ -232,8 +240,10 @@ void Cheat()
 
 	SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
 	cout << "DragonBurn loaded!!!\nGLHF" << endl;
+#if DEBUG == false
 	Sleep(3000);
 	ShowWindow(GetConsoleWindow(), SW_HIDE);
+#endif
 
 	try
 	{
