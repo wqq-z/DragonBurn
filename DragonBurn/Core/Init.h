@@ -47,6 +47,7 @@ namespace Init
 
         static void RandTitle()
         {
+            srand(time(0));
             constexpr int length = 25;
             const auto characters = TEXT("0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM");
             TCHAR title[length + 1]{};

@@ -183,6 +183,9 @@
     <ClInclude Include="Helpers\WebApi.h">
       <Filter>Helpers</Filter>
     </ClInclude>
+    <ClInclude Include="Helpers\Logger.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon.ico">

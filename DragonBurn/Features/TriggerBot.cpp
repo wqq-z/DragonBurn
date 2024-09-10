@@ -126,32 +126,32 @@ bool TriggerBot::CheckWeapon(const CEntity& LocalEntity)
         return true;
 }
 
-void TriggerBot::TargetCheck(const CEntity& LocalEntity) noexcept {
-    if (!ProcessMgr.ReadMemory<DWORD>(LocalEntity.Pawn.Address + Offset.Pawn.iIDEntIndex, uHandle) || uHandle == -1) {
-        //CrosshairsCFG::isAim = false;
-        return;
-    }
-
-    const unsigned long long ENTITY_OFFSET = 0x78;
-    const unsigned long long ENTITY_INDEX_MASK = 0x1FF;
-
-    DWORD64 ListEntry = ProcessMgr.TraceAddress(gGame.GetEntityListAddress(), { 0x8 * (uHandle >> 9) + 0x10, 0x0 });
-    if (ListEntry == 0) {
-        //CrosshairsCFG::isAim = false;
-        return;
-    }
-
-    DWORD64 PawnAddress;
-    const DWORD64 ENTITY_ADDRESS_OFFSET = ENTITY_OFFSET * (uHandle & ENTITY_INDEX_MASK);
-    if (!ProcessMgr.ReadMemory<DWORD64>(ListEntry + ENTITY_ADDRESS_OFFSET, PawnAddress)) {
-        //CrosshairsCFG::isAim = false;
-        return;
-    }
-
-    if (!Entity.UpdatePawn(PawnAddress)) {
-        //CrosshairsCFG::isAim = false;
-        return;
-    }
-
-   // CrosshairsCFG::isAim = CrosshairsCFG::TeamCheck ? (LocalEntity.Pawn.TeamID != Entity.Pawn.TeamID) : true;
-}
+//void TriggerBot::TargetCheck(const CEntity& LocalEntity) noexcept {
+//    if (!ProcessMgr.ReadMemory<DWORD>(LocalEntity.Pawn.Address + Offset.Pawn.iIDEntIndex, uHandle) || uHandle == -1) {
+//        //CrosshairsCFG::isAim = false;
+//        return;
+//    }
+//
+//    const unsigned long long ENTITY_OFFSET = 0x78;
+//    const unsigned long long ENTITY_INDEX_MASK = 0x1FF;
+//
+//    DWORD64 ListEntry = ProcessMgr.TraceAddress(gGame.GetEntityListAddress(), { 0x8 * (uHandle >> 9) + 0x10, 0x0 });
+//    if (ListEntry == 0) {
+//        //CrosshairsCFG::isAim = false;
+//        return;
+//    }
+//
+//    DWORD64 PawnAddress;
+//    const DWORD64 ENTITY_ADDRESS_OFFSET = ENTITY_OFFSET * (uHandle & ENTITY_INDEX_MASK);
+//    if (!ProcessMgr.ReadMemory<DWORD64>(ListEntry + ENTITY_ADDRESS_OFFSET, PawnAddress)) {
+//        //CrosshairsCFG::isAim = false;
+//        return;
+//    }
+//
+//    if (!Entity.UpdatePawn(PawnAddress)) {
+//        //CrosshairsCFG::isAim = false;
+//        return;
+//    }
+//
+//   // CrosshairsCFG::isAim = CrosshairsCFG::TeamCheck ? (LocalEntity.Pawn.TeamID != Entity.Pawn.TeamID) : true;
+//}

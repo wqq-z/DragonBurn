@@ -224,9 +224,8 @@ void Visual(const CEntity& LocalEntity)
 	// HeadShoot Line
 	Render::HeadShootLine(LocalEntity, MiscCFG::HeadShootLineColor);
 
-	// CrossHair
-	TriggerBot::TargetCheck(LocalEntity);
 	Misc::AirCheck(LocalEntity);
+
 	RenderCrosshair(ImGui::GetBackgroundDrawList(), LocalEntity);
 }
 
