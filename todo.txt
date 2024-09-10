@@ -3,6 +3,7 @@
 ○ Cheat should use cs2 keys
 ○ Kernel mode
 ○ Add logger
+○ Visible Check for Trigger
 ○ Different config for each of weapon types
 ◎ Outdate old vers
 ◎ Add FastStop(kicks from server)
