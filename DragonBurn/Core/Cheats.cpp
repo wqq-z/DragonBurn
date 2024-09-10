@@ -26,7 +26,7 @@ void Visual(const CEntity&);
 void Radar(Base_Radar, const CEntity&);
 void Trigger(const CEntity&);
 void AIM(const CEntity&, std::vector<Vec3>);
-void MiscFuncs(const CEntity&);
+void MiscFuncs(CEntity&);
 
 void Cheats::Run()
 {	
@@ -271,7 +271,7 @@ void AIM(const CEntity& LocalEntity, std::vector<Vec3> AimPosList)
 		RCS::RecoilControl(LocalEntity);
 }
 
-void MiscFuncs(const CEntity& LocalEntity)
+void MiscFuncs(CEntity& LocalEntity)
 {
 	Misc::HitManager(LocalEntity, PreviousTotalHits);
 	Misc::BunnyHop(LocalEntity);

@@ -7,33 +7,29 @@
 
 namespace SpecList
 {
-    void SpectatorWindowList(const CEntity& LocalEntity)
+    void SpectatorWindowList(CEntity& LocalEntity)
     {
         if (!MiscCFG::SpecList || LocalEntity.Controller.TeamID == 0)
             return;
 
-        static float windowWidth = 120.0f;
         ImGuiWindowFlags flags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize;
+        static float fontHeight = ImGui::GetFontSize();
+        float requiredHeight = LocalEntity.Controller.spectators.size() * (fontHeight + 5) + 20;
         ImGui::SetNextWindowPos({ 10.0f, ImGui::GetIO().DisplaySize.y / 2 - 200 }, ImGuiCond_Once);
-        ImGui::SetNextWindowSize({ windowWidth, (float)LocalEntity.Controller.spectators.size() * 5 });
+        ImGui::SetNextWindowSize({ 120.0f, requiredHeight }, ImGuiCond_Always);
         ImGui::GetStyle().WindowRounding = 8.0f;
 
-        if (ImGui::Begin("Spectators", NULL, flags))
+        ImGui::Begin("Spectators", NULL, flags);
+
+        for (const auto& spectator : LocalEntity.Controller.spectators)
         {
-
-            float lineSpacing = -15.0f;
-
-
-            for (const auto& spectator : LocalEntity.Controller.spectators)
-            {
-                ImGui::SetCursorPosY(ImGui::GetCursorPosX() + 5);
-                ImGui::TextColored(ImColor(0, 255, 0, 255), spectator.c_str());
-                ImGui::SetCursorPosY(ImGui::GetCursorPosY() + lineSpacing);
-            }
-
-
-            ImGui::End();
+            ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 5);
+            ImGui::TextColored(ImColor(100, 108, 177, 220), spectator.c_str());
         }
+
+
+        ImGui::End();
+        LocalEntity.Controller.spectators.clear();
     }
 
     uintptr_t getAddressBase(uintptr_t entityList, uintptr_t playerPawn)
@@ -52,8 +48,7 @@ namespace SpecList
         if (!MiscCFG::SpecList || LocalEntity.Controller.TeamID == 0)
             return;
 
-        LocalEntity.Controller.spectators.empty();
-        std::cout << Entity.Controller.PlayerName << '\n';
+        //std::cout << Entity.Controller.PlayerName << '\n';
 
         uintptr_t LocalPlayer;
         ProcessMgr.ReadMemory<uintptr_t>(gGame.GetClientDLLAddress() + Offset.LocalPlayerController, LocalPlayer);
@@ -73,14 +68,14 @@ namespace SpecList
 
         uintptr_t observed;
         ProcessMgr.ReadMemory<uintptr_t>(pawn + Offset.PlayerController.m_pObserverServices, observed);
-        std::cout << "observed: " << observed << '\n';
+        //std::cout << "observed: " << observed << '\n';
 
         uint64_t observedTarget;
         ProcessMgr.ReadMemory<uintptr_t>(observed + Offset.PlayerController.m_hObserverTarget, observedTarget);
-        std::cout << "observedTarget: " << observedTarget << '\n';
+        //std::cout << "observedTarget: " << observedTarget << '\n';
 
         uintptr_t spectatorTarget = getAddressBase(entityList, observedTarget);
-        std::cout << "handle: " << spectatorTarget << '\n';
+        //std::cout << "handle: " << spectatorTarget << '\n';
         if (observed)
         {
             if (spectatorTarget == CSlocalPlayerPawn)
@@ -88,6 +83,5 @@ namespace SpecList
                 LocalEntity.Controller.spectators.push_back(Entity.Controller.PlayerName);
             }
         }
-        std::cout << "\n\n\n";
     }
 }
