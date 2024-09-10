@@ -2,6 +2,7 @@
 ○ Fix SpecList
 ○ Cheat should use cs2 keys
 ○ Kernel mode
+○ Add logger
 ○ Different config for each of weapon types
 ◎ Outdate old vers
 ◎ Add FastStop(kicks from server)
