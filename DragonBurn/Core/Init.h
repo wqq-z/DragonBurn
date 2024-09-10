@@ -62,7 +62,7 @@ namespace Init
 
         static int CheckCheatVersion()
         {
-            const std::string curVersionUrl = "https://raw.githubusercontent.com/ByteCorum/DragonBurn/stable/version";
+            const std::string curVersionUrl = "https://raw.githubusercontent.com/ByteCorum/DragonBurn/data/version";
             std::string curVersion;
 
             if (!Web::CheckConnection())
