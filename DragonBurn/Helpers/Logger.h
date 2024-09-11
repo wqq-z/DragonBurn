@@ -19,6 +19,7 @@ namespace Log
 		std::cout << "[!]" << ctx << '\n';
 
 		if (pause)
+			SetConsoleTextAttribute(hConsole, 8);
 			system("pause");
 	}
 
@@ -26,6 +27,7 @@ namespace Log
 	{
 		SetConsoleTextAttribute(hConsole, 12);
 		std::cout << "[X]" << ctx << '\n';
+		SetConsoleTextAttribute(hConsole, 8);
 		system("pause");
 		if(fatal)
 			exit(0);

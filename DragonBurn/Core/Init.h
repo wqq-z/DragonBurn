@@ -89,50 +89,60 @@ namespace Init
         //    return rate;
         //}
 
-        // Checks cs2 version
-        //static int CheckCS2Version()
-        //{
-        //    DWORD pid = ProcessMgr.GetProcessID("cs2.exe");
-        //    long long curVer = -1;
-        //    std::string processPath;
-        //    HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, pid);
-        //    if (hProcess) 
-        //    {
-        //        wchar_t buffer[MAX_PATH];
-        //        if (GetModuleFileNameEx(hProcess, NULL, buffer, MAX_PATH))
-        //            processPath = WStringToString(buffer);
-        //        else 
-        //            return 0;
-        //        CloseHandle(hProcess);
-        //    }
-        //    else 
-        //        return 0;
+        static int CheckCS2Version()
+        {
+            DWORD pid = ProcessMgr.GetProcessID("cs2.exe");
+            long curVer;
+            const std::string cloudVersionUrl = "https://raw.githubusercontent.com/ByteCorum/DragonBurn/data/cs2-version";
+            long cloudVersion;
+            std::string processPath;
+            std::string buff;
 
-        //    int pos = processPath.rfind("bin");
-        //    if (pos != std::string::npos) 
-        //        processPath = processPath.substr(0, pos + 3);
-        //    else
-        //        return 0;
-        //    processPath += "\\built_from_cl.txt";
+            if (!Web::Get(cloudVersionUrl, buff))
+                return 2;
+            cloudVersion = stoi(buff);
+            if (cloudVersion == -1)
+                return 3;
 
-        //    std::ifstream file(processPath);
-        //    if (file.is_open()) 
-        //    {
-        //        std::string line;
-        //        if (std::getline(file, line))
-        //            curVer = stoi(line);
-        //        else
-        //            return 0;
-        //        file.close();
-        //    }
-        //    else
-        //        return 0;
+            HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, pid);
+            if (hProcess) 
+            {
+                wchar_t buffer[MAX_PATH];
+                if (GetModuleFileNameEx(hProcess, NULL, buffer, MAX_PATH))
+                    processPath = WStringToString(buffer);
+                else 
+                    return 0;
+                CloseHandle(hProcess);
+            }
+            else 
+                return 0;
 
-        //    if (Offset.CS2ver == curVer)
-        //        return 2;
-        //    else
-        //        return 1;
-        //}
+            int pos = processPath.rfind("bin");
+            if (pos != std::string::npos) 
+                processPath = processPath.substr(0, pos + 3);
+            else
+                return 0;
+
+            processPath += "\\built_from_cl.txt";
+
+            std::ifstream file(processPath);
+            if (file.is_open()) 
+            {
+                std::string line;
+                if (std::getline(file, line))
+                    curVer = stoi(line);
+                else
+                    return 0;
+                file.close();
+            }
+            else
+                return 0;
+
+            if (cloudVersion == curVer)
+                return 3;
+            else
+                return 1;
+        }
 
         // Check if the game window is activated
         static bool isGameWindowActive() {

@@ -121,6 +121,38 @@ https://github.com/ByteCorum/DragonBurn
 		Sleep(20000);
 	}
 
+	Log::PreviousLine();
+	Log::Fine("Connected to CS2");
+	Log::Info("Linking to CS2");
+
+#if DEBUG == false
+	switch (Init::Client::CheckCS2Version()) 
+	{
+	case 0:
+		Log::PreviousLine();
+		Log::Error("Failed to get the current game version");
+		break;
+
+	case 1:
+		Log::PreviousLine();
+		Log::Warning("Offsets are outdated, we'll update them asap. With current offsets, cheat may work unstable", true);
+		break;
+
+	case 2:
+		Log::PreviousLine();
+		Log::Error("Failed to get cloud version");
+		break;
+
+	case 3:
+		break;
+
+	default:
+		Log::PreviousLine();
+		Log::Error("Failed to get the current game version");
+		break;
+	}
+#endif
+
 	auto ProcessStatus = ProcessMgr.Attach("cs2.exe");
 	switch (ProcessStatus)
 	{
@@ -150,7 +182,7 @@ https://github.com/ByteCorum/DragonBurn
 	}
 
 	Log::PreviousLine();
-	Log::Fine("Connected to CS2");
+	Log::Fine("Linked to CS2");
 
 	char documentsPath[MAX_PATH];
 	if (SHGetFolderPathA(NULL, CSIDL_PERSONAL, NULL, 0, documentsPath) != S_OK)
