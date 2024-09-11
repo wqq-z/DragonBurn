@@ -160,7 +160,7 @@ namespace Render
 
 	void DrawFov(const CEntity& LocalEntity, float Size, ImColor Color, float Thickness)
 	{
-		if (!LegitBotConfig::ShowFovLine)
+		if (!LegitBotConfig::ShowFovLine || MenuConfig::ShowMenu)
 			return;
 
 		float Length;
@@ -184,7 +184,7 @@ namespace Render
 
 	void HeadShootLine(const CEntity& LocalEntity, ImColor Color)
 	{
-		if (!MiscCFG::ShowHeadShootLine)
+		if (!MiscCFG::ShowHeadShootLine || MenuConfig::ShowMenu)
 			return;
 
 		float View = 0.f;

@@ -16,6 +16,7 @@ namespace TriggerBot
 	inline std::chrono::time_point<std::chrono::system_clock> timepoint = std::chrono::system_clock::now();
 	inline std::chrono::time_point<std::chrono::system_clock> startTime = std::chrono::system_clock::now();
 	inline bool recorded = false;
+	inline bool VisibleCheck = true;
 
 	inline void SetHotKey(int Index)
 	{
@@ -24,7 +25,7 @@ namespace TriggerBot
 
 	// Triggerbot
 	void Run(const CEntity& LocalEntity);
-	void TargetCheck(const CEntity& LocalEntity) noexcept;
+	//void TargetCheck(const CEntity& LocalEntity) noexcept;
 	bool CheckScopeWeapon(const CEntity& LocalEntity);
 	bool CheckWeapon(const CEntity& LocalEntity);
 }

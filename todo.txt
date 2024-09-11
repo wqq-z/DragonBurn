@@ -1,8 +1,9 @@
 ○ Add DefuseTimer
-○ Fix SpecList
 ○ Cheat should use cs2 keys
 ○ Kernel mode
 ○ Different config for each of weapon types
+◎ Add logger
+◎ Fix SpecList
 ◎ Outdate old vers
 ◎ Add FastStop(kicks from server)
 ◎ Fix Watermark
@@ -28,3 +29,4 @@
 ⨂ Make menu looks nice
 ⨂ Make cheat multi-tread
 ⨂ Refactor the code
+⨂ Visible Check for Trigger

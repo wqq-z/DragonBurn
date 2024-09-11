@@ -92,9 +92,9 @@ void Offsets::SetOffsets(const std::string& offsetsData, const std::string& butt
 
 int Offsets::UpdateOffsets()
 {
-    const std::string offsetsUrl = "https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/offsets.json";
-    const std::string buttonsUrl = "https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/buttons.json";
-    const std::string client_dllUrl = "https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/client_dll.json";
+    const std::string offsetsUrl = "https://raw.githubusercontent.com/ByteCorum/DragonBurn/data/offsets.json";
+    const std::string buttonsUrl = "https://raw.githubusercontent.com/ByteCorum/DragonBurn/data/buttons.json";
+    const std::string client_dllUrl = "https://raw.githubusercontent.com/ByteCorum/DragonBurn/data/client.dll.json";
     std::string offsetsData, buttonsData, client_dllData;
 
     if (!Web::CheckConnection())

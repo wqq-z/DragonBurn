@@ -39,28 +39,28 @@ namespace ConfigMenu {
 		float ComponentWidth = ImGui::GetColumnWidth() - ImGui::GetStyle().ItemSpacing.x - CursorX * 2;
 
 		ImGui::SetCursorPos(ImVec2(15.f, 24.f));
-		ImGui::SeparatorText(Lang::ConfigText.FeatureName);
+		ImGui::SeparatorText(Text::Config::FeatureName.c_str());
 
 		ImGui::SetCursorPosX(CurrentCursorX + CursorX);
-		ImGui::TextDisabled(Lang::ConfigText.MyConfigs);
+		ImGui::TextDisabled(Text::Config::MyConfigs.c_str());
 		ImGui::SetCursorPosX(CurrentCursorX + CursorX);
 		ImGui::SetNextItemWidth(ComponentWidth);
 		ImGui::ListBox("##ConfigFiles", &selectedConfig, configFilesCStr.data(), configFilesCStr.size());
 		ImGui::SetCursorPosX(CurrentCursorX + CursorX);
-		if (ImGui::Button(Lang::ConfigText.Load, { 120.f, 30.f }) && selectedConfig >= 0 && selectedConfig < configFiles.size())
+		if (ImGui::Button(Text::Config::Load.c_str(), { 120.f, 30.f }) && selectedConfig >= 0 && selectedConfig < configFiles.size())
 		{
 			std::string selectedConfigFile = configFiles[selectedConfig];
 			MyConfigSaver::LoadConfig(selectedConfigFile);
 		}
 		ImGui::SameLine();
-		if (ImGui::Button(Lang::ConfigText.Save, { 120.f, 30.f }) && selectedConfig >= 0 && selectedConfig < configFiles.size())
+		if (ImGui::Button(Text::Config::Save.c_str(), { 120.f, 30.f }) && selectedConfig >= 0 && selectedConfig < configFiles.size())
 		{
 			std::string selectedConfigFile = configFiles[selectedConfig];
 			MyConfigSaver::SaveConfig(selectedConfigFile);
 		}
 
 		ImGui::SetCursorPosX(CurrentCursorX + CursorX);
-		if (ImGui::Button(Lang::ConfigText.Delete, { 120.f, 30.f }) && selectedConfig >= 0 && selectedConfig < configFiles.size())
+		if (ImGui::Button(Text::Config::Delete.c_str(), { 120.f, 30.f }) && selectedConfig >= 0 && selectedConfig < configFiles.size())
 			ImGui::OpenPopup("##reallyDelete");
 		if (ImGui::BeginPopup("##reallyDelete"))
 		{
@@ -85,7 +85,7 @@ namespace ConfigMenu {
 			ImGui::EndPopup();
 		}
 		ImGui::SameLine();
-		if (ImGui::Button(Lang::ConfigText.Reset, { 120.f, 30.f }))
+		if (ImGui::Button(Text::Config::Reset.c_str(), { 120.f, 30.f }))
 			ImGui::OpenPopup("##reallyReset");
 		if (ImGui::BeginPopup("##reallyReset"))
 		{
@@ -106,21 +106,21 @@ namespace ConfigMenu {
 		ImGui::NextColumn();
 		CurrentCursorX = ImGui::GetCursorPosX();
 		ImGui::SetCursorPos(ImVec2(CurrentCursorX + CursorX, 24.f));
-		ImGui::SeparatorText(Lang::ConfigText.SeparateLine);
-		ImGui::TextDisabled(Lang::ConfigText.ConfigName);
+		ImGui::SeparatorText(Text::Config::SeparateLine.c_str());
+		ImGui::TextDisabled(Text::Config::ConfigName.c_str());
 		ImGui::SetNextItemWidth(ComponentWidth + 8);
 		ImGui::InputText("###ConfigNameInput", configNameBuffer, sizeof(configNameBuffer));
-		ImGui::TextDisabled(Lang::ConfigText.AuthorName);
+		ImGui::TextDisabled(Text::Config::AuthorName.c_str());
 		ImGui::SetNextItemWidth(ComponentWidth + 8);
 		ImGui::InputText("###AuthorNameInput", configAuthorBuffer, sizeof(configAuthorBuffer));
 		ImGui::NewLine();
-		if (ImGui::Button(Lang::ConfigText.Create, { 120.f, 30.f }))
+		if (ImGui::Button(Text::Config::Create.c_str(), { 120.f, 30.f }))
 		{
 			std::string configFileName = std::string(configNameBuffer) + ".cfg";
 			MyConfigSaver::SaveConfig(configFileName, std::string(configAuthorBuffer));
 		}
 		ImGui::SameLine();
-		if (ImGui::Button(Lang::ConfigText.OpenFolder, { 120.f, 30.f }))
+		if (ImGui::Button(Text::Config::OpenFolder.c_str(), { 120.f, 30.f }))
 		{
 			Gui.OpenWebpage(configDir.c_str());
 		}

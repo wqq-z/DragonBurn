@@ -191,6 +191,7 @@
     <ClInclude Include="Game\View.hpp" />
     <ClInclude Include="Helpers\Format.h" />
     <ClInclude Include="Helpers\GetWeaponIcon.h" />
+    <ClInclude Include="Helpers\Logger.h" />
     <ClInclude Include="Helpers\Mouse.h" />
     <ClInclude Include="Helpers\WebApi.h" />
     <ClInclude Include="Offsets\Offsets.h" />
@@ -208,15 +209,12 @@
     <ClInclude Include="OS-ImGui\OS-ImGui_External.h" />
     <ClInclude Include="OS-ImGui\OS-ImGui_Struct.h" />
     <ClInclude Include="OS-ImGui\stb\stb_image.h" />
-    <ClInclude Include="resource.h" />
+    <ClInclude Include="Resources\resource.h" />
     <ClInclude Include="Resources\font.h" />
     <ClInclude Include="Resources\Images.h" />
     <ClInclude Include="Resources\Language.h" />
     <ClInclude Include="Resources\Sounds.h" />
     <ClInclude Include="Resources\WeaponIcon.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="AssemblyInfo.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon.ico" />
@@ -247,6 +245,9 @@
     <ClCompile Include="OS-ImGui\OS-ImGui.cpp" />
     <ClCompile Include="OS-ImGui\OS-ImGui_Base.cpp" />
     <ClCompile Include="OS-ImGui\OS-ImGui_External.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources\Resource.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
