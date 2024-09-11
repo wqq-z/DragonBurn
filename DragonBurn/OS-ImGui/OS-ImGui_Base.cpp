@@ -24,7 +24,6 @@ namespace OSImGui
         iconConfig.OversampleV = 3;
         iconConfig.FontDataOwnedByAtlas = false;
 
-        //ImFont* font = io.Fonts->AddFontFromFileTTF("../Resources/font.ttf", 23.0f, NULL, io.Fonts->GetGlyphRangesDefault());
         ImFont* WeaponIconFont = fontAtlas->AddFontFromMemoryTTF((void*)cs_icon, sizeof(cs_icon), 25.0f);
 
         io.Fonts = fontAtlas;
@@ -36,9 +35,6 @@ namespace OSImGui
             throw OSException("ImGui_ImplWin32_Init() call failed.");
         if (!ImGui_ImplDX11_Init(device, device_context))
             throw OSException("ImGui_ImplDX11_Init() call failed.");
-
-        // Language initialize
-        Lang::English();
 
         return true;
     }
