@@ -41,8 +41,10 @@ namespace Log
 
 	inline void Debug(std::string ctx)
 	{
+#ifdef DBDEBUG
 		SetConsoleTextAttribute(hConsole, 9);
 		std::cout << "[Debug]" << ctx << '\n';
+#endif
 	}
 
 	inline void Custom(std::string ctx, int color)

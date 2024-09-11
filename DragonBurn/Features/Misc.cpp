@@ -100,9 +100,7 @@ namespace Misc
 
 		//int JumpBtn;
 		//if (!ProcessMgr.ReadMemory(gGame.GetJumpBtnAddress(), JumpBtn))
-		//	std::cout << "bexit" << '\n';
 		//	return;
-		//std::cout << JumpBtn << '\n';
 
 		bool spacePressed = GetAsyncKeyState(VK_SPACE);
 		bool isInAir = AirCheck(Local);
