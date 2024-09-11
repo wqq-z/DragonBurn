@@ -9,8 +9,8 @@ namespace SpecList
 {
     void SpectatorWindowList(CEntity& LocalEntity)
     {
-        if (!MiscCFG::SpecList || LocalEntity.Controller.TeamID == 0)
-            return;
+        if ((!MiscCFG::SpecList || LocalEntity.Controller.TeamID == 0) && !(MiscCFG::SpecList && MenuConfig::ShowMenu))
+                return;
 
         ImGuiWindowFlags flags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize;
         static float fontHeight = ImGui::GetFontSize();

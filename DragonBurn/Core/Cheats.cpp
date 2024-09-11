@@ -232,7 +232,7 @@ void Visual(const CEntity& LocalEntity)
 void Radar(Base_Radar Radar, const CEntity& LocalEntity)
 {
 	// Radar render
-	if (RadarCFG::ShowRadar && LocalEntity.Controller.TeamID != 0)
+	if ((RadarCFG::ShowRadar && LocalEntity.Controller.TeamID != 0) || (RadarCFG::ShowRadar && MenuConfig::ShowMenu))
 	{
 		Radar.Render();
 		ImGui::End();
@@ -322,7 +322,7 @@ void RenderCrosshair(ImDrawList* drawList, const CEntity& LocalEntity)
 	bool isScoped;
 	ProcessMgr.ReadMemory<bool>(LocalEntity.Pawn.Address + Offset.Pawn.isScoped, isScoped);
 
-	if (!MiscCFG::SniperCrosshair || LocalEntity.Controller.TeamID == 0 || !TriggerBot::CheckScopeWeapon(LocalEntity) || isScoped)
+	if (!MiscCFG::SniperCrosshair || LocalEntity.Controller.TeamID == 0 || !TriggerBot::CheckScopeWeapon(LocalEntity) || isScoped || MenuConfig::ShowMenu)
 		return;
 
 	Render::DrawCrossHair(drawList, ImVec2(ImGui::GetIO().DisplaySize.x / 2, ImGui::GetIO().DisplaySize.y / 2), MiscCFG::SniperCrosshairColor);

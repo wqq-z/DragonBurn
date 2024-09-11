@@ -9,6 +9,9 @@ bool WaitForNoAttack = false;
 
 void TriggerBot::Run(const CEntity& LocalEntity)
 {
+    if (MenuConfig::ShowMenu)
+        return;
+
     if (LocalEntity.Controller.AliveStatus == 0)
         return;
 

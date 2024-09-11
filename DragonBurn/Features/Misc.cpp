@@ -7,17 +7,17 @@ namespace fs = std::filesystem;
 
 namespace Misc
 {
-	bool aKeyPressed = false;
-	bool dKeyPressed = false;
-	bool wKeyPressed = false;
-	bool sKeyPressed = false;
+	//bool aKeyPressed = false;
+	//bool dKeyPressed = false;
+	//bool wKeyPressed = false;
+	//bool sKeyPressed = false;
 	HitMarker hitMarker(0, std::chrono::steady_clock::now());
 	const float HitMarker::SIZE = 10.f;
 	const float HitMarker::GAP = 3.f;
 
 	void Watermark(const CEntity& LocalPlayer) noexcept
 	{
-		if (!MiscCFG::WaterMark || LocalPlayer.Controller.TeamID == 0)
+		if ((!MiscCFG::WaterMark || LocalPlayer.Controller.TeamID == 0) && !(MiscCFG::WaterMark && MenuConfig::ShowMenu))
 			return;
 
 		//	globalvars GV;
@@ -55,7 +55,7 @@ namespace Misc
 
 	void HitManager(const CEntity& LocalPlayer, int& PreviousTotalHits) noexcept
 	{
-		if ((!MiscCFG::HitSound && !MiscCFG::HitMarker) || LocalPlayer.Controller.TeamID == 0)// or aLocalPlayer.Controller.Health)//add in game cheack
+		if ((!MiscCFG::HitSound && !MiscCFG::HitMarker) || LocalPlayer.Controller.TeamID == 0 || MenuConfig::ShowMenu)
 		{
 			return;
 		}
@@ -90,7 +90,7 @@ namespace Misc
 
 	void BunnyHop(const CEntity& Local) noexcept
 	{
-		if (!MiscCFG::BunnyHop)
+		if (!MiscCFG::BunnyHop ||  MenuConfig::ShowMenu || Local.Controller.TeamID == 0)
 			return;
 
 		HWND hwnd_cs2 = FindWindowA(NULL, "Counter-Strike 2");
