@@ -1,325 +1,148 @@
-﻿#define _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS
-#pragma once
+﻿#pragma once
 #include <iostream>
 #include <string>
 #include <windows.h>
 
-namespace Lang
-{
-	
-	inline struct Global
-	{
-		inline static const char* Date;
-		inline static const char* Author;
+namespace Text {
+    namespace Global 
+    {
+        inline std::string SwitchButton = "Enable";
+        inline std::string FeatureSettings = "Settings";
+    }
 
-		inline static const char* SwitchButton;
-		inline static const char* FeatureSettings;
-	} Global;
+    namespace ESP
+    {
+        inline std::string Toggle = "Toggle";
+        inline std::string FeatureName = "ESP";
+        inline std::string Box = "Box";
+        inline std::string BoxRounding = "Box Rounding: ";
+        inline std::string FilledBox = "Filled Box";
+        inline std::string FilledAlpha = "Filled Box Alpha";
+        inline std::string Skeleton = "Skeleton";
+        inline std::string HeadBox = "Head ESP";
+        inline std::string EyeRay = "Eye Ray";
+        inline std::string HealthBar = "Health Bar";
+        inline std::string Weapon = "Weapon Icon";
+        inline std::string Distance = "Distance";
+        inline std::string PlayerName = "Player Name";
+        inline std::string SnapLine = "Snap Line";
+        inline std::string LinePosList = "Line Position: ";
+        inline std::string VisCheck = "Visible Color";
+        inline std::string Preview = "ESP Preview";
+        inline std::string MultiColor = "Multicoloured";
+        inline std::string MultiColTip = "Only work when the box has non-rounded corners.";
+        inline std::string Outline = "Outline";
+        inline std::string BoxType = "  Box Type";
+        inline std::string HealthNum = "Health Number";
+        inline std::string Ammo = "Ammo Bar";
+        inline std::string ScopedESP = "Show Scoped";
+        inline std::string ShowArmorBar = "Armor Bar";
+        inline std::string ArmorNum = "Armor Number";
+        inline std::string LinePos_1 = "Top";
+        inline std::string LinePos_2 = "Center";
+        inline std::string LinePos_3 = "Bottom";
+    }
 
-	inline struct ESPtext
-	{
-		inline static const char* Toggle;
-		inline static const char* FeatureName;
-		inline static const char* Box;
-		inline static const char* BoxRounding;
-		inline static const char* FilledBox;
-		inline static const char* FilledAlpha;
-		inline static const char* Skeleton;
-		inline static const char* HeadBox;
-		inline static const char* EyeRay;
-		inline static const char* HealthBar;
-		inline static const char* Weapon;
-		inline static const char* Distance;
-		inline static const char* PlayerName;
-		inline static const char* SnapLine;
-		inline static const char* LinePosList;
-		inline static const char* VisCheck;
-		inline static const char* Preview;
-		inline static const char* CollapseHead;
-		inline static const char* MultiColor;
-		inline static const char* MultiColTip;
-		inline static const char* Outline;
-		inline static const char* BoxType;
-		inline static const char* HealthNum;
-		inline static const char* Ammo;
-		inline static const char* ScopedESP;
-		inline static const char* ShowArmorBar;
-		inline static const char* ArmorNum;
-		inline static const char* RenderDistance;
+    namespace Aimbot
+    {
+        inline std::string Enable = "Enable Aimbot";
+        inline std::string FeatureName = "Aimbot";
+        inline std::string HotKeyList = "Hotkey   ";
+        inline std::string Toggle = "Toggle Mode";
+        inline std::string DrawFov = "Show Fov";
+        inline std::string VisCheck = "Visible Check";
+        inline std::string JumpCheck = "On Ground Check";
+        inline std::string FovSlider = "FOV: ";
+        inline std::string FovMinSlider = "MiniFOV: ";
+        inline std::string SmoothSlider = "Smooth: ";
+        inline std::string BoneList = "Hitboxes";
+        inline std::string Tip = "Aimbot will not work while the menu is opened";
+        inline std::string ScopeOnly = "Scope Check";
+        inline std::string BulletSlider = "Start Bullet: ";
+        inline std::string IgnoreFlash = "Ignore Flash";
+    }
 
-		inline static const char* BoxType_Normal;
-		inline static const char* BoxType_Edge;
-		inline static const char* BoxType_Corner;
-		inline static const char* BarType_Top;
-		inline static const char* BarType_Vertical;
-		inline static const char* HeadBoxType_Normal;
-		inline static const char* HeadBoxType_Flat;
-		inline static const char* LinePos_1;
-		inline static const char* LinePos_2;
-		inline static const char* LinePos_3;
-	} ESPtext;
+    namespace RCS
+    {
+        inline std::string Toggle = "Recoil Control";
+        inline std::string Yaw = "Yaw: ";
+        inline std::string Pitch = "Pitch: ";
+    }
 
-	inline struct AimbotText
-	{
-		inline static const char* Enable;
-		inline static const char* FeatureName;
-		inline static const char* HotKeyList;
-		inline static const char* Toggle;
-		inline static const char* DrawFov;
-		inline static const char* VisCheck;
-		inline static const char* JumpCheck;
-		inline static const char* FovSlider;
-		inline static const char* FovMinSlider;
-		inline static const char* SmoothSlider;
-		inline static const char* BoneList;
-		inline static const char* Tip;
-		inline static const char* ScopeOnly;
-		inline static const char* AutoShot;
-		inline static const char* BulletSlider;
-		inline static const char* IgnoreFlash;
+    namespace Radar
+    {
+        inline std::string Toggle = "Show Radar";
+        inline std::string FeatureName = "Radar";
+        inline std::string StyleList = "Style";
+        inline std::string CustomCheck = "Custom";
+        inline std::string CrossLine = "Cross Line";
+        inline std::string SizeSlider = "Point Size:";
+        inline std::string ProportionSlider = "Proportion:";
+        inline std::string RangeSlider = "Range:";
+        inline std::string AlphaSlider = "Background Alpha:";
+    }
 
-		inline static const char* Bone_1;
-		inline static const char* Bone_2;
-		inline static const char* Bone_3;
-		inline static const char* Bone_4;
-	} AimbotText;
+    namespace Trigger
+    {
+        inline std::string Enable = "Enable Triggerbot";
+        inline std::string FeatureName = "Triggerbot";
+        inline std::string HotKeyList = "Hotkey   ";
+        inline std::string Toggle = "Always Active";
+        inline std::string ScopeOnly = "Scope Only";
+        inline std::string DelaySlider = "Shot Delay:";
+        inline std::string FakeShotSlider = "Shot Duration:";
+        inline std::string IgnoreFlash = "Ignr Flash";
+    }
 
-	inline struct RCStext
-	{
-		inline static const char* Toggle;
-		inline static const char* Yaw;
-		inline static const char* Pitch;
-	} RCStext;
+    namespace Misc
+    {
+        inline std::string FeatureName = "Misc";
+        inline std::string StyleList = "Style";
+        inline std::string HeadshotLine = "Headshot Line";
+        inline std::string SpecCheck = "Work in Spec";
+        inline std::string BunnyHop = "Bunny Hop";
+        inline std::string HitSound = "Hit Sound";
+        inline std::string HitMerker = "Hit Markers";
+        inline std::string bmbTimer = "Bomb Timer";
+        inline std::string SpecList = "Spec List";
+        inline std::string Watermark = "Watermark";
+        inline std::string TeamCheck = "Team Check";
+        inline std::string AntiRecord = "Anti Record";
+        inline std::string SniperCrosshair = "Sniper Crosshair";
+    }
 
-	inline struct RadarText
-	{
-		inline static const char* Toggle;
-		inline static const char* FeatureName;
-		inline static const char* StyleList;
-		inline static const char* CustomCheck;
-		inline static const char* CrossLine;
-		inline static const char* SizeSlider;
-		inline static const char* ProportionSlider;
-		inline static const char* RangeSlider;
-		inline static const char* AlphaSlider;
-
-		inline static const char* Style_1;
-		inline static const char* Style_2;
-		inline static const char* Style_3;
-	} RadarText;
-
-	inline struct TriggerText
-	{
-		inline static const char* Enable;
-		inline static const char* FeatureName;
-		inline static const char* HotKeyList;
-		inline static const char* Toggle;
-		inline static const char* ScopeOnly;
-		inline static const char* DelaySlider;
-		inline static const char* FakeShotSlider;
-	} TriggerText;
-
-	inline struct CrosshairsText
-	{
-		inline static const char* Toggle;
-		inline static const char* FeatureName;
-		inline static const char* PresetList;
-		inline static const char* ColorEditor;
-		inline static const char* Dot;
-		inline static const char* DotSizeSlider;
-		inline static const char* Outline;
-		inline static const char* Crossline;
-		inline static const char* hLengthSlider;
-		inline static const char* vLengthSilder;
-		inline static const char* GapSlider;
-		inline static const char* ThicknessSlider;
-		inline static const char* tStyle;
-		inline static const char* Circle;
-		inline static const char* RadiusSlider;
-		inline static const char* TargetCheck;
-		inline static const char* TeamCheck;
-	} CrosshairsText;
-
-	inline struct MiscText
-	{
-		inline static const char* FeatureName;
-		inline static const char* StyleList;
-		inline static const char* HeadshotLine;
-		inline static const char* SpecCheck;
-		inline static const char* NoFlash;
-		inline static const char* BunnyHop;
-		//inline static const char* FastStop;
-		inline static const char* HitSound;
-		inline static const char* HitMerker;
-		inline static const char* bmbTimer;
-		inline static const char* SpecList;
-		inline static const char* Watermark;
-		inline static const char* TeamCheck;
-		inline static const char* AntiRecord;
-
-		inline static const char* VisCheckDisable;
-	} MiscText;
-
-	inline struct ConfigText
-	{
-		inline static const char* FeatureName;
-		inline static const char* Load;
-		inline static const char* Save;
-		inline static const char* Delete;
-		inline static const char* Reset;
-		inline static const char* Create;
-		inline static const char* OpenFolder;
-		inline static const char* SeparateLine;
-		inline static const char* MyConfigs;
-		inline static const char* AuthorName;
-		inline static const char* ConfigName;
-
-		inline static const char* fpsCap;
-	} ConfigText;
-
-	inline struct ReadMeText
-	{
-		inline static const char* FeatureName;
-		inline static const char* LastUpdate;
-		inline static const char* SourceButton;
-		inline static const char* DiscordButton;
-		inline static const char* OffsetsTitle;
-	} ReadMeText;
-
-	inline void English()
-	{
-		Global.Date = "v1.0.4.8";
-		Global.Author = "ByteCorum";
-
-		Global.SwitchButton = "Enable";
-		Global.FeatureSettings = "Settings";
-
-		// ESP
-		ESPtext.Toggle = "Toggle";
-		ESPtext.FeatureName = " ESP";
-		ESPtext.Box = "Frame";
-		ESPtext.BoxRounding = "Box Rounding: ";
-		ESPtext.FilledBox = "Filled Box";
-		ESPtext.FilledAlpha = "Filled Box Alpha";
-		ESPtext.Skeleton = "Skeleton";
-		ESPtext.HeadBox = "Head Box";
-		ESPtext.EyeRay = "Eye Ray";
-		ESPtext.HealthBar = "Health Bar";
-		ESPtext.Weapon = "Weapon";
-		ESPtext.Distance = "Distance";
-		ESPtext.PlayerName = "Name";
-		ESPtext.SnapLine = "Snap Line";
-		ESPtext.LinePosList = "Line Position: ";
-		ESPtext.VisCheck = "Visible Check";
-		ESPtext.Preview = "Preview Window";
-		ESPtext.MultiColor = "Multi-Color";
-		ESPtext.MultiColTip = "Only work when the box has non-rounded corners.";
-		ESPtext.Outline = "Outline";
-		ESPtext.BoxType = "  Box Type";
-		ESPtext.HealthNum = "Health Number";
-		ESPtext.Ammo = "Ammo";
-		ESPtext.ScopedESP = "Show Scoped";
-		ESPtext.ShowArmorBar = "Armor Bar";
-		ESPtext.ArmorNum = "Armor Number";
-		ESPtext.RenderDistance = "Max Render Distance: ";
-
-		ESPtext.LinePos_1 = "Top";
-		ESPtext.LinePos_2 = "Center";
-		ESPtext.LinePos_3 = "Bottom";
-
-		// Aimbot
-		AimbotText.Enable = "Enable Aimbot";
-		AimbotText.FeatureName = " Aimbot";
-		AimbotText.HotKeyList = "Hotkey   ";
-		AimbotText.Toggle = "Toggle Mode";
-		AimbotText.DrawFov = "Draw Fov";
-		AimbotText.VisCheck = "Visible Only";
-		AimbotText.JumpCheck = "On Ground Only";
-		AimbotText.FovSlider = "FOV: ";
-		AimbotText.FovMinSlider = "MinFOV: ";
-		AimbotText.SmoothSlider = "Smooth: ";
-		AimbotText.BoneList = "Hitboxes";
-		AimbotText.Tip = "Aimbot will not work while the menu is opened";
-		AimbotText.ScopeOnly = "Scope Only";
-		AimbotText.AutoShot = "Auto Shot";
-		AimbotText.BulletSlider = "Start Bullet: ";
-		AimbotText.IgnoreFlash = "Ignore Flash";
-
-		// RCS
-		RCStext.Toggle = "Recoil Control";
-		RCStext.Yaw = "Yaw: ";
-		RCStext.Pitch = "Pitch: ";
-
-		// Radar
-		RadarText.Toggle = "Show Radar";
-		RadarText.FeatureName = " Radar";
-		RadarText.StyleList = "Style";
-		RadarText.CustomCheck = "Custom";
-		RadarText.CrossLine = "Cross Line";
-		RadarText.SizeSlider = "Point Size:";
-		RadarText.ProportionSlider = "Proportion:";
-		RadarText.RangeSlider = "Range:";
-		RadarText.AlphaSlider = "Window Background Alpha:";
-
-		// Triggerbot
-		TriggerText.Enable = "Enable Triggerbot";
-		TriggerText.FeatureName = " Triggerbot";
-		TriggerText.HotKeyList = "Hotkey   ";
-		TriggerText.Toggle = "Always Active";
-		TriggerText.ScopeOnly = "Scope Only";
-		TriggerText.DelaySlider = "Shot Delay:";
-		TriggerText.FakeShotSlider = "Shot Duration:";
-
-		// Crosshairs
-		CrosshairsText.Toggle = "Show Crosshairs";
-		CrosshairsText.FeatureName = " Crosshairs";
-		CrosshairsText.PresetList = "Presets";
-		CrosshairsText.ColorEditor = "Crosshairs Color";
-		CrosshairsText.Dot = "Center Dot";
-		CrosshairsText.DotSizeSlider = "Dot Size:";
-		CrosshairsText.Outline = "Crosshairs Outline";
-		CrosshairsText.Crossline = "Crossline";
-		CrosshairsText.hLengthSlider = "Horizontal Length:";
-		CrosshairsText.vLengthSilder = "Vertical Length:";
-		CrosshairsText.GapSlider = "Gap:";
-		CrosshairsText.ThicknessSlider = "Thickness:";
-		CrosshairsText.tStyle = "T Style";
-		CrosshairsText.Circle = "Circle";
-		CrosshairsText.RadiusSlider = "Circle Radius:";
-		CrosshairsText.TargetCheck = "Targeting Crosshairs";
-		CrosshairsText.TeamCheck = "TeamCheck";
-
-		// Misc
-		MiscText.FeatureName = " Misc";
-		MiscText.StyleList = "Style";
-		MiscText.HeadshotLine = "Headshot Line";
-		MiscText.SpecCheck = "Cheat in Spec";
-		MiscText.NoFlash = "No Flash";
-		MiscText.BunnyHop = "Bunny Hop";
-		//MiscText.FastStop = "Fast Stop";
-		MiscText.HitSound = "Hit Sound  ";
-		MiscText.HitMerker = "Hit Markers";
-		MiscText.bmbTimer = "Bomb Timer";
-		MiscText.SpecList = "Spec List";
-		MiscText.Watermark = "Watermark";
-		MiscText.TeamCheck = "Team Check";
-		MiscText.AntiRecord = "Anti Record";
-		MiscText.VisCheckDisable = "Visible Check DISABLED";
-
-
-		// Config Menu
-		ConfigText.FeatureName = "Config Loader";
-		ConfigText.MyConfigs = "Config List";
-		ConfigText.Load = "Load";
-		ConfigText.Save = "Save";
-		ConfigText.Delete = "Delete";
-		ConfigText.Reset = "Reset";
-		ConfigText.Create = "Create";
-		ConfigText.OpenFolder = "Open Folder";
-		ConfigText.SeparateLine = "Create Config";
-		ConfigText.AuthorName = "Author Name";
-		ConfigText.ConfigName = "Config Name";
-
-		ConfigText.fpsCap = "Frame Limit: ";
-	}
+    namespace Config
+    {
+        inline std::string FeatureName = "Config Loader";
+        inline std::string MyConfigs = "Config List";
+        inline std::string Load = "Load";
+        inline std::string Save = "Save";
+        inline std::string Delete = "Delete";
+        inline std::string Reset = "Reset";
+        inline std::string Create = "Create";
+        inline std::string OpenFolder = "Open Folder";
+        inline std::string SeparateLine = "Create Config";
+        inline std::string AuthorName = "Author Name";
+        inline std::string ConfigName = "Config Name";
+    }
 }
+
+
+// Crosshairs
+//CrosshairsText.Toggle = "Show Crosshairs";
+//CrosshairsText.FeatureName = " Crosshairs";
+//CrosshairsText.PresetList = "Presets";
+//CrosshairsText.ColorEditor = "Crosshairs Color";
+//CrosshairsText.Dot = "Center Dot";
+//CrosshairsText.DotSizeSlider = "Dot Size:";
+//CrosshairsText.Outline = "Crosshairs Outline";
+//CrosshairsText.Crossline = "Crossline";
+//CrosshairsText.hLengthSlider = "Horizontal Length:";
+//CrosshairsText.vLengthSilder = "Vertical Length:";
+//CrosshairsText.GapSlider = "Gap:";
+//CrosshairsText.ThicknessSlider = "Thickness:";
+//CrosshairsText.tStyle = "T Style";
+//CrosshairsText.Circle = "Circle";
+//CrosshairsText.RadiusSlider = "Circle Radius:";
+//CrosshairsText.TargetCheck = "Targeting Crosshairs";
+//CrosshairsText.TeamCheck = "TeamCheck";

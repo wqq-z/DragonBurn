@@ -9,28 +9,34 @@
   <img src="https://img.shields.io/badge/tests-100/100-76B900?style=for-the-badge&logo=&logoColor=whit">
   <img src="https://img.shields.io/badge/code quality-B+-76B900?style=for-the-badge&logo=&logoColor=whit">
   <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge&logo=&logoColor=whit">
-  <img src="https://img.shields.io/badge/DragonBurn-v1.0.4.8-blue?style=for-the-badge&logo=&logoColor=whit">
+  <img src="https://img.shields.io/badge/DragonBurn-v1.1.5.0-blue?style=for-the-badge&logo=&logoColor=whit">
   <img src="https://img.shields.io/badge/CS2-000000?style=for-the-badge&logo=counter-strike&logoColor=white">
   <img src="https://img.shields.io/badge/undetected-03C75A?style=for-the-badge&logo=ticktick&logoColor=FFFFFF">
   <img src="https://img.shields.io/badge/offsets auto update-D06B57?style=for-the-badge&logo=databricks&logoColor=FFFFFF">
 </p>
 
 ---
-### It's one of the best CS2 external cheats with many cool features. Nowadays undetected by anti-cheat. Software written on C++.
+### DragonBurn is one of the best CS2 read only external cheats. It has ton of features, full customization and offsets auto update. Undetected by all anti-cheats except faceit.
 ⭐Please, star this repo if it was helpful⭐
 
 ---
+### 🌐Join our community
+<a href="https://discord.gg/5WcvdzFybD"><img src="https://invidget.switchblade.xyz/5WcvdzFybD"></a>
 
-
+---
 ### 📋 Features
 Press END key to open/close menu.
 <details>
 <summary>Visual</summary>
   
 - Box ESP
+- Box Type
+- Box Rounding
 - Filled Box ESP
+- Gradient Filled Box ESP
 - Skeleton
 - Snap Line
+- Visual Color
 - Eye Ray
 - Health Bar
 - Armor Bar
@@ -41,6 +47,7 @@ Press END key to open/close menu.
 - Scoped
 - AWP Crosshair
 - Visual Preview
+- etc
 </details>
 
 <details>
@@ -58,10 +65,9 @@ Press END key to open/close menu.
 - Start Bullet
 - Aim Lock
 - Draw Fov
-- Visible Only
-- Ignore Flash
-- Scope Only
-- Auto Shoot
+- Visible Check
+- Flash Check
+- Scope Check
 - FOV
 - Smooth
 - Multi Hitboxes Selection
@@ -78,8 +84,8 @@ Press END key to open/close menu.
 <details>
 <summary>Trigger Bot</summary>
   
-- Scope Only
-- Ignore Flash
+- Scope Check
+- Flash Check
 - Shot Delay
 - Shot Duration
 </details>
@@ -88,7 +94,7 @@ Press END key to open/close menu.
 <summary>Misc</summary>
   
 - Bomb Timer
-- Fast Stop
+- Bunny Hop
 - Head Line
 - Hit Sound
 - Hit Markers
@@ -97,7 +103,7 @@ Press END key to open/close menu.
 - Anti Record
 </details>
 
-
+---
 ### 🖼️Prewiev
 
 <p align="center">
@@ -106,6 +112,10 @@ Press END key to open/close menu.
 
 <p align="center">
 <img src="imgs/img1.png">
+</p>
+
+<p align="center">
+<img src="imgs/img2.png">
 </p>
 
 ---

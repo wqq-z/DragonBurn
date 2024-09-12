@@ -1,75 +1,4 @@
 #include "Offsets.h"
-//#include <curl/curl.h>
-#include <string>
-#include <json.hpp>
-
-//size_t writeCallback(void* ptr, size_t size, size_t nmemb, std::string* buffer) {
-//	buffer->append((char*)ptr, size * nmemb);
-//	return size * nmemb;
-//}
-//
-//bool LoadData(std::string url, std::string& response) 
-//{
-//    CURL* curl;
-//    CURLcode res;
-//
-//    curl = curl_easy_init();
-//    if (curl) 
-//    {
-//        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
-//        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION,
-//            writeCallback);
-//        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
-//
-//        res = curl_easy_perform(curl);
-//
-//        if (res != CURLE_OK) 
-//        {
-//            return false;
-//        }
-//
-//        curl_easy_cleanup(curl);
-//        return true;
-//    }
-//    else
-//    {
-//        return false;
-//    }
-//}
-
-bool CheckConnection()
-{
-    int result = system("ping google.com > nul");
-    if (result == 0)
-        return true;
-    else
-        return false;
-}
-
-bool LoadData(std::string url, std::string& response) 
-{
-    response = "";
-    std::string cmd = "curl -s -X GET " + url;
-
-    std::array<char, 128> buffer;
-    std::unique_ptr<FILE, decltype(&_pclose)> pipe(_popen(cmd.c_str(), "r"), _pclose);
-
-    if (!pipe)
-    {
-        return false;
-    }
-    while (fgets(buffer.data(), static_cast<int>(buffer.size()), pipe.get()) != nullptr)
-    {
-        response += buffer.data();
-    }
-
-    if (response.find("{") == -1)
-    {
-        return false;
-    }
-
-    return true;
-}
 
 Offsets::Offsets(){}
 
@@ -168,9 +97,9 @@ int Offsets::UpdateOffsets()
     const std::string client_dllUrl = "https://raw.githubusercontent.com/a2x/cs2-dumper/main/output/client_dll.json";
     std::string offsetsData, buttonsData, client_dllData;
 
-    if (!CheckConnection())
+    if (!Web::CheckConnection())
         return 0;
-    if (!LoadData(offsetsUrl, offsetsData) || !LoadData(buttonsUrl, buttonsData) || !LoadData(client_dllUrl, client_dllData))
+    if (!Web::Get(offsetsUrl, offsetsData) || !Web::Get(buttonsUrl, buttonsData) || !Web::Get(client_dllUrl, client_dllData))
         return 1;
 
     SetOffsets(offsetsData, buttonsData, client_dllData);

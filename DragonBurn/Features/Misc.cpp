@@ -7,50 +7,31 @@ namespace fs = std::filesystem;
 
 namespace Misc
 {
-	bool aKeyPressed = false;
-	bool dKeyPressed = false;
-	bool wKeyPressed = false;
-	bool sKeyPressed = false;
+	//bool aKeyPressed = false;
+	//bool dKeyPressed = false;
+	//bool wKeyPressed = false;
+	//bool sKeyPressed = false;
 	HitMarker hitMarker(0, std::chrono::steady_clock::now());
 	const float HitMarker::SIZE = 10.f;
 	const float HitMarker::GAP = 3.f;
 
 	void Watermark(const CEntity& LocalPlayer) noexcept
 	{
-		if (!MiscCFG::WaterMark || LocalPlayer.Controller.TeamID == 0)
+		if ((!MiscCFG::WaterMark || LocalPlayer.Controller.TeamID == 0) && !(MiscCFG::WaterMark && MenuConfig::ShowMenu))
 			return;
 
-		//	globalvars GV;
 		ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize;
-		ImGui::SetNextWindowBgAlpha(0.6f);
+		ImGui::SetNextWindowBgAlpha(0.8f);
+		ImGui::GetStyle().WindowRounding = 8.0f;
 		ImGui::Begin("Watermark", nullptr, windowFlags);
 
-		// Cheat FPS
-		static auto FrameRate = 1.0f;
-		FrameRate = ImGui::GetIO().Framerate;
-
-		// Current Time
-		struct tm ptm;
-		getCurrentTime(&ptm);
-
-		// Player Ping
-		int playerPing;
-		ProcessMgr.ReadMemory(LocalPlayer.Controller.Address + 0x718, playerPing);
-
-		// Player Pos
 		Vec3 Pos = LocalPlayer.Pawn.Pos;
 
-		// Player Angle
-		Vec2 Angle = LocalPlayer.Pawn.ViewAngle;
-
-		ImGui::Text("DragonBurn");
-		ImGui::Text("%d FPS | %d ms | %02d:%02d:%02d",
-			FrameRate != 0.0f ? static_cast<int>(FrameRate) : 0,
-			playerPing,
-			ptm.tm_hour, ptm.tm_min, ptm.tm_sec);
-		ImGui::Text("Pos: %.2f, %.2f, %.2f", Pos.x, Pos.y, Pos.z);
-		ImGui::Text("Angle: %.2f, %.2f", Angle.x, Angle.y);
-		ImGui::Text("Vel: %.2f", LocalPlayer.Pawn.Speed);
+		ImGui::Text("  DragonBurn");
+		ImGui::Text("  External CS2 cheat");
+		ImGui::Text("  Vel: %.2f", LocalPlayer.Pawn.Speed);
+		ImGui::Text("  Pos: %.1f, %.1f, %.1f ", Pos.x, Pos.y, Pos.z);
+		ImGui::Text("                                                      ");
 
 		ImGui::End();
 	}
@@ -70,9 +51,9 @@ namespace Misc
 		}
 	}
 
-	void HitManager(const CEntity& LocalPlayer, int& PreviousTotalHits) noexcept
+	void HitManager(CEntity& LocalPlayer, int& PreviousTotalHits) noexcept
 	{
-		if ((!MiscCFG::HitSound && !MiscCFG::HitMarker) || LocalPlayer.Controller.TeamID == 0)// or aLocalPlayer.Controller.Health)//add in game cheack
+		if ((!MiscCFG::HitSound && !MiscCFG::HitMarker) || LocalPlayer.Controller.TeamID == 0 || MenuConfig::ShowMenu || !LocalPlayer.IsAlive())
 		{
 			return;
 		}
@@ -107,7 +88,7 @@ namespace Misc
 
 	void BunnyHop(const CEntity& Local) noexcept
 	{
-		if (!MiscCFG::BunnyHop)
+		if (!MiscCFG::BunnyHop ||  MenuConfig::ShowMenu || Local.Controller.TeamID == 0)
 			return;
 
 		HWND hwnd_cs2 = FindWindowA(NULL, "Counter-Strike 2");
@@ -117,9 +98,7 @@ namespace Misc
 
 		//int JumpBtn;
 		//if (!ProcessMgr.ReadMemory(gGame.GetJumpBtnAddress(), JumpBtn))
-		//	std::cout << "bexit" << '\n';
 		//	return;
-		//std::cout << JumpBtn << '\n';
 
 		bool spacePressed = GetAsyncKeyState(VK_SPACE);
 		bool isInAir = AirCheck(Local);

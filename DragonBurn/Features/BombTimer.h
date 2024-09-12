@@ -24,7 +24,7 @@ namespace bmb
 		{
 			int site;
 			uintptr_t cPlantedC4;
-			ProcessMgr.ReadMemory(gGame.GetClientDLLAddress() + Offset.PlantedC4, cPlantedC4);
+			//ProcessMgr.ReadMemory(gGame.GetClientDLLAddress() + Offset.PlantedC4, cPlantedC4);
 			if (!ProcessMgr.ReadMemory<uintptr_t>(gGame.GetClientDLLAddress() + Offset.PlantedC4, cPlantedC4))
 				return 0;
 			if (!ProcessMgr.ReadMemory<uintptr_t>(cPlantedC4, cPlantedC4))
@@ -42,7 +42,7 @@ namespace bmb
 
 	void RenderWindow(int inGame)
 	{
-		if (!MiscCFG::bmbTimer || inGame == 0)
+		if ((!MiscCFG::bmbTimer || inGame == 0) && !(MiscCFG::bmbTimer && MenuConfig::ShowMenu))
 			return;
 
 		bool isBombPlanted;
@@ -60,20 +60,18 @@ namespace bmb
 			plantTime = time;
 		}
 
-		if (!isPlanted)
-		{
-			return;
-		}
-
 		//ProcessMgr.ReadMemory(Offset.PlantedC4 + Offset.C4.m_flDefuseCountDown, IsBeingDefused);
 		//ProcessMgr.ReadMemory(Offset.PlantedC4 + Offset.C4.m_flDefuseCountDown, DefuseTime);
+
+		if (!isPlanted && !MenuConfig::ShowMenu)
+			return;
 
 		static float windowWidth = 200.0f;
 		ImGuiWindowFlags flags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize;
 		ImGui::SetNextWindowPos({ (ImGui::GetIO().DisplaySize.x - 200.0f) / 2.0f, 80.0f }, ImGuiCond_Once);
 		ImGui::SetNextWindowSize({ windowWidth, 0 }, ImGuiCond_Once);
+		ImGui::GetStyle().WindowRounding = 8.0f;
 		ImGui::Begin("Bomb Timer", nullptr, flags);
-
 		float remaining = (40000 - (int64_t)time + plantTime) / (float)1000;
 
 		/*
@@ -115,7 +113,7 @@ namespace bmb
 		{
 			isPlanted = false;
 		}
-		ImGui::PopStyleColor();
+		//ImGui::PopStyleColor();
 		ImGui::End();
 	}
 }

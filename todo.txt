@@ -1,12 +1,18 @@
-○ Add Bhop
-○ Add FastStop
 ○ Add DefuseTimer
-○ Fix SpecList
 ○ Cheat should use cs2 keys
-○ Make menu looks nice
-○ Make cheat multi-tread
-○ Refactor the code
 ○ Kernel mode
+○ Different config for each of weapon types
+○ Make cheat multi-tread
+○ Show bomb carrier
+◎ Fix radar in menu
+◎ Add logger
+◎ Fix SpecList
+◎ Outdate old vers
+◎ Add FastStop(kicks from server)
+◎ Fix Watermark
+◎ Floating ESP
+◎ Add Sniper Crosshire
+◎ Add Bhop
 ◎ Improve Aimbot
 ◎ Make cheat portable
 ◎ Add Offsets auto load
@@ -23,3 +29,6 @@
 ◎ Delete junk
 ◎ Fix scope check
 ◎ Add clean button
+⨂ Make menu looks nice
+⨂ Refactor the code
+⨂ Visible Check for Trigger

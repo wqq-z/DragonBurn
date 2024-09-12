@@ -14,35 +14,20 @@
 #include "../Features/RCS.H"
 #include "../Features/BombTimer.h"
 #include "../Features/SpectatorList.h"
+#include "../Helpers/Logger.h"
 
 int PreviousTotalHits = 0;
 
-// Does not work and not use it for now
-//void Cheats::KeyCheckThread()
-//{
-//	try
-//	{
-//		if ((GetAsyncKeyState(VK_END) & 0x8000))
-//		{
-//			MenuConfig::ShowMenu = !MenuConfig::ShowMenu;
-//		}
-//		std::this_thread::sleep_for(std::chrono::milliseconds(150));
-//	}
-//	catch (const std::exception& e) {
-//		std::cout << e.what() << std::endl;
-//	}
-//}
-
-void RenderCrossHair(ImDrawList*, const CEntity&);
+void RenderCrosshair(ImDrawList*, const CEntity&);
 
 void RadarSetting(Base_Radar&);
 
 void Menu();
-void Visual(CEntity);
-void Radar(Base_Radar, CEntity);
-void Trigger(CEntity);
-void AIM(CEntity, std::vector<Vec3>);
-void MiscFuncs(CEntity);
+void Visual(const CEntity&);
+void Radar(Base_Radar, const CEntity&);
+void Trigger(const CEntity&);
+void AIM(const CEntity&, std::vector<Vec3>);
+void MiscFuncs(CEntity&);
 
 void Cheats::Run()
 {	
@@ -72,7 +57,7 @@ void Cheats::Run()
 	LocalEntity.UpdateClientData();
 	if (!LocalEntity.UpdateController(LocalControllerAddress))
 		return;
-	if (!LocalEntity.UpdatePawn(LocalPawnAddress) && !MiscCFG::WorkInSpec)
+	if (!LocalEntity.UpdatePawn(LocalPawnAddress) && !MenuConfig::WorkInSpec)
 		return;
 
 	// HealthBar Map
@@ -87,7 +72,7 @@ void Cheats::Run()
 
 	// Radar Data
 	Base_Radar GameRadar;
-	if (RadarCFG::ShowRadar && LocalEntity.Controller.TeamID != 0)
+	if ((RadarCFG::ShowRadar && LocalEntity.Controller.TeamID != 0) || (RadarCFG::ShowRadar && MenuConfig::ShowMenu))
 		RadarSetting(GameRadar);
 
 	for (int i = 0; i < 64; i++)
@@ -108,7 +93,7 @@ void Cheats::Run()
 			continue;
 
 		//speclist
-		SpecList::GetSpectatorList(Entity, LocalEntity, EntityAddress);
+		SpecList::GetSpectatorList(Entity, LocalEntity);
 
 		if (MenuConfig::TeamCheck && Entity.Controller.TeamID == LocalEntity.Controller.TeamID)
 			continue;
@@ -135,7 +120,7 @@ void Cheats::Run()
 				{
 					MaxAimDistance = DistanceToSight;
 
-					if (!MenuConfig::VisibleCheck ||
+					if (!LegitBotConfig::VisibleCheck ||
 						Entity.Pawn.bSpottedByMask & (DWORD64(1) << (LocalPlayerControllerIndex)) ||
 						LocalEntity.Pawn.bSpottedByMask & (DWORD64(1) << (i)))
 					{
@@ -151,10 +136,10 @@ void Cheats::Run()
 
 		if (ESPConfig::ESPenabled)
 		{
-			ImVec4 Rect = ESP::GetBoxRect(Entity, MenuConfig::BoxType);
+			ImVec4 Rect = ESP::GetBoxRect(Entity, ESPConfig::BoxType);
 			int distance = static_cast<int>(Entity.Pawn.Pos.DistanceTo(LocalEntity.Pawn.Pos) / 100);
 
-			if (ESPConfig::RenderDistance == 0 || (distance <= ESPConfig::RenderDistance && ESPConfig::RenderDistance > 0))
+			if (MenuConfig::RenderDistance == 0 || (distance <= MenuConfig::RenderDistance && MenuConfig::RenderDistance > 0))
 			{
 				ESP::RenderPlayerESP(LocalEntity, Entity, Rect, LocalPlayerControllerIndex, i);
 				Render::DrawDistance(LocalEntity, Entity, Rect);
@@ -202,9 +187,10 @@ void Cheats::Run()
 
 
 	int currentFPS = static_cast<int>(ImGui::GetIO().Framerate);
-	if (currentFPS > MenuConfig::MaxRenderFPS)
+	Log::Debug("currentFPS: " + std::to_string(currentFPS));
+	if (currentFPS > MenuConfig::RenderFPS)
 	{
-		int FrameWait = round(1000.0 / MenuConfig::MaxRenderFPS);
+		int FrameWait = round(1000.0 / MenuConfig::RenderFPS);
 		std::this_thread::sleep_for(std::chrono::milliseconds(FrameWait));
 	}
 }
@@ -232,52 +218,50 @@ void Menu()
 	GUI::InitHitboxList();
 }
 
-void Visual(CEntity LocalEntity)
+void Visual(const CEntity& LocalEntity)
 {
 	// Fov line
-	Render::DrawFov(LocalEntity, MenuConfig::FovLineSize, MenuConfig::FovLineColor, 1);
+	Render::DrawFov(LocalEntity, LegitBotConfig::FovLineSize, LegitBotConfig::FovLineColor, 1);
 
 	// HeadShoot Line
-	Render::HeadShootLine(LocalEntity, MenuConfig::HeadShootLineColor);
+	Render::HeadShootLine(LocalEntity, MiscCFG::HeadShootLineColor);
 
-	// CrossHair
-	TriggerBot::TargetCheck(LocalEntity);
 	Misc::AirCheck(LocalEntity);
-	RenderCrossHair(ImGui::GetBackgroundDrawList(), LocalEntity);
+
+	RenderCrosshair(ImGui::GetBackgroundDrawList(), LocalEntity);
 }
 
-void Radar(Base_Radar Radar, CEntity LocalEntity)
+void Radar(Base_Radar Radar, const CEntity& LocalEntity)
 {
 	// Radar render
-	if (RadarCFG::ShowRadar && LocalEntity.Controller.TeamID != 0)
+	if ((RadarCFG::ShowRadar && LocalEntity.Controller.TeamID != 0) || (RadarCFG::ShowRadar && MenuConfig::ShowMenu))
 	{
 		Radar.Render();
-		ImGui::End();
 	}
 }
 
-void Trigger(CEntity LocalEntity)
+void Trigger(const CEntity& LocalEntity)
 {
 	// TriggerBot
-	if (MenuConfig::TriggerBot && (GetAsyncKeyState(TriggerBot::HotKey) || MenuConfig::TriggerAlways))
+	if (LegitBotConfig::TriggerBot && (GetAsyncKeyState(TriggerBot::HotKey) || LegitBotConfig::TriggerAlways))
 		TriggerBot::Run(LocalEntity);
 }
 
-void AIM(CEntity LocalEntity, std::vector<Vec3> AimPosList)
+void AIM(const CEntity& LocalEntity, std::vector<Vec3> AimPosList)
 {
 	// Aimbot
 	DWORD lastTick = 0;
 	DWORD currentTick = GetTickCount64();
-	if (MenuConfig::AimBot) {
+	if (LegitBotConfig::AimBot) {
 		Render::DrawFovCircle(LocalEntity);
 
-		if (MenuConfig::AimAlways || GetAsyncKeyState(AimControl::HotKey)) {
+		if (LegitBotConfig::AimAlways || GetAsyncKeyState(AimControl::HotKey)) {
 			if (AimPosList.size() != 0) {
 				AimControl::AimBot(LocalEntity, LocalEntity.Pawn.CameraPos, AimPosList);
 			}
 		}
 
-		if (MenuConfig::AimToggleMode && (GetAsyncKeyState(AimControl::HotKey) & 0x8000) && currentTick - lastTick >= 200) {
+		if (LegitBotConfig::AimToggleMode && (GetAsyncKeyState(AimControl::HotKey) & 0x8000) && currentTick - lastTick >= 200) {
 			AimControl::switchToggle();
 			lastTick = currentTick;
 		}
@@ -287,7 +271,7 @@ void AIM(CEntity LocalEntity, std::vector<Vec3> AimPosList)
 		RCS::RecoilControl(LocalEntity);
 }
 
-void MiscFuncs(CEntity LocalEntity)
+void MiscFuncs(CEntity& LocalEntity)
 {
 	Misc::HitManager(LocalEntity, PreviousTotalHits);
 	Misc::BunnyHop(LocalEntity);
@@ -331,13 +315,21 @@ void RadarSetting(Base_Radar& Radar)
 	Radar.Opened = true;
 }
 
-void RenderCrossHair(ImDrawList* drawList, const CEntity& LocalEntity)
+void RenderCrosshair(ImDrawList* drawList, const CEntity& LocalEntity)
 {
-	if (!CrosshairsCFG::ShowCrossHair || LocalEntity.Controller.TeamID == 0)
+	//if (!CrosshairsCFG::ShowCrossHair || LocalEntity.Controller.TeamID == 0)
+	//	return;
+
+	bool isScoped;
+	ProcessMgr.ReadMemory<bool>(LocalEntity.Pawn.Address + Offset.Pawn.isScoped, isScoped);
+
+	if (!MiscCFG::SniperCrosshair || LocalEntity.Controller.TeamID == 0 || !TriggerBot::CheckScopeWeapon(LocalEntity) || isScoped || MenuConfig::ShowMenu)
 		return;
 
-	if (CrosshairsCFG::isAim && MenuConfig::TargetingCrosshairs)
-		Render::DrawCrossHair(drawList, ImVec2(ImGui::GetIO().DisplaySize.x / 2, ImGui::GetIO().DisplaySize.y / 2), ImGui::ColorConvertFloat4ToU32(CrosshairsCFG::TargetedColor));
-	else
-		Render::DrawCrossHair(drawList, ImVec2(ImGui::GetIO().DisplaySize.x / 2, ImGui::GetIO().DisplaySize.y / 2), ImGui::ColorConvertFloat4ToU32(CrosshairsCFG::CrossHairColor));
+	Render::DrawCrossHair(drawList, ImVec2(ImGui::GetIO().DisplaySize.x / 2, ImGui::GetIO().DisplaySize.y / 2), MiscCFG::SniperCrosshairColor);
+
+	//if (CrosshairsCFG::isAim && MenuConfig::TargetingCrosshairs)
+		//Render::DrawCrossHair(drawList, ImVec2(ImGui::GetIO().DisplaySize.x / 2, ImGui::GetIO().DisplaySize.y / 2), ImGui::ColorConvertFloat4ToU32(CrosshairsCFG::TargetedColor));
+	//else
+		//Render::DrawCrossHair(drawList, ImVec2(ImGui::GetIO().DisplaySize.x / 2, ImGui::GetIO().DisplaySize.y / 2), ImGui::ColorConvertFloat4ToU32(CrosshairsCFG::CrossHairColor));
 }

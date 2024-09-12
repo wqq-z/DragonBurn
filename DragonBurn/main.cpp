@@ -1,197 +1,225 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
-#include "Core/Cheats.h"
+﻿#include "Core/Cheats.h"
 #include "Offsets/Offsets.h"
 #include "Resources/Language.h"
 #include "Core/Init.h"
 #include "Config/ConfigSaver.hpp"
-#include <chrono>
+#include "Helpers/Logger.h"
 #include <filesystem>
-#include <iomanip>
 #include <KnownFolders.h>
 #include <ShlObj.h>
-#include <stdio.h>
 
 using namespace std;
 
 namespace fs = filesystem;
 string fileName;
 
-void Exit()
-{
-	system("pause");
-	exit(0);
-}
+void Cheat();
 
+int main()
+{
+	Cheat();
+}
 
 void Cheat()
 {
 	ShowWindow(GetConsoleWindow(), SW_SHOWNORMAL);
-	srand(time(0));
 	Init::Verify::RandTitle();
-	if (Init::Verify::CheckWindowVersion())
-	{
-		MenuConfig::MaxFrameRate = Init::Client::getMaxFrameRate();
-	}
-		
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(hConsole, 13);	
-	cout << R"LOGO(______                            ______                  
+
+	Log::Custom(R"LOGO(______                            ______                  
 |  _  \                           | ___ \                 
 | | | |_ __ __ _  __ _  ___  _ __ | |_/ /_   _ _ __ _ __  
 | | | | '__/ _` |/ _` |/ _ \| '_ \| ___ \ | | | '__| '_ \ 
 | |/ /| | | (_| | (_| | (_) | | | | |_/ / |_| | |  | | | |
 |___/ |_|  \__,_|\__, |\___/|_| |_\____/ \__,_|_|  |_| |_|
                   __/ |                                   
-                 |___/                                    )LOGO" << endl << endl << endl;
+                 |___/                                    
+https://github.com/ByteCorum/DragonBurn
 
-	bool show = false;
-	while (ProcessMgr.GetProcessID("cs2.exe") == 0)
+
+)LOGO", 13);
+
+	if (!Init::Verify::CheckWindowVersion())
 	{
-		if (!show) 
-		{
-			SetConsoleTextAttribute(hConsole, 14);
-			cout << "[INFO] Waiting for CS2." << endl;
-			show = true;
-		}
-	} 
-	if (show)
-	{
-		SetConsoleTextAttribute(hConsole, 14);
-		cout << "[INFO] Connecting to CS2." << endl;
-		Sleep(25000);
+		Log::Warning("Your os is unsupported, bugs may occurred", true);
 	}
 
-
-	auto ProcessStatus = ProcessMgr.Attach("cs2.exe");
-	switch (ProcessStatus) 
+#ifndef DBDEBUG
+	Log::Info("Checking cheat version");
+	switch (Init::Verify::CheckCheatVersion())
 	{
+	case 0:
+		Log::PreviousLine();
+		Log::Error("Bad internet connection");
+		break;
+
 	case 1:
-		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
-		cout << "[ERROR] Game not found." << endl;
-		Exit();
+		Log::PreviousLine();
+		Log::Error("Failed to get current version");
 		break;
+		
 	case 2:
-		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
-		cout << "[ERROR] Failed to hook process, please run the cheat as Administrator (Right click DragonBurn > Run as Adminstrator)." << endl;
-		Exit();
+		Log::PreviousLine();
+		Log::Error("Your cheat version is outdated");
 		break;
+		
 	case 3:
-		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
-		cout << "[ERROR] Failed to get module address." << endl;
-		Exit();
+		Log::PreviousLine();
+		Log::Fine("Your cheat version is up to date");
 		break;
+
 	default:
+		
+		Log::PreviousLine();
+		Log::Error("Unknown connection error");
 		break;
+
 	}
-	
+#endif
 
-	//switch (Init::Client::CheckCS2Version()) 
-	//{
-	//case 0:
-	//	SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
-	//	cout << "[ERROR] Failed to get the current game version." << endl;
-	//	system("pause");
-	//	break;
-
-	//case 1:
-	//	SetConsoleTextAttribute(hConsole, 14);
-	//	cout << "[Info] This version of the cheat was made for a later version of the game and may work unstable on the current version." << endl;
-	//	system("pause");
-	//	break;
-
-	//case 2:
-	//	break;
-
-	//default:
-	//	SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
-	//	cout << "[ERROR] Failed to get the current game version." << endl;
-	//	system("pause");
-	//	break;
-	//}
-
-	SetConsoleTextAttribute(hConsole, 14);
-	cout << "[INFO] Updating offsets(it may take some time)..." << endl;
+	Log::Info("Updating offsets");
 	switch (Offset.UpdateOffsets())
 	{
 	case 0:
-		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
-		cout << "[ERROR] Bad internet connection." << endl;
-		Exit();
+		
+		Log::PreviousLine();
+		Log::Error("Bad internet connection");
+		break;
 
 	case 1:
-		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
-		cout << "[ERROR] Failed to UpdateOffsets." << endl;
-		Exit();
+		
+		Log::PreviousLine();
+		Log::Error("Failed to UpdateOffsets");
+		break;
 
 	case 2:
-		SetConsoleTextAttribute(hConsole, 14);
-		cout << "[INFO] Offsets updated" << endl;
+		Log::PreviousLine();
+		Log::Fine("Offsets updated");
 		break;
 
 	default:
-		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
-		cout << "[ERROR] Unknown connection error" << endl;
-		Exit();
+		
+		Log::PreviousLine();
+		Log::Error("Unknown connection error");
+		break;
 
+	}
+	std::cout << '\n';
+	bool preStart = false;
+	while (ProcessMgr.GetProcessID("cs2.exe") == 0)
+	{
+		Log::PreviousLine();
+		Log::Info("Waiting for CS2");
+		preStart = true;
+	}
+
+	if (preStart)
+	{
+		Log::PreviousLine();
+		Log::Info("Connecting to CS2(it may take some time)");
+		Sleep(20000);
+	}
+
+	Log::PreviousLine();
+	Log::Fine("Connected to CS2");
+	Log::Info("Linking to CS2");
+
+#ifndef DBDEBUG
+	switch (Init::Client::CheckCS2Version()) 
+	{
+	case 0:
+		Log::PreviousLine();
+		Log::Error("Failed to get the current game version");
+		break;
+
+	case 1:
+		Log::PreviousLine();
+		Log::Warning("Offsets are outdated, we'll update them asap. With current offsets, cheat may work unstable", true);
+		break;
+
+	case 2:
+		Log::PreviousLine();
+		Log::Error("Failed to get cloud version");
+		break;
+
+	case 3:
+		break;
+
+	default:
+		Log::PreviousLine();
+		Log::Error("Failed to get the current game version");
+		break;
+	}
+#endif
+
+	auto ProcessStatus = ProcessMgr.Attach("cs2.exe");
+	switch (ProcessStatus)
+	{
+	case 1:
+		Log::PreviousLine();
+		Log::Error("Game not found");
+		break;
+
+	case 2:
+		Log::PreviousLine();
+		Log::Error("Failed to hook process, please run the cheat as Administrator");
+		break;
+
+	case 3:
+		Log::PreviousLine();
+		Log::Error("Failed to get module address");
+		break;
+
+	default:
+		break;
 	}
 
 	if (!gGame.InitAddress())
 	{
-		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
-		cout << "[ERROR] Failed to call InitAddress()." << endl;
-		Exit();
+		Log::PreviousLine();
+		Log::Error("Failed to Init Address");
 	}
 
-	SetConsoleTextAttribute(hConsole, 11);
-	cout << "[Game] Process ID: " << ProcessMgr.ProcessID << endl;
-	cout << "[Game] Client Address: " << gGame.GetClientDLLAddress() << endl;
+	Log::PreviousLine();
+	Log::Fine("Linked to CS2");
 
 	char documentsPath[MAX_PATH];
-	if (SHGetFolderPathA(NULL, CSIDL_PERSONAL, NULL, 0, documentsPath) != S_OK) {
-		SetConsoleTextAttribute(hConsole, 12);
-		cerr << "[ERROR]Failed to get the Documents folder path." << endl;
-		Exit();
-	}
+	if (SHGetFolderPathA(NULL, CSIDL_PERSONAL, NULL, 0, documentsPath) != S_OK)
+		Log::Error("Failed to get the Documents folder path");
+
 	MenuConfig::path = documentsPath;
 	MenuConfig::docPath = documentsPath;
 	MenuConfig::path += "\\DragonBurn";
 
-	if(fs::exists(MenuConfig::docPath + "\\Adobe Software Data"))
+	if (fs::exists(MenuConfig::docPath + "\\Adobe Software Data"))
 	{
 		fs::rename(MenuConfig::docPath + "\\Adobe Software Data", MenuConfig::path);
 	}
 
 	if (fs::exists(MenuConfig::path))
 	{
-		SetConsoleTextAttribute(hConsole, 14);
-		cout << "[Info] Config folder connected: " << MenuConfig::path << endl;
+		Log::Fine("Config folder connected: " + MenuConfig::path);
 	}
 	else
 	{
 		if (fs::create_directory(MenuConfig::path))
 		{
-			SetConsoleTextAttribute(hConsole, 14);
-			cout << "[Info] Config folder created: " << MenuConfig::path << endl;
+			Log::Fine("Config folder connected: " + MenuConfig::path);
 		}
 		else
 		{
-			SetConsoleTextAttribute(hConsole, 12);
-			cerr << "[ERROR] Failed to create the config directory." << endl;
-			Exit();
+			Log::Error("Failed to create the config directory");
 		}
 	}
 
-	ifstream defaultConfig(MenuConfig::path + "\\default.cfg");
-	if (defaultConfig.is_open())
-	{
+	if (fs::exists(MenuConfig::path + "\\default.cfg"))
 		MenuConfig::defaultConfig = true;
-		defaultConfig.close();		
-	}
 
-	SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
-	cout << "DragonBurn loaded!!!\nGLHF" << endl;
+	Log::Fine("DragonBurn loaded");
+
+#ifndef DBDEBUG
 	Sleep(3000);
 	ShowWindow(GetConsoleWindow(), SW_HIDE);
+#endif
 
 	try
 	{
@@ -199,11 +227,6 @@ void Cheat()
 	}
 	catch (OSImGui::OSException& e)
 	{
-		cout << e.what() << endl;
+		Log::Error(e.what());
 	}
-}
-
-int main()
-{
-	Cheat();
 }

@@ -12,6 +12,7 @@ namespace ConfigMenu {
 	
 	void RenderCFGmenu()
 	{
+		ImGui::Columns(2, nullptr, false);
 		static char configNameBuffer[128] = "NewConfig";
 		static char configAuthorBuffer[128] = "Author";
 		static int selectedConfig = -1;
@@ -38,28 +39,28 @@ namespace ConfigMenu {
 		float ComponentWidth = ImGui::GetColumnWidth() - ImGui::GetStyle().ItemSpacing.x - CursorX * 2;
 
 		ImGui::SetCursorPos(ImVec2(15.f, 24.f));
-		ImGui::SeparatorText(Lang::ConfigText.FeatureName);
+		ImGui::SeparatorText(Text::Config::FeatureName.c_str());
 
 		ImGui::SetCursorPosX(CurrentCursorX + CursorX);
-		ImGui::TextDisabled(Lang::ConfigText.MyConfigs);
+		ImGui::TextDisabled(Text::Config::MyConfigs.c_str());
 		ImGui::SetCursorPosX(CurrentCursorX + CursorX);
 		ImGui::SetNextItemWidth(ComponentWidth);
 		ImGui::ListBox("##ConfigFiles", &selectedConfig, configFilesCStr.data(), configFilesCStr.size());
 		ImGui::SetCursorPosX(CurrentCursorX + CursorX);
-		if (ImGui::Button(Lang::ConfigText.Load, { 120.f, 30.f }) && selectedConfig >= 0 && selectedConfig < configFiles.size())
+		if (ImGui::Button(Text::Config::Load.c_str(), { 120.f, 30.f }) && selectedConfig >= 0 && selectedConfig < configFiles.size())
 		{
 			std::string selectedConfigFile = configFiles[selectedConfig];
 			MyConfigSaver::LoadConfig(selectedConfigFile);
 		}
 		ImGui::SameLine();
-		if (ImGui::Button(Lang::ConfigText.Save, { 120.f, 30.f }) && selectedConfig >= 0 && selectedConfig < configFiles.size())
+		if (ImGui::Button(Text::Config::Save.c_str(), { 120.f, 30.f }) && selectedConfig >= 0 && selectedConfig < configFiles.size())
 		{
 			std::string selectedConfigFile = configFiles[selectedConfig];
 			MyConfigSaver::SaveConfig(selectedConfigFile);
 		}
 
 		ImGui::SetCursorPosX(CurrentCursorX + CursorX);
-		if (ImGui::Button(Lang::ConfigText.Delete, { 120.f, 30.f }) && selectedConfig >= 0 && selectedConfig < configFiles.size())
+		if (ImGui::Button(Text::Config::Delete.c_str(), { 120.f, 30.f }) && selectedConfig >= 0 && selectedConfig < configFiles.size())
 			ImGui::OpenPopup("##reallyDelete");
 		if (ImGui::BeginPopup("##reallyDelete"))
 		{
@@ -84,7 +85,7 @@ namespace ConfigMenu {
 			ImGui::EndPopup();
 		}
 		ImGui::SameLine();
-		if (ImGui::Button(Lang::ConfigText.Reset, { 120.f, 30.f }))
+		if (ImGui::Button(Text::Config::Reset.c_str(), { 120.f, 30.f }))
 			ImGui::OpenPopup("##reallyReset");
 		if (ImGui::BeginPopup("##reallyReset"))
 		{
@@ -102,138 +103,155 @@ namespace ConfigMenu {
 			ImGui::EndPopup();
 		}
 
-		ImGui::NewLine();
-		ImGui::SetCursorPosX(CurrentCursorX + CursorX);
-		ImGui::SeparatorText(Lang::ConfigText.SeparateLine);
-		ImGui::SetCursorPosX(CurrentCursorX + CursorX);
-		ImGui::TextDisabled(Lang::ConfigText.ConfigName);
-		ImGui::SetCursorPosX(CurrentCursorX + CursorX);
+		ImGui::NextColumn();
+		CurrentCursorX = ImGui::GetCursorPosX();
+		ImGui::SetCursorPos(ImVec2(CurrentCursorX + CursorX, 24.f));
+		ImGui::SeparatorText(Text::Config::SeparateLine.c_str());
+		ImGui::TextDisabled(Text::Config::ConfigName.c_str());
 		ImGui::SetNextItemWidth(ComponentWidth + 8);
 		ImGui::InputText("###ConfigNameInput", configNameBuffer, sizeof(configNameBuffer));
-		ImGui::SetCursorPosX(CurrentCursorX + CursorX);
-		ImGui::TextDisabled(Lang::ConfigText.AuthorName);
-		ImGui::SetCursorPosX(CurrentCursorX + CursorX);
+		ImGui::TextDisabled(Text::Config::AuthorName.c_str());
 		ImGui::SetNextItemWidth(ComponentWidth + 8);
 		ImGui::InputText("###AuthorNameInput", configAuthorBuffer, sizeof(configAuthorBuffer));
 		ImGui::NewLine();
-		ImGui::SetCursorPosX(CurrentCursorX + CursorX);
-		if (ImGui::Button(Lang::ConfigText.Create, { 120.f, 30.f }))
+		if (ImGui::Button(Text::Config::Create.c_str(), { 120.f, 30.f }))
 		{
 			std::string configFileName = std::string(configNameBuffer) + ".cfg";
 			MyConfigSaver::SaveConfig(configFileName, std::string(configAuthorBuffer));
 		}
 		ImGui::SameLine();
-		if (ImGui::Button(Lang::ConfigText.OpenFolder, { 120.f, 30.f }))
+		if (ImGui::Button(Text::Config::OpenFolder.c_str(), { 120.f, 30.f }))
 		{
 			Gui.OpenWebpage(configDir.c_str());
 		}
+		ImGui::Columns(1);
 	}
 
 	void ResetToDefault() {
 		TriggerBot::IgnoreFlash = false;
-		TriggerBot::ScopeOnly = false;
+		TriggerBot::ScopeOnly = true;
 		AimControl::IgnoreFlash = false;
-		ESPConfig::RenderDistance = 80;
+
 		ESPConfig::ArmorBar = false;
 		ESPConfig::ShowArmorNum = false;
-		ESPConfig::ShowIsScoped = false;
+		ESPConfig::ShowIsScoped = true;
 		ESPConfig::AmmoBar = false;
 		ESPConfig::OutLine = true;
 		ESPConfig::ShowHealthNum = false;
-		ESPConfig::FilledColor = ImColor(255, 255, 255, 255);
-		ESPConfig::FilledColor2 = ImColor(255, 255, 255, 255);
+		ESPConfig::FilledColor = ImColor(59, 71, 148, 128);
+		ESPConfig::FilledColor2 = ImColor(59, 71, 148, 128);
 		ESPConfig::MultiColor = false;
-		ESPConfig::BoxFilledVisColor = ImColor(0, 0, 255, 255);
+		ESPConfig::BoxFilledVisColor = ImColor(0, 98, 98, 128);
 		ESPConfig::FilledVisBox = false;
+
 		MiscCFG::SpecList = false;
-		MiscCFG::BombTimerCol = ImColor(255, 120, 0, 255);
-		MiscCFG::bmbTimer = false;
-		ESPConfig::VisibleColor = ImColor(255, 196, 0, 255);
+		MiscCFG::BombTimerCol = ImColor(131, 137, 150, 255);
+		MiscCFG::bmbTimer = true;
+
+		ESPConfig::VisibleColor = ImColor(59, 71, 148, 180);
 		ESPConfig::VisibleCheck = false;
-		MenuConfig::AirJump = false;
+
 		MenuConfig::WindowStyle = 0;
-		ESPConfig::BoxAlpha = 0.0f;
 		ESPConfig::ShowPreview = true;
-		ESPConfig::ShowHeadBox = false;
+		ESPConfig::ShowHeadBox = true;
 		ESPConfig::HeadBoxStyle = 0;
-		ESPConfig::HeadBoxColor = ImColor(255, 255, 255, 255);
+		ESPConfig::HeadBoxColor = ImColor(131, 137, 150, 180);
+
 		ESPConfig::ShowDistance = false;
 		ESPConfig::ShowBoneESP = true;
 		ESPConfig::ShowBoxESP = true;
 		ESPConfig::ShowHealthBar = true;
-		ESPConfig::ShowWeaponESP = false;
+		ESPConfig::ShowWeaponESP = true;
 		ESPConfig::ShowEyeRay = false;
 		ESPConfig::ShowPlayerName = true;
-		ESPConfig::BoxRounding = 0.0f;
-		MenuConfig::AimBot = false;
-		MenuConfig::AimToggleMode = false;
-		MenuConfig::AimPosition = 0;
-		MenuConfig::AimPositionIndex = BONEINDEX::head;
-		MenuConfig::BoxType = 0;
-		MenuConfig::HealthBarType = 0;
-		ESPConfig::BoneColor = ImColor(0, 255, 255, 255);
-		ESPConfig::BoxColor = ImColor(255, 80, 0, 255);
-		ESPConfig::EyeRayColor = ImVec4(255, 0, 0, 255);
+		ESPConfig::BoxRounding = 5.0f;
+
+		LegitBotConfig::AimBot = true;
+		LegitBotConfig::AimToggleMode = false;
+		LegitBotConfig::AimPosition = 0;
+		LegitBotConfig::AimPositionIndex = BONEINDEX::head;
+		LegitBotConfig::HitboxUpdated = false;
+
+		ESPConfig::BoxType = 0;
+		ESPConfig::HealthBarType = 0;
+		ESPConfig::BoneColor = ImColor(131, 137, 150, 180);
+		ESPConfig::BoxColor = ImColor(59, 71, 148, 180);
+		ESPConfig::EyeRayColor = ImVec4(0, 98, 98, 255);
+
 		MenuConfig::ShowMenu = true;
+		MenuConfig::WorkInSpec = true;
+
 		RadarCFG::ShowRadar = false;
 		RadarCFG::RadarRange = 150;
-		RadarCFG::ShowRadarCrossLine = true;
-		RadarCFG::RadarCrossLineColor = ImColor(220, 220, 220, 255);
+		RadarCFG::ShowRadarCrossLine = false;
+		RadarCFG::RadarCrossLineColor = ImColor(131, 137, 150, 180);
 		RadarCFG::RadarType = 2;
 		RadarCFG::RadarPointSizeProportion = 1.f;
 		RadarCFG::RadarBgAlpha = 0.1f;
 		RadarCFG::Proportion = 3300;
-		MenuConfig::TriggerBot = false;
-		MenuConfig::TriggerAlways = false;
+
+		LegitBotConfig::TriggerBot = true;
+		LegitBotConfig::TriggerAlways = false;
+
 		MenuConfig::TeamCheck = true;
 		MenuConfig::BypassOBS = false;
-		MenuConfig::VisibleCheck = true;
-		MenuConfig::ShowHeadShootLine = false;
-		MenuConfig::HeadShootLineColor = ImColor(255, 255, 255, 200);
-		MenuConfig::AimBotHotKey = 0;
-		AimControl::SetHotKey(MenuConfig::AimBotHotKey);
+		LegitBotConfig::VisibleCheck = true;
+
+		MiscCFG::ShowHeadShootLine = false;
+		MiscCFG::HeadShootLineColor = ImColor(131, 137, 150, 200);
+
+		LegitBotConfig::AimBotHotKey = 3;
+		AimControl::SetHotKey(LegitBotConfig::AimBotHotKey);
+		AimControl::AimFov = 10;
+		AimControl::AimFovMin = 0.4f;
+		AimControl::Smooth = 5.0f;
+
 		ESPConfig::ShowLineToEnemy = false;
-		MenuConfig::FovLineSize = 60.0f;
-		TriggerBot::TriggerDelay = 90;
-		TriggerBot::ShotDuration = 500;
+		LegitBotConfig::FovLineSize = 60.0f;
+		TriggerBot::TriggerDelay = 10;
+		TriggerBot::ShotDuration = 400;
+
 		RCS::RCSBullet = 1;
-		MenuConfig::TriggerHotKey = 0;
-		TriggerBot::SetHotKey(MenuConfig::TriggerHotKey);
-		RCS::RCSScale = ImVec2(1.2f, 1.4f);
-		AimControl::ScopeOnly = false;
-		AimControl::AutoShot = false;
-		MenuConfig::FovLineColor = ImVec4(55, 55, 55, 220);
-		ESPConfig::LineToEnemyColor = ImVec4(255, 255, 255, 220);
-		CrosshairsCFG::ShowCrossHair = false;
-		CrosshairsCFG::CrossHairColor = ImColor(0, 255, 0, 255);
-		CrosshairsCFG::CrossHairSize = 75;
-		CrosshairsCFG::drawDot = true;
-		CrosshairsCFG::tStyle = false;
-		CrosshairsCFG::HorizontalLength = 6;
-		CrosshairsCFG::VerticalLength = 6;
-		CrosshairsCFG::drawOutLine = true;
-		CrosshairsCFG::Gap = 8;
-		CrosshairsCFG::drawCrossline = true;
-		CrosshairsCFG::drawCircle = false;
-		MenuConfig::TargetingCrosshairs = false;
-		CrosshairsCFG::TargetedColor = ImColor(255, 0, 0, 255);
-		CrosshairsCFG::CircleRadius = 3.f;
-		CrosshairsCFG::DynamicGap = false;
-		CrosshairsCFG::DotSize = 1.0f;
-		CrosshairsCFG::Thickness = 1;
-		CrosshairsCFG::TeamCheck = true;
-		MiscCFG::WorkInSpec = true;
-		MiscCFG::WaterMark = false;
+		LegitBotConfig::TriggerHotKey = 4;
+		TriggerBot::SetHotKey(LegitBotConfig::TriggerHotKey);
+
+		RCS::RCSScale = ImVec2(1.4f, 1.4f);
+		AimControl::ScopeOnly = true;
+		AimControl::AimBullet = 1;
+
+		LegitBotConfig::FovLineColor = ImVec4(0, 98, 98, 220);
+		ESPConfig::LineToEnemyColor = ImVec4(59, 71, 148, 180);
+
+		//CrosshairsCFG::ShowCrossHair = false;
+		//CrosshairsCFG::CrossHairColor = ImColor(0, 255, 0, 255);
+		//CrosshairsCFG::CrossHairSize = 75;
+		//CrosshairsCFG::drawDot = true;
+		//CrosshairsCFG::tStyle = false;
+		//CrosshairsCFG::HorizontalLength = 6;
+		//CrosshairsCFG::VerticalLength = 6;
+		//CrosshairsCFG::drawOutLine = true;
+		//CrosshairsCFG::Gap = 8;
+		//CrosshairsCFG::drawCrossline = true;
+		//CrosshairsCFG::drawCircle = false;
+		//CrosshairsCFG::TargetingCrosshairs = false;
+		//CrosshairsCFG::TargetedColor = ImColor(255, 0, 0, 255);
+		//CrosshairsCFG::CircleRadius = 3.f;
+		//CrosshairsCFG::DynamicGap = false;
+		//CrosshairsCFG::DotSize = 1.0f;
+		//CrosshairsCFG::Thickness = 1;
+		//CrosshairsCFG::TeamCheck = true;
+
+		MiscCFG::WaterMark = true;
 		MiscCFG::BunnyHop = false;
 		MiscCFG::HitSound = 0;
 		MiscCFG::HitMarker = false;
-		//MiscCFG::FastStop = false;
+		MiscCFG::SniperCrosshair = true;
+		MiscCFG::SniperCrosshairColor = ImColor(32, 178, 170, 255);
 
-		ESPConfig::ESPenabled = false;
-
+		ESPConfig::ESPenabled = true;
 		ESPConfig::DrawFov = false;
-		MenuConfig::FovCircleColor = ImColor(255, 255, 255, 255);
 
-		MenuConfig::MaxRenderFPS = 1200;
+		LegitBotConfig::FovCircleColor = ImColor(131, 137, 150, 180);
+
 	}
 }
