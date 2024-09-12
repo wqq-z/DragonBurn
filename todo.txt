@@ -4,6 +4,7 @@
 ○ Different config for each of weapon types
 ○ Make cheat multi-tread
 ○ Show bomb carrier
+○ Add GH
 ◎ Fix radar in menu
 ◎ Add logger
 ◎ Fix SpecList
