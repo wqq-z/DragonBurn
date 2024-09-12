@@ -3,7 +3,7 @@
 ○ Kernel mode
 ○ Different config for each of weapon types
 ○ Make cheat multi-tread
-○ Show bomb carrier
+○ Show bomb carrier(check all entity weapons)
 ○ Add GH
 ◎ Fix radar in menu
 ◎ Add logger
