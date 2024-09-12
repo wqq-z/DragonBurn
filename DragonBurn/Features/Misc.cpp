@@ -53,9 +53,9 @@ namespace Misc
 		}
 	}
 
-	void HitManager(const CEntity& LocalPlayer, int& PreviousTotalHits) noexcept
+	void HitManager(CEntity& LocalPlayer, int& PreviousTotalHits) noexcept
 	{
-		if ((!MiscCFG::HitSound && !MiscCFG::HitMarker) || LocalPlayer.Controller.TeamID == 0 || MenuConfig::ShowMenu)
+		if ((!MiscCFG::HitSound && !MiscCFG::HitMarker) || LocalPlayer.Controller.TeamID == 0 || MenuConfig::ShowMenu || !LocalPlayer.IsAlive())
 		{
 			return;
 		}
