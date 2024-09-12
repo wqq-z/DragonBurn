@@ -2,6 +2,9 @@
 ○ Cheat should use cs2 keys
 ○ Kernel mode
 ○ Different config for each of weapon types
+○ Make cheat multi-tread
+○ Show bomb carrier
+◎ Fix radar in menu
 ◎ Add logger
 ◎ Fix SpecList
 ◎ Outdate old vers
@@ -27,6 +30,5 @@
 ◎ Fix scope check
 ◎ Add clean button
 ⨂ Make menu looks nice
-⨂ Make cheat multi-tread
 ⨂ Refactor the code
 ⨂ Visible Check for Trigger

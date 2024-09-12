@@ -1,5 +1,4 @@
-﻿#define DEBUG false
-#include "Core/Cheats.h"
+﻿#include "Core/Cheats.h"
 #include "Offsets/Offsets.h"
 #include "Resources/Language.h"
 #include "Core/Init.h"
@@ -44,7 +43,7 @@ https://github.com/ByteCorum/DragonBurn
 		Log::Warning("Your os is unsupported, bugs may occurred", true);
 	}
 
-#if DEBUG == false
+#ifndef DBDEBUG
 	Log::Info("Checking cheat version");
 	switch (Init::Verify::CheckCheatVersion())
 	{
@@ -124,7 +123,7 @@ https://github.com/ByteCorum/DragonBurn
 	Log::Fine("Connected to CS2");
 	Log::Info("Linking to CS2");
 
-#if DEBUG == false
+#ifndef DBDEBUG
 	switch (Init::Client::CheckCS2Version()) 
 	{
 	case 0:
@@ -217,7 +216,7 @@ https://github.com/ByteCorum/DragonBurn
 
 	Log::Fine("DragonBurn loaded");
 
-#if DEBUG == false
+#ifndef DBDEBUG
 	Sleep(3000);
 	ShowWindow(GetConsoleWindow(), SW_HIDE);
 #endif

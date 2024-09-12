@@ -48,8 +48,6 @@ namespace SpecList
         if (!MiscCFG::SpecList || LocalEntity.Controller.TeamID == 0)
             return;
 
-        //std::cout << Entity.Controller.PlayerName << '\n';
-
         uintptr_t LocalPlayer;
         ProcessMgr.ReadMemory<uintptr_t>(gGame.GetClientDLLAddress() + Offset.LocalPlayerController, LocalPlayer);
         uintptr_t localPlayerPawn;
@@ -68,14 +66,12 @@ namespace SpecList
 
         uintptr_t observed;
         ProcessMgr.ReadMemory<uintptr_t>(pawn + Offset.PlayerController.m_pObserverServices, observed);
-        //std::cout << "observed: " << observed << '\n';
 
         uint64_t observedTarget;
         ProcessMgr.ReadMemory<uintptr_t>(observed + Offset.PlayerController.m_hObserverTarget, observedTarget);
-        //std::cout << "observedTarget: " << observedTarget << '\n';
 
         uintptr_t spectatorTarget = getAddressBase(entityList, observedTarget);
-        //std::cout << "handle: " << spectatorTarget << '\n';
+
         if (observed)
         {
             if (spectatorTarget == CSlocalPlayerPawn)
