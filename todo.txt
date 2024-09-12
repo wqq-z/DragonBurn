@@ -3,8 +3,8 @@
 ○ Kernel mode
 ○ Different config for each of weapon types
 ○ Make cheat multi-tread
-○ Fix radar in menu
 ○ Show bomb carrier
+◎ Fix radar in menu
 ◎ Add logger
 ◎ Fix SpecList
 ◎ Outdate old vers
