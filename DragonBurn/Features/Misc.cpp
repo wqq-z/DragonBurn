@@ -20,13 +20,11 @@ namespace Misc
 		if ((!MiscCFG::WaterMark || LocalPlayer.Controller.TeamID == 0) && !(MiscCFG::WaterMark && MenuConfig::ShowMenu))
 			return;
 
-		//	globalvars GV;
 		ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize;
 		ImGui::SetNextWindowBgAlpha(0.8f);
 		ImGui::GetStyle().WindowRounding = 8.0f;
 		ImGui::Begin("Watermark", nullptr, windowFlags);
 
-		// Player Pos
 		Vec3 Pos = LocalPlayer.Pawn.Pos;
 
 		ImGui::Text("  DragonBurn");
@@ -53,9 +51,9 @@ namespace Misc
 		}
 	}
 
-	void HitManager(const CEntity& LocalPlayer, int& PreviousTotalHits) noexcept
+	void HitManager(CEntity& LocalPlayer, int& PreviousTotalHits) noexcept
 	{
-		if ((!MiscCFG::HitSound && !MiscCFG::HitMarker) || LocalPlayer.Controller.TeamID == 0 || MenuConfig::ShowMenu)
+		if ((!MiscCFG::HitSound && !MiscCFG::HitMarker) || LocalPlayer.Controller.TeamID == 0 || MenuConfig::ShowMenu || !LocalPlayer.IsAlive())
 		{
 			return;
 		}
