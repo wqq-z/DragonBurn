@@ -14,6 +14,7 @@
 #include "../Features/RCS.H"
 #include "../Features/BombTimer.h"
 #include "../Features/SpectatorList.h"
+#include "../Helpers/Logger.h"
 
 int PreviousTotalHits = 0;
 
@@ -71,7 +72,7 @@ void Cheats::Run()
 
 	// Radar Data
 	Base_Radar GameRadar;
-	if (RadarCFG::ShowRadar && LocalEntity.Controller.TeamID != 0)
+	if ((RadarCFG::ShowRadar && LocalEntity.Controller.TeamID != 0) || (RadarCFG::ShowRadar && MenuConfig::ShowMenu))
 		RadarSetting(GameRadar);
 
 	for (int i = 0; i < 64; i++)
@@ -186,6 +187,7 @@ void Cheats::Run()
 
 
 	int currentFPS = static_cast<int>(ImGui::GetIO().Framerate);
+	Log::Debug("currentFPS: " + std::to_string(currentFPS));
 	if (currentFPS > MenuConfig::RenderFPS)
 	{
 		int FrameWait = round(1000.0 / MenuConfig::RenderFPS);
@@ -235,7 +237,6 @@ void Radar(Base_Radar Radar, const CEntity& LocalEntity)
 	if ((RadarCFG::ShowRadar && LocalEntity.Controller.TeamID != 0) || (RadarCFG::ShowRadar && MenuConfig::ShowMenu))
 	{
 		Radar.Render();
-		ImGui::End();
 	}
 }
 
