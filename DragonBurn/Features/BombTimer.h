@@ -24,13 +24,13 @@ namespace bmb
 		{
 			int site;
 			uintptr_t cPlantedC4;
-			//ProcessMgr.ReadMemory(gGame.GetClientDLLAddress() + Offset.PlantedC4, cPlantedC4);
-			if (!ProcessMgr.ReadMemory<uintptr_t>(gGame.GetClientDLLAddress() + Offset.PlantedC4, cPlantedC4))
+			//memoryManager.ReadMemory(gGame.GetClientDLLAddress() + Offset.PlantedC4, cPlantedC4);
+			if (!memoryManager.ReadMemory<uintptr_t>(gGame.GetClientDLLAddress() + Offset.PlantedC4, cPlantedC4))
 				return 0;
-			if (!ProcessMgr.ReadMemory<uintptr_t>(cPlantedC4, cPlantedC4))
+			if (!memoryManager.ReadMemory<uintptr_t>(cPlantedC4, cPlantedC4))
 				return 0;
 
-			if (!ProcessMgr.ReadMemory<int>(cPlantedC4 + Offset.C4.m_nBombSite, site))
+			if (!memoryManager.ReadMemory<int>(cPlantedC4 + Offset.C4.m_nBombSite, site))
 				return 0;
 
 			return site;
@@ -50,7 +50,7 @@ namespace bmb
 		float DefuseTime;
 		auto plantedAddress = gGame.GetClientDLLAddress() + Offset.PlantedC4 - 0x8;
 
-		ProcessMgr.ReadMemory(plantedAddress, isBombPlanted);
+		memoryManager.ReadMemory(plantedAddress, isBombPlanted);
 
 		auto time = currentTimeMillis();
 
@@ -60,8 +60,8 @@ namespace bmb
 			plantTime = time;
 		}
 
-		//ProcessMgr.ReadMemory(Offset.PlantedC4 + Offset.C4.m_flDefuseCountDown, IsBeingDefused);
-		//ProcessMgr.ReadMemory(Offset.PlantedC4 + Offset.C4.m_flDefuseCountDown, DefuseTime);
+		//memoryManager.ReadMemory(Offset.PlantedC4 + Offset.C4.m_flDefuseCountDown, IsBeingDefused);
+		//memoryManager.ReadMemory(Offset.PlantedC4 + Offset.C4.m_flDefuseCountDown, DefuseTime);
 
 		if (!isPlanted && !MenuConfig::ShowMenu)
 			return;

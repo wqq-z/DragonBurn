@@ -402,6 +402,7 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+ProcessManager.txt
 DragonBurn/imgui.ini
 DragonBurn/settings.yml
 DragonBurn/prefs.ini
