@@ -25,13 +25,11 @@ namespace bmb
 			int site;
 			uintptr_t cPlantedC4;
 			//memoryManager.ReadMemory(gGame.GetClientDLLAddress() + Offset.PlantedC4, cPlantedC4);
-			Log::Debug("bombtimer.h 28		" + std::to_string(gGame.GetClientDLLAddress() + Offset.PlantedC4), true);
 			if (!memoryManager.ReadMemory<uintptr_t>(gGame.GetClientDLLAddress() + Offset.PlantedC4, cPlantedC4))
 				return 0;
-			Log::Debug("bombtimer.h 31		" + std::to_string(cPlantedC4), true);
 			if (!memoryManager.ReadMemory<uintptr_t>(cPlantedC4, cPlantedC4))
 				return 0;
-			Log::Debug("bombtimer.h 34		" + std::to_string(cPlantedC4 + Offset.C4.m_nBombSite), true);
+
 			if (!memoryManager.ReadMemory<int>(cPlantedC4 + Offset.C4.m_nBombSite, site))
 				return 0;
 
@@ -52,7 +50,6 @@ namespace bmb
 		float DefuseTime;
 		auto plantedAddress = gGame.GetClientDLLAddress() + Offset.PlantedC4 - 0x8;
 
-		Log::Debug("bobm.h 31		" + std::to_string(plantedAddress), true);
 		memoryManager.ReadMemory(plantedAddress, isBombPlanted);
 
 		auto time = currentTimeMillis();

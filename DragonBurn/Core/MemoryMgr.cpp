@@ -1,5 +1,4 @@
 #include "MemoryMgr.h"
-#include "../Helpers/Logger.h"
 
 MemoryMgr::MemoryMgr() 
 {
@@ -67,13 +66,11 @@ DWORD64 MemoryMgr::TraceAddress(DWORD64 baseAddress, std::vector<DWORD> offsets)
 		if (offsets.size() == 0)
 			return baseAddress;
 
-		Log::Debug("MemoryMgr.cpp 70		" + std::to_string(baseAddress), true);
 		if (!ReadMemory<DWORD64>(baseAddress, address))
 			return 0;
 
 		for (int i = 0; i < offsets.size() - 1; i++)
 		{
-			Log::Debug("MemoryMgr.cpp 76		" + std::to_string(address + offsets[i]), true);
 			if (!ReadMemory<DWORD64>(address + offsets[i], address))
 				return 0;
 		}

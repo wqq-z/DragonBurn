@@ -1,5 +1,4 @@
 #include "TriggerBot.h"
-#include "../Helpers/Logger.h"
 
 DWORD uHandle = 0;
 DWORD64 ListEntry = 0;
@@ -16,11 +15,9 @@ void TriggerBot::Run(const CEntity& LocalEntity)
     if (LocalEntity.Controller.AliveStatus == 0)
         return;
 
-    Log::Debug("trigger.cpp 19		" + std::to_string(LocalEntity.Pawn.Address + Offset.Pawn.m_bWaitForNoAttack), true);
     if (!memoryManager.ReadMemory<bool>(LocalEntity.Pawn.Address + Offset.Pawn.m_bWaitForNoAttack, WaitForNoAttack))
         return;
 
-    Log::Debug("trigger.cpp 23		" + std::to_string(LocalEntity.Pawn.Address + Offset.Pawn.iIDEntIndex), true);
     if (!memoryManager.ReadMemory<DWORD>(LocalEntity.Pawn.Address + Offset.Pawn.iIDEntIndex, uHandle))
         return;
 
@@ -31,7 +28,6 @@ void TriggerBot::Run(const CEntity& LocalEntity)
     if (ListEntry == 0)
         return;
 
-    Log::Debug("trigger.cpp 34		" + std::to_string(ListEntry + 0x78 * (uHandle & 0x1FF)), true);
     if (!memoryManager.ReadMemory<DWORD64>(ListEntry + 0x78 * (uHandle & 0x1FF), PawnAddress))
         return;
 
@@ -47,7 +43,6 @@ void TriggerBot::Run(const CEntity& LocalEntity)
     if (ScopeOnly)
     {
         bool isScoped;
-        Log::Debug("trigger.cpp 50		" + std::to_string(LocalEntity.Pawn.Address + Offset.Pawn.isScoped), true);
         memoryManager.ReadMemory<bool>(LocalEntity.Pawn.Address + Offset.Pawn.isScoped, isScoped);
         if (!isScoped and CheckScopeWeapon(LocalEntity))
         {
@@ -97,9 +92,7 @@ bool TriggerBot::CheckScopeWeapon(const CEntity& LocalEntity)
 
     DWORD64 CurrentWeapon;
     short weaponIndex;
-    Log::Debug("trigger.cpp 100		" + std::to_string(LocalEntity.Pawn.Address + Offset.Pawn.pClippingWeapon), true);
     memoryManager.ReadMemory(LocalEntity.Pawn.Address + Offset.Pawn.pClippingWeapon, CurrentWeapon);
-    Log::Debug("trigger.cpp 102		" + std::to_string(CurrentWeapon + Offset.EconEntity.AttributeManager + Offset.WeaponBaseData.Item + Offset.WeaponBaseData.ItemDefinitionIndex), true);
     memoryManager.ReadMemory(CurrentWeapon + Offset.EconEntity.AttributeManager + Offset.WeaponBaseData.Item + Offset.WeaponBaseData.ItemDefinitionIndex, weaponIndex);
 
     if (weaponIndex == -1)
@@ -123,9 +116,7 @@ bool TriggerBot::CheckWeapon(const CEntity& LocalEntity)
 
     DWORD64 CurrentWeapon;
     short weaponIndex;
-    Log::Debug("trigger.cpp 126		" + std::to_string(LocalEntity.Pawn.Address + Offset.Pawn.pClippingWeapon), true);
     memoryManager.ReadMemory(LocalEntity.Pawn.Address + Offset.Pawn.pClippingWeapon, CurrentWeapon);
-    Log::Debug("trigger.cpp 128		" + std::to_string(CurrentWeapon + Offset.EconEntity.AttributeManager + Offset.WeaponBaseData.Item + Offset.WeaponBaseData.ItemDefinitionIndex), true);
     memoryManager.ReadMemory(CurrentWeapon + Offset.EconEntity.AttributeManager + Offset.WeaponBaseData.Item + Offset.WeaponBaseData.ItemDefinitionIndex, weaponIndex);
 
     if (weaponIndex == -1)

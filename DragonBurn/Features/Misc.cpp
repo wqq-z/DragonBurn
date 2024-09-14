@@ -3,7 +3,6 @@
 #include <iostream>
 #include <Shellapi.h>
 #include <filesystem>
-#include "../Helpers/Logger.h"
 namespace fs = std::filesystem;
 
 namespace Misc
@@ -61,9 +60,7 @@ namespace Misc
 
 		uintptr_t pBulletServices;
 		int totalHits;
-		Log::Debug("misc.cpp 64		" + std::to_string(LocalPlayer.Pawn.Address + Offset.Pawn.BulletServices), true);
 		memoryManager.ReadMemory(LocalPlayer.Pawn.Address + Offset.Pawn.BulletServices, pBulletServices);
-		Log::Debug("misc.cpp 66		" + std::to_string(pBulletServices + Offset.Pawn.TotalHit), true);
 		memoryManager.ReadMemory(pBulletServices + Offset.Pawn.TotalHit, totalHits);
 
 		if (totalHits != PreviousTotalHits) {

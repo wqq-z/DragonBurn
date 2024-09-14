@@ -1,10 +1,8 @@
 #include "globalvars.h"
-#include "../Helpers/Logger.h"
 
 bool globalvars::UpdateGlobalvars()
 {
 	DWORD64 m_DglobalVars = 0;
-	Log::Debug("globalvars.cpp 7		" + std::to_string(gGame.GetGlobalVarsAddress()), true);
 	if (!memoryManager.ReadMemory<DWORD64>(gGame.GetGlobalVarsAddress(), m_DglobalVars))
 		return false;
 

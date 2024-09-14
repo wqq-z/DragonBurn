@@ -37,7 +37,6 @@ void Cheats::Run()
 		return;
 
 	// Update matrix
-	Log::Debug("Cheats.cpp 40		" + std::to_string(gGame.GetMatrixAddress()), true);
 	if(!memoryManager.ReadMemory(gGame.GetMatrixAddress(), gGame.View.Matrix,64))
 		return;
 
@@ -47,10 +46,8 @@ void Cheats::Run()
 	DWORD64 LocalControllerAddress = 0;
 	DWORD64 LocalPawnAddress = 0;
 
-	Log::Debug("Cheats.cpp 50		" + std::to_string(gGame.GetLocalControllerAddress()), true);
 	if (!memoryManager.ReadMemory(gGame.GetLocalControllerAddress(), LocalControllerAddress))
 		return;
-	Log::Debug("Cheats.cpp 53		" + std::to_string(gGame.GetLocalPawnAddress()), true);
 	if (!memoryManager.ReadMemory(gGame.GetLocalPawnAddress(), LocalPawnAddress))
 		return;
 
@@ -82,7 +79,6 @@ void Cheats::Run()
 	{
 		CEntity Entity;
 		DWORD64 EntityAddress = 0;
-		Log::Debug("Cheats.cpp 85		" + std::to_string(gGame.GetEntityListEntry() + (i + 1) * 0x78), true);
 		if (!memoryManager.ReadMemory<DWORD64>(gGame.GetEntityListEntry() + (i + 1) * 0x78, EntityAddress))
 			continue;
 		if (EntityAddress == LocalEntity.Controller.Address)
@@ -171,7 +167,6 @@ void Cheats::Run()
 				{
 					bool HasHelmet;
 					ImVec2 ArmorBarPos;
-					Log::Debug("Cheats.cpp 174		" + std::to_string(Entity.Controller.Address + Offset.PlayerController.HasHelmet), true);
 					memoryManager.ReadMemory(Entity.Controller.Address + Offset.PlayerController.HasHelmet, HasHelmet);
 					if (ESPConfig::ShowHealthBar)
 						ArmorBarPos = { Rect.x - 10.f,Rect.y };
@@ -326,7 +321,6 @@ void RenderCrosshair(ImDrawList* drawList, const CEntity& LocalEntity)
 	//	return;
 
 	bool isScoped;
-	Log::Debug("Cheats.cpp 329		" + std::to_string(LocalEntity.Pawn.Address + Offset.Pawn.isScoped), true);
 	memoryManager.ReadMemory<bool>(LocalEntity.Pawn.Address + Offset.Pawn.isScoped, isScoped);
 
 	if (!MiscCFG::SniperCrosshair || LocalEntity.Controller.TeamID == 0 || !TriggerBot::CheckScopeWeapon(LocalEntity) || isScoped || MenuConfig::ShowMenu)
