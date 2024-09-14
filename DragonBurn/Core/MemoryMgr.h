@@ -26,10 +26,24 @@ public:
 	bool Detach();
 
 	template <typename ReadType>
-	bool ReadMemory(DWORD64 address, ReadType& value);
+	bool ReadMemory(DWORD64 address, ReadType& value, int size = -1)
+	{
+		if (kernelDriver != nullptr && ProcessID != 0)
+		{
+			if (size == -1)
+				size = sizeof(ReadType);
 
-	template <typename ReadType>
-	bool ReadMemory(DWORD64 address, ReadType& value, int size);
+			Request req;
+
+			req.target = reinterpret_cast<PVOID>(address);
+			req.buffer = &value;
+			req.size = size;
+
+			return DeviceIoControl(kernelDriver, kernelCodes::READ, &req, sizeof(req), &req, sizeof(req), nullptr, nullptr);
+		}
+		else
+			return false;
+	}
 
 	DWORD64 TraceAddress(DWORD64, std::vector<DWORD>);
 

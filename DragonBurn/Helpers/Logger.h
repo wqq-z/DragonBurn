@@ -9,6 +9,19 @@ namespace Log
 	const HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	const std::string LogFile = "Logs.txt";
 
+	inline bool WriteLog(std::string ctx)
+	{
+		std::ofstream file(LogFile, std::ios::app);
+		if (!file.is_open())
+			return false;
+
+		file << ctx;
+		file.close();
+
+		return true;
+
+	}
+
 	inline void Info(std::string ctx) 
 	{
 		SetConsoleTextAttribute(hConsole, 8);
@@ -65,18 +78,5 @@ namespace Log
 	inline void PreviousLine()
 	{
 		std::cout << "\033[1A\033[0G                                                                                \033[0G";
-	}
-
-	inline bool WriteLog(std::string ctx) 
-	{
-		std::ofstream file(LogFile, std::ios::app);
-		if (!file.is_open())
-			return false;
-
-		file << ctx;
-		file.close();
-
-		return true;
-
 	}
 }
