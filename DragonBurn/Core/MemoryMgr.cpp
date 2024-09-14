@@ -57,39 +57,25 @@ bool MemoryMgr::Detach()
 		return false;
 }
 
-//template <typename ReadType>
-//bool MemoryMgr::ReadMemory(DWORD64 address, ReadType& value) 
-//{
-//	if (kernelDriver != nullptr && ProcessID != 0)
-//	{
-//		Request req;
-//
-//		req.target = reinterpret_cast<PVOID>(address);
-//		req.buffer = &value;
-//		req.size = sizeof(ReadType);
-//
-//		return DeviceIoControl(kernelDriver, kernelCodes::READ, &req, sizeof(req), &req, sizeof(req), nullptr, nullptr);
-//	}
-//	else
-//		return false;
-//}
+template <typename ReadType>
+bool MemoryMgr::ReadMemory(DWORD64 address, ReadType& value, int size)
+{
+	if (kernelDriver != nullptr && ProcessID != 0)
+	{
+		if (size == -1)
+			size = sizeof(ReadType);
 
-//template <typename ReadType>
-//bool MemoryMgr::ReadMemory(DWORD64 address, ReadType& value, int size)
-//{
-//	if (kernelDriver != nullptr && ProcessID != 0)
-//	{
-//		Request req;
-//
-//		req.target = reinterpret_cast<PVOID>(address);
-//		req.buffer = &value;
-//		req.size = size;
-//
-//		return DeviceIoControl(kernelDriver, kernelCodes::READ, &req, sizeof(req), &req, sizeof(req), nullptr, nullptr);
-//	}
-//	else
-//		return false;
-//}
+		Request req;
+
+		req.target = reinterpret_cast<PVOID>(address);
+		req.buffer = &value;
+		req.size = size;
+
+		return DeviceIoControl(kernelDriver, kernelCodes::READ, &req, sizeof(req), &req, sizeof(req), nullptr, nullptr);
+	}
+	else
+		return false;
+}
 
 DWORD64 MemoryMgr::TraceAddress(DWORD64 baseAddress, std::vector<DWORD> offsets)
 {

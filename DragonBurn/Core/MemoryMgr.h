@@ -26,39 +26,7 @@ public:
 	bool Detach();
 
 	template <typename ReadType>
-	bool ReadMemory(DWORD64 address, ReadType& value)
-	{
-		if (kernelDriver != nullptr && ProcessID != 0)
-		{
-			Request req;
-
-			req.target = reinterpret_cast<PVOID>(address);
-			req.buffer = &value;
-			req.size = sizeof(ReadType);
-
-			return DeviceIoControl(kernelDriver, kernelCodes::READ, &req, sizeof(req), &req, sizeof(req), nullptr, nullptr);
-		}
-		else
-			return false;
-	}
-
-	template <typename ReadType>
-	bool ReadMemory(DWORD64 address, ReadType& value, int size)
-	{
-		if (kernelDriver != nullptr && ProcessID != 0)
-		{
-			Request req;
-
-			req.target = reinterpret_cast<PVOID>(address);
-			req.buffer = &value;
-			req.size = size;
-
-			return DeviceIoControl(kernelDriver, kernelCodes::READ, &req, sizeof(req), &req, sizeof(req), nullptr, nullptr);
-		}
-		else
-			return false;
-	}
-
+	bool ReadMemory(DWORD64, ReadType&, int = -1);
 	DWORD64 TraceAddress(DWORD64, std::vector<DWORD>);
 
 	static DWORD GetProcessID(const wchar_t*);
