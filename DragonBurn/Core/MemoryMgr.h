@@ -5,13 +5,10 @@
 #include <string>
 #include <vector>
 
-namespace kernelCodes
-{
-	inline const ULONG ATTACH = CTL_CODE(FILE_DEVICE_UNKNOWN, 0x4462, METHOD_BUFFERED, FILE_SPECIAL_ACCESS);
-	inline const ULONG READ = CTL_CODE(FILE_DEVICE_UNKNOWN, 0x4472, METHOD_BUFFERED, FILE_SPECIAL_ACCESS);
-	inline const ULONG WRITE = CTL_CODE(FILE_DEVICE_UNKNOWN, 0x4482, METHOD_BUFFERED, FILE_SPECIAL_ACCESS);
-	inline const ULONG DETACH = CTL_CODE(FILE_DEVICE_UNKNOWN, 0x4492, METHOD_BUFFERED, FILE_SPECIAL_ACCESS);
-}
+#define DRAGON_DEVICE 0x8000
+#define IOCTL_READ_PROCESS_MEMORY CTL_CODE(DRAGON_DEVICE, 0x4472, METHOD_NEITHER, FILE_ANY_ACCESS)
+#define IOCTL_WRITE_PROCESS_MEMORY CTL_CODE(DRAGON_DEVICE, 0x4482, METHOD_NEITHER, FILE_ANY_ACCESS)
+
 
 class MemoryMgr
 {
@@ -23,27 +20,58 @@ public:
 	bool DisconnectDriver();
 
 	bool Attach(const DWORD);
-	bool Detach();
 
-	template <typename ReadType>
-	bool ReadMemory(DWORD64 address, ReadType& value, int size = -1)
-	{
-		if (kernelDriver != nullptr && ProcessID != 0)
-		{
-			if (size == -1)
-				size = sizeof(ReadType);
+    template <typename ReadType>
+    bool ReadMemory(DWORD64 address, ReadType& value, SIZE_T size = sizeof(ReadType))
+    {
+        if (kernelDriver != nullptr && ProcessID != 0)
+        {
+            READ_PACK readPack;
+            readPack.ProcessId = ProcessID;
+            readPack.AddressToRead = reinterpret_cast<PVOID>(address);
+            readPack.Buffer = &value;
+            readPack.NumberOfBytesToRead = size;
 
-			Package pack;
+            DWORD bytesReturned;
+            BOOL result = DeviceIoControl(kernelDriver,
+                IOCTL_READ_PROCESS_MEMORY,
+                &readPack,
+                sizeof(readPack),
+                &readPack,
+                sizeof(readPack),
+                &bytesReturned,
+                nullptr);
 
-			pack.address = reinterpret_cast<PVOID>(address);
-			pack.buff = &value;
-			pack.size = size;
+            return result == TRUE && bytesReturned == size;
+        }
+        return false;
+    }
 
-			return DeviceIoControl(kernelDriver, kernelCodes::READ, &pack, sizeof(pack), &pack, sizeof(pack), nullptr, nullptr);
-		}
-		else
-			return false;
-	}
+    //template <typename WriteType>
+    //bool WriteMemory(DWORD64 address, WriteType& value, SIZE_T size = sizeof(WriteType))
+    //{
+    //    if (kernelDriver != INVALID_HANDLE_VALUE && ProcessID != 0)
+    //    {
+    //        WRITE_PACK writePack;
+    //        writePack.ProcessId = ProcessID;
+    //        writePack.AddressToWrite = reinterpret_cast<PVOID>(address);
+    //        writePack.Buffer = const_cast<void*>(value);
+    //        writePack.NumberOfBytesToWrite = size;
+
+    //        DWORD bytesReturned;
+    //        BOOL result = DeviceIoControl(kernelDriver,
+    //            IOCTL_WRITE_PROCESS_MEMORY,
+    //            &writePack,
+    //            sizeof(writePack),
+    //            nullptr,
+    //            0,
+    //            &bytesReturned,
+    //            nullptr);
+
+    //        return result == TRUE;
+    //    }
+    //    return false;
+    //}
 
 	DWORD64 TraceAddress(DWORD64, std::vector<DWORD>);
 
@@ -54,24 +82,21 @@ private:
 	DWORD ProcessID;
 	HANDLE kernelDriver;
 
-	struct Package
-	{
-		HANDLE __pid__;
+    // Structure for writing memory to a process
+    typedef struct _WRITE_PACK {
+        UINT32 ProcessId;
+        PVOID AddressToWrite;
+        SIZE_T NumberOfBytesToWrite;
+        PVOID Buffer;
+    } WRITE_PACK, * P_WRITE_PACK;
 
-		PVOID address;
-		PVOID buff;
-
-		SIZE_T size;
-		SIZE_T callback_size;
-	};
-
-	//static struct
-	//{
-	//	static const ULONG ATTACH = CTL_CODE(FILE_DEVICE_UNKNOWN, 0x4462, METHOD_BUFFERED, FILE_SPECIAL_ACCESS);
-	//	static const ULONG READ = CTL_CODE(FILE_DEVICE_UNKNOWN, 0x4472, METHOD_BUFFERED, FILE_SPECIAL_ACCESS);
-	//	static const ULONG WRITE = CTL_CODE(FILE_DEVICE_UNKNOWN, 0x4482, METHOD_BUFFERED, FILE_SPECIAL_ACCESS);
-	//	static const ULONG DETACH = CTL_CODE(FILE_DEVICE_UNKNOWN, 0x4492, METHOD_BUFFERED, FILE_SPECIAL_ACCESS);
-	//}Codes;
+    // Structure for reading memory from a process
+    typedef struct _READ_PACK {
+        UINT32 ProcessId;
+        PVOID AddressToRead;
+        SIZE_T NumberOfBytesToRead;
+        PVOID Buffer;
+    } READ_PACK, * P_READ_PACK;
 
 };
 

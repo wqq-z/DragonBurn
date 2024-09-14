@@ -8,7 +8,6 @@ MemoryMgr::MemoryMgr()
 
 MemoryMgr::~MemoryMgr() 
 {
-	Detach();
 	DisconnectDriver();
 
 	ProcessID = 0;
@@ -36,25 +35,11 @@ bool MemoryMgr::DisconnectDriver()
 
 bool MemoryMgr::Attach(const DWORD pid)
 {
-	Package pack;
-	pack.__pid__ = reinterpret_cast<HANDLE>(pid);
-	ProcessID = pid;
-
-	return DeviceIoControl(kernelDriver, kernelCodes::ATTACH, &pack, sizeof(pack), &pack, sizeof(pack), nullptr, nullptr);
-}
-
-bool MemoryMgr::Detach() 
-{
-	if (kernelDriver != nullptr && ProcessID != 0)
-	{
-		Package pack;
-		pack.__pid__ = reinterpret_cast<HANDLE>(ProcessID);
-		ProcessID = 0;
-
-		return DeviceIoControl(kernelDriver, kernelCodes::DETACH, &pack, sizeof(pack), &pack, sizeof(pack), nullptr, nullptr);
-	}
-	else
+	if (pid == 0)
 		return false;
+
+	ProcessID = pid;
+	return true;
 }
 
 DWORD64 MemoryMgr::TraceAddress(DWORD64 baseAddress, std::vector<DWORD> offsets)

@@ -87,8 +87,8 @@
     <TargetName>DragonBurn</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)\built\</OutDir>
-    <IntDir>$(SolutionDir)\built\ceche</IntDir>
+    <OutDir>$(SolutionDir)\built_dbg\</OutDir>
+    <IntDir>$(SolutionDir)\built_dbg\ceche</IntDir>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <IncludePath>Libs\json</IncludePath>
     <ExternalIncludePath>$(ExternalIncludePath)</ExternalIncludePath>
@@ -141,6 +141,7 @@
       <PreprocessorDefinitions>DBDEBUG;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
