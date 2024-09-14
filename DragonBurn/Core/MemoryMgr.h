@@ -26,7 +26,11 @@ public:
 	bool Detach();
 
 	template <typename ReadType>
-	bool ReadMemory(DWORD64, ReadType&, int = -1);
+	bool ReadMemory(DWORD64 address, ReadType& value);
+
+	template <typename ReadType>
+	bool ReadMemory(DWORD64 address, ReadType& value, int size);
+
 	DWORD64 TraceAddress(DWORD64, std::vector<DWORD>);
 
 	static DWORD GetProcessID(const wchar_t*);
