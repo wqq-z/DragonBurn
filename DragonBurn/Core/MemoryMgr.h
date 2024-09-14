@@ -4,7 +4,6 @@
 #include <Tlhelp32.h>
 #include <string>
 #include <vector>
-#include "../Helpers/Logger.h"
 
 namespace kernelCodes
 {
