@@ -33,13 +33,13 @@ public:
 			if (size == -1)
 				size = sizeof(ReadType);
 
-			Request req;
+			Package pack;
 
-			req.target = reinterpret_cast<PVOID>(address);
-			req.buffer = &value;
-			req.size = size;
+			pack.address = reinterpret_cast<PVOID>(address);
+			pack.buff = &value;
+			pack.size = size;
 
-			return DeviceIoControl(kernelDriver, kernelCodes::READ, &req, sizeof(req), &req, sizeof(req), nullptr, nullptr);
+			return DeviceIoControl(kernelDriver, kernelCodes::READ, &pack, sizeof(pack), &pack, sizeof(pack), nullptr, nullptr);
 		}
 		else
 			return false;
@@ -54,15 +54,15 @@ private:
 	DWORD ProcessID;
 	HANDLE kernelDriver;
 
-	struct Request
+	struct Package
 	{
-		HANDLE pid;
+		HANDLE __pid__;
 
-		PVOID target;
-		PVOID buffer;
+		PVOID address;
+		PVOID buff;
 
 		SIZE_T size;
-		SIZE_T rtrn_size;
+		SIZE_T callback_size;
 	};
 
 	//static struct

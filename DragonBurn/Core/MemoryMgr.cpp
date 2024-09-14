@@ -36,22 +36,22 @@ bool MemoryMgr::DisconnectDriver()
 
 bool MemoryMgr::Attach(const DWORD pid)
 {
-	Request req;
-	req.pid = reinterpret_cast<HANDLE>(pid);
+	Package pack;
+	pack.__pid__ = reinterpret_cast<HANDLE>(pid);
 	ProcessID = pid;
 
-	return DeviceIoControl(kernelDriver, kernelCodes::ATTACH, &req, sizeof(req), &req, sizeof(req), nullptr, nullptr);
+	return DeviceIoControl(kernelDriver, kernelCodes::ATTACH, &pack, sizeof(pack), &pack, sizeof(pack), nullptr, nullptr);
 }
 
 bool MemoryMgr::Detach() 
 {
 	if (kernelDriver != nullptr && ProcessID != 0)
 	{
-		Request req;
-		req.pid = reinterpret_cast<HANDLE>(ProcessID);
+		Package pack;
+		pack.__pid__ = reinterpret_cast<HANDLE>(ProcessID);
 		ProcessID = 0;
 
-		return DeviceIoControl(kernelDriver, kernelCodes::DETACH, &req, sizeof(req), &req, sizeof(req), nullptr, nullptr);
+		return DeviceIoControl(kernelDriver, kernelCodes::DETACH, &pack, sizeof(pack), &pack, sizeof(pack), nullptr, nullptr);
 	}
 	else
 		return false;
