@@ -33,6 +33,8 @@ public:
 			if (size == -1)
 				size = sizeof(ReadType);
 
+			Log::Debug("ReadMemory:	" + std::to_string(address) + "     " + std::to_string(size), true);
+
 			Request req;
 
 			req.target = reinterpret_cast<PVOID>(address);

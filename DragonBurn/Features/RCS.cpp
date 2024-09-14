@@ -1,4 +1,5 @@
 #include "RCS.h"
+#include "../Helpers/Logger.h"
 
 void RCS::UpdateAngles(const CEntity& Local, Vec2& Angles)
 {
@@ -47,6 +48,7 @@ void RCS::UpdateAngles(const CEntity& Local, Vec2& Angles)
 	Vec2 PunchAngle;
 	if (Local.Pawn.AimPunchCache.Count <= 0 && Local.Pawn.AimPunchCache.Count > 0xFFFF)
 		return;
+	Log::Debug("rcs.cpp 66		" + std::to_string(Local.Pawn.AimPunchCache.Data + (Local.Pawn.AimPunchCache.Count - 1) * sizeof(Vec3)), true);
 	if (!memoryManager.ReadMemory<Vec2>(Local.Pawn.AimPunchCache.Data + (Local.Pawn.AimPunchCache.Count - 1) * sizeof(Vec3), PunchAngle))
 		return;
 

@@ -34,6 +34,7 @@ namespace SpecList
 
     uintptr_t getAddressBase(uintptr_t entityList, uintptr_t playerPawn)
     {
+        Log::Debug("speclist.h getAddressBase", true);
         uintptr_t listEntrySecond;
         memoryManager.ReadMemory<uintptr_t>(entityList + 0x8 * ((playerPawn & 0x7FFF) >> 9) + 16, listEntrySecond);
 
@@ -48,6 +49,7 @@ namespace SpecList
         if (!MiscCFG::SpecList || LocalEntity.Controller.TeamID == 0)
             return;
 
+        Log::Debug("speclist.h 51+", true);
         uintptr_t LocalPlayer;
         memoryManager.ReadMemory<uintptr_t>(gGame.GetClientDLLAddress() + Offset.LocalPlayerController, LocalPlayer);
         uintptr_t localPlayerPawn;

@@ -1,4 +1,5 @@
 #include "Bone.h"
+#include "../Helpers/Logger.h"
 
 bool CBone::UpdateAllBoneData(const DWORD64& EntityPawnAddress) {
     if (EntityPawnAddress == 0) {
@@ -8,15 +9,18 @@ bool CBone::UpdateAllBoneData(const DWORD64& EntityPawnAddress) {
 
     DWORD64 GameSceneNode = 0;
     DWORD64 BoneArrayAddress = 0;
+    Log::Debug("Bone.cpp 12		" + std::to_string(EntityPawnAddress + Offset.Pawn.GameSceneNode), true);
     if (!memoryManager.ReadMemory<DWORD64>(EntityPawnAddress + Offset.Pawn.GameSceneNode, GameSceneNode)) {
         return false;
     }
+    Log::Debug("Bone.cpp 16		" + std::to_string(GameSceneNode + Offset.Pawn.BoneArray), true);
     if (!memoryManager.ReadMemory<DWORD64>(GameSceneNode + Offset.Pawn.BoneArray, BoneArrayAddress)) {
         return false;
     }
 
     constexpr size_t NUM_BONES = 30;
     BoneJointData BoneArray[NUM_BONES]{};
+    Log::Debug("Bone.cpp 21		" + std::to_string(BoneArrayAddress), true);
     if (!memoryManager.ReadMemory(BoneArrayAddress, BoneArray, NUM_BONES * sizeof(BoneJointData))) {
         return false;
     }

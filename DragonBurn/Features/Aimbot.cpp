@@ -1,4 +1,5 @@
 #include "Aimbot.h"
+#include "../Helpers/Logger.h"
 
 
 void AimControl::SetHotKey(int Index)
@@ -29,6 +30,7 @@ void AimControl::AimBot(const CEntity& Local, Vec3 LocalPos, std::vector<Vec3>& 
     if (AimControl::ScopeOnly)
     {
         bool isScoped;
+        Log::Debug("aim.cpp 33		" + std::to_string(Local.Pawn.Address + Offset.Pawn.isScoped), true);
         memoryManager.ReadMemory<bool>(Local.Pawn.Address + Offset.Pawn.isScoped, isScoped);
         if (!isScoped and TriggerBot::CheckScopeWeapon(Local))
         {

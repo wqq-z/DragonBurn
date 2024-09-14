@@ -1,4 +1,5 @@
 #include "Entity.h"
+#include "../Helpers/Logger.h"
 
 
 std::map<int, std::string> CEntity::weaponNames = {
@@ -153,6 +154,7 @@ bool PlayerController::GetPlayerName()
 {
 	char Buffer[MAX_PATH]{};
 
+	Log::Debug("Entity.cpp 157		" + std::to_string(Address + Offset.Entity.iszPlayerName), true);
 	if (!memoryManager.ReadMemory(Address + Offset.Entity.iszPlayerName, Buffer, MAX_PATH))
 		return false;
 
@@ -199,7 +201,9 @@ bool PlayerPawn::GetWeaponName()
 
 	DWORD64 CurrentWeapon;
 	short weaponIndex;
+	Log::Debug("Entity.cpp 204		" + std::to_string(this->Address + Offset.Pawn.pClippingWeapon), true);
 	memoryManager.ReadMemory(this->Address + Offset.Pawn.pClippingWeapon, CurrentWeapon);
+	Log::Debug("Entity.cpp 206		" + std::to_string(CurrentWeapon + Offset.EconEntity.AttributeManager + Offset.WeaponBaseData.Item + Offset.WeaponBaseData.ItemDefinitionIndex), true);
 	memoryManager.ReadMemory(CurrentWeapon + Offset.EconEntity.AttributeManager + Offset.WeaponBaseData.Item + Offset.WeaponBaseData.ItemDefinitionIndex, weaponIndex);
 
 	if (weaponIndex == -1)
@@ -238,12 +242,15 @@ DWORD64 PlayerController::GetPlayerPawnAddress()
 	if (!GetDataAddressWithOffset<DWORD>(Address, Offset.Entity.PlayerPawn, this->Pawn))
 		return 0;
 
+	Log::Debug("Entity.cpp 243		" + std::to_string(gGame.GetEntityListAddress()), true);
 	if (!memoryManager.ReadMemory<DWORD64>(gGame.GetEntityListAddress(), EntityPawnListEntry))
 		return 0;
 
+	Log::Debug("Entity.cpp 246		" + std::to_string(EntityPawnListEntry + 0x10 + 8 * ((Pawn & 0x7FFF) >> 9)), true);
 	if (!memoryManager.ReadMemory<DWORD64>(EntityPawnListEntry + 0x10 + 8 * ((Pawn & 0x7FFF) >> 9), EntityPawnListEntry))
 		return 0;
 
+	Log::Debug("Entity.cpp 250		" + std::to_string(EntityPawnListEntry + 0x78 * (Pawn & 0x1FF)), true);
 	if (!memoryManager.ReadMemory<DWORD64>(EntityPawnListEntry + 0x78 * (Pawn & 0x1FF), EntityPawnAddress))
 		return 0;
 
@@ -268,6 +275,7 @@ bool PlayerPawn::GetArmor()
 bool PlayerPawn::GetAmmo()
 {
 	DWORD64 ClippingWeapon = 0;
+	Log::Debug("Entity.cpp 275		" + std::to_string(Address + Offset.Pawn.pClippingWeapon), true);
 	if (!memoryManager.ReadMemory<DWORD64>(Address + Offset.Pawn.pClippingWeapon, ClippingWeapon))
 		return false;
 
@@ -278,8 +286,10 @@ bool PlayerPawn::GetMaxAmmo()
 {
 	DWORD64 ClippingWeapon = 0;
 	DWORD64 WeaponData = 0;
+	Log::Debug("Entity.cpp 286		" + std::to_string(Address + Offset.Pawn.pClippingWeapon), true);
 	if (!memoryManager.ReadMemory<DWORD64>(Address + Offset.Pawn.pClippingWeapon, ClippingWeapon))
 		return false;
+	Log::Debug("Entity.cpp 289		" + std::to_string(ClippingWeapon + Offset.WeaponBaseData.WeaponDataPTR), true);
 	if (!memoryManager.ReadMemory<DWORD64>(ClippingWeapon + Offset.WeaponBaseData.WeaponDataPTR, WeaponData))
 		return false;
 
@@ -289,6 +299,7 @@ bool PlayerPawn::GetMaxAmmo()
 bool PlayerPawn::GetFov()
 {
 	DWORD64 CameraServices = 0;
+	Log::Debug("Entity.cpp 299		" + std::to_string(Address + Offset.Pawn.CameraServices), true);
 	if (!memoryManager.ReadMemory<DWORD64>(Address + Offset.Pawn.CameraServices, CameraServices))
 		return false;
 	return GetDataAddressWithOffset<int>(CameraServices, Offset.Pawn.iFovStart, this->Fov);
@@ -301,17 +312,20 @@ bool PlayerPawn::GetFFlags()
 
 bool PlayerPawn::GetDefusing()
 {
+	Log::Debug("Entity.cpp 312		" + std::to_string(Address + Offset.C4.m_bBeingDefused), true);
 	return memoryManager.ReadMemory(Address + Offset.C4.m_bBeingDefused, this->isDefusing);
 }
 
 bool PlayerPawn::GetFlashDuration()
 {
+	Log::Debug("Entity.cpp 318		" + std::to_string(Address + Offset.Pawn.flFlashDuration), true);
 	return memoryManager.ReadMemory(Address + Offset.Pawn.flFlashDuration, this->FlashDuration);
 }
 
 bool PlayerPawn::GetVelocity()
 {
 	Vec3 Velocity;
+	Log::Debug("Entity.cpp 325		" + std::to_string(Address + Offset.Pawn.AbsVelocity), true);
 	if (!memoryManager.ReadMemory(Address + Offset.Pawn.AbsVelocity, Velocity))
 		return false;
 	this->Speed = sqrt(Velocity.x * Velocity.x + Velocity.y * Velocity.y);
@@ -339,7 +353,9 @@ bool Client::GetSensitivity()
 {
 	DWORD64 dwSensitivity;
 	float flSensitivity;
+	Log::Debug("Entity.cpp 353		" + std::to_string(gGame.GetClientDLLAddress() + Offset.Sensitivity), true);
 	memoryManager.ReadMemory(gGame.GetClientDLLAddress() + Offset.Sensitivity, dwSensitivity);
+	Log::Debug("Entity.cpp 355		" + std::to_string(dwSensitivity + 0x40), true);
 	if (memoryManager.ReadMemory(dwSensitivity + 0x40, flSensitivity))
 	{
 		this->Sensitivity = flSensitivity;

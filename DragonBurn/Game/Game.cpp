@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "../Helpers/Logger.h"
 
 bool CGame::InitAddress()
 {
@@ -94,8 +95,10 @@ DWORD64 CGame::GetLeftBtnAddress()
 bool CGame::UpdateEntityListEntry()
 {
 	DWORD64 EntityListEntry = 0;
+	Log::Debug("game.cpp 98		" + std::to_string(gGame.GetEntityListAddress()), true);
 	if (!memoryManager.ReadMemory<DWORD64>(gGame.GetEntityListAddress(), EntityListEntry))
 		return false;
+	Log::Debug("game.cpp 101		" + std::to_string(EntityListEntry + 0x10), true);
 	if (!memoryManager.ReadMemory<DWORD64>(EntityListEntry + 0x10, EntityListEntry))
 		return false;
 
