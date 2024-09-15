@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{8E41214B-6785-4CFE-B992-037D68949A14}</UniqueIdentifier>
+      <Extensions>inf;inv;inx;mof;mc;</Extensions>
+    </Filter>
+    <Filter Include="Funcs">
+      <UniqueIdentifier>{18b112ac-34aa-49c5-a23b-e3b4d0b0a1f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{497856cf-85a5-489c-8e0a-62de21172fce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{0d0693cf-e4a8-49e7-b847-0ae2bd6d5829}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Inf Include="DragonBurn_kernel.inf">
+      <Filter>Resources</Filter>
+    </Inf>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="funcs.cpp">
+      <Filter>Funcs</Filter>
+    </ClCompile>
+    <ClCompile Include="memory.cpp">
+      <Filter>Funcs</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Kernel.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
