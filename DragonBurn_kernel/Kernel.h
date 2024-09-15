@@ -48,6 +48,17 @@ namespace Memory
         PVOID Buffer;
     } READ_PACK, * P_READ_PACK;
 
+    //struct Package
+    //{
+    //    HANDLE __pid__;
+
+    //    PVOID address;
+    //    PVOID buff;
+
+    //    SIZE_T size;
+    //    SIZE_T callback_size;
+    //};
+
     NTSTATUS ReadProcessMemory(
         PIRP Irp,
         P_READ_PACK ReadInfo

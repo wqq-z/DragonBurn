@@ -9,7 +9,7 @@ NTSTATUS Memory::ReadProcessMemory(
     }
 
     PEPROCESS TargetProcess = nullptr;
-    PEPROCESS RequestingProcess = IoGetRequestorProcess(Irp);
+    PEPROCESS RequestingProcess = IoGetRequestorProcess(Irp);//PsGetCurrentProcess()
     if (!RequestingProcess) {
         Log::Print("[-] Failed to find requesting process\n");
         return STATUS_ACCESS_DENIED;
@@ -33,6 +33,9 @@ NTSTATUS Memory::ReadProcessMemory(
         KernelMode,
         &bytesRead
     );
+    //status = MmCopyVirtualMemory(targetProcess, package->address,
+    //    PsGetCurrentProcess(), package->buff,
+    //    package->size, KernelMode, &package->callback_size);
 
     if (!NT_SUCCESS(ntResult)) {
         Log::Print("[-] Failed to copy process memory into user buffer\n");
