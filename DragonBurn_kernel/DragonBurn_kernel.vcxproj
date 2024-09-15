@@ -128,9 +128,9 @@
     <FilesToPackage Include="$(TargetPath)" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="funcs.cpp" />
+    <ClCompile Include="Funcs.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="memory.cpp" />
+    <ClCompile Include="Memory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Kernel.h" />

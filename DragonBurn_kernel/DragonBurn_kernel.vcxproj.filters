@@ -22,10 +22,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="funcs.cpp">
+    <ClCompile Include="Funcs.cpp">
       <Filter>Funcs</Filter>
     </ClCompile>
-    <ClCompile Include="memory.cpp">
+    <ClCompile Include="Memory.cpp">
       <Filter>Funcs</Filter>
     </ClCompile>
   </ItemGroup>
