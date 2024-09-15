@@ -72,6 +72,7 @@ NTSTATUS Memory::ReadProcessMemory(
             KernelMode,
             &bytesRead
         );
+        Log::Print("[+] Memory read!!!\n");
     }
     __except (EXCEPTION_EXECUTE_HANDLER)
     {
