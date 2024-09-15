@@ -1,6 +1,6 @@
 #include "Kernel.h"
 
-NTSTATUS DriverMain(PDRIVER_OBJECT, PUNICODE_STRING);
+NTSTATUS DriverMain(PDRIVER_OBJECT, PUNICODE_STRING);//ed nt!Kd_IHVDRIVER_Mask 8
 
 //kdmapper calls it with PDRIVER_OBJECT = NONE; PUNICODE_STRING = NONE;
 NTSTATUS DriverEntry()//PDRIVER_OBJECT driverObj, PUNICODE_STRING registeryPath
@@ -52,7 +52,7 @@ NTSTATUS DriverMain(PDRIVER_OBJECT driverObj, PUNICODE_STRING registeryPath)
 	driverObj->MajorFunction[IRP_MJ_CREATE] = Kernel::DriverIrpCreate;
 	driverObj->MajorFunction[IRP_MJ_CLOSE] = Kernel::DriverIrpClose;
 	driverObj->MajorFunction[IRP_MJ_DEVICE_CONTROL] = Kernel::DriverIrpDeviceControl;
-	driverObj->DriverUnload = NULL;
+	driverObj->DriverUnload = Kernel::DriverUnload;
 
 	ClearFlag(deviceObj->Flags, DO_DEVICE_INITIALIZING);
 	Log::Print("[+]Driver initialized successfully\n");

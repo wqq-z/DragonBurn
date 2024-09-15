@@ -34,29 +34,35 @@ NTSTATUS Kernel::DriverIrpDeviceControl(PDEVICE_OBJECT DeviceObject, PIRP Irp) {
 
     switch (Stack->Parameters.DeviceIoControl.IoControlCode)
     {
+
     case IOCTL_READ_PROCESS_MEMORY:
     {
-        if (Stack->Parameters.DeviceIoControl.InputBufferLength < sizeof(Memory::READ_PACK)) {
+        if (Stack->Parameters.DeviceIoControl.InputBufferLength < sizeof(Memory::READ_PACK)) 
+        {
             ntResult = STATUS_BUFFER_TOO_SMALL;
             break;
         }
         ntResult = Memory::ReadProcessMemory(Irp, (Memory::P_READ_PACK)Stack->Parameters.DeviceIoControl.Type3InputBuffer);
         break;
     }
+
     case IOCTL_WRITE_PROCESS_MEMORY:
     {
-        if (Stack->Parameters.DeviceIoControl.InputBufferLength < sizeof(Memory::WRITE_PACK)) {
+        if (Stack->Parameters.DeviceIoControl.InputBufferLength < sizeof(Memory::WRITE_PACK)) 
+        {
             ntResult = STATUS_BUFFER_TOO_SMALL;
             break;
         }
         ntResult = Memory::WriteProcessMemory(Irp, (Memory::P_WRITE_PACK)Stack->Parameters.DeviceIoControl.Type3InputBuffer);
         break;
     }
+
     default:
     {
         ntResult = STATUS_INVALID_DEVICE_REQUEST;
         break;
     }
+
     }
 
     Irp->IoStatus.Status = ntResult;
