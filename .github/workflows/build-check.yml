@@ -23,7 +23,12 @@ jobs:
     - name: Archive artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: Compiled-Binaries
+        name: Usermode app
         path: |
           D:\a\DragonBurn\DragonBurn\built\DragonBurn.exe
+
+      with:
+        name: Kernelmode driver
+        path: |
           D:\a\DragonBurn\DragonBurn\built\DragonBurn-kernel.sys
+      

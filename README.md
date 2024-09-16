@@ -26,7 +26,7 @@
 <a href="https://discord.gg/5WcvdzFybD"><img src="https://invidget.switchblade.xyz/5WcvdzFybD"></a>
 
 > [!NOTE]  
-> If link preview didn't load, this is direct link:  discord.gg/5WcvdzFybD 
+> If link preview didn't load, this is direct [link](https://discord.gg/5WcvdzFybD)
 ---
 ### 📋 Features
 Press END key to open/close menu.
