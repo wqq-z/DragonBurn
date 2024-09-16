@@ -7,22 +7,26 @@
   <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white">
   <img src="https://img.shields.io/badge/build-passing-76B900?style=for-the-badge&logo=&logoColor=whit">
   <img src="https://img.shields.io/badge/tests-100/100-76B900?style=for-the-badge&logo=&logoColor=whit">
-  <img src="https://img.shields.io/badge/code quality-B+-76B900?style=for-the-badge&logo=&logoColor=whit">
+  <img src="https://img.shields.io/badge/code quality-A-76B900?style=for-the-badge&logo=&logoColor=whit">
   <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge&logo=&logoColor=whit">
-  <img src="https://img.shields.io/badge/DragonBurn-v1.1.5.0-blue?style=for-the-badge&logo=&logoColor=whit">
+  <img src="https://img.shields.io/badge/DragonBurn-v2.0.0.0-blue?style=for-the-badge&logo=&logoColor=whit">
   <img src="https://img.shields.io/badge/CS2-000000?style=for-the-badge&logo=counter-strike&logoColor=white">
-  <img src="https://img.shields.io/badge/undetected-03C75A?style=for-the-badge&logo=ticktick&logoColor=FFFFFF">
+  <img src="https://img.shields.io/badge/Kernel mode-28004D?style=for-the-badge&logo=webdriverio&logoColor=FFFFFF">
   <img src="https://img.shields.io/badge/offsets auto update-D06B57?style=for-the-badge&logo=databricks&logoColor=FFFFFF">
+  <img src="https://img.shields.io/badge/undetected-03C75A?style=for-the-badge&logo=ticktick&logoColor=FFFFFF">
+
 </p>
 
 ---
-### DragonBurn is one of the best CS2 read only external cheats. It has ton of features, full customization and offsets auto update. Undetected by all anti-cheats except faceit.
+### DragonBurn is one of the best CS2 kernel mode read only external cheats. It has ton of features, full customization and offsets auto update. Undetected by all anti-cheats except faceit.
 ⭐Please, star this repo if it was helpful⭐
 
 ---
 ### 🌐Join our community
 <a href="https://discord.gg/5WcvdzFybD"><img src="https://invidget.switchblade.xyz/5WcvdzFybD"></a>
 
+> [!NOTE]  
+> If link preview didn't load, this is direct link:  discord.gg/5WcvdzFybD 
 ---
 ### 📋 Features
 Press END key to open/close menu.
@@ -102,6 +106,14 @@ Press END key to open/close menu.
 - Watermark
 - Anti Record
 </details>
+
+---
+### ⚒How to use
+At the beginning, download latest release or compile project by yourself. You need only 2 files `DragonBurn.exe` and `DragonBurn-kernel.sys`.
+
+Now you should map a driver, you can use any method of driver mapping, but I recommend to use kdmapper. You can find it [here](https://github.com/TheCruZ/kdmapper), anyway I'll attach compiled one to latest release.
+
+After that to map driver you should use command `kdmapper.exe DragonBurn-kernel.sys` to map the driver. If u see `[+] success` all fine, just run `DragonBurn.exe` and gl hf.
 
 ---
 ### 🖼️Prewiev
