@@ -20,9 +20,17 @@ jobs:
       run: |
         msbuild DragonBurn.sln -t:Rebuild -p:Configuration=Release -p:Platform=x64
 
-    - name: Archive artifacts
+    - name: Archive usermode
       uses: actions/upload-artifact@v4
       with:
-        name: Compiled-Binaries
+        name: Usermode app
         path: |
           D:\a\DragonBurn\DragonBurn\built\DragonBurn.exe
+    
+    - name: Archive kernelmode
+      uses: actions/upload-artifact@v4
+      with:
+        name: Kernelmode driver
+        path: |
+          D:\a\DragonBurn\DragonBurn\built\DragonBurn-kernel.sys
+      

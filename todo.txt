@@ -1,9 +1,10 @@
 ○ Add DefuseTimer
 ○ Cheat should use cs2 keys
-○ Kernel mode
 ○ Different config for each of weapon types
 ○ Make cheat multi-tread
 ○ Show bomb carrier
+◎ Kernel mode
+◎ Fix BSOD
 ◎ Fix radar in menu
 ◎ Add logger
 ◎ Fix SpecList

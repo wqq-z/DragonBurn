@@ -29,7 +29,7 @@ void AimControl::AimBot(const CEntity& Local, Vec3 LocalPos, std::vector<Vec3>& 
     if (AimControl::ScopeOnly)
     {
         bool isScoped;
-        ProcessMgr.ReadMemory<bool>(Local.Pawn.Address + Offset.Pawn.isScoped, isScoped);
+        memoryManager.ReadMemory<bool>(Local.Pawn.Address + Offset.Pawn.isScoped, isScoped);
         if (!isScoped and TriggerBot::CheckScopeWeapon(Local))
         {
             HasTarget = false;

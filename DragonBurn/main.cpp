@@ -103,9 +103,22 @@ https://github.com/ByteCorum/DragonBurn
 		break;
 
 	}
+
+	Log::Info("Connecting to kernel mode driver");
+	if (memoryManager.ConnectDriver(L"\\\\.\\DragonBurn-kernel"))
+	{
+		Log::PreviousLine();
+		Log::Fine("Successfully connected to kernel mode driver");
+	}
+	else
+	{
+		Log::PreviousLine();
+		Log::Error("Failed to connect to kernel mode driver");
+	}
+
 	std::cout << '\n';
 	bool preStart = false;
-	while (ProcessMgr.GetProcessID("cs2.exe") == 0)
+	while (MemoryMgr::GetProcessID(L"cs2.exe") == 0)
 	{
 		Log::PreviousLine();
 		Log::Info("Waiting for CS2");
@@ -151,26 +164,10 @@ https://github.com/ByteCorum/DragonBurn
 	}
 #endif
 
-	auto ProcessStatus = ProcessMgr.Attach("cs2.exe");
-	switch (ProcessStatus)
+	if (!memoryManager.Attach(MemoryMgr::GetProcessID(L"cs2.exe"))) 
 	{
-	case 1:
 		Log::PreviousLine();
-		Log::Error("Game not found");
-		break;
-
-	case 2:
-		Log::PreviousLine();
-		Log::Error("Failed to hook process, please run the cheat as Administrator");
-		break;
-
-	case 3:
-		Log::PreviousLine();
-		Log::Error("Failed to get module address");
-		break;
-
-	default:
-		break;
+		Log::Error("Failed to attach to the process");
 	}
 
 	if (!gGame.InitAddress())

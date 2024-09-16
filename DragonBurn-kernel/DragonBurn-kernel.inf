@@ -1,0 +1,62 @@
+;
+; DragonBurn-kernel.inf
+;
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = System ; TODO: specify appropriate Class
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318} ; TODO: specify appropriate ClassGuid
+Provider    = %ManufacturerName%
+CatalogFile = DragonBurn-kernel.cat
+DriverVer   = ; TODO: set DriverVer in stampinf property pages
+PnpLockdown = 1
+
+[DestinationDirs]
+DefaultDestDir = 13
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+DragonBurn-kernel.sys = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName% = Standard,NT$ARCH$.10.0...16299 ; %13% support introduced in build 16299
+
+[Standard.NT$ARCH$.10.0...16299]
+%DragonBurn-kernel.DeviceDesc% = DragonBurn-kernel_Device, Root\DragonBurn-kernel ; TODO: edit hw-id
+
+[DragonBurn-kernel_Device.NT]
+CopyFiles = File_Copy
+
+[File_Copy]
+DragonBurn-kernel.sys
+
+;-------------- Service installation
+[DragonBurn-kernel_Device.NT.Services]
+AddService = DragonBurn-kernel,%SPSVCINST_ASSOCSERVICE%, DragonBurn-kernel_Service_Inst
+
+; -------------- DragonBurn-kernel driver install sections
+[DragonBurn-kernel_Service_Inst]
+DisplayName    = %DragonBurn-kernel.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\DragonBurn-kernel.sys
+
+[DragonBurn-kernel_Device.NT.Wdf]
+KmdfService = DragonBurn-kernel, DragonBurn-kernel_wdfsect
+
+[DragonBurn-kernel_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+[Strings]
+SPSVCINST_ASSOCSERVICE = 0x00000002
+ManufacturerName = "<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+DiskName = "DragonBurn-kernel Installation Disk"
+DragonBurn-kernel.DeviceDesc = "DragonBurn-kernel Device"
+DragonBurn-kernel.SVCDESC = "DragonBurn-kernel Service"

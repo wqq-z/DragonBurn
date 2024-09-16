@@ -35,10 +35,10 @@ namespace SpecList
     uintptr_t getAddressBase(uintptr_t entityList, uintptr_t playerPawn)
     {
         uintptr_t listEntrySecond;
-        ProcessMgr.ReadMemory<uintptr_t>(entityList + 0x8 * ((playerPawn & 0x7FFF) >> 9) + 16, listEntrySecond);
+        memoryManager.ReadMemory<uintptr_t>(entityList + 0x8 * ((playerPawn & 0x7FFF) >> 9) + 16, listEntrySecond);
 
         uintptr_t isPawn;
-        ProcessMgr.ReadMemory<uintptr_t>(listEntrySecond + 120 * (playerPawn & 0x1FF), isPawn);
+        memoryManager.ReadMemory<uintptr_t>(listEntrySecond + 120 * (playerPawn & 0x1FF), isPawn);
 
         return listEntrySecond == 0 ? 0 : isPawn;
     }
@@ -49,26 +49,26 @@ namespace SpecList
             return;
 
         uintptr_t LocalPlayer;
-        ProcessMgr.ReadMemory<uintptr_t>(gGame.GetClientDLLAddress() + Offset.LocalPlayerController, LocalPlayer);
+        memoryManager.ReadMemory<uintptr_t>(gGame.GetClientDLLAddress() + Offset.LocalPlayerController, LocalPlayer);
         uintptr_t localPlayerPawn;
-        ProcessMgr.ReadMemory<uintptr_t>(LocalPlayer + Offset.PlayerController.m_hPawn, localPlayerPawn);
+        memoryManager.ReadMemory<uintptr_t>(LocalPlayer + Offset.PlayerController.m_hPawn, localPlayerPawn);
 
         uintptr_t CSlocalPlayerPawn;
-        ProcessMgr.ReadMemory<uintptr_t>(gGame.GetEntityListEntry() + 120 * (localPlayerPawn & 0x1FF), CSlocalPlayerPawn);
+        memoryManager.ReadMemory<uintptr_t>(gGame.GetEntityListEntry() + 120 * (localPlayerPawn & 0x1FF), CSlocalPlayerPawn);
 
         uint32_t spectatorPawn;
-        ProcessMgr.ReadMemory<uint32_t>(Entity.Controller.Address + Offset.PlayerController.m_hPawn, spectatorPawn);
+        memoryManager.ReadMemory<uint32_t>(Entity.Controller.Address + Offset.PlayerController.m_hPawn, spectatorPawn);
 
         uintptr_t entityList;
-        ProcessMgr.ReadMemory<uintptr_t>(gGame.GetEntityListAddress(),entityList);
+        memoryManager.ReadMemory<uintptr_t>(gGame.GetEntityListAddress(),entityList);
 
         uintptr_t pawn = getAddressBase(entityList, spectatorPawn);
 
         uintptr_t observed;
-        ProcessMgr.ReadMemory<uintptr_t>(pawn + Offset.PlayerController.m_pObserverServices, observed);
+        memoryManager.ReadMemory<uintptr_t>(pawn + Offset.PlayerController.m_pObserverServices, observed);
 
         uint64_t observedTarget;
-        ProcessMgr.ReadMemory<uintptr_t>(observed + Offset.PlayerController.m_hObserverTarget, observedTarget);
+        memoryManager.ReadMemory<uintptr_t>(observed + Offset.PlayerController.m_hObserverTarget, observedTarget);
 
         uintptr_t spectatorTarget = getAddressBase(entityList, observedTarget);
 

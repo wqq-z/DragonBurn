@@ -3,7 +3,7 @@
 bool globalvars::UpdateGlobalvars()
 {
 	DWORD64 m_DglobalVars = 0;
-	if (!ProcessMgr.ReadMemory<DWORD64>(gGame.GetGlobalVarsAddress(), m_DglobalVars))
+	if (!memoryManager.ReadMemory<DWORD64>(gGame.GetGlobalVarsAddress(), m_DglobalVars))
 		return false;
 
 	this->address = m_DglobalVars;
