@@ -5,36 +5,39 @@
       <UniqueIdentifier>{8E41214B-6785-4CFE-B992-037D68949A14}</UniqueIdentifier>
       <Extensions>inf;inv;inx;mof;mc;</Extensions>
     </Filter>
-    <Filter Include="Funcs">
-      <UniqueIdentifier>{18b112ac-34aa-49c5-a23b-e3b4d0b0a1f9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Helpers">
-      <UniqueIdentifier>{497856cf-85a5-489c-8e0a-62de21172fce}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core">
-      <UniqueIdentifier>{0d0693cf-e4a8-49e7-b847-0ae2bd6d5829}</UniqueIdentifier>
+      <UniqueIdentifier>{57c3a821-f99e-4b58-9578-709d77cb1bd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External">
+      <UniqueIdentifier>{a6521ea7-e8ed-4dde-99b3-6fa449c4a5f5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Inf Include="DragonBurn_kernel.inf">
+    <Inf Include="DragonBurn-kernel.inf">
       <Filter>Resources</Filter>
     </Inf>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Funcs.cpp">
-      <Filter>Funcs</Filter>
+    <ClCompile Include="main.c" />
+    <ClCompile Include="Memory.c">
+      <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="Memory.cpp">
-      <Filter>Funcs</Filter>
+    <ClCompile Include="Functions.c">
+      <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Kernel.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Logger.h">
-      <Filter>Helpers</Filter>
+    <ClInclude Include="KernelApi.h">
+      <Filter>External</Filter>
+    </ClInclude>
+    <ClInclude Include="IOCTL.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory.h">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -26,3 +26,4 @@ jobs:
         name: Compiled-Binaries
         path: |
           D:\a\DragonBurn\DragonBurn\built\DragonBurn.exe
+          D:\a\DragonBurn\DragonBurn\built\DragonBurn-kernel.sys

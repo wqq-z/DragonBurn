@@ -3,8 +3,8 @@
 ○ Different config for each of weapon types
 ○ Make cheat multi-tread
 ○ Show bomb carrier
-○ Fix BSOD
 ◎ Kernel mode
+◎ Fix BSOD
 ◎ Fix radar in menu
 ◎ Add logger
 ◎ Fix SpecList

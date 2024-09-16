@@ -105,7 +105,7 @@ https://github.com/ByteCorum/DragonBurn
 	}
 
 	Log::Info("Connecting to kernel mode driver");
-	if (memoryManager.ConnectDriver(L"\\\\.\\DragonBurn_kernel"))
+	if (memoryManager.ConnectDriver(L"\\\\.\\DragonBurn-kernel"))
 	{
 		Log::PreviousLine();
 		Log::Fine("Successfully connected to kernel mode driver");

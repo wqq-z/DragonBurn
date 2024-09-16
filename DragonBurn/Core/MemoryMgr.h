@@ -8,6 +8,7 @@
 #define DRAGON_DEVICE 0x8000
 #define IOCTL_READ_PROCESS_MEMORY CTL_CODE(DRAGON_DEVICE, 0x4472, METHOD_NEITHER, FILE_ANY_ACCESS)
 #define IOCTL_WRITE_PROCESS_MEMORY CTL_CODE(DRAGON_DEVICE, 0x4482, METHOD_NEITHER, FILE_ANY_ACCESS)
+#define IOCTL_WRITE_PROCESS_MEMORY_PROTECTED CTL_CODE(DRAGON_DEVICE, 0x4492, METHOD_NEITHER, FILE_ANY_ACCESS)
 
 
 class MemoryMgr
@@ -26,52 +27,76 @@ public:
     {
         if (kernelDriver != nullptr && ProcessID != 0)
         {
-            READ_PACK readPack;
-            readPack.ProcessId = ProcessID;
-            readPack.AddressToRead = reinterpret_cast<PVOID>(address);
-            readPack.Buffer = &value;
-            readPack.NumberOfBytesToRead = size;
+            READ_PACK ReadPack;
+            ReadPack.pid = ProcessID;
+            ReadPack.address = reinterpret_cast<PVOID>(address);
+            ReadPack.buff = &value;
+            ReadPack.size = size;
 
-            DWORD bytesReturned;
             BOOL result = DeviceIoControl(kernelDriver,
                 IOCTL_READ_PROCESS_MEMORY,
-                &readPack,
-                sizeof(readPack),
-                &readPack,
-                sizeof(readPack),
-                &bytesReturned,
+                &ReadPack,
+                sizeof(ReadPack),
+                &ReadPack,
+                sizeof(ReadPack),
+                nullptr,
                 nullptr);
 
-            return result == TRUE && bytesReturned == size;
+            //std::cout << result << "     " << bytesReturned << "     " << size << "     " << readPack.Buffer << '\n';
+            return result == TRUE ; // && bytesReturned == size
         }
         return false;
     }
 
-    //template <typename WriteType>
-    //bool WriteMemory(DWORD64 address, WriteType& value, SIZE_T size = sizeof(WriteType))
-    //{
-    //    if (kernelDriver != INVALID_HANDLE_VALUE && ProcessID != 0)
-    //    {
-    //        WRITE_PACK writePack;
-    //        writePack.ProcessId = ProcessID;
-    //        writePack.AddressToWrite = reinterpret_cast<PVOID>(address);
-    //        writePack.Buffer = const_cast<void*>(value);
-    //        writePack.NumberOfBytesToWrite = size;
+    template <typename WriteType>
+    bool WriteMemory(DWORD64 address, WriteType& value, SIZE_T size = sizeof(WriteType))
+    {
+        if (kernelDriver != INVALID_HANDLE_VALUE && ProcessID != 0)
+        {
+            WRITE_PACK WritePack;
+            WritePack.pid = ProcessID;
+            WritePack.address = reinterpret_cast<PVOID>(address);
+            WritePack.buff = const_cast<void*>(value);
+            WritePack.size = size;
 
-    //        DWORD bytesReturned;
-    //        BOOL result = DeviceIoControl(kernelDriver,
-    //            IOCTL_WRITE_PROCESS_MEMORY,
-    //            &writePack,
-    //            sizeof(writePack),
-    //            nullptr,
-    //            0,
-    //            &bytesReturned,
-    //            nullptr);
+            BOOL result = DeviceIoControl(kernelDriver,
+                IOCTL_WRITE_PROCESS_MEMORY,
+                &WritePack,
+                sizeof(WritePack),
+                nullptr,
+                0,
+                nullptr,
+                nullptr);
 
-    //        return result == TRUE;
-    //    }
-    //    return false;
-    //}
+            return result == TRUE;
+        }
+        return false;
+    }
+
+    template <typename WriteType>
+    bool WriteMemoryProtected(DWORD64 address, WriteType& value, SIZE_T size = sizeof(WriteType))
+    {
+        if (kernelDriver != INVALID_HANDLE_VALUE && ProcessID != 0)
+        {
+            WRITE_PACK WritePack;
+            WritePack.pid = ProcessID;
+            WritePack.address = reinterpret_cast<PVOID>(address);
+            WritePack.buff = const_cast<void*>(value);
+            WritePack.size = size;
+
+            BOOL result = DeviceIoControl(kernelDriver,
+                IOCTL_WRITE_PROCESS_MEMORY_PROTECTED,
+                &WritePack,
+                sizeof(WritePack),
+                nullptr,
+                0,
+                nullptr,
+                nullptr);
+
+            return result == TRUE;
+        }
+        return false;
+    }
 
 	DWORD64 TraceAddress(DWORD64, std::vector<DWORD>);
 
@@ -84,18 +109,19 @@ private:
 
     // Structure for writing memory to a process
     typedef struct _WRITE_PACK {
-        UINT32 ProcessId;
-        PVOID AddressToWrite;
-        SIZE_T NumberOfBytesToWrite;
-        PVOID Buffer;
+        UINT32 pid;
+        PVOID address;
+        SIZE_T size;
+        PVOID buff;
     } WRITE_PACK, * P_WRITE_PACK;
 
     // Structure for reading memory from a process
-    typedef struct _READ_PACK {
-        UINT32 ProcessId;
-        PVOID AddressToRead;
-        SIZE_T NumberOfBytesToRead;
-        PVOID Buffer;
+    typedef struct _READ_PACK
+    {
+        UINT32 pid;
+        PVOID address;
+        SIZE_T size;
+        PVOID buff;
     } READ_PACK, * P_READ_PACK;
 
 };

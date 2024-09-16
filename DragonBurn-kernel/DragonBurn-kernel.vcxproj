@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{4D340991-2A2F-464E-9AF2-37284ACA7DF9}</ProjectGuid>
+    <ProjectGuid>{14656A9D-5E4A-41C5-8352-ADE74D3C22BD}</ProjectGuid>
     <TemplateGuid>{1bc93793-694f-48fe-9372-81e2b05556fd}</TemplateGuid>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
@@ -74,12 +74,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <DebuggerFlavor>DbgengKernelDebugger</DebuggerFlavor>
     <OutDir>$(SolutionDir)built_dbg\</OutDir>
-    <IntDir>$(SolutionDir)built_dbg\ceche_1</IntDir>
+    <IntDir>$(SolutionDir)built_dbg\ceche-kernel</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <DebuggerFlavor>DbgengKernelDebugger</DebuggerFlavor>
-    <OutDir>$(SolutionDir)built</OutDir>
-    <IntDir>$(SolutionDir)built\ceche_1</IntDir>
+    <OutDir>$(SolutionDir)built\</OutDir>
+    <IntDir>$(SolutionDir)built\ceche-kernel</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <DebuggerFlavor>DbgengKernelDebugger</DebuggerFlavor>
@@ -94,6 +94,7 @@
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <BufferSecurityCheck>false</BufferSecurityCheck>
+      <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
     <Link>
       <EntryPointSymbol>DriverEntry</EntryPointSymbol>
@@ -106,6 +107,7 @@
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <BufferSecurityCheck>false</BufferSecurityCheck>
+      <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
     <Link>
       <EntryPointSymbol>DriverEntry</EntryPointSymbol>
@@ -122,19 +124,21 @@
     </DriverSign>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Inf Include="DragonBurn_kernel.inf" />
+    <Inf Include="DragonBurn-kernel.inf" />
   </ItemGroup>
   <ItemGroup>
     <FilesToPackage Include="$(TargetPath)" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Funcs.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Memory.cpp" />
+    <ClCompile Include="Functions.c" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="Memory.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="IOCTL.h" />
     <ClInclude Include="Kernel.h" />
-    <ClInclude Include="Logger.h" />
+    <ClInclude Include="KernelApi.h" />
+    <ClInclude Include="Memory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
