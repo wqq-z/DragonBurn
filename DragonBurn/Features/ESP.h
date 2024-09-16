@@ -89,9 +89,9 @@ namespace ESP
 	const char* RenderWeaponIcon(const CEntity& Entity)
 	{
 		uintptr_t ClippingWeapon, WeaponData, WeaponNameAddress;
-		ProcessMgr.ReadMemory(Entity.Pawn.Address + Offset.Pawn.pClippingWeapon, ClippingWeapon);
-		ProcessMgr.ReadMemory(ClippingWeapon + Offset.WeaponBaseData.WeaponDataPTR, WeaponData);
-		ProcessMgr.ReadMemory(WeaponData + Offset.WeaponBaseData.szName, WeaponNameAddress);
+		memoryManager.ReadMemory(Entity.Pawn.Address + Offset.Pawn.pClippingWeapon, ClippingWeapon);
+		memoryManager.ReadMemory(ClippingWeapon + Offset.WeaponBaseData.WeaponDataPTR, WeaponData);
+		memoryManager.ReadMemory(WeaponData + Offset.WeaponBaseData.szName, WeaponNameAddress);
 		std::string weaponName = "Invalid Weapon Name";
 
 		if (!WeaponNameAddress)
@@ -219,7 +219,7 @@ namespace ESP
 		{
 			bool isScoped;
 			ImVec2 IconPos = { Rect.x, Rect.y };
-			ProcessMgr.ReadMemory<bool>(Entity.Pawn.Address + Offset.Pawn.isScoped, isScoped);
+			memoryManager.ReadMemory<bool>(Entity.Pawn.Address + Offset.Pawn.isScoped, isScoped);
 			if (isScoped)
 			{
 				ImGui::GetBackgroundDrawList()->AddText(ImGui::GetIO().Fonts->Fonts[1], 13.0f, ImVec2{ IconPos.x - 1, IconPos.y - 1 }, ImColor(0, 0, 0, 255), "s");

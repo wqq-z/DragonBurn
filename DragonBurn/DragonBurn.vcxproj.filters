@@ -144,9 +144,6 @@
     <ClInclude Include="Core\Render.hpp">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Core\ProcessManager.hpp">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="Core\Init.h">
       <Filter>Core</Filter>
     </ClInclude>
@@ -185,6 +182,9 @@
     </ClInclude>
     <ClInclude Include="Resources\resource.h">
       <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\MemoryMgr.h">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -265,6 +265,9 @@
     </ClCompile>
     <ClCompile Include="Features\RCS.cpp">
       <Filter>Features\Aim</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\MemoryMgr.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

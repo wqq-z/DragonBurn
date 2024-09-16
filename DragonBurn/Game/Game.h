@@ -1,6 +1,6 @@
 #pragma once
 #include <optional>
-#include "../Core/ProcessManager.hpp"
+#include "../Core/MemoryMgr.h"
 #include "../Offsets/Offsets.h"
 #include "View.hpp"
 

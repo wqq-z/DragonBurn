@@ -2,10 +2,25 @@
 #include <string>
 #include <iostream>
 #include <Windows.h>
+#include <fstream>
 
 namespace Log 
 {
 	const HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	const std::string LogFile = "Logs.txt";
+
+	inline bool WriteLog(std::string ctx)
+	{
+		std::ofstream file(LogFile, std::ios::app);
+		if (!file.is_open())
+			return false;
+
+		file << ctx;
+		file.close();
+
+		return true;
+
+	}
 
 	inline void Info(std::string ctx) 
 	{
@@ -39,11 +54,18 @@ namespace Log
 		std::cout << "[+]" << ctx << '\n';
 	}
 
-	inline void Debug(std::string ctx)
+	inline void Debug(std::string ctx, bool write = false)
 	{
 #ifdef DBDEBUG
+		std::string line = "[Debug]" + ctx + '\n';
+
 		SetConsoleTextAttribute(hConsole, 9);
-		std::cout << "[Debug]" << ctx << '\n';
+		std::cout << line;
+
+		if (write)
+		{
+			WriteLog(line);
+		}
 #endif
 	}
 

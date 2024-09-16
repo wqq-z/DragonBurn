@@ -87,8 +87,8 @@
     <TargetName>DragonBurn</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)\built\</OutDir>
-    <IntDir>built\</IntDir>
+    <OutDir>$(SolutionDir)\built_dbg\</OutDir>
+    <IntDir>$(SolutionDir)\built_dbg\ceche</IntDir>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <IncludePath>Libs\json</IncludePath>
     <ExternalIncludePath>$(ExternalIncludePath)</ExternalIncludePath>
@@ -97,7 +97,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)\built\</OutDir>
-    <IntDir>built\</IntDir>
+    <IntDir>$(SolutionDir)\built\ceche</IntDir>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <IncludePath>Libs\json</IncludePath>
     <ExternalIncludePath>$(ExternalIncludePath)</ExternalIncludePath>
@@ -141,11 +141,13 @@
       <PreprocessorDefinitions>DBDEBUG;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -164,6 +166,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -175,7 +178,6 @@
     <ClInclude Include="Core\GlobalVars.h" />
     <ClInclude Include="Core\GUI.h" />
     <ClInclude Include="Core\Init.h" />
-    <ClInclude Include="Core\ProcessManager.hpp" />
     <ClInclude Include="Core\Render.hpp" />
     <ClInclude Include="Features\Aimbot.h" />
     <ClInclude Include="Features\BombTimer.h" />
@@ -209,6 +211,7 @@
     <ClInclude Include="OS-ImGui\OS-ImGui_External.h" />
     <ClInclude Include="OS-ImGui\OS-ImGui_Struct.h" />
     <ClInclude Include="OS-ImGui\stb\stb_image.h" />
+    <ClInclude Include="Core\MemoryMgr.h" />
     <ClInclude Include="Resources\resource.h" />
     <ClInclude Include="Resources\font.h" />
     <ClInclude Include="Resources\Images.h" />
@@ -245,6 +248,7 @@
     <ClCompile Include="OS-ImGui\OS-ImGui.cpp" />
     <ClCompile Include="OS-ImGui\OS-ImGui_Base.cpp" />
     <ClCompile Include="OS-ImGui\OS-ImGui_External.cpp" />
+    <ClCompile Include="Core\MemoryMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resources\Resource.rc" />

@@ -60,8 +60,8 @@ namespace Misc
 
 		uintptr_t pBulletServices;
 		int totalHits;
-		ProcessMgr.ReadMemory(LocalPlayer.Pawn.Address + Offset.Pawn.BulletServices, pBulletServices);
-		ProcessMgr.ReadMemory(pBulletServices + Offset.Pawn.TotalHit, totalHits);
+		memoryManager.ReadMemory(LocalPlayer.Pawn.Address + Offset.Pawn.BulletServices, pBulletServices);
+		memoryManager.ReadMemory(pBulletServices + Offset.Pawn.TotalHit, totalHits);
 
 		if (totalHits != PreviousTotalHits) {
 			if (totalHits == 0 && PreviousTotalHits != 0)
@@ -97,7 +97,7 @@ namespace Misc
 		}
 
 		//int JumpBtn;
-		//if (!ProcessMgr.ReadMemory(gGame.GetJumpBtnAddress(), JumpBtn))
+		//if (!memoryManager.ReadMemory(gGame.GetJumpBtnAddress(), JumpBtn))
 		//	return;
 
 		bool spacePressed = GetAsyncKeyState(VK_SPACE);

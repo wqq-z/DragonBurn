@@ -1,6 +1,6 @@
 #pragma once
 #include <Windows.h>
-#include "../Core/ProcessManager.hpp"
+#include "../Core/MemoryMgr.h"
 #include <json.hpp>
 #include "../Helpers/WebApi.h"
 

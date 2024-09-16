@@ -2,8 +2,8 @@
 
 bool CGame::InitAddress()
 {
-	this->Address.ClientDLL = reinterpret_cast<DWORD64>(ProcessMgr.GetProcessModuleHandle("client.dll"));
-	this->Address.ServerDLL = reinterpret_cast<DWORD64>(ProcessMgr.GetProcessModuleHandle("server.dll"));
+	this->Address.ClientDLL = MemoryMgr::GetModuleBase(MemoryMgr::GetProcessID(L"cs2.exe"),L"client.dll");
+	this->Address.ServerDLL = MemoryMgr::GetModuleBase(MemoryMgr::GetProcessID(L"cs2.exe"),L"server.dll");
 	
 	this->Address.EntityList = GetClientDLLAddress() + Offset.EntityList;
 	this->Address.Matrix = GetClientDLLAddress() + Offset.Matrix;
@@ -94,9 +94,9 @@ DWORD64 CGame::GetLeftBtnAddress()
 bool CGame::UpdateEntityListEntry()
 {
 	DWORD64 EntityListEntry = 0;
-	if (!ProcessMgr.ReadMemory<DWORD64>(gGame.GetEntityListAddress(), EntityListEntry))
+	if (!memoryManager.ReadMemory<DWORD64>(gGame.GetEntityListAddress(), EntityListEntry))
 		return false;
-	if (!ProcessMgr.ReadMemory<DWORD64>(EntityListEntry + 0x10, EntityListEntry))
+	if (!memoryManager.ReadMemory<DWORD64>(EntityListEntry + 0x10, EntityListEntry))
 		return false;
 
 	this->Address.EntityListEntry = EntityListEntry;
@@ -106,14 +106,14 @@ bool CGame::UpdateEntityListEntry()
 
 //bool CGame::GetForceJump(int& value)
 //{
-//	if (!ProcessMgr.ReadMemory<int>(this->Address.ForceJump, value))
+//	if (!memoryManager.ReadMemory<int>(this->Address.ForceJump, value))
 //		return false;
 //
 //	return true;
 //}
 //bool CGame::GetForceCrouch(int& value)
 //{
-//	if (!ProcessMgr.ReadMemory<int>(this->Address.ForceCrouch, value))
+//	if (!memoryManager.ReadMemory<int>(this->Address.ForceCrouch, value))
 //		return false;
 //
 //	return true;
@@ -124,13 +124,13 @@ bool CGame::UpdateEntityListEntry()
 //	switch (MovingType)
 //	{
 //	case 0:
-//		if (!ProcessMgr.ReadMemory<int>(this->Address.ForceForward, Value)) return false;
+//		if (!memoryManager.ReadMemory<int>(this->Address.ForceForward, Value)) return false;
 //		break;
 //	case 1:
-//		if (!ProcessMgr.ReadMemory<int>(this->Address.ForceLeft, Value)) return false;
+//		if (!memoryManager.ReadMemory<int>(this->Address.ForceLeft, Value)) return false;
 //		break;
 //	case 2:
-//		if (!ProcessMgr.ReadMemory<int>(this->Address.ForceRight, Value)) return false;
+//		if (!memoryManager.ReadMemory<int>(this->Address.ForceRight, Value)) return false;
 //		break;
 //	default:
 //		return false;
