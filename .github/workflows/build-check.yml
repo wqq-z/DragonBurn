@@ -28,6 +28,7 @@ jobs:
           D:\a\DragonBurn\DragonBurn\built\DragonBurn.exe
     
     - name: Archive kernelmode
+      uses: actions/upload-artifact@v4
       with:
         name: Kernelmode driver
         path: |
