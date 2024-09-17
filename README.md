@@ -116,7 +116,7 @@ Now you should map a driver, you can use any method of driver mapping, but I rec
 After that to map driver you should use command `kdmapper.exe DragonBurn-kernel.sys` to map the driver. If u see `[+] success` all fine, just run `DragonBurn.exe` and gl hf.
 
 ---
-### 🖼️Prewiev
+### 🖼️Preview
 
 <p align="center">
 <img src="imgs/img.png">
