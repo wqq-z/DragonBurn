@@ -139,6 +139,10 @@
     <ClInclude Include="Kernel.h" />
     <ClInclude Include="KernelApi.h" />
     <ClInclude Include="Memory.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
