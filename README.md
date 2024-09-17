@@ -116,6 +116,20 @@ Now you should map a driver, you can use any method of driver mapping, but I rec
 After that to map driver you should use command `kdmapper.exe DragonBurn-kernel.sys` to map the driver. If u see `[+] success` all fine, just run `DragonBurn.exe` and gl hf.
 
 ---
+### ❌Kdmapper errors
+> Error: `[-] \Device\Nal is already in use.`
+> 
+> Solution: Use [NalFix](https://github.com/VollRagm/NalFix)
+
+> Error: `[-] Your vulnerable driver list is enabled and have blocked the driver loading`
+> 
+> Solution: Disable vulnerable driver list, [official solution](https://support.microsoft.com/en-au/topic/kb5020779-the-vulnerable-driver-blocklist-after-the-october-2022-preview-release-3fcbe13a-6013-4118-b584-fcfbc6a09936)
+
+> Still getting: `[-] Failed to register and start service for the vulnerable driver`
+> 
+> Solution: Turn off all Anti-Viruses and all Anti-Cheats client, usually it caused by faceit ac
+
+---
 ### 🖼️Preview
 
 <p align="center">
