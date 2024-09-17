@@ -2,7 +2,7 @@
 #include "Memory.h"
 #include "IOCTL.h"
 
-NTSTATUS DriverIrpCreate( PDEVICE_OBJECT DeviceObject, PIRP Irp)
+NTSTATUS DriverIrpCreate(PDEVICE_OBJECT DeviceObject, PIRP Irp)
 {
 	UNREFERENCED_PARAMETER(DeviceObject);
 
@@ -13,7 +13,7 @@ NTSTATUS DriverIrpCreate( PDEVICE_OBJECT DeviceObject, PIRP Irp)
 	return STATUS_SUCCESS;
 }
 
-NTSTATUS DriverIrpClose( PDEVICE_OBJECT DeviceObject, PIRP Irp)
+NTSTATUS DriverIrpClose(PDEVICE_OBJECT DeviceObject, PIRP Irp)
 {
 	UNREFERENCED_PARAMETER(DeviceObject);
 
@@ -24,7 +24,7 @@ NTSTATUS DriverIrpClose( PDEVICE_OBJECT DeviceObject, PIRP Irp)
 	return STATUS_SUCCESS;
 }
 
-NTSTATUS DriverIrpDeviceControl( PDEVICE_OBJECT DeviceObject, PIRP Irp)
+NTSTATUS DriverIrpDeviceControl(PDEVICE_OBJECT DeviceObject, PIRP Irp)
 {
 	UNREFERENCED_PARAMETER(DeviceObject);
 

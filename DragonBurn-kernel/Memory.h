@@ -1,6 +1,15 @@
 #pragma once
 #include "KernelApi.h"
 
+// Structure for getting module address base
+typedef struct _MODULE_PACK
+{
+	UINT32 pid;
+	UINT64 baseAddress;
+	SIZE_T size;
+	WCHAR moduleName[256];
+} MODULE_PACK, * P_MODULE_PACK;
+
 // Structure for writing memory to a process
 typedef struct _WRITE_PACK {
 	UINT32 pid;
