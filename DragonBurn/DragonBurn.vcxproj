@@ -213,11 +213,11 @@
     <ClInclude Include="OS-ImGui\stb\stb_image.h" />
     <ClInclude Include="Core\MemoryMgr.h" />
     <ClInclude Include="Resources\Resource.h" />
-    <ClInclude Include="Resources\Font.h" />
-    <ClInclude Include="Resources\Images.h" />
-    <ClInclude Include="Resources\Language.h" />
-    <ClInclude Include="Resources\Sounds.h" />
-    <ClInclude Include="Resources\WeaponIcon.h" />
+    <ClInclude Include="Resources\Font.hpp" />
+    <ClInclude Include="Resources\Images.hpp" />
+    <ClInclude Include="Resources\Language.hpp" />
+    <ClInclude Include="Resources\Sounds.hpp" />
+    <ClInclude Include="Resources\WeaponIcon.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon.ico" />

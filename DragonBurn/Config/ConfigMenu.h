@@ -1,5 +1,5 @@
 #pragma once
-#include "..\Resources\Language.h"
+#include "..\Resources\Language.hpp"
 
 namespace ConfigMenu {
     //void RenderConfigMenu(const char *Tab);
