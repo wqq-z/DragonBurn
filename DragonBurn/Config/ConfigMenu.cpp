@@ -5,7 +5,7 @@
 #include "../Features/Aimbot.h"
 #include <filesystem>
 #include <string>
-#include "../Resources/Language.h"
+#include "../Resources/Language.hpp"
 #include "../Features/RCS.h"
 
 namespace ConfigMenu {

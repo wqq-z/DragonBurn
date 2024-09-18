@@ -8,8 +8,8 @@
 #include "..\Config\ConfigMenu.h"
 #include "..\Config\ConfigSaver.h"
 
-#include "..\Resources\Language.h"
-#include "..\Resources\Images.h"
+#include "..\Resources\Language.hpp"
+#include "..\Resources\Images.hpp"
 
 ID3D11ShaderResourceView* Logo = NULL;
 ID3D11ShaderResourceView* MenuButton1 = NULL;

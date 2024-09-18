@@ -42,19 +42,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Resources\WeaponIcon.h">
+    <ClInclude Include="Resources\WeaponIcon.hpp">
       <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="Resources\Sounds.h">
+    <ClInclude Include="Resources\Sounds.hpp">
       <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="Resources\Language.h">
+    <ClInclude Include="Resources\Language.hpp">
       <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="Resources\Images.h">
+    <ClInclude Include="Resources\Images.hpp">
       <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="Resources\Font.h">
+    <ClInclude Include="Resources\Font.hpp">
       <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="OS-ImGui\OS-ImGui_Struct.h">
