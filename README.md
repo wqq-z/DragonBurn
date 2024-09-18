@@ -109,7 +109,10 @@ Press END key to open/close menu.
 
 ---
 ### 🛠️How to use
-At the beginning, download latest release or compile project by yourself(kernel driver is close source for safety reasons, download it from release). You need only 2 files `DragonBurn.exe` and `DragonBurn-kernel.sys`.
+At the beginning, download latest release or compile project by yourself. You need only 2 files `DragonBurn.exe` and `DragonBurn-kernel.sys`.
+
+> [!NOTE]  
+> Kernel driver is close source for safety reasons, download it from release
 
 Now you should map a driver, you can use any method of driver mapping, but I recommend to use kdmapper. You can find it [here](https://github.com/TheCruZ/kdmapper), anyway I'll attach compiled one to latest release.
 
