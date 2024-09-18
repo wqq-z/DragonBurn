@@ -70,4 +70,4 @@ DragonBurn/Libs/*           linguist-vendored
 DragonBurn/Libs/json/*      linguist-vendored
 DragonBurn/Libs/curl/include/curl/*           linguist-vendored
 DragonBurn/Libs/zlib/include/*                linguist-vendored
-DragonBurn-kernel/KernelApi.h                 linguist-vendored
+DragonBurn/Resources/Sounds.hpp       linguist-vendored
