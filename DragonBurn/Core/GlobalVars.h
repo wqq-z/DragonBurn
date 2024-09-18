@@ -1,6 +1,6 @@
 #pragma once
 #include "../Game/Game.h"
-#include "Globals.hpp"
+#include "Globals.h"
 
 class globalvars
 {

@@ -1,12 +1,12 @@
 ﻿#pragma once
 #include "..\Core\Config.h"
-#include "..\Core\Render.hpp"
+#include "..\Core\Render.h"
 #include "..\Features\Aimbot.h"
 #include "..\Features\Radar.h"
 #include "..\Features\Misc.h"
 #include "..\Features\TriggerBot.h"
-#include "..\Config\ConfigMenu.hpp"
-#include "..\Config\ConfigSaver.hpp"
+#include "..\Config\ConfigMenu.h"
+#include "..\Config\ConfigSaver.h"
 
 #include "..\Resources\Language.h"
 #include "..\Resources\Images.h"

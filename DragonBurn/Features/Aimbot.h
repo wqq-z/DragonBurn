@@ -8,7 +8,7 @@
 #include "..\Game\Entity.h"
 #include "..\Core\Config.h"
 #include <iostream>
-#include "..\Game\View.hpp"
+#include "..\Game\View.h"
 #include "..\Features/RCS.h"
 #include "TriggerBot.h"
 

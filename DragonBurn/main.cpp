@@ -2,7 +2,7 @@
 #include "Offsets/Offsets.h"
 #include "Resources/Language.h"
 #include "Core/Init.h"
-#include "Config/ConfigSaver.hpp"
+#include "Config/ConfigSaver.h"
 #include "Helpers/Logger.h"
 #include <filesystem>
 #include <KnownFolders.h>

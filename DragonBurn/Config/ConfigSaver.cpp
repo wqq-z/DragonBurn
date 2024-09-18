@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-#include "ConfigSaver.hpp"
+#include "ConfigSaver.h"
 #include "../Resources/Language.h"
 #include "../Core/Config.h"
 #include "../Features/TriggerBot.h"

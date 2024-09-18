@@ -1,8 +1,8 @@
 #pragma once
 #include "Game.h"
-#include "View.hpp"
+#include "View.h"
 #include "Bone.h"
-#include "../Core/Globals.hpp"
+#include "../Core/Globals.h"
 #include <map>
 
 struct C_UTL_VECTOR
