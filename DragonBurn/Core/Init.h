@@ -104,15 +104,21 @@ namespace Init
             if (cloudVersion == -1)
                 return 3;
 
-            HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, pid);
+            HANDLE hProcess = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, FALSE, pid);
             if (hProcess) 
             {
                 wchar_t buffer[MAX_PATH];
-                if (GetModuleFileNameEx(hProcess, NULL, buffer, MAX_PATH))
+                DWORD size = MAX_PATH;
+                if (QueryFullProcessImageName(hProcess, 0, buffer, &size))
+                {
+                    CloseHandle(hProcess);
                     processPath = WStringToString(buffer);
-                else 
+                }
+                else
+                {
+                    CloseHandle(hProcess);
                     return 0;
-                CloseHandle(hProcess);
+                }
             }
             else 
                 return 0;
