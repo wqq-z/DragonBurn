@@ -16,7 +16,7 @@ namespace SpecList
         static float fontHeight = ImGui::GetFontSize();
         float requiredHeight = LocalEntity.Controller.spectators.size() * (fontHeight + 5) + 20;
         ImGui::SetNextWindowPos({ 10.0f, ImGui::GetIO().DisplaySize.y / 2 - 200 }, ImGuiCond_Once);
-        ImGui::SetNextWindowSize({ 120.0f, requiredHeight }, ImGuiCond_Always);
+        ImGui::SetNextWindowSize({ 150.0f, requiredHeight }, ImGuiCond_Always);
         ImGui::GetStyle().WindowRounding = 8.0f;
 
         ImGui::Begin("Spectators", NULL, flags);
