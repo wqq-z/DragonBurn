@@ -410,3 +410,4 @@ DragonBurn/Libs/zlib/*
 DragonBurn/Libs/curl/*
 built/
 built_dbg/
+DragonBurn-kernel/
