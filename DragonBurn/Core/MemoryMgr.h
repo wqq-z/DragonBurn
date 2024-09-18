@@ -6,6 +6,7 @@
 #include <vector>
 
 #define DRAGON_DEVICE 0x8000
+#define IOCTL_GET_MODULE_BASE CTL_CODE(DRAGON_DEVICE, 0x4462, METHOD_NEITHER, FILE_ANY_ACCESS)
 #define IOCTL_READ_PROCESS_MEMORY CTL_CODE(DRAGON_DEVICE, 0x4472, METHOD_NEITHER, FILE_ANY_ACCESS)
 #define IOCTL_WRITE_PROCESS_MEMORY CTL_CODE(DRAGON_DEVICE, 0x4482, METHOD_NEITHER, FILE_ANY_ACCESS)
 #define IOCTL_WRITE_PROCESS_MEMORY_PROTECTED CTL_CODE(DRAGON_DEVICE, 0x4492, METHOD_NEITHER, FILE_ANY_ACCESS)
@@ -48,64 +49,73 @@ public:
         return false;
     }
 
-    template <typename WriteType>
-    bool WriteMemory(DWORD64 address, WriteType& value, SIZE_T size = sizeof(WriteType))
-    {
-        if (kernelDriver != INVALID_HANDLE_VALUE && ProcessID != 0)
-        {
-            WRITE_PACK WritePack;
-            WritePack.pid = ProcessID;
-            WritePack.address = reinterpret_cast<PVOID>(address);
-            WritePack.buff = const_cast<void*>(value);
-            WritePack.size = size;
+    //template <typename WriteType>
+    //bool WriteMemory(DWORD64 address, WriteType& value, SIZE_T size = sizeof(WriteType))
+    //{
+    //    if (kernelDriver != INVALID_HANDLE_VALUE && ProcessID != 0)
+    //    {
+    //        WRITE_PACK WritePack;
+    //        WritePack.pid = ProcessID;
+    //        WritePack.address = reinterpret_cast<PVOID>(address);
+    //        WritePack.buff = const_cast<void*>(value);
+    //        WritePack.size = size;
 
-            BOOL result = DeviceIoControl(kernelDriver,
-                IOCTL_WRITE_PROCESS_MEMORY,
-                &WritePack,
-                sizeof(WritePack),
-                nullptr,
-                0,
-                nullptr,
-                nullptr);
+    //        BOOL result = DeviceIoControl(kernelDriver,
+    //            IOCTL_WRITE_PROCESS_MEMORY,
+    //            &WritePack,
+    //            sizeof(WritePack),
+    //            nullptr,
+    //            0,
+    //            nullptr,
+    //            nullptr);
 
-            return result == TRUE;
-        }
-        return false;
-    }
+    //        return result == TRUE;
+    //    }
+    //    return false;
+    //}
 
-    template <typename WriteType>
-    bool WriteMemoryProtected(DWORD64 address, WriteType& value, SIZE_T size = sizeof(WriteType))
-    {
-        if (kernelDriver != INVALID_HANDLE_VALUE && ProcessID != 0)
-        {
-            WRITE_PACK WritePack;
-            WritePack.pid = ProcessID;
-            WritePack.address = reinterpret_cast<PVOID>(address);
-            WritePack.buff = const_cast<void*>(value);
-            WritePack.size = size;
+    //template <typename WriteType>
+    //bool WriteMemoryProtected(DWORD64 address, WriteType& value, SIZE_T size = sizeof(WriteType))
+    //{
+    //    if (kernelDriver != INVALID_HANDLE_VALUE && ProcessID != 0)
+    //    {
+    //        WRITE_PACK WritePack;
+    //        WritePack.pid = ProcessID;
+    //        WritePack.address = reinterpret_cast<PVOID>(address);
+    //        WritePack.buff = const_cast<void*>(value);
+    //        WritePack.size = size;
 
-            BOOL result = DeviceIoControl(kernelDriver,
-                IOCTL_WRITE_PROCESS_MEMORY_PROTECTED,
-                &WritePack,
-                sizeof(WritePack),
-                nullptr,
-                0,
-                nullptr,
-                nullptr);
+    //        BOOL result = DeviceIoControl(kernelDriver,
+    //            IOCTL_WRITE_PROCESS_MEMORY_PROTECTED,
+    //            &WritePack,
+    //            sizeof(WritePack),
+    //            nullptr,
+    //            0,
+    //            nullptr,
+    //            nullptr);
 
-            return result == TRUE;
-        }
-        return false;
-    }
+    //        return result == TRUE;
+    //    }
+    //    return false;
+    //}
 
 	DWORD64 TraceAddress(DWORD64, std::vector<DWORD>);
+    DWORD64 GetModuleBase(const wchar_t*);
 
 	static DWORD GetProcessID(const wchar_t*);
-	static DWORD64 GetModuleBase(const DWORD, const wchar_t*);
+	//static DWORD64 GetModuleBase(const DWORD, const wchar_t*);
 
 private:
 	DWORD ProcessID;
 	HANDLE kernelDriver;
+
+    // Structure for getting module address base
+    typedef struct _MODULE_PACK {
+        UINT32 pid;
+        UINT64 baseAddress;
+        SIZE_T size;
+        WCHAR moduleName[1024];
+    } MODULE_PACK, * P_MODULE_PACK;
 
     // Structure for writing memory to a process
     typedef struct _WRITE_PACK {

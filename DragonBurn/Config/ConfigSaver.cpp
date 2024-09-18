@@ -2,9 +2,9 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-#include "ConfigSaver.hpp"
+#include "ConfigSaver.h"
 #include "../Resources/Language.h"
-#include "../Config/MenuConfig.hpp"
+#include "../Core/Config.h"
 #include "../Features/TriggerBot.h"
 #include "../Features/Aimbot.h"
 #include "../Features/RCS.h"

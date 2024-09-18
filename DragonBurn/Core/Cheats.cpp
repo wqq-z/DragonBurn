@@ -4,8 +4,8 @@
 #include <iostream>
 
 #include "Cheats.h"
-#include "Render.hpp"
-#include "../Config/MenuConfig.hpp"
+#include "Render.h"
+#include "../Core/Config.h"
 
 #include "../Core/Init.h"
 
@@ -190,8 +190,8 @@ void Cheats::Run()
 	Log::Debug("currentFPS: " + std::to_string(currentFPS));
 	if (currentFPS > MenuConfig::RenderFPS)
 	{
-		int FrameWait = round(1000.0 / MenuConfig::RenderFPS);
-		std::this_thread::sleep_for(std::chrono::milliseconds(FrameWait));
+		int FrameWait = round(1000000.0f / MenuConfig::RenderFPS);
+		std::this_thread::sleep_for(std::chrono::microseconds(FrameWait));
 	}
 }
 

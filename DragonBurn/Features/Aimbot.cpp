@@ -146,8 +146,8 @@ void AimControl::AimBot(const CEntity& Local, Vec3 LocalPos, std::vector<Vec3>& 
 
         mouse_event(MOUSEEVENTF_MOVE, TargetX, TargetY, NULL, NULL);
 
-        int AimInterval = round(1000.0 / MenuConfig::RenderFPS);
-        std::this_thread::sleep_for(std::chrono::milliseconds(AimInterval));
+        int FrameWait = round(1000000.0f / MenuConfig::RenderFPS);
+        std::this_thread::sleep_for(std::chrono::microseconds(FrameWait));
     }
     else
         HasTarget = false;

@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include "..\Core\Render.hpp"
-#include "..\Config\MenuConfig.hpp"
+#include "..\Core\Render.h"
+#include "..\Core\Config.h"
 #include "..\Core\Cheats.h"
 #include "..\Helpers\GetWeaponIcon.h"
 

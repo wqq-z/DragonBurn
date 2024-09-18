@@ -54,7 +54,7 @@
     <ClInclude Include="Resources\Images.h">
       <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="Resources\font.h">
+    <ClInclude Include="Resources\Font.h">
       <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="OS-ImGui\OS-ImGui_Struct.h">
@@ -99,7 +99,7 @@
     <ClInclude Include="OS-ImGui\stb\stb_image.h">
       <Filter>ImGui\stb</Filter>
     </ClInclude>
-    <ClInclude Include="Game\View.hpp">
+    <ClInclude Include="Game\View.h">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\Game.h">
@@ -141,7 +141,7 @@
     <ClInclude Include="Helpers\Format.h">
       <Filter>Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Render.hpp">
+    <ClInclude Include="Core\Render.h">
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="Core\Init.h">
@@ -153,19 +153,16 @@
     <ClInclude Include="Core\GlobalVars.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Globals.hpp">
+    <ClInclude Include="Core\Globals.h">
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="Core\Cheats.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Config\MenuConfig.hpp">
+    <ClInclude Include="Config\ConfigSaver.h">
       <Filter>Config</Filter>
     </ClInclude>
-    <ClInclude Include="Config\ConfigSaver.hpp">
-      <Filter>Config</Filter>
-    </ClInclude>
-    <ClInclude Include="Config\ConfigMenu.hpp">
+    <ClInclude Include="Config\ConfigMenu.h">
       <Filter>Config</Filter>
     </ClInclude>
     <ClInclude Include="Offsets\Offsets.h">
@@ -180,10 +177,13 @@
     <ClInclude Include="Helpers\Logger.h">
       <Filter>Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="Resources\resource.h">
+    <ClInclude Include="Resources\Resource.h">
       <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="Core\MemoryMgr.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Config.h">
       <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>

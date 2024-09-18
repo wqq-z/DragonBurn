@@ -6,7 +6,7 @@
 #include <ctime>
 #include <string>
 #include "..\Game\Entity.h"
-#include "..\Config\MenuConfig.hpp"
+#include "..\Core\Config.h"
 
 namespace bmb
 {

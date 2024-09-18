@@ -8,7 +8,7 @@
 #include <psapi.h>
 #include "../Offsets/Offsets.h"
 #include "../Helpers/WebApi.h"
-#include "../Config/MenuConfig.hpp"
+#include "../Core/Config.h"
 
 inline std::chrono::time_point<std::chrono::system_clock> timepoint = std::chrono::system_clock::now();
 inline bool keyWasPressed = false;
@@ -104,15 +104,21 @@ namespace Init
             if (cloudVersion == -1)
                 return 3;
 
-            HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, pid);
+            HANDLE hProcess = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, FALSE, pid);
             if (hProcess) 
             {
                 wchar_t buffer[MAX_PATH];
-                if (GetModuleFileNameEx(hProcess, NULL, buffer, MAX_PATH))
+                DWORD size = MAX_PATH;
+                if (QueryFullProcessImageName(hProcess, 0, buffer, &size))
+                {
+                    CloseHandle(hProcess);
                     processPath = WStringToString(buffer);
-                else 
+                }
+                else
+                {
+                    CloseHandle(hProcess);
                     return 0;
-                CloseHandle(hProcess);
+                }
             }
             else 
                 return 0;

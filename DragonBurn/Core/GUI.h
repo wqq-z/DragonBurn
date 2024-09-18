@@ -1,12 +1,12 @@
 ﻿#pragma once
-#include "..\Config\MenuConfig.hpp"
-#include "..\Core\Render.hpp"
+#include "..\Core\Config.h"
+#include "..\Core\Render.h"
 #include "..\Features\Aimbot.h"
 #include "..\Features\Radar.h"
 #include "..\Features\Misc.h"
 #include "..\Features\TriggerBot.h"
-#include "..\Config\ConfigMenu.hpp"
-#include "..\Config\ConfigSaver.hpp"
+#include "..\Config\ConfigMenu.h"
+#include "..\Config\ConfigSaver.h"
 
 #include "..\Resources\Language.h"
 #include "..\Resources\Images.h"
@@ -348,8 +348,8 @@ namespace GUI
 					ImGui::Dummy({ 0.f, ImGui::GetFrameHeight() * 9 });
 
 					ImGui::SeparatorText("External Radar");
-					float RadarPointSizeProportionMin = 0.8f, RadarPointSizeProportionMax = 2.f;
-					float ProportionMin = 500.f, ProportionMax = 3300.f;
+					float RadarPointSizeProportionMin = 0.2f, RadarPointSizeProportionMax = 2.f;
+					float ProportionMin = 500.f, ProportionMax = 10000.f;
 					float RadarRangeMin = 100.f, RadarRangeMax = 300.f;
 					float AlphaMin = 0.f, AlphaMax = 1.f;
 					PutSwitch(Text::Radar::Toggle.c_str(), 5.f, ImGui::GetFrameHeight() * 1.7, &RadarCFG::ShowRadar);
@@ -408,7 +408,7 @@ namespace GUI
 
 					float FovMin = 0.f, FovMax = 25.f, MinFovMax = 1.f;
 					int BulletMin = 0, BulletMax = 5;
-					float SmoothMin = 0.4f, SmoothMax = 10.f;
+					float SmoothMin = 1.f, SmoothMax = 10.f;
 					PutSwitch(Text::Aimbot::Enable.c_str(), 10.f, ImGui::GetFrameHeight() * 1.7, &LegitBotConfig::AimBot);
 					if (LegitBotConfig::AimBot)
 					{

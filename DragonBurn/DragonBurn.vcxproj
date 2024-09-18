@@ -170,15 +170,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Config\ConfigMenu.hpp" />
-    <ClInclude Include="Config\ConfigSaver.hpp" />
-    <ClInclude Include="Config\MenuConfig.hpp" />
+    <ClInclude Include="Config\ConfigMenu.h" />
+    <ClInclude Include="Config\ConfigSaver.h" />
+    <ClInclude Include="Core\Config.h" />
     <ClInclude Include="Core\Cheats.h" />
-    <ClInclude Include="Core\Globals.hpp" />
+    <ClInclude Include="Core\Globals.h" />
     <ClInclude Include="Core\GlobalVars.h" />
     <ClInclude Include="Core\GUI.h" />
     <ClInclude Include="Core\Init.h" />
-    <ClInclude Include="Core\Render.hpp" />
+    <ClInclude Include="Core\Render.h" />
     <ClInclude Include="Features\Aimbot.h" />
     <ClInclude Include="Features\BombTimer.h" />
     <ClInclude Include="Features\ESP.h" />
@@ -190,7 +190,7 @@
     <ClInclude Include="Game\Bone.h" />
     <ClInclude Include="Game\Entity.h" />
     <ClInclude Include="Game\Game.h" />
-    <ClInclude Include="Game\View.hpp" />
+    <ClInclude Include="Game\View.h" />
     <ClInclude Include="Helpers\Format.h" />
     <ClInclude Include="Helpers\GetWeaponIcon.h" />
     <ClInclude Include="Helpers\Logger.h" />
@@ -212,8 +212,8 @@
     <ClInclude Include="OS-ImGui\OS-ImGui_Struct.h" />
     <ClInclude Include="OS-ImGui\stb\stb_image.h" />
     <ClInclude Include="Core\MemoryMgr.h" />
-    <ClInclude Include="Resources\resource.h" />
-    <ClInclude Include="Resources\font.h" />
+    <ClInclude Include="Resources\Resource.h" />
+    <ClInclude Include="Resources\Font.h" />
     <ClInclude Include="Resources\Images.h" />
     <ClInclude Include="Resources\Language.h" />
     <ClInclude Include="Resources\Sounds.h" />

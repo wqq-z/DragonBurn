@@ -1,6 +1,6 @@
-#include "ConfigMenu.hpp"
-#include "../Config/MenuConfig.hpp"
-#include "ConfigSaver.hpp"
+#include "ConfigMenu.h"
+#include "../Core/Config.h"
+#include "ConfigSaver.h"
 #include "../Features/TriggerBot.h"
 #include "../Features/Aimbot.h"
 #include <filesystem>

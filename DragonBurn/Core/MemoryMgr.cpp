@@ -65,6 +65,35 @@ DWORD64 MemoryMgr::TraceAddress(DWORD64 baseAddress, std::vector<DWORD> offsets)
 		return 0;
 }
 
+DWORD64 MemoryMgr::GetModuleBase(const wchar_t* moduleName)
+{
+	if (kernelDriver != nullptr && ProcessID != 0)
+	{
+		MODULE_PACK ModulePack;
+		DWORD64 address = 0;
+		ModulePack.pid = ProcessID;
+		ModulePack.baseAddress = address;
+		RtlZeroMemory(ModulePack.moduleName, 1024);
+		wcsncpy(ModulePack.moduleName, moduleName, 1024);
+
+		BOOL result = DeviceIoControl(kernelDriver,
+			IOCTL_GET_MODULE_BASE,
+			&ModulePack,
+			sizeof(ModulePack),
+			&ModulePack,
+			sizeof(ModulePack),
+			nullptr,
+			nullptr);
+
+		if (result == TRUE)
+			return ModulePack.baseAddress;
+		else
+			return 0;
+	}
+	else
+		return 0;
+}
+
 DWORD MemoryMgr::GetProcessID(const wchar_t* processName) 
 {
 	DWORD processId = 0;
@@ -98,35 +127,35 @@ DWORD MemoryMgr::GetProcessID(const wchar_t* processName)
 	return processId;
 }
 
-DWORD64 MemoryMgr::GetModuleBase(const DWORD pid, const wchar_t* moduleName) {
-	DWORD64 moduleBase = 0;
-
-	// Snap-shot of process' modules (dlls).
-	HANDLE snapShot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, pid);
-	if (snapShot == INVALID_HANDLE_VALUE)
-		return moduleBase;
-
-	MODULEENTRY32W entry = {};
-	entry.dwSize = sizeof(decltype(entry));
-
-	if (Module32FirstW(snapShot, &entry) == TRUE)
-	{
-		if (wcsstr(moduleName, entry.szModule) != nullptr)
-			moduleBase = reinterpret_cast<DWORD64>(entry.modBaseAddr);
-
-		else
-		{
-			while (Module32NextW(snapShot, &entry) == TRUE)
-			{
-				if (wcsstr(moduleName, entry.szModule) != nullptr)
-				{
-					moduleBase = reinterpret_cast<DWORD64>(entry.modBaseAddr);
-					break;
-				}
-			}
-		}
-	}
-
-	CloseHandle(snapShot);
-	return moduleBase;
-}
+//DWORD64 MemoryMgr::GetModuleBase(const DWORD pid, const wchar_t* moduleName) {
+//	DWORD64 moduleBase = 0;
+//
+//	// Snap-shot of process' modules (dlls).
+//	HANDLE snapShot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, pid);
+//	if (snapShot == INVALID_HANDLE_VALUE)
+//		return moduleBase;
+//
+//	MODULEENTRY32W entry = {};
+//	entry.dwSize = sizeof(decltype(entry));
+//
+//	if (Module32FirstW(snapShot, &entry) == TRUE)
+//	{
+//		if (wcsstr(moduleName, entry.szModule) != nullptr)
+//			moduleBase = reinterpret_cast<DWORD64>(entry.modBaseAddr);
+//
+//		else
+//		{
+//			while (Module32NextW(snapShot, &entry) == TRUE)
+//			{
+//				if (wcsstr(moduleName, entry.szModule) != nullptr)
+//				{
+//					moduleBase = reinterpret_cast<DWORD64>(entry.modBaseAddr);
+//					break;
+//				}
+//			}
+//		}
+//	}
+//
+//	CloseHandle(snapShot);
+//	return moduleBase;
+//}
