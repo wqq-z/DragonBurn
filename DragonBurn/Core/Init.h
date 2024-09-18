@@ -8,7 +8,7 @@
 #include <psapi.h>
 #include "../Offsets/Offsets.h"
 #include "../Helpers/WebApi.h"
-#include "../Config/MenuConfig.hpp"
+#include "../Core/Config.h"
 
 inline std::chrono::time_point<std::chrono::system_clock> timepoint = std::chrono::system_clock::now();
 inline bool keyWasPressed = false;

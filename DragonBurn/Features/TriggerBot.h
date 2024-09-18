@@ -3,7 +3,7 @@
 
 #include "../Game/Game.h"
 #include "../Game/Entity.h"
-#include "../Config/MenuConfig.hpp"
+#include "../Core/Config.h"
 
 namespace TriggerBot
 {

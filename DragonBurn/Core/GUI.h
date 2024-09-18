@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "..\Config\MenuConfig.hpp"
+#include "..\Core\Config.h"
 #include "..\Core\Render.hpp"
 #include "..\Features\Aimbot.h"
 #include "..\Features\Radar.h"

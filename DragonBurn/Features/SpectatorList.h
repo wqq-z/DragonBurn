@@ -1,5 +1,5 @@
 #pragma once
-#include "..\Config\MenuConfig.hpp"
+#include "..\Core\Config.h"
 #include "..\Game\Entity.h"
 #include <vector>
 #include <string>

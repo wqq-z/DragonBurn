@@ -6,7 +6,7 @@
 #include <chrono>
 #include "..\Game\Game.h"
 #include "..\Game\Entity.h"
-#include "..\Config\MenuConfig.hpp"
+#include "..\Core\Config.h"
 #include <iostream>
 #include "..\Game\View.hpp"
 #include "..\Features/RCS.h"

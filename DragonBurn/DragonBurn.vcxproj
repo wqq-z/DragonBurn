@@ -172,7 +172,7 @@
   <ItemGroup>
     <ClInclude Include="Config\ConfigMenu.hpp" />
     <ClInclude Include="Config\ConfigSaver.hpp" />
-    <ClInclude Include="Config\MenuConfig.hpp" />
+    <ClInclude Include="Core\Config.h" />
     <ClInclude Include="Core\Cheats.h" />
     <ClInclude Include="Core\Globals.hpp" />
     <ClInclude Include="Core\GlobalVars.h" />

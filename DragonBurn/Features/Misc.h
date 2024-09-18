@@ -16,7 +16,7 @@
 #include "Aimbot.h"
 #include "..\Resources\Sounds.h"
 #include "..\Game\Entity.h"
-#include "..\Config\MenuConfig.hpp"
+#include "..\Core\Config.h"
 #include "..\OS-ImGui\imgui\imgui.h"
 #include "..\Core\GlobalVars.h"
 

@@ -5,7 +5,7 @@
 
 #include "Cheats.h"
 #include "Render.hpp"
-#include "../Config/MenuConfig.hpp"
+#include "../Core/Config.h"
 
 #include "../Core/Init.h"
 

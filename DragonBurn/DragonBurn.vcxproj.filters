@@ -159,9 +159,6 @@
     <ClInclude Include="Core\Cheats.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Config\MenuConfig.hpp">
-      <Filter>Config</Filter>
-    </ClInclude>
     <ClInclude Include="Config\ConfigSaver.hpp">
       <Filter>Config</Filter>
     </ClInclude>
@@ -184,6 +181,9 @@
       <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="Core\MemoryMgr.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Config.h">
       <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>

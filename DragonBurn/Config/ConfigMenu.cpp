@@ -1,5 +1,5 @@
 #include "ConfigMenu.hpp"
-#include "../Config/MenuConfig.hpp"
+#include "../Core/Config.h"
 #include "ConfigSaver.hpp"
 #include "../Features/TriggerBot.h"
 #include "../Features/Aimbot.h"
