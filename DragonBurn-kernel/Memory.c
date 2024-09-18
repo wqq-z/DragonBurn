@@ -1,6 +1,92 @@
 #pragma once
 #include "Memory.h"
 
+// method definitions
+DWORD PEBLDR_OFFSET = 0x18; // peb.ldr
+DWORD PEBLDR_MEMORYLOADED_OFFSET = 0x10; // peb.ldr.InMemoryOrderModuleList
+extern PVOID PsGetProcessSectionBaseAddress(PEPROCESS Process);
+
+NTSTATUS GetModuleBase(P_MODULE_PACK ModulePack)
+{
+	PEPROCESS Process;
+	KAPC_STATE APC;
+	NTSTATUS Status = STATUS_FAIL_CHECK;
+	ModulePack->baseAddress = 228;
+
+	if (!NT_SUCCESS(PsLookupProcessByProcessId((PVOID)ModulePack->pid, &Process)))
+		return STATUS_INVALID_PARAMETER_1;
+
+	P_MODULE_PACK ModuleList = ExAllocatePool(PagedPool, sizeof(MODULE_PACK) * 512);
+	if (ModuleList == NULL)
+		return STATUS_MEMORY_NOT_ALLOCATED;
+
+	RtlZeroMemory(ModuleList, sizeof(MODULE_PACK) * 512);
+
+	PPEB Peb = PsGetProcessPeb(Process);
+	if (!Peb)
+		return STATUS_INVALID_PARAMETER_1;
+
+	__try {
+		KeStackAttachProcess(Process, &APC);
+
+		UINT64 Ldr = (UINT64)Peb + PEBLDR_OFFSET;
+		ProbeForRead((CONST PVOID)Ldr, 8, 8);
+
+		PLIST_ENTRY ModListHead = (PLIST_ENTRY)(*(PULONG64)Ldr + PEBLDR_MEMORYLOADED_OFFSET);
+		ProbeForRead((CONST PVOID)ModListHead, 8, 8);
+
+		PLIST_ENTRY Module = ModListHead->Flink;
+
+		DWORD index = 0;
+		while (ModListHead != Module) {
+			LDR_DATA_TABLE_ENTRY* Module_Ldr = (LDR_DATA_TABLE_ENTRY*)(Module);
+
+			ModuleList[index].baseAddress = Module_Ldr->DllBase;
+			ModuleList[index].size = Module_Ldr->SizeOfImage;
+			RtlCopyMemory(ModuleList[index].moduleName, Module_Ldr->BaseDllName.Buffer, Module_Ldr->BaseDllName.Length);
+
+			Module = Module->Flink;
+			index++;
+		}
+
+		KeUnstackDetachProcess(&APC);
+
+		Status = STATUS_SUCCESS;
+	}
+	__except (EXCEPTION_EXECUTE_HANDLER)
+	{
+		KeUnstackDetachProcess(&APC);
+	}
+
+	ModuleList[0].baseAddress += (UINT64)PsGetProcessSectionBaseAddress(Process);
+
+	WCHAR ModuleName[1024];
+
+	RtlZeroMemory(ModuleName, 1024);
+	wcsncpy(ModuleName, ModulePack->moduleName, 1024);
+
+	MODULE_PACK SelectedModule;
+	for (DWORD i = 0; i < 512; i++) {
+		MODULE_PACK CurrentModule = ModuleList[i];
+
+		if (_wcsicmp(CurrentModule.moduleName, ModuleName) == 0)
+		{
+			SelectedModule = CurrentModule;
+			break;
+		}
+	}
+
+	if (SelectedModule.baseAddress != NULL && SelectedModule.size != NULL) 
+	{
+		ModulePack->baseAddress = SelectedModule.baseAddress;
+	}
+
+	ExFreePool(ModuleList);
+	ObfDereferenceObject(Process);
+
+	return Status;
+}
+
 NTSTATUS ReadProcessMemory(P_READ_PACK ReadPack)
 {
 	if (!ReadPack)

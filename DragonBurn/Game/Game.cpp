@@ -2,8 +2,8 @@
 
 bool CGame::InitAddress()
 {
-	this->Address.ClientDLL = MemoryMgr::GetModuleBase(MemoryMgr::GetProcessID(L"cs2.exe"),L"client.dll");
-	this->Address.ServerDLL = MemoryMgr::GetModuleBase(MemoryMgr::GetProcessID(L"cs2.exe"),L"server.dll");
+	this->Address.ClientDLL = memoryManager.GetModuleBase(L"client.dll");//MemoryMgr::GetModuleBase(MemoryMgr::GetProcessID(L"cs2.exe"),L"client.dll");
+	this->Address.ServerDLL = memoryManager.GetModuleBase(L"server.dll");//MemoryMgr::GetModuleBase(MemoryMgr::GetProcessID(L"cs2.exe"),L"server.dll");
 	
 	this->Address.EntityList = GetClientDLLAddress() + Offset.EntityList;
 	this->Address.Matrix = GetClientDLLAddress() + Offset.Matrix;

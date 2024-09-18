@@ -34,6 +34,16 @@ NTSTATUS DriverIrpDeviceControl(PDEVICE_OBJECT DeviceObject, PIRP Irp)
 	//Execute IOCTL handler
 	switch (Stack->Parameters.DeviceIoControl.IoControlCode)
 	{
+	case IOCTL_GET_MODULE_BASE:
+		if (Stack->Parameters.DeviceIoControl.InputBufferLength < sizeof(MODULE_PACK))
+		{
+			ntResult = STATUS_BUFFER_TOO_SMALL;
+			break;
+		}
+
+		ntResult = GetModuleBase((P_MODULE_PACK)Stack->Parameters.DeviceIoControl.Type3InputBuffer);
+		break;
+
 	case IOCTL_READ_PROCESS_MEMORY:
 		if (Stack->Parameters.DeviceIoControl.InputBufferLength < sizeof(READ_PACK))
 		{
