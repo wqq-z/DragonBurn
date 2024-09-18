@@ -4,6 +4,7 @@
 ○ Make cheat multi-tread
 ○ Show bomb carrier(check all entity weapons)
 ○ Add GH
+◎ More secure
 ◎ Kernel mode
 ◎ Fix BSOD
 ◎ Fix radar in menu
