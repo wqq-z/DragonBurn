@@ -23,7 +23,8 @@ int main()
 void Cheat()
 {
 	ShowWindow(GetConsoleWindow(), SW_SHOWNORMAL);
-	Init::Verify::RandTitle();
+	SetConsoleTitle(L"DragonBurn");
+	//Init::Verify::RandTitle();
 
 	Log::Custom(R"LOGO(______                            ______                  
 |  _  \                           | ___ \                 
