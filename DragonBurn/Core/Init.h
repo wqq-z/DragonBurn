@@ -52,7 +52,7 @@ namespace Init
             const auto characters = TEXT("0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM");
             TCHAR title[length + 1]{};
 
-            for (int j = 0; j != length; j++)
+            for (int j = 0; j < length; j++)
             {
                 title[j] += characters[rand() % 63];
             }
