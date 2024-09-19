@@ -91,18 +91,19 @@ namespace Init
 
         static int CheckCS2Version()
         {
-            DWORD pid = memoryManager.GetProcessID(L"cs2.exe");
             long curVer;
             const std::string cloudVersionUrl = "https://raw.githubusercontent.com/ByteCorum/DragonBurn/data/cs2-version";
-            long cloudVersion;
-            std::string processPath;
             std::string buff;
+            long cloudVersion;
 
             if (!Web::Get(cloudVersionUrl, buff))
                 return 2;
             cloudVersion = stoi(buff);
             if (cloudVersion == -1)
                 return 3;
+
+            DWORD pid = memoryManager.GetProcessID(L"cs2.exe");
+            std::string processPath;
 
             HANDLE hProcess = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, FALSE, pid);
             if (hProcess) 
