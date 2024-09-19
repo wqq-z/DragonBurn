@@ -42,24 +42,27 @@ bool MemoryMgr::Attach(const DWORD pid)
 	return true;
 }
 
-DWORD64 MemoryMgr::TraceAddress(DWORD64 baseAddress, std::vector<DWORD> offsets)
+DWORD MemoryMgr::GetProcessID(const wchar_t* processName)
 {
-	if (kernelDriver != nullptr && ProcessID != 0)
+	if (kernelDriver != nullptr)
 	{
-		DWORD64 address = 0;
+		PID_PACK PidPack;
+		RtlZeroMemory(PidPack.name, 1024);
+		wcsncpy(PidPack.name, processName, 1024);
 
-		if (offsets.size() == 0)
-			return baseAddress;
+		BOOL result = DeviceIoControl(kernelDriver,
+			IOCTL_GET_PID,
+			&PidPack,
+			sizeof(PidPack),
+			&PidPack,
+			sizeof(PidPack),
+			nullptr,
+			nullptr);
 
-		if (!ReadMemory<DWORD64>(baseAddress, address))
+		if (result == TRUE)
+			return PidPack.pid;
+		else
 			return 0;
-
-		for (int i = 0; i < offsets.size() - 1; i++)
-		{
-			if (!ReadMemory<DWORD64>(address + offsets[i], address))
-				return 0;
-		}
-		return address == 0 ? 0 : address + offsets[offsets.size() - 1];
 	}
 	else
 		return 0;
@@ -94,68 +97,25 @@ DWORD64 MemoryMgr::GetModuleBase(const wchar_t* moduleName)
 		return 0;
 }
 
-DWORD MemoryMgr::GetProcessID(const wchar_t* processName) 
+DWORD64 MemoryMgr::TraceAddress(DWORD64 baseAddress, std::vector<DWORD> offsets)
 {
-	DWORD processId = 0;
-	HANDLE snapShot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
-
-	if (snapShot == INVALID_HANDLE_VALUE)
-		return processId;
-
-	PROCESSENTRY32W entry = {};
-	entry.dwSize = sizeof(decltype(entry));
-
-	if (Process32FirstW(snapShot, &entry) == TRUE) // Check if the first handle is the one we want
+	if (kernelDriver != nullptr && ProcessID != 0)
 	{
-		if (_wcsicmp(processName, entry.szExeFile) == 0)
-			processId = entry.th32ProcessID;
+		DWORD64 address = 0;
 
-		else
+		if (offsets.size() == 0)
+			return baseAddress;
+
+		if (!ReadMemory<DWORD64>(baseAddress, address))
+			return 0;
+
+		for (int i = 0; i < offsets.size() - 1; i++)
 		{
-			while (Process32NextW(snapShot, &entry) == TRUE)
-			{
-				if (_wcsicmp(processName, entry.szExeFile) == 0)
-				{
-					processId = entry.th32ProcessID;
-					break;
-				}
-			}
+			if (!ReadMemory<DWORD64>(address + offsets[i], address))
+				return 0;
 		}
+		return address == 0 ? 0 : address + offsets[offsets.size() - 1];
 	}
-
-	CloseHandle(snapShot);
-	return processId;
+	else
+		return 0;
 }
-
-//DWORD64 MemoryMgr::GetModuleBase(const DWORD pid, const wchar_t* moduleName) {
-//	DWORD64 moduleBase = 0;
-//
-//	// Snap-shot of process' modules (dlls).
-//	HANDLE snapShot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, pid);
-//	if (snapShot == INVALID_HANDLE_VALUE)
-//		return moduleBase;
-//
-//	MODULEENTRY32W entry = {};
-//	entry.dwSize = sizeof(decltype(entry));
-//
-//	if (Module32FirstW(snapShot, &entry) == TRUE)
-//	{
-//		if (wcsstr(moduleName, entry.szModule) != nullptr)
-//			moduleBase = reinterpret_cast<DWORD64>(entry.modBaseAddr);
-//
-//		else
-//		{
-//			while (Module32NextW(snapShot, &entry) == TRUE)
-//			{
-//				if (wcsstr(moduleName, entry.szModule) != nullptr)
-//				{
-//					moduleBase = reinterpret_cast<DWORD64>(entry.modBaseAddr);
-//					break;
-//				}
-//			}
-//		}
-//	}
-//
-//	CloseHandle(snapShot);
-//	return moduleBase;
-//}
