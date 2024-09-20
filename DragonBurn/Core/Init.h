@@ -45,20 +45,20 @@ namespace Init
             return false;
 		}
 
-        static void RandTitle()
-        {
-            srand(time(0));
-            constexpr int length = 25;
-            const auto characters = TEXT("0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM");
-            TCHAR title[length + 1]{};
+        //static void RandTitle()
+        //{
+        //    srand(time(0));
+        //    constexpr int length = 25;
+        //    const auto characters = TEXT("0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM");
+        //    TCHAR title[length + 1]{};
 
-            for (int j = 0; j != length; j++)
-            {
-                title[j] += characters[rand() % 63];
-            }
+        //    for (int j = 0; j < length; j++)
+        //    {
+        //        title[j] += characters[rand() % 63];
+        //    }
 
-            SetConsoleTitle(title);
-        }
+        //    SetConsoleTitle(title);
+        //}
 
         static int CheckCheatVersion()
         {
@@ -91,18 +91,19 @@ namespace Init
 
         static int CheckCS2Version()
         {
-            DWORD pid = MemoryMgr::GetProcessID(L"cs2.exe");
             long curVer;
             const std::string cloudVersionUrl = "https://raw.githubusercontent.com/ByteCorum/DragonBurn/data/cs2-version";
-            long cloudVersion;
-            std::string processPath;
             std::string buff;
+            long cloudVersion;
 
             if (!Web::Get(cloudVersionUrl, buff))
                 return 2;
             cloudVersion = stoi(buff);
             if (cloudVersion == -1)
                 return 3;
+
+            DWORD pid = memoryManager.GetProcessID(L"cs2.exe");
+            std::string processPath;
 
             HANDLE hProcess = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, FALSE, pid);
             if (hProcess) 

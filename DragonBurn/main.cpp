@@ -23,7 +23,8 @@ int main()
 void Cheat()
 {
 	ShowWindow(GetConsoleWindow(), SW_SHOWNORMAL);
-	Init::Verify::RandTitle();
+	SetConsoleTitle(L"DragonBurn");
+	//Init::Verify::RandTitle();
 
 	Log::Custom(R"LOGO(______                            ______                  
 |  _  \                           | ___ \                 
@@ -118,7 +119,7 @@ https://github.com/ByteCorum/DragonBurn
 
 	std::cout << '\n';
 	bool preStart = false;
-	while (MemoryMgr::GetProcessID(L"cs2.exe") == 0)
+	while (memoryManager.GetProcessID(L"cs2.exe") == 0)
 	{
 		Log::PreviousLine();
 		Log::Info("Waiting for CS2");
@@ -164,7 +165,7 @@ https://github.com/ByteCorum/DragonBurn
 	}
 #endif
 
-	if (!memoryManager.Attach(MemoryMgr::GetProcessID(L"cs2.exe"))) 
+	if (!memoryManager.Attach(memoryManager.GetProcessID(L"cs2.exe")))
 	{
 		Log::PreviousLine();
 		Log::Error("Failed to attach to the process");

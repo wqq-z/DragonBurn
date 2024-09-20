@@ -25,9 +25,6 @@
     <Filter Include="Features\Misc">
       <UniqueIdentifier>{b0c7adeb-2fdd-4355-93c2-b03f5946ffec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Features\Aim">
-      <UniqueIdentifier>{bec5d160-9097-41fe-b2e1-d771a6544092}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Helpers">
       <UniqueIdentifier>{d6ce1762-ee50-44d7-938a-7de7d8911330}</UniqueIdentifier>
     </Filter>
@@ -39,6 +36,9 @@
     </Filter>
     <Filter Include="Offsets">
       <UniqueIdentifier>{d41606d6-9efb-4793-9976-ae2deca558e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Features\Legit">
+      <UniqueIdentifier>{bec5d160-9097-41fe-b2e1-d771a6544092}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -127,10 +127,10 @@
       <Filter>Features\Visual</Filter>
     </ClInclude>
     <ClInclude Include="Features\RCS.h">
-      <Filter>Features\Aim</Filter>
+      <Filter>Features\Legit</Filter>
     </ClInclude>
     <ClInclude Include="Features\TriggerBot.h">
-      <Filter>Features\Aim</Filter>
+      <Filter>Features\Legit</Filter>
     </ClInclude>
     <ClInclude Include="Helpers\Mouse.h">
       <Filter>Helpers</Filter>
@@ -169,7 +169,7 @@
       <Filter>Offsets</Filter>
     </ClInclude>
     <ClInclude Include="Features\Aimbot.h">
-      <Filter>Features\Aim</Filter>
+      <Filter>Features\Legit</Filter>
     </ClInclude>
     <ClInclude Include="Helpers\WebApi.h">
       <Filter>Helpers</Filter>
@@ -240,7 +240,7 @@
       <Filter>Features\Visual</Filter>
     </ClCompile>
     <ClCompile Include="Features\TriggerBot.cpp">
-      <Filter>Features\Aim</Filter>
+      <Filter>Features\Legit</Filter>
     </ClCompile>
     <ClCompile Include="Helpers\Mouse.cpp">
       <Filter>Helpers</Filter>
@@ -258,13 +258,13 @@
       <Filter>Config</Filter>
     </ClCompile>
     <ClCompile Include="Features\Aimbot.cpp">
-      <Filter>Features\Aim</Filter>
+      <Filter>Features\Legit</Filter>
     </ClCompile>
     <ClCompile Include="Offsets\Offsets.cpp">
       <Filter>Offsets</Filter>
     </ClCompile>
     <ClCompile Include="Features\RCS.cpp">
-      <Filter>Features\Aim</Filter>
+      <Filter>Features\Legit</Filter>
     </ClCompile>
     <ClCompile Include="Core\MemoryMgr.cpp">
       <Filter>Core</Filter>

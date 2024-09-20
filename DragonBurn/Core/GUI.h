@@ -349,7 +349,7 @@ namespace GUI
 
 					ImGui::SeparatorText("External Radar");
 					float RadarPointSizeProportionMin = 0.2f, RadarPointSizeProportionMax = 2.f;
-					float ProportionMin = 500.f, ProportionMax = 10000.f;
+					float ProportionMin = 500.f, ProportionMax = 15000.f;
 					float RadarRangeMin = 100.f, RadarRangeMax = 300.f;
 					float AlphaMin = 0.f, AlphaMax = 1.f;
 					PutSwitch(Text::Radar::Toggle.c_str(), 5.f, ImGui::GetFrameHeight() * 1.7, &RadarCFG::ShowRadar);
@@ -360,7 +360,7 @@ namespace GUI
 						if (RadarCFG::customRadar)
 						{
 							PutSwitch(Text::Radar::CrossLine.c_str(), 5.f, ImGui::GetFrameHeight() * 1.7, &RadarCFG::ShowRadarCrossLine);
-							PutSliderFloat(Text::Radar::SizeSlider.c_str(), 5.f, &RadarCFG::RadarPointSizeProportion, &RadarPointSizeProportionMin, &RadarPointSizeProportionMax, "%1.f");
+							PutSliderFloat(Text::Radar::SizeSlider.c_str(), 5.f, &RadarCFG::RadarPointSizeProportion, &RadarPointSizeProportionMin, &RadarPointSizeProportionMax, "%.1f");
 							PutSliderFloat(Text::Radar::ProportionSlider.c_str(), 5.f, &RadarCFG::Proportion, &ProportionMin, &ProportionMax, "%.1f");
 							PutSliderFloat(Text::Radar::RangeSlider.c_str(), 5.f, &RadarCFG::RadarRange, &RadarRangeMin, &RadarRangeMax, "%.1f");
 							PutSliderFloat(Text::Radar::AlphaSlider.c_str(), 5.f, &RadarCFG::RadarBgAlpha, &AlphaMin, &AlphaMax, "%.1f");
@@ -406,9 +406,9 @@ namespace GUI
 					ImGui::SetCursorPos(ImVec2(15.f, 24.f));
 					ImGui::SeparatorText("Aimbot");
 
-					float FovMin = 0.f, FovMax = 25.f, MinFovMax = 1.f;
+					float FovMin = 0.f, FovMax = 30.f, MinFovMax = 1.f;
 					int BulletMin = 0, BulletMax = 5;
-					float SmoothMin = 1.f, SmoothMax = 10.f;
+					float SmoothMin = 1.f, SmoothMax = 15.f;
 					PutSwitch(Text::Aimbot::Enable.c_str(), 10.f, ImGui::GetFrameHeight() * 1.7, &LegitBotConfig::AimBot);
 					if (LegitBotConfig::AimBot)
 					{

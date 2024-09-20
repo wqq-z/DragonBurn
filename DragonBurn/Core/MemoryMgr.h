@@ -1,11 +1,11 @@
 #pragma once
 #include <iostream>
 #include <Windows.h>
-#include <Tlhelp32.h>
 #include <string>
 #include <vector>
 
 #define DRAGON_DEVICE 0x8000
+#define IOCTL_GET_PID CTL_CODE(DRAGON_DEVICE, 0x4452, METHOD_NEITHER, FILE_ANY_ACCESS)
 #define IOCTL_GET_MODULE_BASE CTL_CODE(DRAGON_DEVICE, 0x4462, METHOD_NEITHER, FILE_ANY_ACCESS)
 #define IOCTL_READ_PROCESS_MEMORY CTL_CODE(DRAGON_DEVICE, 0x4472, METHOD_NEITHER, FILE_ANY_ACCESS)
 #define IOCTL_WRITE_PROCESS_MEMORY CTL_CODE(DRAGON_DEVICE, 0x4482, METHOD_NEITHER, FILE_ANY_ACCESS)
@@ -20,8 +20,10 @@ public:
 
 	bool ConnectDriver(const LPCWSTR);
 	bool DisconnectDriver();
-
 	bool Attach(const DWORD);
+
+    DWORD64 GetModuleBase(const wchar_t*);
+    DWORD GetProcessID(const wchar_t*);
 
     template <typename ReadType>
     bool ReadMemory(DWORD64 address, ReadType& value, SIZE_T size = sizeof(ReadType))
@@ -43,7 +45,6 @@ public:
                 nullptr,
                 nullptr);
 
-            //std::cout << result << "     " << bytesReturned << "     " << size << "     " << readPack.Buffer << '\n';
             return result == TRUE ; // && bytesReturned == size
         }
         return false;
@@ -100,14 +101,17 @@ public:
     //}
 
 	DWORD64 TraceAddress(DWORD64, std::vector<DWORD>);
-    DWORD64 GetModuleBase(const wchar_t*);
-
-	static DWORD GetProcessID(const wchar_t*);
-	//static DWORD64 GetModuleBase(const DWORD, const wchar_t*);
 
 private:
 	DWORD ProcessID;
 	HANDLE kernelDriver;
+
+    // Structure for getting pid by name
+    typedef struct _PID_PACK
+    {
+        UINT32 pid;
+        WCHAR name[1024];
+    } PID_PACK, * P_PID_PACK;
 
     // Structure for getting module address base
     typedef struct _MODULE_PACK {
