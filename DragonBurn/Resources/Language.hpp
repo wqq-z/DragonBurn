@@ -26,13 +26,13 @@ namespace Text {
         inline std::string Distance = "Distance";
         inline std::string PlayerName = "Player Name";
         inline std::string SnapLine = "Snap Line";
-        inline std::string LinePosList = "Line Position: ";
+        inline std::string LinePosList = "   Line Position";
         inline std::string VisCheck = "Visible Color";
         inline std::string Preview = "ESP Preview";
         inline std::string MultiColor = "Multicoloured";
         inline std::string MultiColTip = "Only work when the box has non-rounded corners.";
         inline std::string Outline = "Outline";
-        inline std::string BoxType = "  Box Type";
+        inline std::string BoxType = "   Box Type";
         inline std::string HealthNum = "Health Number";
         inline std::string Ammo = "Ammo Bar";
         inline std::string ScopedESP = "Show Scoped";
@@ -44,7 +44,7 @@ namespace Text {
     {
         inline std::string Enable = "Enable Aimbot";
         inline std::string FeatureName = "Aimbot";
-        inline std::string HotKeyList = "Hotkey   ";
+        inline std::string HotKeyList = "Hotkey";
         inline std::string Toggle = "Toggle Mode";
         inline std::string DrawFov = "Show Fov";
         inline std::string VisCheck = "Visible Check";
@@ -83,7 +83,7 @@ namespace Text {
     {
         inline std::string Enable = "Enable Triggerbot";
         inline std::string FeatureName = "Triggerbot";
-        inline std::string HotKeyList = "Hotkey   ";
+        inline std::string HotKeyList = "Hotkey";
         inline std::string Toggle = "Always Active";
         inline std::string ScopeOnly = "Scope Only";
         inline std::string DelaySlider = "Shot Delay:";
