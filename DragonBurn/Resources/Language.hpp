@@ -38,9 +38,6 @@ namespace Text {
         inline std::string ScopedESP = "Show Scoped";
         inline std::string ShowArmorBar = "Armor Bar";
         inline std::string ArmorNum = "Armor Number";
-        inline std::string LinePos_1 = "Top";
-        inline std::string LinePos_2 = "Center";
-        inline std::string LinePos_3 = "Bottom";
     }
 
     namespace Aimbot

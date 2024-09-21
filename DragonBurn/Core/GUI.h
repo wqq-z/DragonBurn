@@ -306,11 +306,9 @@ namespace GUI
 					ImGui::SetCursorPos(ImVec2(15.f, 24.f));
 					ImGui::SeparatorText("ESP");
 					float MinRounding = 0.f, MaxRouding = 5.f;
-					int MinCombo = 0, MaxCombo = 2;
 					PutSwitch(Text::ESP::Toggle.c_str(), 10.f, ImGui::GetFrameHeight() * 1.7, &ESPConfig::ESPenabled);
 					if (ESPConfig::ESPenabled)
 					{
-						const char* LinePos[] = { Text::ESP::LinePos_1.c_str(), Text::ESP::LinePos_2.c_str(), Text::ESP::LinePos_3.c_str()};
 						PutSwitch(Text::ESP::Box.c_str(), 10.f, ImGui::GetFrameHeight() * 1.7, &ESPConfig::ShowBoxESP, true, "###BoxCol", reinterpret_cast<float*>(&ESPConfig::BoxColor));
 						if (ESPConfig::ShowBoxESP)
 						{
@@ -318,7 +316,7 @@ namespace GUI
 							ImGui::TextDisabled(Text::ESP::BoxType.c_str());
 							ImGui::SameLine();
 							ImGui::SetNextItemWidth(165.f);
-							ImGui::Combo("###BoxType", &ESPConfig::BoxType, "Normal\0Dynamic\0Corner\0");
+							ImGui::Combo("###BoxType", &ESPConfig::BoxType, "Normal\0Corner\0");
 							PutSliderFloat(Text::ESP::BoxRounding.c_str(), 10.f, &ESPConfig::BoxRounding, &MinRounding, &MaxRouding, "%.1f");
 						}
 						PutSwitch(Text::ESP::FilledBox.c_str(), 10.f, ImGui::GetFrameHeight() * 1.7, &ESPConfig::FilledBox, true, "###FilledBoxCol", reinterpret_cast<float*>(&ESPConfig::FilledColor));
@@ -328,7 +326,7 @@ namespace GUI
 						PutSwitch(Text::ESP::Skeleton.c_str(), 10.f, ImGui::GetFrameHeight() * 1.7, &ESPConfig::ShowBoneESP, true, "###BoneCol", reinterpret_cast<float*>(&ESPConfig::BoneColor));
 						PutSwitch(Text::ESP::SnapLine.c_str(), 10.f, ImGui::GetFrameHeight() * 1.7, &ESPConfig::ShowLineToEnemy, true, "###LineCol", reinterpret_cast<float*>(&ESPConfig::LineToEnemyColor));
 						if (ESPConfig::ShowLineToEnemy)
-							PutSliderInt(Text::ESP::LinePosList.c_str(), 10.f, &ESPConfig::LinePos, &MinCombo, &MaxCombo, LinePos[ESPConfig::LinePos]);
+							ImGui::Combo(Text::ESP::LinePosList.c_str(), &ESPConfig::LinePos, "Top\0Center\0Bottom\0");
 						PutSwitch(Text::ESP::EyeRay.c_str(), 10.f, ImGui::GetFrameHeight() * 1.7, &ESPConfig::ShowEyeRay, true, "###LineCol", reinterpret_cast<float*>(&ESPConfig::EyeRayColor));
 						PutSwitch(Text::ESP::HealthBar.c_str(), 10.f, ImGui::GetFrameHeight() * 1.7, &ESPConfig::ShowHealthBar);
 						if (ESPConfig::ShowHealthBar)

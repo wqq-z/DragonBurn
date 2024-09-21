@@ -95,11 +95,8 @@ namespace ESPConfig
 	inline bool MultiColor = false;
 	inline bool OutLine = true;
 	inline bool ShowIsScoped = true;
-	// 0: normal 1: dynamic 2: Flat
+	// 0: normal 1: Corner
 	inline int BoxType = 0;
-	// 0: Vertical 1: Horizontal
-	inline int  HealthBarType = 0;
-	inline int HeadBoxStyle = 0;
 	inline float BoxRounding = 5;
 	inline bool ShowLineToEnemy = false;
 	inline ImColor LineToEnemyColor = ImColor(59, 71, 148,180);

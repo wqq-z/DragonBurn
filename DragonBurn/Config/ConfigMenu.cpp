@@ -154,7 +154,6 @@ namespace ConfigMenu {
 		MenuConfig::WindowStyle = 0;
 		ESPConfig::ShowPreview = true;
 		ESPConfig::ShowHeadBox = true;
-		ESPConfig::HeadBoxStyle = 0;
 		ESPConfig::HeadBoxColor = ImColor(131, 137, 150, 180);
 
 		ESPConfig::ShowDistance = false;
@@ -173,7 +172,6 @@ namespace ConfigMenu {
 		LegitBotConfig::HitboxUpdated = false;
 
 		ESPConfig::BoxType = 0;
-		ESPConfig::HealthBarType = 0;
 		ESPConfig::BoneColor = ImColor(131, 137, 150, 180);
 		ESPConfig::BoxColor = ImColor(59, 71, 148, 180);
 		ESPConfig::EyeRayColor = ImVec4(0, 98, 98, 255);

@@ -48,7 +48,6 @@ namespace MyConfigSaver
         ConfigData["ESP"]["FilledVisBox"]=          ESPConfig::FilledVisBox;
         ConfigData["ESP"]["MultiColor"]=            ESPConfig::MultiColor;
         ConfigData["ESP"]["OutLine"]=               ESPConfig::OutLine;
-        ConfigData["ESP"]["HeadBoxStyle"]=          ESPConfig::HeadBoxStyle;
         ConfigData["ESP"]["BoxRounding"]=           ESPConfig::BoxRounding;
         ConfigData["ESP"]["ShowScoped"]=            ESPConfig::ShowIsScoped;
         ConfigData["ESP"]["ArmorBar"]=              ESPConfig::ArmorBar;
