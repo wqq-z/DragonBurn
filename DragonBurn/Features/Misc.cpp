@@ -35,7 +35,7 @@ namespace Misc
 		Vec3 Pos = LocalPlayer.Pawn.Pos;
 
 		ImGui::Text("  DragonBurn");
-		ImGui::Text("  External CS2 cheat");
+		ImGui::Text("  Kernel CS2 cheat");
 		ImGui::Text("  Vel: %.2f", LocalPlayer.Pawn.Speed);
 		ImGui::Text("  Pos: %.1f, %.1f, %.1f ", Pos.x, Pos.y, Pos.z);
 		ImGui::Text("                                                      ");
