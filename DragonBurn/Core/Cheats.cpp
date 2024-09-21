@@ -237,6 +237,9 @@ void Radar(Base_Radar Radar, const CEntity& LocalEntity)
 	if ((RadarCFG::ShowRadar && LocalEntity.Controller.TeamID != 0) || (RadarCFG::ShowRadar && MenuConfig::ShowMenu))
 	{
 		Radar.Render();
+
+		MenuConfig::RadarWinPos = ImGui::GetWindowPos();
+		ImGui::End();
 	}
 }
 
@@ -287,10 +290,16 @@ void RadarSetting(Base_Radar& Radar)
 	ImGui::SetNextWindowBgAlpha(RadarCFG::RadarBgAlpha);
 	ImGui::Begin("Radar", 0, ImGuiWindowFlags_NoResize);
 	ImGui::SetWindowSize({ RadarCFG::RadarRange * 2,RadarCFG::RadarRange * 2 });
+	ImGui::SetWindowPos(MenuConfig::RadarWinPos, ImGuiCond_Once);
+
+	if (MenuConfig::RadarWinChengePos)
+	{
+		ImGui::SetWindowPos("Radar", MenuConfig::RadarWinPos);
+		MenuConfig::RadarWinChengePos = false;
+	}
 
 	if (!RadarCFG::customRadar)
 	{
-		ImGui::SetWindowPos(ImVec2(0, 0));
 		RadarCFG::ShowRadarCrossLine = false;
 		RadarCFG::Proportion = 3300.f;
 		RadarCFG::RadarPointSizeProportion = 1.f;

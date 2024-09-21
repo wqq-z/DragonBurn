@@ -27,15 +27,7 @@ namespace Render
 		CenterPos = Head.ScreenPos;
 		float Radius = abs(Head.ScreenPos.y - Neck.ScreenPos.y) + 2;
 
-		switch (ESPConfig::HeadBoxStyle)
-		{
-		case 1:
-			Gui.CircleFilled(CenterPos, Radius + 1, Color & IM_COL32_A_MASK);
-			Gui.CircleFilled(CenterPos, Radius, Color);
-			break;
-		default:
-			Gui.Circle(CenterPos, Radius, Color, 1.2);
-		}
+		Gui.Circle(CenterPos, Radius, Color, 1.2);
 
 	}
 

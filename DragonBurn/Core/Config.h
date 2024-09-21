@@ -5,12 +5,12 @@
 namespace MenuConfig
 {
 	inline std::string name = "DragonBurn";
-	inline std::string version = "2.0.2.5";
+	inline std::string version = "2.0.3.0";
 	inline std::string author = "ByteCorum";
 
 	inline std::string path = "";
 	inline std::string docPath = "";
-	inline int RenderFPS = 1000000.0f;
+	inline int RenderFPS = 10000.0f;
 	inline int RenderDistance = 1000;
 
 
@@ -35,6 +35,15 @@ namespace MenuConfig
 	inline bool TeamCheck = true;
 	inline bool BypassOBS = false;
 	inline bool WorkInSpec = true;
+
+	inline ImVec2 MarkWinPos;
+	inline ImVec2 RadarWinPos;
+	inline ImVec2 SpecWinPos;
+	inline ImVec2 BombWinPos;
+	inline bool MarkWinChengePos = false;
+	inline bool RadarWinChengePos = false;
+	inline bool SpecWinChengePos = false;
+	inline bool BombWinChengePos = false;
 }
 
 namespace LegitBotConfig 
@@ -86,11 +95,8 @@ namespace ESPConfig
 	inline bool MultiColor = false;
 	inline bool OutLine = true;
 	inline bool ShowIsScoped = true;
-	// 0: normal 1: dynamic 2: Flat
+	// 0: normal 1: Corner
 	inline int BoxType = 0;
-	// 0: Vertical 1: Horizontal
-	inline int  HealthBarType = 0;
-	inline int HeadBoxStyle = 0;
 	inline float BoxRounding = 5;
 	inline bool ShowLineToEnemy = false;
 	inline ImColor LineToEnemyColor = ImColor(59, 71, 148,180);

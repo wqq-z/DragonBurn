@@ -154,7 +154,6 @@ namespace ConfigMenu {
 		MenuConfig::WindowStyle = 0;
 		ESPConfig::ShowPreview = true;
 		ESPConfig::ShowHeadBox = true;
-		ESPConfig::HeadBoxStyle = 0;
 		ESPConfig::HeadBoxColor = ImColor(131, 137, 150, 180);
 
 		ESPConfig::ShowDistance = false;
@@ -173,7 +172,6 @@ namespace ConfigMenu {
 		LegitBotConfig::HitboxUpdated = false;
 
 		ESPConfig::BoxType = 0;
-		ESPConfig::HealthBarType = 0;
 		ESPConfig::BoneColor = ImColor(131, 137, 150, 180);
 		ESPConfig::BoxColor = ImColor(59, 71, 148, 180);
 		ESPConfig::EyeRayColor = ImVec4(0, 98, 98, 255);
@@ -252,6 +250,16 @@ namespace ConfigMenu {
 		ESPConfig::DrawFov = false;
 
 		LegitBotConfig::FovCircleColor = ImColor(131, 137, 150, 180);
+
+		MenuConfig::MarkWinPos = ImVec2(ImGui::GetIO().DisplaySize.x - 300.0f, 100.f);
+		MenuConfig::RadarWinPos = ImVec2(0.f, 0.f);
+		MenuConfig::SpecWinPos = ImVec2(10.0f, ImGui::GetIO().DisplaySize.y / 2 - 200);
+		MenuConfig::BombWinPos = ImVec2((ImGui::GetIO().DisplaySize.x - 200.0f) / 2.0f, 80.0f);
+
+		MenuConfig::MarkWinChengePos = true;
+		MenuConfig::BombWinChengePos = true;
+		MenuConfig::RadarWinChengePos = true;
+		MenuConfig::SpecWinChengePos = true;
 
 	}
 }
