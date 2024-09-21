@@ -10,7 +10,7 @@ namespace MenuConfig
 
 	inline std::string path = "";
 	inline std::string docPath = "";
-	inline int RenderFPS = 600000.0f;
+	inline int RenderFPS = 10000.0f;
 	inline int RenderDistance = 1000;
 
 
