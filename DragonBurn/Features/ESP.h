@@ -396,8 +396,8 @@ namespace ESP
 			ImGui::GetWindowDrawList()->AddLine(LineStart, LineEnd, ESPConfig::LineToEnemyColor, 1.8f);
 		}
 		if (ESPConfig::ShowPlayerName) {
-			ImVec2 textPos(centerPos.x + 35, centerPos.y - 10);
-			ImGui::GetWindowDrawList()->AddText(ImGui::GetIO().Fonts->Fonts[0], 10.0f, textPos, IM_COL32(255, 255, 255, 255), "Player");
+			ImVec2 textPos(centerPos.x + 36, centerPos.y -12);
+			ImGui::GetWindowDrawList()->AddText(ImGui::GetIO().Fonts->Fonts[0], 12.0f, textPos, IM_COL32(255, 255, 255, 255), "Player");
 		}
 		if (ESPConfig::ShowDistance) {
 			ImVec2 textPos(centerPos.x + 105, centerPos.y);
