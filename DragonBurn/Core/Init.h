@@ -81,14 +81,6 @@ namespace Init
     class Client
     {
     public:
-        // Get the maximum framerate with vsync
-        //static int getMaxFrameRate() {
-        //    HDC hdc = GetDC(NULL);
-        //    int rate = GetDeviceCaps(hdc, VREFRESH);
-        //    ReleaseDC(NULL, hdc);
-        //    return rate;
-        //}
-
         static int CheckCS2Version()
         {
             long curVer;
