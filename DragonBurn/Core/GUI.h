@@ -315,7 +315,8 @@ namespace GUI
 							PutSwitch(Text::ESP::Outline.c_str(), 10.f, ImGui::GetFrameHeight() * 1.7, &ESPConfig::OutLine);
 							ImGui::TextDisabled(Text::ESP::BoxType.c_str());
 							ImGui::SameLine();
-							ImGui::SetNextItemWidth(165.f);
+							AlignRight(160.f);
+							ImGui::SetNextItemWidth(160.f);
 							ImGui::Combo("###BoxType", &ESPConfig::BoxType, "Normal\0Corner\0");
 							PutSliderFloat(Text::ESP::BoxRounding.c_str(), 10.f, &ESPConfig::BoxRounding, &MinRounding, &MaxRouding, "%.1f");
 						}
@@ -325,8 +326,14 @@ namespace GUI
 						PutSwitch(Text::ESP::HeadBox.c_str(), 10.f, ImGui::GetFrameHeight() * 1.7, &ESPConfig::ShowHeadBox, true, "###HeadBoxCol", reinterpret_cast<float*>(&ESPConfig::HeadBoxColor));
 						PutSwitch(Text::ESP::Skeleton.c_str(), 10.f, ImGui::GetFrameHeight() * 1.7, &ESPConfig::ShowBoneESP, true, "###BoneCol", reinterpret_cast<float*>(&ESPConfig::BoneColor));
 						PutSwitch(Text::ESP::SnapLine.c_str(), 10.f, ImGui::GetFrameHeight() * 1.7, &ESPConfig::ShowLineToEnemy, true, "###LineCol", reinterpret_cast<float*>(&ESPConfig::LineToEnemyColor));
-						if (ESPConfig::ShowLineToEnemy)
-							ImGui::Combo(Text::ESP::LinePosList.c_str(), &ESPConfig::LinePos, "Top\0Center\0Bottom\0");
+						if (ESPConfig::ShowLineToEnemy) 
+						{
+							ImGui::TextDisabled(Text::ESP::LinePosList.c_str());
+							ImGui::SameLine();
+							AlignRight(160.f);
+							ImGui::SetNextItemWidth(160.f);
+							ImGui::Combo("###LinePos", &ESPConfig::LinePos, "Top\0Center\0Bottom\0");
+						}
 						PutSwitch(Text::ESP::EyeRay.c_str(), 10.f, ImGui::GetFrameHeight() * 1.7, &ESPConfig::ShowEyeRay, true, "###LineCol", reinterpret_cast<float*>(&ESPConfig::EyeRayColor));
 						PutSwitch(Text::ESP::HealthBar.c_str(), 10.f, ImGui::GetFrameHeight() * 1.7, &ESPConfig::ShowHealthBar);
 						if (ESPConfig::ShowHealthBar)
@@ -419,7 +426,8 @@ namespace GUI
 						ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 10.f);
 						ImGui::TextDisabled(Text::Aimbot::HotKeyList.c_str());
 						ImGui::SameLine();
-						ImGui::SetNextItemWidth(165.f);
+						AlignRight(160.f);
+						ImGui::SetNextItemWidth(160.f);
 						if (ImGui::Combo("###AimKey", &LegitBotConfig::AimBotHotKey, "LALT\0LBUTTON\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL\0"))
 						{
 							AimControl::SetHotKey(LegitBotConfig::AimBotHotKey);
@@ -558,7 +566,8 @@ namespace GUI
 							ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 5.f);
 							ImGui::TextDisabled(Text::Trigger::HotKeyList.c_str());
 							ImGui::SameLine();
-							ImGui::SetNextItemWidth(170.f);
+							AlignRight(160.f);
+							ImGui::SetNextItemWidth(160.f);
 							if (ImGui::Combo("###TriggerbotKey", &LegitBotConfig::TriggerHotKey, "LALT\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL\0"))
 							{
 								TriggerBot::SetHotKey(LegitBotConfig::TriggerHotKey);
@@ -589,7 +598,8 @@ namespace GUI
 					ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 10.f);
 					ImGui::TextDisabled(Text::Misc::HitSound.c_str());
 					ImGui::SameLine();
-					ImGui::SetNextItemWidth(155.f);
+					AlignRight(160.f);
+					ImGui::SetNextItemWidth(160.f);
 					ImGui::Combo("###HitSounds", &MiscCFG::HitSound, "None\0Neverlose\0Skeet\0");
 					PutSwitch(Text::Misc::HitMerker.c_str(), 10.f, ImGui::GetFrameHeight() * 1.7, &MiscCFG::HitMarker);
 					PutSwitch(Text::Misc::BunnyHop.c_str(), 10.f, ImGui::GetFrameHeight() * 1.7, &MiscCFG::BunnyHop);
