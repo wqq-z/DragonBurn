@@ -1,4 +1,15 @@
-﻿#include "Core/Cheats.h"
+﻿//
+//______                            ______                  
+//|  _  \                           | ___ \                 
+//| | | |_ __ __ _  __ _  ___  _ __ | |_/ /_   _ _ __ _ __  
+//| | | | '__/ _` |/ _` |/ _ \| '_ \| ___ \ | | | '__| '_ \ 
+//| |/ /| | | (_| | (_| | (_) | | | | |_/ / |_| | |  | | | |
+//|___/ |_|  \__,_|\__, |\___/|_| |_\____/ \__,_|_|  |_| |_|
+//                  __/ |                                   
+//                 |___/                                    
+//https://github.com/ByteCorum/DragonBurn
+
+#include "Core/Cheats.h"
 #include "Offsets/Offsets.h"
 #include "Resources/Language.hpp"
 #include "Core/Init.h"
