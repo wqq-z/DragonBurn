@@ -15,11 +15,17 @@ namespace SpecList
         ImGuiWindowFlags flags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize;
         static float fontHeight = ImGui::GetFontSize();
         float requiredHeight = LocalEntity.Controller.spectators.size() * (fontHeight + 5) + 20;
-        ImGui::SetNextWindowPos({ 10.0f, ImGui::GetIO().DisplaySize.y / 2 - 200 }, ImGuiCond_Once);
+        ImGui::SetNextWindowPos(MenuConfig::SpecWinPos, ImGuiCond_Once);
         ImGui::SetNextWindowSize({ 150.0f, requiredHeight }, ImGuiCond_Always);
         ImGui::GetStyle().WindowRounding = 8.0f;
 
         ImGui::Begin("Spectators", NULL, flags);
+
+        if (MenuConfig::SpecWinChengePos) 
+        {
+            ImGui::SetWindowPos("Spectators", MenuConfig::SpecWinPos);
+            MenuConfig::SpecWinChengePos = false;
+        }
 
         for (const auto& spectator : LocalEntity.Controller.spectators)
         {
@@ -28,6 +34,7 @@ namespace SpecList
         }
 
 
+        MenuConfig::SpecWinPos = ImGui::GetWindowPos();
         ImGui::End();
         LocalEntity.Controller.spectators.clear();
     }

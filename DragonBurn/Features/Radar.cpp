@@ -192,6 +192,4 @@ void Base_Radar::Render()
 
 	if (this->Points.size() > 0)
 		this->Points.clear();
-
-	ImGui::End();
 }

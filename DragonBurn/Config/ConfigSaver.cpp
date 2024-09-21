@@ -214,6 +214,18 @@ namespace MyConfigSaver
         ConfigData["Misc"]["TeamCheck"]=        MenuConfig::TeamCheck;
         ConfigData["Misc"]["AntiRecord"]=       MenuConfig::BypassOBS;
 
+        ConfigData["MenuConfig"]["MarkWinPos"]["x"] = MenuConfig::MarkWinPos.x;
+        ConfigData["MenuConfig"]["MarkWinPos"]["y"] = MenuConfig::MarkWinPos.y;
+
+        ConfigData["MenuConfig"]["BombWinPos"]["x"] = MenuConfig::BombWinPos.x;
+        ConfigData["MenuConfig"]["BombWinPos"]["y"] = MenuConfig::BombWinPos.y;
+
+        ConfigData["MenuConfig"]["RadarWinPos"]["x"] = MenuConfig::RadarWinPos.x;
+        ConfigData["MenuConfig"]["RadarWinPos"]["y"] = MenuConfig::RadarWinPos.y;
+
+        ConfigData["MenuConfig"]["SpecWinPos"]["x"] = MenuConfig::SpecWinPos.x;
+        ConfigData["MenuConfig"]["SpecWinPos"]["y"] = MenuConfig::SpecWinPos.y;
+
         configFile << ConfigData.dump(4);
         configFile.close();
     }
@@ -373,6 +385,8 @@ namespace MyConfigSaver
             LegitBotConfig::VisibleCheck = ReadData(ConfigData["Aimbot"],{"VisibleCheck"}, true);
             AimControl::IgnoreFlash = ReadData(ConfigData["Aimbot"],{"IgnoreFlash"}, false);
             AimControl::ScopeOnly = ReadData(ConfigData["Aimbot"],{"ScopeOnly"}, false);
+            AimControl::SetHotKey(LegitBotConfig::AimBotHotKey);
+            LegitBotConfig::HitboxUpdated = false;
         }
 
         if (ConfigData.contains("RCS"))
@@ -391,6 +405,7 @@ namespace MyConfigSaver
             TriggerBot::ScopeOnly = ReadData(ConfigData["Triggerbot"],{"ScopeOnly"}, false);
             TriggerBot::IgnoreFlash = ReadData(ConfigData["Triggerbot"],{"IgnoreFlash"}, false);
             LegitBotConfig::TriggerAlways = ReadData(ConfigData["Triggerbot"],{"AutoMode"}, false);
+            TriggerBot::SetHotKey(LegitBotConfig::TriggerHotKey);
         }
 
         if (ConfigData.contains("Misc"))
@@ -421,8 +436,24 @@ namespace MyConfigSaver
             MenuConfig::BypassOBS = ReadData(ConfigData["Misc"],{"AntiRecord"}, false);
         }
 
-        AimControl::SetHotKey(LegitBotConfig::AimBotHotKey);
-        TriggerBot::SetHotKey(LegitBotConfig::TriggerHotKey);
-        LegitBotConfig::HitboxUpdated = false;
+        if (ConfigData.contains("MenuConfig"))
+        {
+            MenuConfig::MarkWinPos.x = ReadData(ConfigData["MenuConfig"], { "MarkWinPos","x" }, ImGui::GetIO().DisplaySize.x - 300.0f);
+            MenuConfig::MarkWinPos.y = ReadData(ConfigData["MenuConfig"], { "MarkWinPos","y" }, 100.f);
+
+            MenuConfig::BombWinPos.x = ReadData(ConfigData["MenuConfig"], { "BombWinPos","x" }, (ImGui::GetIO().DisplaySize.x - 200.0f) / 2.0f);
+            MenuConfig::BombWinPos.y = ReadData(ConfigData["MenuConfig"], { "BombWinPos","y" }, 80.0f);
+
+            MenuConfig::RadarWinPos.x = ReadData(ConfigData["MenuConfig"], { "RadarWinPos","x" }, 0.f);
+            MenuConfig::RadarWinPos.y = ReadData(ConfigData["MenuConfig"], { "RadarWinPos","y" }, 0.f);
+
+            MenuConfig::SpecWinPos.x = ReadData(ConfigData["MenuConfig"], { "SpecWinPos","x" }, 10.0f);
+            MenuConfig::SpecWinPos.y = ReadData(ConfigData["MenuConfig"], { "SpecWinPos","y" }, ImGui::GetIO().DisplaySize.y / 2 - 200);
+
+            MenuConfig::MarkWinChengePos = true;
+            MenuConfig::BombWinChengePos = true;
+            MenuConfig::RadarWinChengePos = true;
+            MenuConfig::SpecWinChengePos = true;
+        }
     }
 }

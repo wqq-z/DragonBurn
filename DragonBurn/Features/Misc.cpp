@@ -21,9 +21,16 @@ namespace Misc
 			return;
 
 		ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize;
+		ImGui::SetNextWindowPos(MenuConfig::MarkWinPos, ImGuiCond_Once);
 		ImGui::SetNextWindowBgAlpha(0.8f);
 		ImGui::GetStyle().WindowRounding = 8.0f;
 		ImGui::Begin("Watermark", nullptr, windowFlags);
+
+		if (MenuConfig::MarkWinChengePos)
+		{
+			ImGui::SetWindowPos("Watermark", MenuConfig::MarkWinPos);
+			MenuConfig::MarkWinChengePos = false;
+		}
 
 		Vec3 Pos = LocalPlayer.Pawn.Pos;
 
@@ -33,6 +40,7 @@ namespace Misc
 		ImGui::Text("  Pos: %.1f, %.1f, %.1f ", Pos.x, Pos.y, Pos.z);
 		ImGui::Text("                                                      ");
 
+		MenuConfig::MarkWinPos = ImGui::GetWindowPos();
 		ImGui::End();
 	}
 

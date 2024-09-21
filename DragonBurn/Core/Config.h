@@ -35,6 +35,15 @@ namespace MenuConfig
 	inline bool TeamCheck = true;
 	inline bool BypassOBS = false;
 	inline bool WorkInSpec = true;
+
+	inline ImVec2 MarkWinPos;
+	inline ImVec2 RadarWinPos;
+	inline ImVec2 SpecWinPos;
+	inline ImVec2 BombWinPos;
+	inline bool MarkWinChengePos = false;
+	inline bool RadarWinChengePos = false;
+	inline bool SpecWinChengePos = false;
+	inline bool BombWinChengePos = false;
 }
 
 namespace LegitBotConfig 
