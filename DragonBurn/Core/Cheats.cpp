@@ -283,6 +283,7 @@ void AIM(const CEntity& LocalEntity, std::vector<Vec3> AimPosList)
 
 	if (!AimControl::AimBot || !AimControl::HasTarget)
 		RCS::RecoilControl(LocalEntity);
+
 }
 
 void MiscFuncs(CEntity& LocalEntity)
