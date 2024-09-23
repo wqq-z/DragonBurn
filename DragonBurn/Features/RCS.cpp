@@ -1,4 +1,5 @@
 #include "RCS.h"
+#include "../Helpers/Logger.h"
 
 void RCS::UpdateAngles(const CEntity& Local, Vec2& Angles)
 {
@@ -57,12 +58,16 @@ void RCS::UpdateAngles(const CEntity& Local, Vec2& Angles)
 
 void RCS::RecoilControl(CEntity LocalPlayer)
 {
+	Log::Debug("RCS");
+
 	if (!LegitBotConfig::RCS)
 		return;
+
 	static Vec2 OldPunch;
 
 	if (LocalPlayer.Pawn.ShotsFired > RCSBullet)
 	{
+		Log::Debug("RCS IN");
 		Vec2 viewAngles = LocalPlayer.Pawn.ViewAngle;
 		Vec2 delta = viewAngles - (viewAngles + (OldPunch - (LocalPlayer.Pawn.AimPunchAngle * 2.f)));
 
@@ -75,9 +80,11 @@ void RCS::RecoilControl(CEntity LocalPlayer)
 		}
 
 		OldPunch = LocalPlayer.Pawn.AimPunchAngle * 2.0f;
+		Log::Debug("RCS END");
 	}
 	else
 	{
+		Log::Debug("RCS OUT");
 		OldPunch = Vec2{ 0,0 };
 	}
 }

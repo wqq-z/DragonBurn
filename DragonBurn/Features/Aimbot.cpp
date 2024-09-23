@@ -101,7 +101,7 @@ void AimControl::AimBot(const CEntity& Local, Vec3 LocalPos, std::vector<Vec3>& 
         if (ScreenPos.x != ScreenCenterX)
         {
             TargetX = (ScreenPos.x > ScreenCenterX) ? -(ScreenCenterX - ScreenPos.x) : ScreenPos.x - ScreenCenterX;
-            TargetX /= Smooth != 0.0f ? Smooth : 1.0f;
+            TargetX /= Smooth != 0.0f ? Smooth : 1.5f;
             TargetX = (TargetX + ScreenCenterX > ScreenCenterX * 2 || TargetX + ScreenCenterX < 0) ? 0 : TargetX;
         }
 
@@ -110,7 +110,7 @@ void AimControl::AimBot(const CEntity& Local, Vec3 LocalPos, std::vector<Vec3>& 
             if (ScreenPos.y != ScreenCenterY)
             {
                 TargetY = (ScreenPos.y > ScreenCenterY) ? -(ScreenCenterY - ScreenPos.y) : ScreenPos.y - ScreenCenterY;
-                TargetY /= Smooth != 0.0f ? Smooth : 1.0f;
+                TargetY /= Smooth != 0.0f ? Smooth : 1.5f;
                 TargetY = (TargetY + ScreenCenterY > ScreenCenterY * 2 || TargetY + ScreenCenterY < 0) ? 0 : TargetY;
             }
         }
