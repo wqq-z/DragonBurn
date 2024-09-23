@@ -299,7 +299,7 @@ void RadarSetting(Base_Radar& Radar)
 {
 	// Radar window
 	ImGui::SetNextWindowBgAlpha(RadarCFG::RadarBgAlpha);
-	ImGui::Begin("Radar", 0, ImGuiWindowFlags_NoResize);
+	ImGui::Begin("Radar", 0, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar);
 	ImGui::SetWindowSize({ RadarCFG::RadarRange * 2,RadarCFG::RadarRange * 2 });
 	ImGui::SetWindowPos(MenuConfig::RadarWinPos, ImGuiCond_Once);
 
@@ -312,9 +312,9 @@ void RadarSetting(Base_Radar& Radar)
 	if (!RadarCFG::customRadar)
 	{
 		RadarCFG::ShowRadarCrossLine = false;
-		RadarCFG::Proportion = 3300.f;
+		RadarCFG::Proportion = 2700.f;
 		RadarCFG::RadarPointSizeProportion = 1.f;
-		RadarCFG::RadarRange = 150.f;
+		RadarCFG::RadarRange = 125.f;
 		RadarCFG::RadarBgAlpha = 0.1f;
 	}
 

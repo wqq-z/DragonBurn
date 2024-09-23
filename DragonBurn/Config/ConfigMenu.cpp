@@ -180,13 +180,13 @@ namespace ConfigMenu {
 		MenuConfig::WorkInSpec = true;
 
 		RadarCFG::ShowRadar = false;
-		RadarCFG::RadarRange = 150;
+		RadarCFG::RadarRange = 125;
 		RadarCFG::ShowRadarCrossLine = false;
 		RadarCFG::RadarCrossLineColor = ImColor(131, 137, 150, 180);
 		RadarCFG::RadarType = 2;
 		RadarCFG::RadarPointSizeProportion = 1.f;
 		RadarCFG::RadarBgAlpha = 0.1f;
-		RadarCFG::Proportion = 3300;
+		RadarCFG::Proportion = 2700.f;
 
 		LegitBotConfig::TriggerBot = true;
 		LegitBotConfig::TriggerAlways = false;
@@ -252,7 +252,7 @@ namespace ConfigMenu {
 		LegitBotConfig::FovCircleColor = ImColor(131, 137, 150, 180);
 
 		MenuConfig::MarkWinPos = ImVec2(ImGui::GetIO().DisplaySize.x - 300.0f, 100.f);
-		MenuConfig::RadarWinPos = ImVec2(0.f, 0.f);
+		MenuConfig::RadarWinPos = ImVec2(25.f, 25.f);
 		MenuConfig::SpecWinPos = ImVec2(10.0f, ImGui::GetIO().DisplaySize.y / 2 - 200);
 		MenuConfig::BombWinPos = ImVec2((ImGui::GetIO().DisplaySize.x - 200.0f) / 2.0f, 80.0f);
 
