@@ -508,8 +508,11 @@ namespace GUI
 					ImGui::SetCursorPosY(24.f);
 					ImGui::SeparatorText("RCS");
 					float recoilMin = 0.f, recoilMax = 2.f;
+					int RCSBulletMin = 0, RCSBulletMax = 5;
 					PutSwitch(Text::RCS::Toggle.c_str(), 5.f, ImGui::GetFrameHeight() * 1.7, &LegitBotConfig::RCS);
-					if (LegitBotConfig::RCS) {
+					if (LegitBotConfig::RCS)
+					{
+						PutSliderInt(Text::RCS::BulletSlider.c_str(), 5.f, &RCS::RCSBullet, &RCSBulletMin, &RCSBulletMax, "%d");
 						PutSliderFloat(Text::RCS::Yaw.c_str(), 5.f, &RCS::RCSScale.x, &recoilMin, &recoilMax, "%.2f");
 						PutSliderFloat(Text::RCS::Pitch.c_str(), 5.f, &RCS::RCSScale.y, &recoilMin, &recoilMax, "%.2f");
 						float scalex = (2.22 - RCS::RCSScale.x) *.5f;

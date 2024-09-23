@@ -266,7 +266,8 @@ void AIM(const CEntity& LocalEntity, std::vector<Vec3> AimPosList)
 	// Aimbot
 	DWORD lastTick = 0;
 	DWORD currentTick = GetTickCount64();
-	if (LegitBotConfig::AimBot) {
+	if (LegitBotConfig::AimBot) 
+	{
 		Render::DrawFovCircle(LocalEntity);
 
 		if (LegitBotConfig::AimAlways || GetAsyncKeyState(AimControl::HotKey)) {
@@ -281,7 +282,7 @@ void AIM(const CEntity& LocalEntity, std::vector<Vec3> AimPosList)
 		}
 	}
 
-	if (!AimControl::AimBot || !AimControl::HasTarget)
+	if (!LegitBotConfig::AimBot)
 		RCS::RecoilControl(LocalEntity);
 
 }

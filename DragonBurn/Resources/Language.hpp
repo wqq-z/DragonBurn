@@ -61,6 +61,7 @@ namespace Text {
 
     namespace RCS
     {
+        inline std::string BulletSlider = "Start Bullet:";
         inline std::string Toggle = "Recoil Control";
         inline std::string Yaw = "Yaw: ";
         inline std::string Pitch = "Pitch: ";
