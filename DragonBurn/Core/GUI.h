@@ -10,6 +10,7 @@
 
 #include "..\Resources\Language.hpp"
 #include "..\Resources\Images.hpp"
+#include "../Helpers/KeyManager.h"
 
 ID3D11ShaderResourceView* Logo = NULL;
 ID3D11ShaderResourceView* MenuButton1 = NULL;
@@ -110,7 +111,7 @@ namespace GUI
 			Gui.LoadTextureFromMemory(Images::ConfigButtonPressed, sizeof Images::ConfigButtonPressed, &MenuButton4Pressed, &buttonW, &buttonH);
 
 			MenuConfig::MarkWinPos = ImVec2(ImGui::GetIO().DisplaySize.x - 300.0f, 100.f);
-			MenuConfig::RadarWinPos = ImVec2(0.f, 0.f);
+			MenuConfig::RadarWinPos = ImVec2(25.f, 25.f);
 			MenuConfig::SpecWinPos = ImVec2(10.0f, ImGui::GetIO().DisplaySize.y / 2 - 200);
 			MenuConfig::BombWinPos = ImVec2((ImGui::GetIO().DisplaySize.x - 200.0f) / 2.0f, 80.0f);
 		}
@@ -426,11 +427,12 @@ namespace GUI
 						ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 10.f);
 						ImGui::TextDisabled(Text::Aimbot::HotKeyList.c_str());
 						ImGui::SameLine();
-						AlignRight(160.f);
-						ImGui::SetNextItemWidth(160.f);
-						if (ImGui::Combo("###AimKey", &LegitBotConfig::AimBotHotKey, "LALT\0LBUTTON\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL\0"))
+						AlignRight(70.f);
+						if (ImGui::Button(Text::Aimbot::HotKey.c_str(), { 70.f, 25.f }))
 						{
-							AimControl::SetHotKey(LegitBotConfig::AimBotHotKey);
+							std::thread([&]() {
+								KeyMgr::GetPressedKey(AimControl::HotKey, Text::Aimbot::HotKey);
+								}).detach();
 						}
 						PutSliderInt(Text::Aimbot::BulletSlider.c_str(), 10.f, &AimControl::AimBullet, &BulletMin, &BulletMax, "%d");
 						PutSwitch(Text::Aimbot::Toggle.c_str(), 10.f, ImGui::GetFrameHeight() * 1.7, &LegitBotConfig::AimToggleMode);
@@ -508,8 +510,11 @@ namespace GUI
 					ImGui::SetCursorPosY(24.f);
 					ImGui::SeparatorText("RCS");
 					float recoilMin = 0.f, recoilMax = 2.f;
+					int RCSBulletMin = 0, RCSBulletMax = 5;
 					PutSwitch(Text::RCS::Toggle.c_str(), 5.f, ImGui::GetFrameHeight() * 1.7, &LegitBotConfig::RCS);
-					if (LegitBotConfig::RCS) {
+					if (LegitBotConfig::RCS)
+					{
+						PutSliderInt(Text::RCS::BulletSlider.c_str(), 5.f, &RCS::RCSBullet, &RCSBulletMin, &RCSBulletMax, "%d");
 						PutSliderFloat(Text::RCS::Yaw.c_str(), 5.f, &RCS::RCSScale.x, &recoilMin, &recoilMax, "%.2f");
 						PutSliderFloat(Text::RCS::Pitch.c_str(), 5.f, &RCS::RCSScale.y, &recoilMin, &recoilMax, "%.2f");
 						float scalex = (2.22 - RCS::RCSScale.x) *.5f;
@@ -558,6 +563,7 @@ namespace GUI
 					ImGui::SeparatorText("Triggerbot");
 					int DelayMin = 0, DelayMax = 300;
 					int DurationMin = 0, DurationMax = 1000;
+
 					PutSwitch(Text::Trigger::Enable.c_str(), 5.f, ImGui::GetFrameHeight() * 1.7, &LegitBotConfig::TriggerBot);
 					if (LegitBotConfig::TriggerBot)
 					{
@@ -566,11 +572,12 @@ namespace GUI
 							ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 5.f);
 							ImGui::TextDisabled(Text::Trigger::HotKeyList.c_str());
 							ImGui::SameLine();
-							AlignRight(160.f);
-							ImGui::SetNextItemWidth(160.f);
-							if (ImGui::Combo("###TriggerbotKey", &LegitBotConfig::TriggerHotKey, "LALT\0RBUTTON\0XBUTTON1\0XBUTTON2\0CAPITAL\0SHIFT\0CONTROL\0"))
+							AlignRight(70.f);
+							if (ImGui::Button(Text::Trigger::HotKey.c_str(), {70.f, 25.f}))
 							{
-								TriggerBot::SetHotKey(LegitBotConfig::TriggerHotKey);
+								std::thread([&]() {
+									KeyMgr::GetPressedKey(TriggerBot::HotKey, Text::Trigger::HotKey);
+									}).detach();
 							}
 						}
 						PutSwitch(Text::Trigger::Toggle.c_str(), 5.f, ImGui::GetFrameHeight() * 1.7, &LegitBotConfig::TriggerAlways);
@@ -609,6 +616,15 @@ namespace GUI
 					ImGui::NextColumn();
 					ImGui::SetCursorPosY(24.f);
 					ImGui::SeparatorText("Global Settings");
+					ImGui::TextDisabled(Text::Misc::MenuKey.c_str());
+					ImGui::SameLine();
+					AlignRight(70.f);
+					if (ImGui::Button(Text::Misc::HotKey.c_str(), { 70.f, 25.f }))
+					{
+						std::thread([&]() {
+							KeyMgr::GetPressedKey(MenuConfig::HotKey, Text::Misc::HotKey);
+							}).detach();
+					}
 					PutSwitch(Text::Misc::SpecCheck.c_str(), 5.f, ImGui::GetFrameHeight() * 1.7, &MenuConfig::WorkInSpec);
 					PutSwitch(Text::Misc::TeamCheck.c_str(), 5.f, ImGui::GetFrameHeight() * 1.7, &MenuConfig::TeamCheck);
 					PutSwitch(Text::Misc::AntiRecord.c_str(), 5.f, ImGui::GetFrameHeight() * 1.7, &MenuConfig::BypassOBS);

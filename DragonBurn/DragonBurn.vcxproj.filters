@@ -186,6 +186,7 @@
     <ClInclude Include="Core\Config.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="Helpers\KeyManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon.ico">

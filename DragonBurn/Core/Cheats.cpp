@@ -210,7 +210,7 @@ void Menu()
 {
 	std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
 	std::chrono::duration<double, std::milli> difference = now - timepoint;
-	SHORT keyState = GetAsyncKeyState(VK_END);
+	SHORT keyState = GetAsyncKeyState(MenuConfig::HotKey);
 	if (keyState & 0x8000) {
 		keyWasPressed = true;
 	}
@@ -266,7 +266,8 @@ void AIM(const CEntity& LocalEntity, std::vector<Vec3> AimPosList)
 	// Aimbot
 	DWORD lastTick = 0;
 	DWORD currentTick = GetTickCount64();
-	if (LegitBotConfig::AimBot) {
+	if (LegitBotConfig::AimBot) 
+	{
 		Render::DrawFovCircle(LocalEntity);
 
 		if (LegitBotConfig::AimAlways || GetAsyncKeyState(AimControl::HotKey)) {
@@ -281,8 +282,9 @@ void AIM(const CEntity& LocalEntity, std::vector<Vec3> AimPosList)
 		}
 	}
 
-	if (!AimControl::AimBot || !AimControl::HasTarget)
+	if (!LegitBotConfig::AimBot)
 		RCS::RecoilControl(LocalEntity);
+
 }
 
 void MiscFuncs(CEntity& LocalEntity)
@@ -299,7 +301,7 @@ void RadarSetting(Base_Radar& Radar)
 {
 	// Radar window
 	ImGui::SetNextWindowBgAlpha(RadarCFG::RadarBgAlpha);
-	ImGui::Begin("Radar", 0, ImGuiWindowFlags_NoResize);
+	ImGui::Begin("Radar", 0, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar);
 	ImGui::SetWindowSize({ RadarCFG::RadarRange * 2,RadarCFG::RadarRange * 2 });
 	ImGui::SetWindowPos(MenuConfig::RadarWinPos, ImGuiCond_Once);
 
@@ -312,9 +314,9 @@ void RadarSetting(Base_Radar& Radar)
 	if (!RadarCFG::customRadar)
 	{
 		RadarCFG::ShowRadarCrossLine = false;
-		RadarCFG::Proportion = 3300.f;
+		RadarCFG::Proportion = 2700.f;
 		RadarCFG::RadarPointSizeProportion = 1.f;
-		RadarCFG::RadarRange = 150.f;
+		RadarCFG::RadarRange = 125.f;
 		RadarCFG::RadarBgAlpha = 0.1f;
 	}
 
