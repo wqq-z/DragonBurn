@@ -24,12 +24,10 @@ namespace bmb
 		{
 			int site;
 			uintptr_t cPlantedC4;
-			//memoryManager.ReadMemory(gGame.GetClientDLLAddress() + Offset.PlantedC4, cPlantedC4);
 			if (!memoryManager.ReadMemory<uintptr_t>(gGame.GetClientDLLAddress() + Offset.PlantedC4, cPlantedC4))
 				return 0;
 			if (!memoryManager.ReadMemory<uintptr_t>(cPlantedC4, cPlantedC4))
 				return 0;
-
 			if (!memoryManager.ReadMemory<int>(cPlantedC4 + Offset.C4.m_nBombSite, site))
 				return 0;
 
@@ -45,12 +43,17 @@ namespace bmb
 		if ((!MiscCFG::bmbTimer || inGame == 0) && !(MiscCFG::bmbTimer && MenuConfig::ShowMenu))
 			return;
 
+		uintptr_t bomb;
 		bool isBombPlanted;
 		bool IsBeingDefused;
 		float DefuseTime;
-		auto plantedAddress = gGame.GetClientDLLAddress() + Offset.PlantedC4 - 0x8;
+		float defuseRemaining;
+		ImColor color = MiscCFG::BombTimerCol;
+		auto plantedAddress = gGame.GetClientDLLAddress() + Offset.PlantedC4;
 
-		memoryManager.ReadMemory(plantedAddress, isBombPlanted);
+		memoryManager.ReadMemory(plantedAddress, bomb);
+		memoryManager.ReadMemory(bomb, bomb);
+		memoryManager.ReadMemory(plantedAddress - 0x8, isBombPlanted);
 
 		auto time = currentTimeMillis();
 
@@ -60,8 +63,8 @@ namespace bmb
 			plantTime = time;
 		}
 
-		//memoryManager.ReadMemory(Offset.PlantedC4 + Offset.C4.m_flDefuseCountDown, IsBeingDefused);
-		//memoryManager.ReadMemory(Offset.PlantedC4 + Offset.C4.m_flDefuseCountDown, DefuseTime);
+		memoryManager.ReadMemory(bomb + Offset.C4.m_bBeingDefused, IsBeingDefused);
+		memoryManager.ReadMemory(bomb + Offset.C4.m_flDefuseCountDown, DefuseTime);
 
 		if (!isPlanted && !MenuConfig::ShowMenu)
 			return;
@@ -81,32 +84,28 @@ namespace bmb
 
 		float remaining = (40000 - (int64_t)time + plantTime) / (float)1000;
 
-		/*
-		if (remaining > 10 || remaining < 0 || !isPlanted)
-		{
-			ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0, 196, 0, 255));
-		}
-		else if (remaining > 5)
-		{
-			ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(255, 155, 0, 255));
-		}
-		else {
-			ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(242, 93, 93, 255));
-		}*/
-
 		ImGui::SetCursorPosX((ImGui::GetWindowSize().x - 180) * 0.5f);
 		float barLength = remaining <= 0.0f ? 0.0f : remaining >= 40 ? 1.0f : (remaining / 40.0f);
 		
 		if (isPlanted && remaining >= 0)
 		{
+			if (remaining <= 10 && !IsBeingDefused)
+			{
+				color = ImColor(113, 34, 51);
+			}
+			else if (IsBeingDefused)
+			{
+				color = ImColor(32, 178, 170);
+			}
+			else
+			{
+				color = MiscCFG::BombTimerCol;
+			}
+
 			std::ostringstream ss;
 			ss.precision(3);
 			ss << "Bomb on " << (!getBombSite(isBombPlanted) ? "A" : "B") << ": " << std::fixed << remaining << " s";
-			//std::ostringstream test;
-			//test.precision(3);
-			//test << IsBeingDefused << ", " << DefuseTime;
 			Gui.MyText(std::move(ss).str().c_str(), true);
-			//Gui.MyText(std::move(test).str().c_str(), true);
 		}
 		else {
 			Gui.MyText("C4 not planted", true);
@@ -114,13 +113,22 @@ namespace bmb
 		}
 		ImGui::TextUnformatted(" ");
 		ImGui::SameLine();
-		Gui.MyProgressBar(barLength, { 180, 15 }, "", MiscCFG::BombTimerCol);
+		Gui.MyProgressBar(barLength, { 180, 15 }, "", color);
+		//if (isPlanted && remaining >= 0 && IsBeingDefused)
+		//{
+		//	ImVec2 progressBarPos = ImGui::GetCursorPos();
+		//	ImGui::SetCursorPos(ImVec2(progressBarPos.x + 45, progressBarPos.y - 27));
 
+		//	std::ostringstream defuseSS;
+		//	defuseSS.precision(2);
+		//	defuseRemaining = plantTime - DefuseTime;
+		//	defuseSS << "Defusing: " << std::fixed << defuseRemaining << " s";
+		//	ImGui::Text(defuseSS.str().c_str());
+		//}
 		if (isPlanted && !isBombPlanted)
 		{
 			isPlanted = false;
 		}
-		//ImGui::PopStyleColor();
 		MenuConfig::BombWinPos = ImGui::GetWindowPos();
 		ImGui::End();
 	}

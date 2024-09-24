@@ -5,7 +5,7 @@
 namespace MenuConfig
 {
 	inline std::string name = "DragonBurn";
-	inline std::string version = "2.0.3.0";
+	inline std::string version = "2.0.4.0";
 	inline std::string author = "ByteCorum";
 
 	inline std::string path = "";
@@ -44,6 +44,7 @@ namespace MenuConfig
 	inline bool RadarWinChengePos = false;
 	inline bool SpecWinChengePos = false;
 	inline bool BombWinChengePos = false;
+	inline int HotKey = VK_END;
 }
 
 namespace LegitBotConfig 
@@ -51,7 +52,6 @@ namespace LegitBotConfig
 	inline bool AimBot = true;
 	inline bool AimAlways = false;
 	inline bool AimToggleMode = false;
-	inline int AimBotHotKey = 3;
 	// 0: head 1: neck 3: spine
 	inline int  AimPosition = 0;
 	inline DWORD  AimPositionIndex = BONEINDEX::head;
@@ -64,7 +64,6 @@ namespace LegitBotConfig
 
 	inline bool TriggerBot = true;
 	inline bool TriggerAlways = false;
-	inline int TriggerHotKey = 4;
 
 	inline bool RCS = false;
 
@@ -146,13 +145,13 @@ namespace ESPConfig
 namespace RadarCFG
 {
 	inline bool ShowRadar = false;
-	inline float RadarRange = 150;
+	inline float RadarRange = 125;
 	inline float RadarPointSizeProportion = 1.f;
 	inline bool ShowRadarCrossLine = false;
 	inline ImColor RadarCrossLineColor = ImColor(131, 137, 150, 180);
 	// 0: circle 1: arrow 2: circle with arrow
 	inline int RadarType = 2;
-	inline float Proportion = 3300.f;
+	inline float Proportion = 2700.f;
 	inline bool customRadar = false;
 	inline float RadarBgAlpha = 0.1f;
 }

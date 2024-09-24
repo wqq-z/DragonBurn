@@ -7,6 +7,7 @@
 #include <string>
 #include "../Resources/Language.hpp"
 #include "../Features/RCS.h"
+#include "../Helpers/KeyManager.h"
 
 namespace ConfigMenu {
 	
@@ -64,8 +65,8 @@ namespace ConfigMenu {
 			ImGui::OpenPopup("##reallyDelete");
 		if (ImGui::BeginPopup("##reallyDelete"))
 		{
-			ImGui::TextUnformatted(" Are you sure? ");
-			ImGui::TextUnformatted("  ");
+			ImGui::Text("   Are you sure?   ");
+			ImGui::Text(" ");
 			ImGui::SameLine();
 			if (ImGui::Button("No", { 40.0f, 0.0f }))
 				ImGui::CloseCurrentPopup();
@@ -89,8 +90,8 @@ namespace ConfigMenu {
 			ImGui::OpenPopup("##reallyReset");
 		if (ImGui::BeginPopup("##reallyReset"))
 		{
-			ImGui::TextUnformatted(" Are you sure? ");
-			ImGui::TextUnformatted("  ");
+			ImGui::Text("   Are you sure?   ");
+			ImGui::Text(" ");
 			ImGui::SameLine();
 			if (ImGui::Button("No", { 40.0f, 0.0f }))
 				ImGui::CloseCurrentPopup();
@@ -180,16 +181,18 @@ namespace ConfigMenu {
 		MenuConfig::WorkInSpec = true;
 
 		RadarCFG::ShowRadar = false;
-		RadarCFG::RadarRange = 150;
+		RadarCFG::RadarRange = 125;
 		RadarCFG::ShowRadarCrossLine = false;
 		RadarCFG::RadarCrossLineColor = ImColor(131, 137, 150, 180);
 		RadarCFG::RadarType = 2;
 		RadarCFG::RadarPointSizeProportion = 1.f;
 		RadarCFG::RadarBgAlpha = 0.1f;
-		RadarCFG::Proportion = 3300;
+		RadarCFG::Proportion = 2700.f;
 
 		LegitBotConfig::TriggerBot = true;
 		LegitBotConfig::TriggerAlways = false;
+		TriggerBot::HotKey = 6;
+		Text::Trigger::HotKey = KeyMgr::GetKeyName(TriggerBot::HotKey);
 
 		MenuConfig::TeamCheck = true;
 		MenuConfig::BypassOBS = false;
@@ -198,8 +201,8 @@ namespace ConfigMenu {
 		MiscCFG::ShowHeadShootLine = false;
 		MiscCFG::HeadShootLineColor = ImColor(131, 137, 150, 200);
 
-		LegitBotConfig::AimBotHotKey = 3;
-		AimControl::SetHotKey(LegitBotConfig::AimBotHotKey);
+		AimControl::HotKey = 1;
+		Text::Aimbot::HotKey = KeyMgr::GetKeyName(AimControl::HotKey);
 		AimControl::AimFov = 10;
 		AimControl::AimFovMin = 0.4f;
 		AimControl::Smooth = 5.0f;
@@ -210,8 +213,6 @@ namespace ConfigMenu {
 		TriggerBot::ShotDuration = 400;
 
 		RCS::RCSBullet = 1;
-		LegitBotConfig::TriggerHotKey = 4;
-		TriggerBot::SetHotKey(LegitBotConfig::TriggerHotKey);
 
 		RCS::RCSScale = ImVec2(1.4f, 1.4f);
 		AimControl::ScopeOnly = true;
@@ -252,7 +253,7 @@ namespace ConfigMenu {
 		LegitBotConfig::FovCircleColor = ImColor(131, 137, 150, 180);
 
 		MenuConfig::MarkWinPos = ImVec2(ImGui::GetIO().DisplaySize.x - 300.0f, 100.f);
-		MenuConfig::RadarWinPos = ImVec2(0.f, 0.f);
+		MenuConfig::RadarWinPos = ImVec2(25.f, 25.f);
 		MenuConfig::SpecWinPos = ImVec2(10.0f, ImGui::GetIO().DisplaySize.y / 2 - 200);
 		MenuConfig::BombWinPos = ImVec2((ImGui::GetIO().DisplaySize.x - 200.0f) / 2.0f, 80.0f);
 
@@ -260,6 +261,8 @@ namespace ConfigMenu {
 		MenuConfig::BombWinChengePos = true;
 		MenuConfig::RadarWinChengePos = true;
 		MenuConfig::SpecWinChengePos = true;
+
+		MenuConfig::HotKey = VK_END;
 
 	}
 }
