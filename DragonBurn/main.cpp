@@ -12,6 +12,7 @@
 #include "Helpers/Logger.h"
 #include "Core/Setup.h"
 #include "Core/Offsets.h"
+#include "Core/MemoryManager.h"
 
 int main(int argc, char* argv[])
 {
@@ -91,6 +92,44 @@ https://github.com/ByteCorum/DragonBurn
 		Log.Error("Unknown connection error");
 		break;
 
+	}
+
+	Log.Info("Connecting to kernel mode driver");
+	if (MemoryMgr.ConnectDriver(L"\\\\.\\DragonBurn-kernel"))
+	{
+		Log.PreviousLine();
+		Log.Fine("Successfully connected to kernel mode driver");
+	}
+	else
+	{
+		Log.PreviousLine();
+		Log.Error("Failed to connect to kernel mode driver");
+	}
+
+	std::cout << '\n';
+	bool preStart = false;
+	while (MemoryMgr.GetProcessID(L"cs2.exe") == 0)
+	{
+		Log.PreviousLine();
+		Log.Info("Waiting for CS2");
+		preStart = true;
+	}
+
+	if (preStart)
+	{
+		Log.PreviousLine();
+		Log.Info("Connecting to CS2(it may take some time)");
+		Sleep(20000);
+	}
+
+	Log.PreviousLine();
+	Log.Fine("Connected to CS2");
+	Log.Info("Linking to CS2");
+
+	if (!MemoryMgr.Attach(MemoryMgr.GetProcessID(L"cs2.exe")))
+	{
+		Log.PreviousLine();
+		Log.Error("Failed to attach to the process");
 	}
 
 	return 0;
