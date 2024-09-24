@@ -10,7 +10,6 @@
 //https://github.com/ByteCorum/DragonBurn
 
 #include "Setup.h"
-#include "../Core/Config.h"
 
 int Setup::CheckProgVersion()
 {
@@ -29,4 +28,22 @@ int Setup::CheckProgVersion()
     }
 
     return 3;
+}
+
+bool Setup::GetCfgPath()
+{
+    wchar_t* userProfile = nullptr;
+    size_t len = 0;
+    _wdupenv_s(&userProfile, &len, L"USERPROFILE");
+
+    if (userProfile) 
+    {
+        std::filesystem::path documentsPath = std::filesystem::path(userProfile) / "Documents/";
+        CFG::Core::documentPath = documentsPath.string();
+        free(userProfile);
+
+        return true;
+    }
+    else
+        return false;
 }

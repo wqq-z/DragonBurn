@@ -11,6 +11,8 @@
 
 #pragma once
 #include <string>
+#include <filesystem>
+#include "../Core/Config.h"
 #include "../Helpers/WebRequest.h"
 
 namespace Setup
@@ -20,4 +22,10 @@ namespace Setup
 	/// </summary>
 	/// <returns>status</returns>
 	int CheckProgVersion();
+
+	/// <summary>
+	/// Gets path to documents dir
+	/// </summary>
+	/// <returns>0/1</returns>
+	bool GetCfgPath();
 }

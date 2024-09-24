@@ -148,5 +148,20 @@ https://github.com/ByteCorum/DragonBurn
 	Log.PreviousLine();
 	Log.Fine("Linked to CS2");
 
+	if (Setup::GetCfgPath())
+		Log.Error("Failed to get documents folder path");
+	
+
+	//...
+
+	Log.Fine("DragonBurn loaded");
+
+#ifndef _DEBUG
+	Sleep(3000);
+	ShowWindow(GetConsoleWindow(), SW_HIDE);
+#endif
+
+	//...
+
 	return 0;
 }

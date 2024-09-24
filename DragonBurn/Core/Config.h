@@ -22,4 +22,10 @@ namespace CFG
 		inline const std::string version = "2.0.4.0";
 		inline const std::string author = "ByteCorum";
 	}
+
+	// core config data
+	namespace Core 
+	{
+		inline std::string documentPath = "";
+	}
 }
