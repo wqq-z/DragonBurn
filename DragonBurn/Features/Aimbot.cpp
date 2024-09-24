@@ -1,11 +1,5 @@
 #include "Aimbot.h"
 
-
-void AimControl::SetHotKey(int Index)
-{
-    HotKey = HotKeyList.at(Index);
-}
-
 void AimControl::switchToggle()
 {
     LegitBotConfig::AimAlways = !LegitBotConfig::AimAlways;

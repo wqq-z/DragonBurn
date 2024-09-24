@@ -45,6 +45,7 @@ namespace Text {
         inline std::string Enable = "Enable Aimbot";
         inline std::string FeatureName = "Aimbot";
         inline std::string HotKeyList = "Hotkey";
+        inline std::string HotKey = "LMB";
         inline std::string Toggle = "Toggle Mode";
         inline std::string DrawFov = "Show Fov";
         inline std::string VisCheck = "Visible Check";
@@ -85,6 +86,7 @@ namespace Text {
         inline std::string Enable = "Enable Triggerbot";
         inline std::string FeatureName = "Triggerbot";
         inline std::string HotKeyList = "Hotkey";
+        inline std::string HotKey = "X2MB";
         inline std::string Toggle = "Always Active";
         inline std::string ScopeOnly = "Scope Only";
         inline std::string DelaySlider = "Shot Delay:";
@@ -95,6 +97,8 @@ namespace Text {
     namespace Misc
     {
         inline std::string FeatureName = "Misc";
+        inline std::string MenuKey = " Menu Key";
+        inline std::string HotKey = "End";
         inline std::string StyleList = "Style";
         inline std::string HeadshotLine = "Headshot Line";
         inline std::string SpecCheck = "Work in Spec";

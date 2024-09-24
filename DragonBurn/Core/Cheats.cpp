@@ -210,7 +210,7 @@ void Menu()
 {
 	std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
 	std::chrono::duration<double, std::milli> difference = now - timepoint;
-	SHORT keyState = GetAsyncKeyState(VK_END);
+	SHORT keyState = GetAsyncKeyState(MenuConfig::HotKey);
 	if (keyState & 0x8000) {
 		keyWasPressed = true;
 	}

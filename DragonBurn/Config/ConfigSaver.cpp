@@ -8,6 +8,7 @@
 #include "../Features/TriggerBot.h"
 #include "../Features/Aimbot.h"
 #include "../Features/RCS.h"
+#include "../Helpers/KeyManager.h"
 #include <json.hpp>
 
 using json = nlohmann::json;
@@ -148,7 +149,7 @@ namespace MyConfigSaver
 
         ConfigData["Aimbot"]["Enable"]=           LegitBotConfig::AimBot;
         ConfigData["Aimbot"]["ToggleMode"]=       LegitBotConfig::AimToggleMode;
-        ConfigData["Aimbot"]["Hotkey"]=           LegitBotConfig::AimBotHotKey;
+        ConfigData["Aimbot"]["Hotkey"]=           AimControl::HotKey;
         ConfigData["Aimbot"]["AimBullet"]=        AimControl::AimBullet;
         ConfigData["Aimbot"]["Fov"]=              AimControl::AimFov;
         ConfigData["Aimbot"]["FovMin"]=           AimControl::AimFovMin;
@@ -175,7 +176,7 @@ namespace MyConfigSaver
 
 
         ConfigData["Triggerbot"]["Enable"]=       LegitBotConfig::TriggerBot;
-        ConfigData["Triggerbot"]["Hotkey"]=       LegitBotConfig::TriggerHotKey;
+        ConfigData["Triggerbot"]["Hotkey"]=       TriggerBot::HotKey;
         ConfigData["Triggerbot"]["Delay"]=        TriggerBot::TriggerDelay;
         ConfigData["Triggerbot"]["FakeShot"]=     TriggerBot::ShotDuration;
         ConfigData["Triggerbot"]["ScopeOnly"]=    TriggerBot::ScopeOnly;
@@ -213,6 +214,7 @@ namespace MyConfigSaver
 
         ConfigData["Misc"]["TeamCheck"]=        MenuConfig::TeamCheck;
         ConfigData["Misc"]["AntiRecord"]=       MenuConfig::BypassOBS;
+        ConfigData["Misc"]["MenuKey"] =         MenuConfig::HotKey;
 
         ConfigData["MenuConfig"]["MarkWinPos"]["x"] = MenuConfig::MarkWinPos.x;
         ConfigData["MenuConfig"]["MarkWinPos"]["y"] = MenuConfig::MarkWinPos.y;
@@ -371,7 +373,7 @@ namespace MyConfigSaver
         {
             LegitBotConfig::AimBot = ReadData(ConfigData["Aimbot"],{"Enable"}, false);
             LegitBotConfig::AimToggleMode = ReadData(ConfigData["Aimbot"],{"ToggleMode"}, false);
-            LegitBotConfig::AimBotHotKey = ReadData(ConfigData["Aimbot"],{"Hotkey"}, 0);
+            AimControl::HotKey = ReadData(ConfigData["Aimbot"],{"Hotkey"}, 0);
             AimControl::AimBullet = ReadData(ConfigData["Aimbot"],{"AimBullet"}, 0);
             AimControl::AimFov = ReadData(ConfigData["Aimbot"],{"Fov"}, 5.f);
             AimControl::AimFovMin = ReadData(ConfigData["Aimbot"],{"FovMin"}, .5f);
@@ -385,7 +387,7 @@ namespace MyConfigSaver
             LegitBotConfig::VisibleCheck = ReadData(ConfigData["Aimbot"],{"VisibleCheck"}, true);
             AimControl::IgnoreFlash = ReadData(ConfigData["Aimbot"],{"IgnoreFlash"}, false);
             AimControl::ScopeOnly = ReadData(ConfigData["Aimbot"],{"ScopeOnly"}, false);
-            AimControl::SetHotKey(LegitBotConfig::AimBotHotKey);
+            Text::Aimbot::HotKey = KeyMgr::GetKeyName(AimControl::HotKey);
             LegitBotConfig::HitboxUpdated = false;
         }
 
@@ -400,13 +402,13 @@ namespace MyConfigSaver
         if (ConfigData.contains("Triggerbot"))
         {
             LegitBotConfig::TriggerBot = ReadData(ConfigData["Triggerbot"],{"Enable"}, false);
-            LegitBotConfig::TriggerHotKey = ReadData(ConfigData["Triggerbot"],{"Hotkey"}, 0);
+            TriggerBot::HotKey = ReadData(ConfigData["Triggerbot"],{"Hotkey"}, 6);
             TriggerBot::TriggerDelay = ReadData(ConfigData["Triggerbot"],{"Delay"}, 20);
             TriggerBot::ShotDuration = ReadData(ConfigData["Triggerbot"],{"FakeShot"}, 200);
             TriggerBot::ScopeOnly = ReadData(ConfigData["Triggerbot"],{"ScopeOnly"}, false);
             TriggerBot::IgnoreFlash = ReadData(ConfigData["Triggerbot"],{"IgnoreFlash"}, false);
             LegitBotConfig::TriggerAlways = ReadData(ConfigData["Triggerbot"],{"AutoMode"}, false);
-            TriggerBot::SetHotKey(LegitBotConfig::TriggerHotKey);
+            Text::Trigger::HotKey = KeyMgr::GetKeyName(TriggerBot::HotKey);
         }
 
         if (ConfigData.contains("Misc"))
@@ -435,6 +437,8 @@ namespace MyConfigSaver
             MiscCFG::SniperCrosshairColor.Value.w = ReadData(ConfigData["Misc"], { "SniperCrosshairColor","a" }, 255.f);
             MenuConfig::TeamCheck = ReadData(ConfigData["Misc"],{"TeamCheck"}, true);
             MenuConfig::BypassOBS = ReadData(ConfigData["Misc"],{"AntiRecord"}, false);
+            MenuConfig::HotKey = ReadData(ConfigData["Misc"], { "MenuKey" }, VK_END);
+            Text::Misc::HotKey = KeyMgr::GetKeyName(MenuConfig::HotKey);
         }
 
         if (ConfigData.contains("MenuConfig"))

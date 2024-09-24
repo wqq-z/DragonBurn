@@ -44,6 +44,7 @@ namespace MenuConfig
 	inline bool RadarWinChengePos = false;
 	inline bool SpecWinChengePos = false;
 	inline bool BombWinChengePos = false;
+	inline int HotKey = VK_END;
 }
 
 namespace LegitBotConfig 
@@ -51,7 +52,6 @@ namespace LegitBotConfig
 	inline bool AimBot = true;
 	inline bool AimAlways = false;
 	inline bool AimToggleMode = false;
-	inline int AimBotHotKey = 3;
 	// 0: head 1: neck 3: spine
 	inline int  AimPosition = 0;
 	inline DWORD  AimPositionIndex = BONEINDEX::head;
@@ -64,7 +64,6 @@ namespace LegitBotConfig
 
 	inline bool TriggerBot = true;
 	inline bool TriggerAlways = false;
-	inline int TriggerHotKey = 4;
 
 	inline bool RCS = false;
 

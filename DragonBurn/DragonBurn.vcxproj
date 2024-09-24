@@ -193,6 +193,7 @@
     <ClInclude Include="Game\View.h" />
     <ClInclude Include="Helpers\Format.h" />
     <ClInclude Include="Helpers\GetWeaponIcon.h" />
+    <ClInclude Include="Helpers\KeyManager.h" />
     <ClInclude Include="Helpers\Logger.h" />
     <ClInclude Include="Helpers\Mouse.h" />
     <ClInclude Include="Helpers\WebApi.h" />
