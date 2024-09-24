@@ -13,6 +13,7 @@
 #include "Core/Setup.h"
 #include "Core/Offsets.h"
 #include "Core/MemoryManager.h"
+#include "Game/Game.h"
 
 /// <summary>
 /// main program entry
@@ -137,6 +138,15 @@ https://github.com/ByteCorum/DragonBurn
 		Log.PreviousLine();
 		Log.Error("Failed to attach to the process");
 	}
+
+	if (!GameData.SetupAddress())
+	{
+		Log.PreviousLine();
+		Log.Error("Failed to Init Address");
+	}
+
+	Log.PreviousLine();
+	Log.Fine("Linked to CS2");
 
 	return 0;
 }

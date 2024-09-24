@@ -11,9 +11,15 @@
 
 #include "Offsets.h"
 
-Offsets::Offsets() {}
+Offsets::Offsets()
+{
 
-Offsets::~Offsets() {}
+}
+
+Offsets::~Offsets()
+{
+
+}
 
 void Offsets::SetOffsets(const std::string& offsetsData, const std::string& buttonsData, const std::string& client_dllData)
 {
