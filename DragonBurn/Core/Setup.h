@@ -15,5 +15,9 @@
 
 namespace Setup
 {
+	/// <summary>
+	/// Checks if program version is newest
+	/// </summary>
+	/// <returns>status</returns>
 	int CheckProgVersion();
 }

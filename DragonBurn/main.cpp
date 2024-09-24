@@ -14,6 +14,12 @@
 #include "Core/Offsets.h"
 #include "Core/MemoryManager.h"
 
+/// <summary>
+/// main program entry
+/// </summary>
+/// <param name="arguments count"></param>
+/// <param name="arguments values"></param>
+/// <returns> status </returns>
 int main(int argc, char* argv[])
 {
 	ShowWindow(GetConsoleWindow(), SW_SHOWNORMAL);

@@ -17,6 +17,11 @@ Logger::Logger(HANDLE hConsole)
 	this->hConsole = hConsole;
 }
 
+Logger::~Logger() 
+{
+
+}
+
 void Logger::Info(const std::string& ctx) const
 {
 	SetConsoleTextAttribute(hConsole, 8);

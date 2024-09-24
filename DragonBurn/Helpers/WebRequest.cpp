@@ -46,7 +46,7 @@ bool Web::Get(const std::string& url, std::string& response)
     return true;
 }
 
-bool Web::Post(const std::string& url, std::string& params) 
+bool Web::Post(const std::string& url, std::string& params, std::string& response)
 {
     return true;
 }

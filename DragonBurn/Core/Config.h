@@ -12,13 +12,14 @@
 #pragma once
 #include <string>
 
-
-namespace CFG 
+// all program config data
+namespace CFG
 {
+	// global config data
 	namespace Global 
 	{
-		inline std::string name = "DragonBurn";
-		inline std::string version = "2.0.4.0";
-		inline std::string author = "ByteCorum";
+		inline const std::string name = "DragonBurn";
+		inline const std::string version = "2.0.4.0";
+		inline const std::string author = "ByteCorum";
 	}
 }

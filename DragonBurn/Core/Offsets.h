@@ -19,8 +19,22 @@ using json = nlohmann::json;
 class Offsets
 {
 public:
+	/// <summary>
+	/// Offsets constructor
+	/// </summary>
+	/// <returns> none </returns>
 	Offsets();
+
+	/// <summary>
+	/// Offsets destructor
+	/// </summary>
+	/// <returns> none </returns>
 	~Offsets();
+
+	/// <summary>
+	/// Updates offsets by getting data from web
+	/// </summary>
+	/// <returns>status</returns>
 	int UpdateOffsets();
 
 	DWORD EntityList;
@@ -129,6 +143,12 @@ public:
 	} C4;
 
 private:
+	/// <summary>
+	/// Sets offsets to offsets got from web
+	/// </summary>
+	/// <param name="offsets"></param>
+	/// <param name="buttons"></param>
+	/// <param name="client_dll"></param>
 	void SetOffsets(const std::string&, const std::string&, const std::string&);
 };
 

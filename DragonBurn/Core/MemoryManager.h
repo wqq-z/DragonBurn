@@ -14,6 +14,7 @@
 #include <string>
 #include <vector>
 
+//IOCTL codes to communicate with kernel driver
 #define DRAGON_DEVICE 0x8000
 #define IOCTL_GET_PID CTL_CODE(DRAGON_DEVICE, 0x4452, METHOD_NEITHER, FILE_ANY_ACCESS)
 #define IOCTL_GET_MODULE_BASE CTL_CODE(DRAGON_DEVICE, 0x4462, METHOD_NEITHER, FILE_ANY_ACCESS)
@@ -25,16 +26,60 @@
 class MemoryManager
 {
 public:
+    /// <summary>
+    /// MemoryManager constructor
+    /// </summary>
+    /// <returns> none </returns>
     MemoryManager();
+
+    /// <summary>
+    /// MemoryManager destructor
+    /// </summary>
+    /// <returns> none </returns>
     ~MemoryManager();
 
+    /// <summary>
+    /// Sets up communication with kernel driver
+    /// </summary>
+    /// <param name="driver name"></param>
+    /// <returns>0/1</returns>
     bool ConnectDriver(const LPCWSTR);
+
+    /// <summary>
+    /// Ends communication with kernel driver
+    /// </summary>
+    /// <returns>0/1</returns>
     bool DisconnectDriver();
+
+    /// <summary>
+    /// Attachs to process by pid
+    /// </summary>
+    /// <param name="PID"></param>
+    /// <returns>0/1</returns>
     bool Attach(const DWORD);
 
+    /// <summary>
+    /// Gets PID by name using request to kernel
+    /// </summary>
+    /// <param name="Process name"></param>
+    /// <returns>PID</returns>
     DWORD GetProcessID(const wchar_t*);
+
+    /// <summary>
+    /// Gets Module base by name using request to kernel
+    /// </summary>
+    /// <param name="Module name"></param>
+    /// <returns>Module base</returns>
     DWORD64 GetModuleBase(const wchar_t*);
 
+    /// <summary>
+    /// Reads process memory using request to kernel
+    /// </summary>
+    /// <typeparam name="Type for reading"></typeparam>
+    /// <param name="Address"></param>
+    /// <param name="Buffer to write"></param>
+    /// <param name="Size to read"></param>
+    /// <returns>0/1</returns>
     template <typename ReadType>
     bool ReadMemory(DWORD64 address, ReadType& value, SIZE_T size = sizeof(ReadType))
     {
@@ -60,6 +105,12 @@ public:
         return false;
     }
 
+    /// <summary>
+    /// Traces all address from vector
+    /// </summary>
+    /// <param name="Base Address"></param>
+    /// <param name="Offsets vector"></param>
+    /// <returns>correct address</returns>
     DWORD64 TraceAddress(DWORD64, std::vector<DWORD>);
 
 private:
