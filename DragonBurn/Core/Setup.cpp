@@ -9,26 +9,24 @@
 //                 |___/                                    
 //https://github.com/ByteCorum/DragonBurn
 
-#pragma once
-#include <Windows.h>
-#include <iostream>
-#include <string>
+#include "Setup.h"
+#include "../Core/Config.h"
 
-
-class Logger 
+int Setup::CheckProgVersion()
 {
-public:
-	Logger(HANDLE);
+    const std::string curVersionUrl = "https://raw.githubusercontent.com/ByteCorum/DragonBurn/data/version";
+    std::string curVersion;
 
-	void Info(const std::string&) const;
-	void Warning(const std::string&, bool = false) const;
-	void Error(const std::string&, bool = true) const;
-	void Fine(const std::string&) const;
-	void Debug(const std::string&) const;
+    if (!Web::CheckConnection())
+        return 0;
 
-	void Custom(const std::string&, int) const;
-	void PreviousLine() const;
+    if (!Web::Get(curVersionUrl, curVersion))
+        return 1;
 
-private:
-	HANDLE hConsole;
-};
+    if (curVersion != CFG::Global::version)
+    {
+        return 2;
+    }
+
+    return 3;
+}

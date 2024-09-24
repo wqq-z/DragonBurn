@@ -10,25 +10,15 @@
 //https://github.com/ByteCorum/DragonBurn
 
 #pragma once
-#include <Windows.h>
-#include <iostream>
 #include <string>
 
 
-class Logger 
+namespace CFG 
 {
-public:
-	Logger(HANDLE);
-
-	void Info(const std::string&) const;
-	void Warning(const std::string&, bool = false) const;
-	void Error(const std::string&, bool = true) const;
-	void Fine(const std::string&) const;
-	void Debug(const std::string&) const;
-
-	void Custom(const std::string&, int) const;
-	void PreviousLine() const;
-
-private:
-	HANDLE hConsole;
-};
+	namespace Global 
+	{
+		inline std::string name = "DragonBurn";
+		inline std::string version = "2.0.4.0";
+		inline std::string author = "ByteCorum";
+	}
+}

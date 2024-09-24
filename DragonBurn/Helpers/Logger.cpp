@@ -1,3 +1,14 @@
+//
+//______                            ______                  
+//|  _  \                           | ___ \                 
+//| | | |_ __ __ _  __ _  ___  _ __ | |_/ /_   _ _ __ _ __  
+//| | | | '__/ _` |/ _` |/ _ \| '_ \| ___ \ | | | '__| '_ \ 
+//| |/ /| | | (_| | (_| | (_) | | | | |_/ / |_| | |  | | | |
+//|___/ |_|  \__,_|\__, |\___/|_| |_\____/ \__,_|_|  |_| |_|
+//                  __/ |                                   
+//                 |___/                                    
+//https://github.com/ByteCorum/DragonBurn
+
 #include "Logger.h"
 
 
@@ -34,7 +45,7 @@ void Logger::Error(const std::string& ctx, bool fatal = true) const
 	system("pause");
 
 	if (fatal)
-		exit(0);
+		exit(-1);
 }
 
 void Logger::Fine(const std::string& ctx) const
