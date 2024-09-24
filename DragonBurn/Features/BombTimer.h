@@ -121,6 +121,7 @@ namespace bmb
 
 		//	std::ostringstream defuseSS;
 		//	defuseSS.precision(2);
+		//	defuseRemaining = plantTime - DefuseTime;
 		//	defuseSS << "Defusing: " << std::fixed << defuseRemaining << " s";
 		//	ImGui::Text(defuseSS.str().c_str());
 		//}
