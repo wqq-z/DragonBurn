@@ -43,7 +43,7 @@ public:
     /// </summary>
     /// <param name="driver name"></param>
     /// <returns>0/1</returns>
-    bool ConnectDriver(const LPCWSTR);
+    bool ConnectDriver(const LPCWSTR&);
 
     /// <summary>
     /// Ends communication with kernel driver
@@ -56,21 +56,21 @@ public:
     /// </summary>
     /// <param name="PID"></param>
     /// <returns>0/1</returns>
-    bool Attach(const DWORD);
+    bool Attach(const DWORD&);
 
     /// <summary>
     /// Gets PID by name using request to kernel
     /// </summary>
     /// <param name="Process name"></param>
     /// <returns>PID</returns>
-    DWORD GetProcessID(const wchar_t*);
+    DWORD GetProcessID(const wchar_t*) const;
 
     /// <summary>
     /// Gets Module base by name using request to kernel
     /// </summary>
     /// <param name="Module name"></param>
     /// <returns>Module base</returns>
-    DWORD64 GetModuleBase(const wchar_t*);
+    DWORD64 GetModuleBase(const wchar_t*) const;
 
     /// <summary>
     /// Reads process memory using request to kernel
@@ -81,7 +81,7 @@ public:
     /// <param name="Size to read"></param>
     /// <returns>0/1</returns>
     template <typename ReadType>
-    bool ReadMemory(DWORD64 address, ReadType& value, SIZE_T size = sizeof(ReadType))
+    bool ReadMemory(const DWORD64& address, ReadType& value, SIZE_T size = sizeof(ReadType)) const
     {
         if (kernelDriver != nullptr && ProcessID != 0)
         {
@@ -111,7 +111,7 @@ public:
     /// <param name="Base Address"></param>
     /// <param name="Offsets vector"></param>
     /// <returns>correct address</returns>
-    DWORD64 TraceAddress(DWORD64, std::vector<DWORD>);
+    DWORD64 TraceAddress(const DWORD64&, const std::vector<DWORD>&) const;
 
 private:
     DWORD ProcessID;

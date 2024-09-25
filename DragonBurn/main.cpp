@@ -14,6 +14,7 @@
 #include "Core/Offsets.h"
 #include "Core/MemoryManager.h"
 #include "Game/Game.h"
+#include "Configs/ConfigManager.h"
 
 /// <summary>
 /// main program entry
@@ -151,8 +152,10 @@ https://github.com/ByteCorum/DragonBurn
 	if (Setup::GetCfgPath())
 		Log.Error("Failed to get documents folder path");
 	
+	if(!ConfigMgr::CheckConfigDir())
+		Log.Error("Failed to connect to the config directory");
 
-	//...
+	ConfigMgr::LoadDefaultCfg();
 
 	Log.Fine("DragonBurn loaded");
 

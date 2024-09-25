@@ -11,6 +11,7 @@
 
 #pragma once
 #include <string>
+#include <imgui.h>
 
 // all program config data
 namespace CFG
@@ -26,6 +27,90 @@ namespace CFG
 	// core config data
 	namespace Core 
 	{
-		inline std::string documentPath = "";
+		inline std::string documentPath;
+	}
+
+	namespace Features 
+	{
+		namespace Visual
+		{
+			inline bool visual;
+			inline bool frame;
+			inline int frameType;
+			inline bool outline;
+			inline bool visible;
+
+			inline bool bones;
+			inline bool head;
+			inline bool eyeRay;
+			
+			inline bool healthBar;
+			inline bool healthNum;
+			inline bool armorBar;
+			inline bool armorNum;
+			inline bool ammoBar;
+
+			inline bool weapon;
+			inline bool name;
+			inline bool scope;
+			inline bool distance;
+
+			inline ImColor frameColor;
+			inline ImColor visibleColor;
+			inline ImColor bonesColor;
+			inline ImColor headColor;
+			inline ImColor eyeRayColor;
+		}
+		
+		namespace Radar
+		{
+			inline bool radar;
+			inline float range;
+			inline float proportion;
+			inline float pointSize;
+		}
+
+		namespace LegitBot
+		{
+			namespace Aimbot
+			{
+				inline bool aimBot;
+				inline bool toggleMode;
+				inline int hotKey;
+				inline int startBullet;
+				inline float fov;
+				inline bool drawFov;
+				inline float smooth;
+				inline std::vector<int> hitboxes;
+				inline bool visibleCheck;
+				inline bool flashCheck;
+				inline bool scopeCheck;
+			}
+
+			namespace RecoilControl
+			{
+				inline bool recoilControl;
+				inline int startBullet;
+				inline ImVec2 scale;
+			}
+
+			namespace Triggerbot
+			{
+				inline bool triggerBot;
+				inline bool toggleMode;
+				inline int hotKey;
+				inline int delay;
+				inline int duration;
+				inline bool flashCheck;
+				inline bool scopeCheck;
+			}
+		}
+
+		namespace Misc
+		{
+			//add misc cfg
+		}
+
+		//add other cfg namespaces
 	}
 }

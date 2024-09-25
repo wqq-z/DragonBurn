@@ -25,7 +25,7 @@ MemoryManager::~MemoryManager()
 	kernelDriver = nullptr;
 }
 
-bool MemoryManager::ConnectDriver(const LPCWSTR name)
+bool MemoryManager::ConnectDriver(const LPCWSTR& name)
 {
 	kernelDriver = CreateFile(name, GENERIC_READ, 0, nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
 	if (kernelDriver == INVALID_HANDLE_VALUE)
@@ -44,7 +44,7 @@ bool MemoryManager::DisconnectDriver()
 		return false;
 }
 
-bool MemoryManager::Attach(const DWORD pid)
+bool MemoryManager::Attach(const DWORD& pid)
 {
 	if (pid == 0)
 		return false;
@@ -53,7 +53,7 @@ bool MemoryManager::Attach(const DWORD pid)
 	return true;
 }
 
-DWORD MemoryManager::GetProcessID(const wchar_t* processName)
+DWORD MemoryManager::GetProcessID(const wchar_t* processName) const
 {
 	if (kernelDriver != nullptr)
 	{
@@ -79,7 +79,7 @@ DWORD MemoryManager::GetProcessID(const wchar_t* processName)
 		return 0;
 }
 
-DWORD64 MemoryManager::GetModuleBase(const wchar_t* moduleName)
+DWORD64 MemoryManager::GetModuleBase(const wchar_t* moduleName) const
 {
 	if (kernelDriver != nullptr && ProcessID != 0)
 	{
@@ -108,7 +108,7 @@ DWORD64 MemoryManager::GetModuleBase(const wchar_t* moduleName)
 		return 0;
 }
 
-DWORD64 MemoryManager::TraceAddress(DWORD64 baseAddress, std::vector<DWORD> offsets)
+DWORD64 MemoryManager::TraceAddress(const DWORD64& baseAddress, const std::vector<DWORD>& offsets) const
 {
 	if (kernelDriver != nullptr && ProcessID != 0)
 	{
