@@ -62,3 +62,5 @@ CMakeLists.txt linguist-documentation=false
 
 
 #Ignore dirs/files
+DragonBurn/Libs/ImGui/* linguist-vendored
+DragonBurn/Libs/json/*  linguist-vendored
