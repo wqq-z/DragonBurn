@@ -74,13 +74,13 @@
     <TargetName>DragonBurn</TargetName>
     <OutDir>$(SolutionDir)\built_dbg\</OutDir>
     <IntDir>$(SolutionDir)\built_dbg\cache</IntDir>
-    <IncludePath>Libs\json;$(IncludePath)</IncludePath>
+    <IncludePath>Libs\ImGui;Libs\json;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetName>DragonBurn</TargetName>
     <OutDir>$(SolutionDir)\built\cache</OutDir>
     <IntDir>$(SolutionDir)\built\cache</IntDir>
-    <IncludePath>Libs\json;$(IncludePath)</IncludePath>
+    <IncludePath>Libs\ImGui;Libs\json;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -141,6 +141,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Configs\ConfigManager.cpp" />
+    <ClCompile Include="Configs\ConfigSystem.cpp" />
     <ClCompile Include="Core\Setup.cpp" />
     <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="Helpers\Logger.cpp" />
@@ -150,6 +152,7 @@
     <ClCompile Include="Core\MemoryManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Configs\ConfigManager.h" />
     <ClInclude Include="Core\Config.h" />
     <ClInclude Include="Core\Setup.h" />
     <ClInclude Include="Game\Game.h" />
