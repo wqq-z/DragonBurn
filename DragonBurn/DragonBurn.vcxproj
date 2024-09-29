@@ -150,6 +150,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Core\Offsets.cpp" />
     <ClCompile Include="Core\MemoryManager.cpp" />
+    <ClCompile Include="Configs\ValuesHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Configs\ConfigManager.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Helpers\WebRequest.h" />
     <ClInclude Include="Core\Offsets.h" />
     <ClInclude Include="Core\MemoryManager.h" />
+    <ClInclude Include="Configs\ValuesHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
