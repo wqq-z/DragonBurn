@@ -24,8 +24,6 @@ bool ConfigSys::LoadCfg(const std::string& path)
     else
         return false;
 
-    //finish LoadCfg
-
     if (configValues.contains("Visual"))
     {
         ValuesHandler::ReadValue(configValues["Visual"], "Visual", true, CFG::Features::Visual::visual);
@@ -132,6 +130,8 @@ bool ConfigSys::LoadCfg(const std::string& path)
         ValuesHandler::ReadPos(configValues["WindowsConfig"], "BombPos", ImVec2((ImGui::GetIO().DisplaySize.x - 200.0f) / 2.0f, 80.0f), std::get<0>(CFG::Cheat::Windows::bombPos));
         std::get<1>(CFG::Cheat::Windows::bombPos) = true;
     }
+
+    return true;
 }
 
 void ResetCfg() 
