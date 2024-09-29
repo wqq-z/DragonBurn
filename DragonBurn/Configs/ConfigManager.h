@@ -14,6 +14,7 @@
 #include <json.hpp>
 #include <fstream>
 #include "../Core/Config.h"
+#include "ValuesHandler.h"
 
 namespace ConfigMgr
 {

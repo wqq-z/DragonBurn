@@ -155,6 +155,7 @@ https://github.com/ByteCorum/DragonBurn
 	if(!ConfigMgr::CheckConfigDir())
 		Log.Error("Failed to connect to the config directory");
 
+	ConfigSys::ResetCfg();
 	ConfigMgr::LoadDefaultCfg();
 
 	Log.Fine("DragonBurn loaded");
