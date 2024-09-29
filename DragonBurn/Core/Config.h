@@ -78,7 +78,7 @@ namespace CFG
 			namespace Aimbot
 			{
 				inline bool aimBot;
-				inline bool toggleMode;
+				inline int mode;
 				inline int hotKey;
 				inline int startBullet;
 				inline float fov;
@@ -100,7 +100,7 @@ namespace CFG
 			namespace Triggerbot
 			{
 				inline bool triggerBot;
-				inline bool toggleMode;
+				inline int mode;
 				inline int hotKey;
 				inline int delay;
 				inline int duration;
