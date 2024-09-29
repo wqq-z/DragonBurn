@@ -24,7 +24,16 @@ namespace ValuesHandler
 	/// <param name="defaultValue"></param>
 	/// <param name="buff"></param>
 	template <typename ValueType>
-	void ReadValue(const nlohmann::json&, const std::string&, const ValueType&, ValueType&);
+	void ReadValue(const nlohmann::json& node, const std::string& key, const ValueType& defaultValue, ValueType& buff)
+	{
+		if (node.contains(key) && !node[key].is_null())
+		{
+			buff = node[key].get<ValueType>();
+		}
+		else
+			buff = defaultValue;
+	}
+
 
 	/// <summary>
 	/// Reads vector from json cfg

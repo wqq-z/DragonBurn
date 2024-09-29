@@ -59,7 +59,7 @@ DWORD MemoryManager::GetProcessID(const wchar_t* processName) const
 	{
 		PID_PACK PidPack;
 		RtlZeroMemory(PidPack.name, 1024);
-		wcsncpy(PidPack.name, processName, 1024);
+		wcsncpy_s(PidPack.name, processName, 1024);
 
 		BOOL result = DeviceIoControl(kernelDriver,
 			IOCTL_GET_PID,
@@ -88,7 +88,7 @@ DWORD64 MemoryManager::GetModuleBase(const wchar_t* moduleName) const
 		ModulePack.pid = ProcessID;
 		ModulePack.baseAddress = address;
 		RtlZeroMemory(ModulePack.moduleName, 1024);
-		wcsncpy(ModulePack.moduleName, moduleName, 1024);
+		wcsncpy_s(ModulePack.moduleName, moduleName, 1024);
 
 		BOOL result = DeviceIoControl(kernelDriver,
 			IOCTL_GET_MODULE_BASE,

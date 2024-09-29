@@ -28,4 +28,10 @@ namespace Setup
 	/// </summary>
 	/// <returns>0/1</returns>
 	bool GetCfgPath();
+
+	/// <summary>
+	/// Starts all gui
+	/// </summary>
+	/// <returns></returns>
+	bool StartCheatOverlay();
 }

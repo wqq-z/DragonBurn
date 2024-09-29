@@ -11,17 +11,6 @@
 
 #include "ValuesHandler.h"
 
-template <typename ValueType>
-void ValuesHandler::ReadValue(const nlohmann::json& node, const std::string& key, const ValueType& defaultValue, ValueType& buff)
-{
-    if (node.contains(key) && !node[key].is_null()) 
-    {
-        buff = node[key].get<ValueType>();
-    }
-    else
-        buff = defaultValue;
-}
-
 void ValuesHandler::ReadVector(const nlohmann::json& node, const std::string& key, const std::vector<int>& defaultValue, std::vector<int>& buff)
 {
     if (node.contains(key) && !node[key].is_null() && node[key].is_array())

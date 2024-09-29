@@ -19,10 +19,8 @@
 /// <summary>
 /// main program entry
 /// </summary>
-/// <param name="arguments count"></param>
-/// <param name="arguments values"></param>
 /// <returns> status </returns>
-int main(int argc, char* argv[])
+int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
 {
 	ShowWindow(GetConsoleWindow(), SW_SHOWNORMAL);
 	SetConsoleTitle(L"DragonBurn");
@@ -165,7 +163,7 @@ https://github.com/ByteCorum/DragonBurn
 	ShowWindow(GetConsoleWindow(), SW_HIDE);
 #endif
 
-	//...
+	Setup::StartCheatOverlay();
 
 	return 0;
 }

@@ -28,7 +28,7 @@ void Logger::Info(const std::string& ctx) const
 	std::cout << "[i]" << ctx << '\n';
 }
 
-void Logger::Warning(const std::string& ctx, bool pause = false) const
+void Logger::Warning(const std::string& ctx, bool pause) const
 {
 	SetConsoleTextAttribute(hConsole, 14);
 	std::cout << "[!]" << ctx << '\n';
@@ -41,7 +41,7 @@ void Logger::Warning(const std::string& ctx, bool pause = false) const
 
 }
 
-void Logger::Error(const std::string& ctx, bool fatal = true) const
+void Logger::Error(const std::string& ctx, bool fatal) const
 {
 	SetConsoleTextAttribute(hConsole, 12);
 	std::cout << "[X]" << ctx << '\n';
