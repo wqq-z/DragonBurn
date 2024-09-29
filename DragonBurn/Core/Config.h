@@ -29,8 +29,8 @@ namespace CFG
 	namespace Core 
 	{
 		inline std::string documentPath;
-		inline int FPS = 10000.0f;
-		inline int distance = 1000;
+		inline const int FPS = 10000.0f;
+		inline const int distance = 1000;
 	}
 
 	namespace Features 
