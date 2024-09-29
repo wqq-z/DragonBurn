@@ -154,7 +154,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Configs\ConfigManager.h" />
-    <ClInclude Include="Configs\ConfigSystem.h" />
     <ClInclude Include="Core\Config.h" />
     <ClInclude Include="Core\Setup.h" />
     <ClInclude Include="Game\Game.h" />

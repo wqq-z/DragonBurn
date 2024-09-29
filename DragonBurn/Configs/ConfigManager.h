@@ -15,6 +15,7 @@
 #include <fstream>
 #include "../Core/Config.h"
 #include "ValuesHandler.h"
+#include <imgui.h>
 
 namespace ConfigMgr
 {

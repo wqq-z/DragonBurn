@@ -22,6 +22,5 @@
     <ClInclude Include="Game\Game.h" />
     <ClInclude Include="Configs\ConfigManager.h" />
     <ClInclude Include="Configs\ValuesHandler.h" />
-    <ClInclude Include="Configs\ConfigSystem.h" />
   </ItemGroup>
 </Project>

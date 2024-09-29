@@ -134,7 +134,7 @@ bool ConfigSys::LoadCfg(const std::string& path)
     return true;
 }
 
-void ResetCfg() 
+void ConfigSys::ResetCfg()
 {
     //Visual
     CFG::Features::Visual::visual = true;
