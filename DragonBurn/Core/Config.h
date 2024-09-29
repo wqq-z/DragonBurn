@@ -12,6 +12,7 @@
 #pragma once
 #include <string>
 #include <imgui.h>
+#include <tuple>
 
 // all program config data
 namespace CFG
@@ -28,6 +29,8 @@ namespace CFG
 	namespace Core 
 	{
 		inline std::string documentPath;
+		inline int FPS = 10000.0f;
+		inline int distance = 1000;
 	}
 
 	namespace Features 
@@ -108,9 +111,28 @@ namespace CFG
 
 		namespace Misc
 		{
-			//add misc cfg
+			inline bool waterMark;
+			inline bool hitMarker;
+			inline int  hitSound;
+			inline bool bombTimer;
+			inline bool bunnyHop;
+			inline bool spectatorsList;
+			inline bool sniperCrosshair;
 		}
+	}
 
-		//add other cfg namespaces
+	namespace Cheat
+	{
+		inline bool workInSpec;
+		inline bool teamCheck;
+		inline bool excludeCapture;
+
+		namespace Windows 
+		{
+			inline std::tuple<ImVec2, bool> waterMarkPos;
+			inline std::tuple<ImVec2, bool> radarPos;
+			inline std::tuple<ImVec2, bool> spectatorsPos;
+			inline std::tuple<ImVec2, bool> bombPos;
+		}
 	}
 }
