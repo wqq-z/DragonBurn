@@ -54,8 +54,8 @@ void ValuesHandler::ReadPos(const nlohmann::json& node, const std::string& key, 
 {
     if (node.contains(key) && !node[key].is_null())
     {
-        buff.x = node[key]["x"].get<int>();
-        buff.y = node[key]["y"].get<int>();
+        buff.x = node[key]["x"].get<float>();
+        buff.y = node[key]["y"].get<float>();
     }
     else
         buff = defaultValue;
